@@ -1,0 +1,64 @@
+/* 위아래 navbar 설정 */
+.navbar{
+	border: 1px solid red;
+	width: 70%;
+	margin: auto;
+	background-color: rgb(255,255,51);
+	font-weight: bold;
+}
+/* 위에 메뉴바 설정  */
+body > div.navbar_wrap > nav.navbar.navbar-expand-sm{
+	height: 30px;
+}
+
+
+/* 하단 메뉴바 설정  */
+body > div.navbar_wrap > nav.navbar.navbar-expand-lg.navbar-light{
+	height: 50px;
+}
+
+
+nav{
+	background-color: rgb(255,255,51) !important;
+}
+/* #f1e105  */
+.navbar_wrap{
+	width: 100%;
+	height: 80px;
+	border: 1px solid black;
+	background-color: rgb(255,255,51);
+	color: rgb(54,36,36) !important;
+}
+
+
+/* 메뉴바 우측 상단 아이콘  */
+body > div.navbar_wrap > nav.navbar.navbar-expand-sm > ul > li > a > i{
+	font-size: 20px;
+	color: #1e1e1e;
+}
+body > div.navbar_wrap > nav.navbar.navbar-expand-sm > ul > li > a > i:hover{
+	font-size: 25px;
+}
+
+/* navbar안에 목록 설정 */
+.nav-item{
+	margin-left: 10%;
+	width: 150px;
+}
+
+#navbarSupportedContent > ul > li > a{
+	width: 100%;
+}
+
+#navbarSupportedContent{
+	margin-left: 10%;
+}
+
+/* 홈페이지 크기 변경시 설정  */
+@media(max-width: 1288px){
+	.nav-item{
+		margin-left: 5%;
+		width: 100px;
+	}
+	
+}

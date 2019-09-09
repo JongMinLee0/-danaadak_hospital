@@ -2,10 +2,13 @@ package com.dana.hos.reserve.controller;
 
 
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.dana.hos.reserve.module.ReserveDTO;
@@ -40,7 +43,7 @@ public class ReserveController {
 	}
 	
 	@RequestMapping(value="/re_register", method = RequestMethod.POST)
-	public ModelAndView bookListpage(ReserveDTO dto, ModelAndView mav){
+	public ModelAndView registerPage(ReserveDTO dto, ModelAndView mav){
 		System.out.println("날짜 :" +dto.getRe_date());
 		System.out.println("시간: " +  dto.getRe_time());
 /*		String[] re_date_time = dto.getRe_date().split("T");
@@ -52,5 +55,22 @@ public class ReserveController {
 		
 		mav.setViewName("reserve/reserve");
 		return mav;
+	}//end registerPage
+	
+	@RequestMapping(value="/check_time",method = RequestMethod.GET)
+	public @ResponseBody int timeCheckPage(ReserveDTO dto, ModelAndView mav) {
+		System.out.println(dto.getRe_time());
+		System.out.println(dto.getRe_date());
+
+		int res = 0;
+		
+		int time = reserveService.timeChkProcess(dto);
+		
+		if(time == 0) {
+		}else {
+			res=1;
+		}
+		
+		return res;
 	}
 }//end class

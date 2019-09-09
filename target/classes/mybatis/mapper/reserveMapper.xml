@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="re">
+	 <!-- 예약 내역 확인 -->  
+<!-- 	<select id="all"  resultType="dto.ReserveDTO">
+		select * from reserve order by re_date, re_time;
+	</select> -->
+	
+	 <!-- 예약 -->
+	<insert id="ins" parameterType="com.dana.hos.reserve.module.ReserveDTO">
+		insert into reserve (hos_id, id, category,re_date,re_time,message)
+		values (#{hos_id},#{id},#{category},#{re_date},#{re_time},#{message})
+	</insert>
+</mapper>
+
+
+

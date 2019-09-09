@@ -29,7 +29,7 @@
 				<li class="nav-item"><a class="nav-link" href="#">커뮤니티</a></li>
 				<li class="nav-item"><a class="nav-link" href="#">공지사항</a></li>
 			</ul>
-			<button class="btn my-2 my-sm-0" type="submit">로그인</button>
+			<button class="btn my-2 my-sm-0" type="submit" onClick="location.href='login/loginForm'">로그인</button>
 		</div>
 	</nav>
 </div>

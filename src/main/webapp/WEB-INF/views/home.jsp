@@ -14,7 +14,7 @@
 </head>
 <body>
 <!-- navbar 홈페이지 상단 메뉴바  -->
-<jsp:include page="fragments/nav_bar.jsp" />
+<jsp:include page="/WEB-INF/views/fragments/nav_bar.jsp" />
 
 <!-- 홈페이지 상단 메뉴바와 배경을 감싸는 부분  -->
 <div class="home_image_wrap">
@@ -79,6 +79,7 @@
   </div>
 </div>
 
-<jsp:include page="fragments/footer.jsp" />
+<!-- 하단 footer  -->
+<jsp:include page="/WEB-INF/views/fragments/footer.jsp" />
 </body>
 </html>

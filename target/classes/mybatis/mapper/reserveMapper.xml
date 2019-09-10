@@ -12,6 +12,13 @@
 		insert into reserve (hos_id, id, category,re_date,re_time,message)
 		values (#{hos_id},#{id},#{category},#{re_date},#{re_time},#{message})
 	</insert>
+	
+	
+	<!-- 예약시간 중복확인 -->
+	<select id="chk" parameterType="com.dana.hos.reserve.module.ReserveDTO" resultType="int">
+	select count(*) from reserve
+    where re_date =#{re_date} and re_time=#{re_time}
+	</select>
 </mapper>
 
 

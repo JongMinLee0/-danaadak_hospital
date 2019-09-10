@@ -10,4 +10,5 @@ import com.dana.hos.reserve.module.ReserveDTO;
 public interface ReserveDAO {
 	public List<ReserveDTO> reserveListMethod();
 	public void re_registerMedthod(ReserveDTO dto);
+	public int timeChkMethod(ReserveDTO dto);
 }///end interface

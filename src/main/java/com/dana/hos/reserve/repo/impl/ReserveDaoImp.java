@@ -32,5 +32,11 @@ public class ReserveDaoImp implements ReserveDAO {
 		sqlSession.insert("re.ins",dto);
 	}
 
+	@Override
+	public int timeChkMethod(ReserveDTO dto) {
+		return sqlSession.selectOne("re.chk",dto);
+	}
+
+
 	
 }// end class

@@ -33,8 +33,11 @@ public class ReserveServiceImp implements ReserveService {
 	public void re_registerProcess(ReserveDTO dto) {
 		reserveDAO.re_registerMedthod(dto);
 	}
-	
-	
+
+	@Override
+	public int timeChkProcess(ReserveDTO dto) {
+		return reserveDAO.timeChkMethod(dto);
+	}
 
 	
 	

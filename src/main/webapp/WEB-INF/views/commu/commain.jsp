@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,21 +16,21 @@
 </head>
 <body>
 <!-- navbar 홈페이지 상단 메뉴바  -->
-<jsp:include page="/WEB-INF/views/fragments/nav_bar.jsp" />
+<tiles:insertAttribute name="navbar" />
 
 <!-- 커뮤니티 바디  -->
 <div class="comm_body">
 	<!-- 커뮤니티 header -->
-	<div class="comm_header fixed-top">
+	<div class="comm_header">
 		<ul class="comm_menu">
-			<li><a href="">1:1대화</a></li>
-			<li><a href="">이벤트</a></li>
-			<li><a href="">후기</a></li>
+			<li><a href="/hos/comm/event">이벤트</a></li>
+			<li><a href="/hos/comm/chat">1:1대화</a></li>
+			<li><a href="/hos/comm/review">후기</a></li>
 		</ul>
 	</div>
 	
 	<div class="content_wrap">
-	
+		<tiles:insertAttribute name="mainbody" />
 	</div>
 	
 	
@@ -37,6 +38,6 @@
 
 
 <!-- 하단 footer -->
-<jsp:include page="/WEB-INF/views/fragments/footer.jsp" />
+<tiles:insertAttribute name="footer" />
 </body>
 </html>

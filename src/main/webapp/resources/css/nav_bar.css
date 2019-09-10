@@ -1,6 +1,5 @@
 /* 위아래 navbar 설정 */
 .navbar{
-	border: 1px solid red;
 	width: 70%;
 	margin: auto;
 	/* background-color: rgb(255,255,51); */
@@ -13,8 +12,9 @@ body > div.navbar_wrap > nav.navbar.navbar-expand-sm{
 
 
 /* 하단 메뉴바 설정  */
-body > div.navbar_wrap.fixed-top > nav.navbar.transparent.navbar-expand-lg{
+body > div.navbar_wrap > nav.navbar.transparent.navbar-expand-lg.navbar-light{
 	height: 50px;
+	border-bottom: 1px solid rgb(229,229,229);
 }
 
 
@@ -25,7 +25,7 @@ body > div.navbar_wrap.fixed-top > nav.navbar.transparent.navbar-expand-lg{
 .navbar_wrap{
 	width: 100%;
 	height: 80px;
-	border: 1px solid black;
+	border-bottom: 1px solid rgb(229,229,229);
 /* 	background-color: rgb(255,255,51); */
 	color: rgb(54,36,36) !important;
 }

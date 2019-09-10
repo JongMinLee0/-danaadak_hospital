@@ -17,7 +17,7 @@
 </script>
 </head>
 
-<body> 
+<body>
 	<c:url value="/login" var="loginUrl" />
 	<c:if test="${param.error != null}">
 		<script>
@@ -35,7 +35,8 @@
 				</div>
 				<div class="login_box">
 					<div class="input_login">
-						<input type="text" id="username" name="username"  value="${loginId }" placeholder="아이디를 입력하세요">
+						<input type="text" id="username" name="username"
+							value="${loginId }" placeholder="아이디를 입력하세요">
 					</div>
 					<div class="input_login">
 						<input type="password" id="password" name="password"
@@ -48,7 +49,7 @@
 						<input id="login" type="submit" value="로그인">
 					</div>
 					<div>
-						<input id="kakao_login" type="submit" value="카카오톡 로그인">
+						<input id="kakao_login" type="button" value="카카오톡 로그인">
 					</div>
 
 
@@ -61,6 +62,41 @@
 			</div>
 		</div>
 	</form:form>
+
+	<script type='text/javascript'>
+		//<![CDATA[
+		// 사용할 앱의 JavaScript 키를 설정해 주세요.
+		Kakao.init('c8ee897a0db2b7e1891baf231ece5129');
+		// 카카오 로그인 버튼을 생성합니다.
+		Kakao.Auth.createLoginButton({
+			container : '#kakao_login',
+			success : function(authObj) {
+				// 로그인 성공시, API를 호출합니다.
+				Kakao.API.request({
+					url : '/v1/user/me',
+					success : function(res) {
+						console.log(res);
+						var kakao_id = res.id; //유저가 등록한 계정
+						var email = res.kaccount_email; //유저가 등록한 계정
+						var userNickName = res.properties.nickname; //유저가 등록한 별명
+
+						console.log(kakao_id, email, userNickName);
+
+						kakaoLogin(kakao_id, email, userNickName);
+					},
+					fail : function(error) {
+						swal(JSON.stringify(error));
+					}
+				});
+			},
+			fail : function(err) {
+				swal(JSON.stringify(err));
+			}
+		});
+		//]]>
+	</script>
+
+
 </body>
 </html>
 

@@ -18,5 +18,5 @@ public class AdminController {
 		logger.info("Welcome Admin Home!");
 		
 		return "admin/adminHome";
-	}
+	} 
 }

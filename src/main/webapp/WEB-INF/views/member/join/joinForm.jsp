@@ -15,7 +15,7 @@
 <style type="text/css">
 .wrapper:after {
 	content: "";
-	position: absolute;
+	position: absolute; 
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center;

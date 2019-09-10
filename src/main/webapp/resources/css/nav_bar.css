@@ -1,9 +1,8 @@
 /* 위아래 navbar 설정 */
 .navbar{
-	border: 1px solid red;
 	width: 70%;
 	margin: auto;
-	background-color: rgb(255,255,51);
+	/* background-color: rgb(255,255,51); */
 	font-weight: bold;
 }
 /* 위에 메뉴바 설정  */
@@ -13,20 +12,21 @@ body > div.navbar_wrap > nav.navbar.navbar-expand-sm{
 
 
 /* 하단 메뉴바 설정  */
-body > div.navbar_wrap > nav.navbar.navbar-expand-lg.navbar-light{
+body > div.navbar_wrap > nav.navbar.transparent.navbar-expand-lg.navbar-light{
 	height: 50px;
+	border-bottom: 1px solid rgb(229,229,229);
 }
 
 
-nav{
+/* nav{
 	background-color: rgb(255,255,51) !important;
-}
+} */
 /* #f1e105  */
 .navbar_wrap{
 	width: 100%;
 	height: 80px;
-	border: 1px solid black;
-	background-color: rgb(255,255,51);
+	border-bottom: 1px solid rgb(229,229,229);
+/* 	background-color: rgb(255,255,51); */
 	color: rgb(54,36,36) !important;
 }
 

@@ -2,6 +2,8 @@ package com.dana.hos.member.controller;
 
 import java.util.Locale;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -14,7 +16,10 @@ public class MemberController {
 	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
 	
 	@RequestMapping(value = "/login/loginForm", method = RequestMethod.GET)
-	public String loginForm(Locale locale, Model model) {
+	public String loginForm(HttpServletRequest request, Model model) {
+		String referer = request.getHeader("Referer");
+		request.getSession().setAttribute("prevPage", referer);
+
 		return "member/login/loginForm";
 	}
 	

@@ -25,7 +25,7 @@ public class DatabaseConfig {
 	@Autowired
 	private ApplicationContext applicationContext;
 
-	@Bean
+	@Bean(name="dataSource")
 	public DataSource dataSource() {
 		HikariConfig hikariConfig = new HikariConfig();
 		//DriverManagerDataSource source = new DriverManagerDataSource();

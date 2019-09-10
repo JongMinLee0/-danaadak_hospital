@@ -8,23 +8,26 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>로그인 페이지</title>
 <link rel="stylesheet" href="/hos/resources/css/login.css" />
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+<script type="text/javascript">
+	
+</script>
 </head>
 
-<body onload="document.f.id.focus();">
+<body>
 	<c:url value="/login" var="loginUrl" />
-	<form:form name="f" action="${loginUrl}" method="POST">
-		<c:if test="${param.error != null}">
-			<script>
-				swal("회원정보를 다시 확인해주세요.").then(function() {
-				    window.location = "/hos/login/loginForm";
-				});
-				 
-			</script>
-		</c:if>
+	<c:if test="${param.error != null}">
+		<script>
+			swal("회원정보를 다시 확인해주세요.").then(function() {
+				location.href = "/hos/login/loginForm";
+			});
+		</script>
+	</c:if>
 
+	<form:form name="f" action="${loginUrl}" method="POST">
 		<div class="wrapper">
 			<div class="main">
 				<div class="header">
@@ -32,10 +35,11 @@
 				</div>
 				<div class="login_box">
 					<div class="input_login">
-						<input type="text" id="id" name="id" placeholder="아이디를 입력하세요">
+						<input type="text" id="username" name="username"  value="${loginId }" placeholder="아이디를 입력하세요">
 					</div>
 					<div class="input_login">
-						<input type="password" id="password" name="password" placeholder="비밀번호를 입력하세요">
+						<input type="password" id="password" name="password"
+							placeholder="비밀번호를 입력하세요">
 					</div>
 					<div class="check">
 						<label><input type="checkbox" id="save_id">아이디 저장</label>
@@ -56,7 +60,7 @@
 				</div>
 			</div>
 		</div>
-		</form:form>
+	</form:form>
 </body>
 </html>
 

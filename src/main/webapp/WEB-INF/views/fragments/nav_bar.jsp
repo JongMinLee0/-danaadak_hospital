@@ -1,5 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
 <link rel="stylesheet" href="/hos/resources/css/nav_bar.css" />
 <script src="/hos/resources/js/nav_bar.js"></script>
 <!--
@@ -29,7 +32,12 @@
 				<li class="nav-item"><a class="nav-link" href="/hos/comm/main">커뮤니티</a></li>
 				<li class="nav-item"><a class="nav-link" href="#">공지사항</a></li>
 			</ul>
-			<button class="btn my-2 my-sm-0" type="submit" onClick="location.href='login/loginForm'">로그인</button>
+			
+			<sec:authorize access="isAnonymous()"><button class="btn my-2 my-sm-0" type="submit" onClick="location.href='/hos/login/loginForm'">로그인</button></sec:authorize>
+			<sec:authorize access="isAuthenticated()"><form:form action="${pageContext.request.contextPath}/logout" method="POST"> <button class="btn my-2 my-sm-0" type="submit">로그아웃</button> </form:form> </sec:authorize>
+
+			
+			
 		</div>
 	</nav>
 </div>

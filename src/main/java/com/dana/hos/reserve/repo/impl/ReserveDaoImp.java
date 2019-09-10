@@ -37,5 +37,6 @@ public class ReserveDaoImp implements ReserveDAO {
 		return sqlSession.selectOne("re.chk",dto);
 	}
 
+
 	
 }// end class

@@ -38,6 +38,7 @@ public class ReserveServiceImp implements ReserveService {
 	public int timeChkProcess(ReserveDTO dto) {
 		return reserveDAO.timeChkMethod(dto);
 	}
+
 	
 	
 }//end classs

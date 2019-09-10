@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,10 +12,11 @@
 <link rel="stylesheet" href="resources/css/bootstrap.min.css" />
 <link rel="stylesheet" href="resources/css/home.css" />
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+<script type="text/javascript" src="/hos/resources/js/home.js"></script>
 </head>
 <body>
 <!-- navbar 홈페이지 상단 메뉴바  -->
-<jsp:include page="fragments/nav_bar.jsp" />
+ <tiles:insertAttribute name="navbar" />
 
 <!-- 홈페이지 상단 메뉴바와 배경을 감싸는 부분  -->
 <div class="home_image_wrap">
@@ -28,7 +30,6 @@
 <!-- 배경이미지 하단 카드  -->
 <div class="first-group">
   <div class="card" onclick="location.href='#'">
-    <img src="..." class="card-img-top" alt="...">
     <div class="card-body">
       <h5 class="card-title">Card title</h5>
       <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
@@ -36,7 +37,6 @@
     </div>
   </div>
   <div class="card" onclick="location.href='#'">
-    <img src="..." class="card-img-top" alt="...">
     <div class="card-body">
       <h5 class="card-title">Card title</h5>
       <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
@@ -44,7 +44,6 @@
     </div>
   </div>
   <div class="card" onclick="location.href='#'">
-    <img src="..." class="card-img-top" alt="...">
     <div class="card-body">
       <h5 class="card-title">Card title</h5>
       <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
@@ -54,7 +53,6 @@
 </div>
 <div class="second-group" onclick="location.href='#'">
   <div class="card">
-    <img src="..." class="card-img-top" alt="...">
     <div class="card-body">
       <h5 class="card-title">Card title</h5>
       <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
@@ -62,7 +60,6 @@
     </div>
   </div>
   <div class="card" onclick="location.href='#'">
-    <img src="..." class="card-img-top" alt="...">
     <div class="card-body">
       <h5 class="card-title">Card title</h5>
       <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
@@ -70,7 +67,6 @@
     </div>
   </div>
   <div class="card" onclick="location.href='#'">
-    <img src="..." class="card-img-top" alt="...">
     <div class="card-body">
       <h5 class="card-title">Card title</h5>
       <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
@@ -79,6 +75,7 @@
   </div>
 </div>
 
-<jsp:include page="fragments/footer.jsp" />
+<!-- 하단 footer  -->
+<tiles:insertAttribute name="footer" />
 </body>
 </html>

@@ -1,6 +1,7 @@
-package com.dana.hos.main.controller;
+package com.dana.hos.member.controller;
 
 import java.util.Locale;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -8,17 +9,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-
 @Controller
-public class HomeController {
+public class AdminController {
+	private static final Logger logger = LoggerFactory.getLogger(AdminController.class);
 	
-	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
-	
-	
-	@RequestMapping(value = "/home", method = RequestMethod.GET)
+	@RequestMapping(value = "/admin/adminHome", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
+		logger.info("Welcome Admin Home!");
 		
-		return "home";
+		return "admin/adminHome";
 	}
-	
 }

@@ -17,7 +17,7 @@
 		</ul>
 	</nav>
 	<nav class="navbar transparent navbar-expand-lg">
-			<a class="navbar-brand" href="/hos/">다나았닥!!</a>
+			<a class="navbar-brand" href="/hos/">다나았닥!!</a> 
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
 				data-target="#navbarSupportedContent"
 				aria-controls="navbarSupportedContent" aria-expanded="false"

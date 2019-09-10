@@ -22,3 +22,4 @@ public class LoginFailureHandler implements AuthenticationFailureHandler {
 		response.sendRedirect("login/loginForm?error");
 	}
 }
+ 

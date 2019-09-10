@@ -16,7 +16,7 @@ public class LoginSuccessHandler extends SavedRequestAwareAuthenticationSuccessH
 
 	public LoginSuccessHandler(String defaultTargetUrl) {
         setDefaultTargetUrl(defaultTargetUrl);
-    }
+    } 
 
 	@Override
 	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,

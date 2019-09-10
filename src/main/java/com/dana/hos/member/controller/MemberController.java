@@ -21,7 +21,7 @@ public class MemberController {
 		request.getSession().setAttribute("prevPage", referer);
 
 		return "member/login/loginForm";
-	}
+	} 
 	
 	@RequestMapping(value = "/login/accessDenied", method = RequestMethod.GET)
 	public String accessDenied(Locale locale, Model model) {

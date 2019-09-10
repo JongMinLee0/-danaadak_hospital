@@ -11,7 +11,7 @@ public class Member {
 	private Date birth;
 	private String kakao_id;
 	private String authority;
-	private int enabled;
+	private int enabled; 
 
 	public Member() {
 

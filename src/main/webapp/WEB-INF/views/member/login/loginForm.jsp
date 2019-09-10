@@ -17,7 +17,7 @@
 </script>
 </head>
 
-<body>
+<body> 
 	<c:url value="/login" var="loginUrl" />
 	<c:if test="${param.error != null}">
 		<script>

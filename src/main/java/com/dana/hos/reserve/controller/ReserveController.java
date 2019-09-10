@@ -2,7 +2,6 @@ package com.dana.hos.reserve.controller;
 
 
 
-import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,7 +20,6 @@ import com.dana.hos.reserve.service.impl.ReserveServiceImp;
 public class ReserveController {
 	@Autowired
 	private ReserveService reserveService;
-	private String path;
 	
 	public ReserveController() {
 		// TODO Auto-generated constructor stub
@@ -31,12 +29,8 @@ public class ReserveController {
 		this.setService(service); 
 	}
 	
-	public void setPath(String path) {
-		this.path = path;
-	}
-	
 	@RequestMapping("/reserve")
-	public ModelAndView bookListpage(ModelAndView mav) {
+	public ModelAndView reserveListpage(ModelAndView mav) {
 		mav.addObject("list",reserveService.reserveListProcess());
 		mav.setViewName("reserve/reserve");
 		return mav;
@@ -46,12 +40,8 @@ public class ReserveController {
 	public ModelAndView registerPage(ReserveDTO dto, ModelAndView mav){
 		System.out.println("날짜 :" +dto.getRe_date());
 		System.out.println("시간: " +  dto.getRe_time());
-/*		String[] re_date_time = dto.getRe_date().split("T");
-		dto.setRe_date(re_date_time[0]);
-		dto.setRe_time(re_date_time[1]);
-		
-		System.out.println(dto.getRe_time());
-*/		reserveService.re_registerProcess(dto);
+
+		reserveService.re_registerProcess(dto);
 		
 		mav.setViewName("reserve/reserve");
 		return mav;
@@ -70,7 +60,13 @@ public class ReserveController {
 		}else {
 			res=1;
 		}
-		
 		return res;
+	}//end timeCheckPage
+	
+	
+	@RequestMapping(value="/submit", method= RequestMethod.GET)
+	public ModelAndView submitPage(ModelAndView mav) {
+		
+		return mav;
 	}
 }//end class

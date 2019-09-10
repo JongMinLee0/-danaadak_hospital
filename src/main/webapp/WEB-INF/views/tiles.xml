@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+   <!-- 홈페이지 -->
+   <definition name="home" template="/WEB-INF/views/home.jsp">  
+       <put-attribute name="navbar" value="/WEB-INF/views/fragments/nav_bar.jsp" />  
+       <put-attribute name="footer" value="/WEB-INF/views/fragments/footer.jsp" />  
+   </definition>
+  
+  <!-- 커뮤니티 메인페이지 -->
+  <definition name="commu/commain" template="/WEB-INF/views/commu/commain.jsp">
+  	  <put-attribute name="navbar" value="/WEB-INF/views/fragments/nav_bar.jsp" />  
+       <put-attribute name="footer" value="/WEB-INF/views/fragments/footer.jsp" />
+       <put-attribute name="mainbody" value="/WEB-INF/views/commu/com_body.jsp" />   
+  </definition>
+  
+  <!-- 이벤트 페이지  -->
+  <definition name="event" extends="commu/commain">
+  		<put-attribute name="mainbody" value="/WEB-INF/views/commu/com_event.jsp" />
+  </definition>
+  
+  <!-- 후기 페이지  -->
+  <definition name="review" extends="commu/commain">
+  		<put-attribute name="mainbody" value="/WEB-INF/views/commu/com_review.jsp" />
+  </definition>
+  
+  <!--  채팅 페이지  -->
+  <definition name="chat" extends="commu/commain">
+  		<put-attribute name="mainbody" value="/WEB-INF/views/commu/com_chat.jsp" />
+  </definition>
+</tiles-definitions>

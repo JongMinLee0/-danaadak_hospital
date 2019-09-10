@@ -10,7 +10,11 @@
 		<intercept-url pattern="/home" access="permitAll" />
 		<intercept-url pattern="/admin/**" access="hasRole('ADMIN')" />
 		<intercept-url pattern="/**" access="permitAll" />
-
+		
+		<headers>
+			<frame-options disabled="true" />
+		</headers>
+		
 		<form-login login-page="/login/loginForm"
 			default-target-url="/home" authentication-failure-url="/login/loginForm?error"
 			username-parameter="id" password-parameter="password" />

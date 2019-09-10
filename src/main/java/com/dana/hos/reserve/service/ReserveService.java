@@ -9,4 +9,6 @@ public interface ReserveService {
 
 	public List<ReserveDTO> reserveListProcess();
 	public void re_registerProcess(ReserveDTO dto);
+	public int timeChkProcess(ReserveDTO dto);
 }///end interface
+

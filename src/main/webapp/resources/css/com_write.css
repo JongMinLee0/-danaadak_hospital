@@ -4,7 +4,6 @@
 	width: 80%;
 	height: 600px;
 	margin: 100px auto;
-	border: 1px solid black;
 }
 
 #write_table{
@@ -33,10 +32,6 @@
 	text-align: center;
 }
 
-td{
-	border: 1px solid red;
-}
-
 /* 스마트 에디터 */
 
 /* 별점 주기 */
@@ -49,5 +44,5 @@ td{
 	margin: 0 !important;
 }
 #star_grade a.on{
-    color: red;
+    color: orange;
 }

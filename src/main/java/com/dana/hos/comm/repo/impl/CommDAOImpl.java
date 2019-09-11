@@ -1,5 +1,7 @@
 package com.dana.hos.comm.repo.impl;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -17,6 +19,12 @@ public class CommDAOImpl implements CommDAO{
 	@Override
 	public int reviewWrite(ReviewDTO dto) {
 		return sqlSession.insert("comm.write", dto);
+	}
+
+	// 전체 후기 리스트
+	@Override
+	public List<ReviewDTO> totalList() {
+		return sqlSession.selectList("comm.comList");
 	}
 
 }

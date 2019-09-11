@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="comm">
+
+	<insert id="write" parameterType="com.dana.hos.comm.module.ReviewDTO">
+		<!-- 나중에 null 지워야됨 / 후기는 마이페이지에서 작성하는 게 좋을 듯  -->
+		insert into review 
+		values(vi_seq.nextval, #{vi_subject}, #{vi_content}, #{vi_hash, jdbcType=VARCHAR}, #{vi_star, jdbcType=VARCHAR},#{id, jdbcType=VARCHAR}, 
+		#{name, jdbcType=VARCHAR}, #{hos_id, jdbcType=VARCHAR})
+	</insert>
+	
+</mapper>
+

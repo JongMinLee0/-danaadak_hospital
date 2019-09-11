@@ -29,10 +29,25 @@
 	height: 30px;
 }
 
-#write_table > tbody > tr:nth-child(4) > td{
+#write_table > tbody > tr:nth-child(5) > td{
 	text-align: center;
 }
 
 td{
 	border: 1px solid red;
+}
+
+/* 스마트 에디터 */
+
+/* 별점 주기 */
+#star_grade a{
+	text-decoration: none;
+    color: gray;
+    font-size: 20px;
+}
+#star_grade{
+	margin: 0 !important;
+}
+#star_grade a.on{
+    color: red;
 }

@@ -5,9 +5,15 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.dana.hos.comm.module.ReviewDTO;
+import com.dana.hos.comm.service.CommService;
 import com.dana.hos.comm.service.SmartPhotoService;
 
 @Controller
@@ -16,6 +22,9 @@ public class CommuController {
 	
 	@Autowired
 	SmartPhotoService smartPhotoService;
+	
+	@Autowired
+	CommService commService;
 	
 	// 커뮤니티 메인 페이지
 	@RequestMapping("main")
@@ -30,8 +39,10 @@ public class CommuController {
 	}
 	
 	// 후기 페이지
+	// 후기 리스트 생성
 	@RequestMapping("review")
 	public String comReview() {
+		
 		return "review";
 	}
 	
@@ -50,7 +61,15 @@ public class CommuController {
 	// 스마트에디터 파일 첨부
 	@RequestMapping(value="smartPhoto", method= RequestMethod.POST)
 	public void multiSmartPhoto(HttpServletRequest request, HttpServletResponse response) {
-		System.out.println("smartPhoto 들어옴");
 		smartPhotoService.smartUpload(request, response);
 	}
+	
+	// 후기 작성요청
+	@ResponseBody
+	@RequestMapping(value="write", method=RequestMethod.POST, produces="application/text;charset=UTF-8")
+	public String reviewWrite(@ModelAttribute ReviewDTO dto) {
+		String result = commService.writeService(dto);
+		return result;
+	}
+	
 }

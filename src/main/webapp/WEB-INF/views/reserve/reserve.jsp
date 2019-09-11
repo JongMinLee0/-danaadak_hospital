@@ -18,16 +18,18 @@
 </head>
 <body>
 
-	<button id="insertBtn">예약할래유, 나아퍼유</button>
+	<button id="insertBtn">병원리스트 누르면 예약창 뜹니다.</button>
 
 
-	<form name="frm" id="frm" method="post">
-		<!-- Insert Medal-->
+	<!-- 예약 모달 창 -->
+	<form name="frm" id="frm"  method="post" >
+		<!-- Insert Modal-->
 		<div id="insertModal">
 			<table>
 				<tr>
 					<th colspan="2">
-					<input type="form-control" type="text" id="hos_id" name="hos_id" value="아나파정형외과" readonly="readonly"></th>
+					<input type="form-control" type=text id="hos_id" name="hos_id" value="아나파정형외과"<%-- "${list.hos_id}" --%> readonly="readonly">
+					</th>
 				</tr>
 				<tr>
 					<th>I&nbsp;&nbsp;&nbsp;&nbsp;D</th>
@@ -58,7 +60,7 @@
 			</table>
 			<p>
 				<input type="button" id="submitBtn" value="예약하기"/>
-				 <input type="button" id="closeBtn" value="닫기"/>
+				<input type="button" id="closeBtn" value="닫기"/>
 			</p>
 		</div>
 	</form>

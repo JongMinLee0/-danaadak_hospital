@@ -26,10 +26,34 @@ $(document).ready(function(){
 		
 		// 저장버튼 클릭시 form 전송
 		$('#subBtn').click(function(){
-			oEditors.getById["ir1"].exec("UPDATE_CONTENTS_FIELD", []);
-			$('#frm').submit();
+			subReview();
 		});
+		
+		function subReview(){
+			oEditors.getById["smart"].exec("UPDATE_CONTENTS_FIELD", []);
+	        var queryString = $('form').serialize() ;
+	        console.log('queryString : ' + queryString);
+			$.ajax({
+				type:'post',
+				url:'/hos/comm/write',
+				data:queryString,
+				success:function(res){
+					alert(res);
+					location.href='/hos/comm/review';
+				},error:function(e){
+					alert(e.status + ' 오류가 발생했습니다.');
+					location.href='/hos/comm/review';
+				}
+			});
+		}
 	});
+	
+	$('#star_grade a').click(function(){
+        $(this).parent().children("a").removeClass("on");  /* 별점의 on 클래스 전부 제거 */ 
+        $(this).addClass("on").prevAll("a").addClass("on"); /* 클릭한 별과, 그 앞 까지 별점에 on 클래스 추가 */
+        $('#vi_star').val($('#star_grade a.on').length);
+        return false;
+    });
 	
 	
 })

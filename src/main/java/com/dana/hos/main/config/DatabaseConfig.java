@@ -34,6 +34,10 @@ public class DatabaseConfig {
 		hikariConfig.setJdbcUrl("jdbc:log4jdbc:oracle:thin:@192.168.30.91:1521:xe");
 		hikariConfig.setUsername("my_hos");
 		hikariConfig.setPassword("a1234");
+		hikariConfig.setMinimumIdle(10);
+		hikariConfig.setMaximumPoolSize(30);
+		hikariConfig.setConnectionTimeout(300000);
+		
 		
 		HikariDataSource dataSource = new HikariDataSource(hikariConfig);
 

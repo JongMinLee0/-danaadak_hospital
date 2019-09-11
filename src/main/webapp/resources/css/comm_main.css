@@ -1,6 +1,5 @@
 /* 커뮤니티 바디  */
 .comm_body{
-	border: 1px solid blue;
 	width: 100%;
 	/* padding-top: 80px; */
 }
@@ -43,6 +42,5 @@
 	height: 800px;
 	width: 70%;
 	margin: auto;
-	border: 1px solid brown;
 }
 

@@ -1,5 +1,7 @@
 package com.dana.hos.comm.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +15,7 @@ public class CommServiceImpl implements CommService{
 	@Autowired
 	CommDAO commDAO;
 
+	// 후기 글 작성
 	@Override
 	public String writeService(ReviewDTO dto) {
 		int ins = commDAO.reviewWrite(dto);
@@ -23,6 +26,13 @@ public class CommServiceImpl implements CommService{
 			result="후기 작성에 실패했습니다..";
 		}
 		return result;
+	}
+
+	// 후기 전체 목록
+	@Override
+	public List<ReviewDTO> totalList() {
+		List<ReviewDTO> rList = commDAO.totalList();
+		return rList;
 	}
 
 }

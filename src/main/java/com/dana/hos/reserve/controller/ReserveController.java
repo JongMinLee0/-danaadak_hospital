@@ -31,31 +31,27 @@ public class ReserveController {
 	
 	@RequestMapping("/reserve")
 	public ModelAndView reserveListpage(ModelAndView mav) {
+		System.out.println("여기로 들어와1");
 		mav.addObject("list",reserveService.reserveListProcess());
+		
 		mav.setViewName("reserve/reserve");
 		return mav;
 	}
 	
-	@RequestMapping(value="/re_register", method = RequestMethod.POST)
+	@RequestMapping(value="/re_register", method =RequestMethod.POST)
 	public ModelAndView registerPage(ReserveDTO dto, ModelAndView mav){
-		System.out.println("날짜 :" +dto.getRe_date());
-		System.out.println("시간: " +  dto.getRe_time());
-
+		System.out.println("여기로 들어와2");
 		reserveService.re_registerProcess(dto);
-		
 		mav.setViewName("reserve/reserve");
 		return mav;
 	}//end registerPage
 	
-	@RequestMapping(value="/check_time",method = RequestMethod.GET)
+	@RequestMapping(value="/check_time",method =RequestMethod.GET)
 	public @ResponseBody int timeCheckPage(ReserveDTO dto, ModelAndView mav) {
 		System.out.println(dto.getRe_time());
 		System.out.println(dto.getRe_date());
-
 		int res = 0;
-		
 		int time = reserveService.timeChkProcess(dto);
-		
 		if(time == 0) {
 		}else {
 			res=1;
@@ -63,10 +59,5 @@ public class ReserveController {
 		return res;
 	}//end timeCheckPage
 	
-	
-	@RequestMapping(value="/submit", method= RequestMethod.GET)
-	public ModelAndView submitPage(ModelAndView mav) {
-		
-		return mav;
-	}
+
 }//end class

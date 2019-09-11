@@ -36,10 +36,6 @@ public class NoticeController {
 
 	}
 	
-	@Resource(name = "uploadPath")
-	private String uploadPath;
-
-
 	@Autowired
 	public void setNoticeService(NoticeService noticeService) {
 		this.noticeService = noticeService;

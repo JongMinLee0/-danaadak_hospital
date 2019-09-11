@@ -116,3 +116,7 @@ html, body {
 .login_box .last #join {
 	color: #00a6de;
 }
+
+.navbar_wrap {
+	background-color: white;
+}

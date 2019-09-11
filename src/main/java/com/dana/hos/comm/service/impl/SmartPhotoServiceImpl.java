@@ -34,11 +34,11 @@ public class SmartPhotoServiceImpl implements SmartPhotoService {
 			String filename = request.getHeader("file-name");
 			// 파일 기본경로
 			String dftFilePath = request.getSession().getServletContext().getRealPath("/");
-			System.out.println("dftFilePath : " + dftFilePath);
+			//System.out.println("dftFilePath : " + dftFilePath);
 			// 파일 기본경로 _ 상세경로
 			
 			String filePath = dftFilePath + "review_image" + File.separator;
-			System.out.println("filePath : " + filePath);
+			//System.out.println("filePath : " + filePath);
 			File file = new File(filePath);
 			if (!file.exists()) {
 				file.mkdirs();
@@ -69,7 +69,8 @@ public class SmartPhotoServiceImpl implements SmartPhotoService {
 			sFileInfo += "&bNewLine=true";
 			// img 태그의 title 속성을 원본 파일명으로 적용시켜주기 위함
 			sFileInfo += "&sFileName=" + filename;
-			sFileInfo += "&sFileURL=" + "/-danaadak_hospital/pro_image/" + realFileNm;
+			sFileInfo += "&sFileURL=" + "/hos/review_image/" + realFileNm;
+			//System.out.println("sFileInfo : " + sFileInfo);
 			PrintWriter out = response.getWriter();
 			out.print(sFileInfo);
 			out.flush();

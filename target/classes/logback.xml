@@ -30,17 +30,18 @@
 	
 	<!-- TRACE > DEBUG > INFO > WARN > ERROR, 대소문자 구분 안함 --> 
 	<!-- profile 을 읽어서 appender 을 설정할수 있다.(phase별 파일을 안만들어도 되는 좋은 기능) -->
-	<root level="WARN">
+	<root level="ERROR">
 		<appender-ref ref="FILE" />
 	</root>
-
-	<root level="INFO">
+	
+	<root level="WARN">
 		<appender-ref ref="STDOUT" />
 	</root>
 	
-	<root level="DEBUG">
+
+	<!-- <root level="INFO">
 		<appender-ref ref="STDOUT" />
-	</root>
+	</root> -->
 	
 </configuration>
 

@@ -24,12 +24,17 @@ public class MemberController {
 	} 
 	
 	@RequestMapping(value = "/login/accessDenied", method = RequestMethod.GET)
-	public String accessDenied(Locale locale, Model model) {
+	public String accessDenied(Model model) {
 		return "member/login/accessDenied";
 	}
 	
 	@RequestMapping(value = "/join/joinForm", method = RequestMethod.GET)
-	public String joinForm(Locale locale, Model model) {
+	public String joinForm(Model model) {
+		return "member/join/joinForm";
+	}
+
+	@RequestMapping(value = "/join/joinForm", method = RequestMethod.POST)
+	public String join(Model model) {
 		return "member/join/joinForm";
 	}
 }

@@ -1,12 +1,12 @@
 .wrapper:after {
 	content: "";
-	position: absolute; 
+	position: absolute;
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center;
 	opacity: 0.9;
 	width: 100%;
-	height: 100%;  
+	height: 100%;
 	background-image: url(/hos/resources/images/login_back.jpg);
 	z-index: -1;
 	top: 0;
@@ -19,35 +19,25 @@
 	letter-spacing: 3px;
 	color: #fff;
 	font-weight: 400;
-	margin: 0.5em 0;
 	text-align: center;
+	margin: 146px 0px 0.4em;
 }
 
 .about-bottom {
 	width: 30%;
-	top: 100px;
+	top: 10px;
 	margin: 0 auto;
-	background: rgba(12, 12, 12, 0.51);
-	padding: 3em;
+	background: rgba(255, 255, 255, 0.8);
+	padding: 1em 3em;
 	position: relative;
 }
 
-h2.tittle {
-	text-align: center;
-	font-size: 1.6em;
-	text-transform: uppercase;
-	letter-spacing: 1px;
-	padding: 0 0 1.5em;
-	color: #fff;
-}
-
 .book-form label {
-	font-size: 1em;
-	color: #fff;
+	font-size: 0.9em;
+	color: #353535;
 	display: block;
 	font-weight: 500;
-	margin-bottom: 0.8em;
-	letter-spacing: 3px;
+	letter-spacing: 1px;
 	text-transform: uppercase;
 }
 
@@ -57,33 +47,26 @@ h2.tittle {
 	color: #2baf2b;
 }
 
-.form-date-w3-agileits {
-	text-align: left;
-}
-
-.book-form input[type="text"], .book-form input[type="email"],
-	.book-form input[type="password"] {
+.book-form input[type="text"], .book-form input[type="password"] {
 	text-align: center;
 	width: 100%;
-	color: #fff;
+	color: black;
 	outline: none;
 	font-size: 0.9em;
 	line-height: 25px;
-	padding: 8px 16px;
-	border: 1px solid rgba(242, 186, 46, 1);
+	padding: 4px 16px;
+	border: 1px solid #007bff;
 	letter-spacing: 1px;
 	-webkit-appearance: none;
-	margin-bottom: 1.8em;
+	margin-bottom: 0.3em;
 	background: transparent;
 	font-family: 'Cuprum', sans-serif;
-	-webkit-box-shadow: inset 0px 0px 4px 0px rgba(242, 186, 46, 1);
-	-moz-box-shadow: inset 0px 0px 4px 0px rgba(242, 186, 46, 1));
-	box-shadow: inset 0px 0px 4px 0px rgba(242, 186, 46, 1);
+	box-shadow: inset 0px 0px 4px 0px rgb(217, 214, 253);
 }
 
 .book-form form input[type="submit"] {
 	text-transform: uppercase;
-	background: #ffb310;
+	background: #007bff;
 	color: #FFFFFF;
 	padding: .7em 0em;
 	border: none;
@@ -98,7 +81,7 @@ h2.tittle {
 
 .book-form form input[type="submit"]:hover {
 	background: #fff;
-	color: #ffb310;
+	color: #007bff;
 }
 
 .btn {
@@ -110,6 +93,10 @@ h2.tittle {
 	background-color: white;
 }
 
-.address input {
-	
+#address .address_form.mini {
+	width: 7em;
+}
+
+input:focus::-webkit-input-placeholder {
+	color: transparent;
 }

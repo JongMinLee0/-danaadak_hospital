@@ -91,7 +91,7 @@ $(document).ready(function(){
 					+$('#id').val()+'님'+'\n'
 					+$('#category').val()+'\n'
 					+$('#re_date').val()+'에    '+$('#re_time').val()+'예약이 완료되었습니다.').then(function(){
-				$('#frm').submit();
+				$('#frm')/*.attr('action','re_register').*/.submit();
 				});
 			}
 		});//예약버튼 누르기 끝 

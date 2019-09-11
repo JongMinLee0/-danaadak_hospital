@@ -1,7 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -12,12 +13,17 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+<script type="text/javascript" src="/hos/resources/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="/hos/resources/css/bootstrap.min.css" />
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
 <script type="text/javascript">
 	
 </script>
 </head>
 
 <body>
+	<jsp:include page="/WEB-INF/views/fragments/nav_bar.jsp"/>
+	
 	<c:url value="/login" var="loginUrl" />
 	<c:if test="${param.error != null}">
 		<script>
@@ -66,7 +72,7 @@
 	<script type='text/javascript'>
 		//<![CDATA[
 		// 사용할 앱의 JavaScript 키를 설정해 주세요.
-		Kakao.init('c8ee897a0db2b7e1891baf231ece5129');
+		Kakao.init('b3d7a633df59dd53f7c8ebabd3e89897');
 		// 카카오 로그인 버튼을 생성합니다.
 		Kakao.Auth.createLoginButton({
 			container : '#kakao_login',
@@ -95,8 +101,6 @@
 		});
 		//]]>
 	</script>
-
-
 </body>
 </html>
 

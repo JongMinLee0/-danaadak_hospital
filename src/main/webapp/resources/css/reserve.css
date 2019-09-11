@@ -1,11 +1,32 @@
-/* 모달창 사이즈 */
+tr{
+	margin-bottom: 10px;	
+}
+ /* 모달창 사이즈 */
 #insertModal {
-	width: auto;
+	width: 400px;
 	height: auto;
 	display: flex ;
-	background-color: salmon;
+	border: 0px;
+	font-size: 15px;
+  z-index: 1; /* Sit on top */
+  overflow: auto; /* Enable scroll if needed */
+  background-color:  #ffffff;/* Black w/ opacity */
+     background: rgba(255, 255, 255, 0.8);
+  margin:auto ;
+  vertical-align: middle;
+  border-radius: 4px;	
 }
-
+#message{
+	border: 1px solid #007bff;
+	border-radius: 4px;
+}
+/*  text box*/
+td input[type=text] {
+  border: 1px solid #007bff;
+  height: 20px;
+  border-radius: 4px;
+  margin : 5px;
+}
 /* 모달창 숨기는 클래스  */
 .insertHide {
 	visibility: hidden;
@@ -21,26 +42,41 @@
 /* 모달창 보이는 클래스  */
 .insertShow {
 	display: block;
-	position: absolute;
 	/*  top: 150px; */
 	left: 200px;
 	width: 400px;
-	height: 150px;
+	height: 500px;
 	z-index: 1000;
 	border: 1px solid black;
 	text-align: center;
+  	opacity: 0.7;
+  
 }
-#submitBtn, #closeBtn{
-  background-color: #8000ff;
-  background: none;
-  border: 3px solid #fff;
-  border-radius: 5px;
-  color: #fff;
-  display: block;
-  font-size: 1.6em;
-  font-weight: bold;
-  margin: 1em auto;
-  padding: 2em 6em;
-  position: relative;
-  text-transform: uppercase;
+/* 예약/닫기 버튼 */
+.btn{
+	text-transform: uppercase;
+    background: #007bff;
+    color: #FFFFFF;
+    padding: .7em 0em;
+    border: none;
+    font-size: 1em;
+    outline: none;
+    width: 80%;
+    letter-spacing: 1px;
+    font-weight: 600;
+    margin-top: 0.5em;
+    cursor: pointer;
+    display: inline-block;
+    border-radius: 4px;	
 }
+.btn:hover{
+  background-color: white; 
+  color: black; 
+  border: 2px solid #007bff;
+}
+/* 셀렉트박스  */
+#re_time{
+	 border: 1px solid #007bff;
+	   border-radius: 4px;	
+}
+

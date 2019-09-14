@@ -27,3 +27,12 @@ function execDaumPostcode() {
 				}
 			}).open();
 }
+
+function phoneAuth(){
+	$('#phone_number').prop('disabled', 'disabled');
+	
+    var url = "phone";
+    var name = "phone auth";
+    var option = "width = 500, height = 500, top = 100, left = 200, location = no"
+    window.open(url, name, option);
+}

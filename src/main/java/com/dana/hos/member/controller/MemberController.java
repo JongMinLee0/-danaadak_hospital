@@ -37,4 +37,9 @@ public class MemberController {
 	public String join(Model model) {
 		return "member/join/joinForm";
 	}
+	
+	@RequestMapping(value = "/join/phone", method = RequestMethod.GET)
+	public String phone(Model model) {
+		return "member/join/phone";
+	}
 }

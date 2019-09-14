@@ -53,6 +53,42 @@
 						<input type="radio" name="gender" value="0">남자
 						<input type="radio" name="gender" value="1" style="margin-left: 150px">여자
 					</div>
+
+					<label for="yy"> Birth</label>
+					<div class="birthday">
+						<div class="bir_wrap">
+							<div class="bir_yy">
+								<span class="ps_box"> 
+									<select id="yy" name="yy" class="sel val" aria-label="년" required="required">
+										<option value="">년</option>
+									</select>
+								</span>
+							</div>
+
+							<div class="bir_mm">
+								<span class="ps_box"> 
+									<select id="mm" name="mm" class="sel val" aria-label="월" required="required">
+										<option value="">월</option>
+									</select>
+								</span>
+							</div>
+
+							<div class=" bir_dd">
+								<span class="ps_box">
+									<select id="dd" name="dd" class="sel val" aria-label="일" required="required">
+										<option value="">일</option>
+									</select>
+								</span>
+							</div>
+						</div>
+						<p>
+							<span class="error_next_box" id="birthdayMsg" role="alert"></span>
+						</p>
+					</div>
+
+
+
+
 					<label> Phone</label> 
 					<div>
 						<input value="+82" id="country_code" type="hidden"/>

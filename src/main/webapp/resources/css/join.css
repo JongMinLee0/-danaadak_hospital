@@ -101,3 +101,11 @@
 input:focus::-webkit-input-placeholder {
 	color: transparent;
 }
+
+.sel {
+	width: 32%;
+}
+
+.bir_wrap > div {
+	display: inline;
+}

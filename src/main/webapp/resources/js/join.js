@@ -1,3 +1,84 @@
+$(document).ready(function() {
+	appendYear();
+	
+	$('#yy').change(function(){			// 년도 값이 바뀌면
+		$('#mm').val("");				// 월 값 초기화
+		$('#dd').val("");				// 일 값 초기화
+		removeMonth();					// 월 option 비우기
+		removeDay();					// 일 option 비우기	
+		appendMonth();					// 월 option 생성
+	});
+	
+	$('#mm').change(function(){			// 월 값이 바뀌면
+		$('#dd').val("");				// 일 값 초기화
+		var day = validDate($('#yy').val(), $('#mm').val());
+		removeDay();
+		appendDay(day);
+	});
+	
+	
+	var year = $('#yy').val();
+	var month = $('#mm').val();
+	var day = $('#dd').val();
+		
+});
+
+//option 추가 new Option("option text", "value");
+function appendYear() {
+	var date = new Date();
+	var year = date.getFullYear();
+
+	for(var i=year;i>=1900;i--) {
+		$('#yy').append(new Option(i+"년",i));                        
+	}
+}
+
+function appendMonth() {
+	for(var i=1;i<=12;i++){
+		$('#mm').append(new Option(i+"월",i));
+	}
+}
+
+function removeMonth() {
+	$("#mm.sel option:gt(0)").remove();
+}
+
+
+function validDate(year, month) {		// 유효한 날짜값만 가져오는 함수
+    var monthArr = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+    var day;
+    if(month !== "2" && $.isNumeric(month)) {	
+        day = monthArr[Number(month) - 1];
+    }
+    else {
+        if($.isNumeric(year)) {
+            var intYear = Number(year);
+            if((intYear%4 === 0 && intYear%100 !== 0) || intYear%400 === 0) {		// 윤년이면
+                day = 29;
+            }
+            else {																	// 평년이면
+                day = 28;
+            }
+        }
+        else {
+            day = 31;
+        }
+    }
+    return day;
+};
+
+function appendDay(day) {
+	for(var i=1;i<=day;i++) {
+		$('#dd').append(new Option(i+"일",i));
+	}
+} 
+
+function removeDay() {
+	$("#dd.sel option:gt(0)").remove();
+}
+
+
+
 function execDaumPostcode() {
 	new daum.Postcode(
 			{

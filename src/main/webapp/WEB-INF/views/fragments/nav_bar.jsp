@@ -33,6 +33,9 @@
 				<li class="nav-item"><a class="nav-link" href="#">공지사항</a></li>
 			</ul>
 			
+			<sec:authorize access="hasRole('ROLE_ADMIN')">
+				<p>관리자접속중</p>
+			</sec:authorize>
 			<sec:authorize access="isAnonymous()"><button class="btn my-2 my-sm-0" type="submit" onClick="location.href='/hos/login/loginForm'">로그인</button></sec:authorize>
 			<sec:authorize access="isAuthenticated()"><form:form action="${pageContext.request.contextPath}/logout" method="POST"> <button class="btn my-2 my-sm-0" type="submit">로그아웃</button> </form:form> </sec:authorize>
 

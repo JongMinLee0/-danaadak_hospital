@@ -8,6 +8,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
@@ -26,6 +27,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Autowired
 	private LoginFailureHandler loginFailureHandler;
+	
+	@Override
+	public void configure(WebSecurity web) throws Exception
+	{
+		web.ignoring().antMatchers("/resources");
+	}
 
 	@Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -43,8 +50,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.jdbcAuthentication().dataSource(dataSource)
-            .usersByUsernameQuery("select id as username, password, enabled FROM member WHERE ID=?")
-            .authoritiesByUsernameQuery("select id as username, authority FROM member WHERE ID=?");
+            .usersByUsernameQuery("select username, password, enabled FROM member WHERE ID=?")
+            .authoritiesByUsernameQuery("select username, authority FROM member WHERE ID=?");
     }   
     
     

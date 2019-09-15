@@ -33,20 +33,21 @@
 		</div>
 		
 		<div class="about-bottom main-agile book-form">
-			<form action="#" method="post">
+			<form action="/hos/join/join" method="post">
 				<div class="form-date-w3-agileits">
 					<label> ID </label> 
-					<input type="text" name="name" placeholder="Your ID" required=""> 
+					<input type="text" id="username" name="username" placeholder="Your ID" required=""> 
 					<label> Password </label> 
-					<input type="password" name="password" placeholder="Your Password" required="">
-					<label> CONFIRM Password </label>
-					<input type="password" name="password" placeholder="Confirm Password" required="">
+					<input type="password" id="password" name="password" placeholder="Your Password" required="">
+					<input type="password" id="passwordConfirm" name="passwordConfirm" placeholder="Confirm Password" required="">
+					<label> Name </label>
+					<input type="text" id="name" name="name" placeholder="Your Name" required="">
 					<label> Address</label> 
 					<div id="address">
-						<input type="text" id="postcode" placeholder="우편번호" class="address_form mini" onclick="execDaumPostcode()">
+						<input type="text" name="address" id="postcode" placeholder="우편번호" class="address_form mini" onclick="execDaumPostcode()">
 						<input type="button" onclick="execDaumPostcode()" class="address_form mini" value="우편번호 찾기"><br>
-						<input type="text" id="roadAddress" placeholder="도로명주소">
-						<input type="text" id="detailAddress" placeholder="상세주소">
+						<input type="text" name="address" id="roadAddress" placeholder="도로명주소">
+						<input type="text" name="address" id="detailAddress" placeholder="상세주소">
 					</div>
 					<label> Gender</label> 
 					<div>
@@ -59,7 +60,7 @@
 						<div class="bir_wrap">
 							<div class="bir_yy">
 								<span class="ps_box"> 
-									<select id="yy" name="yy" class="sel val" aria-label="년" required="required">
+									<select id="yy" name="birth" class="sel val" aria-label="년" required="required">
 										<option value="">년</option>
 									</select>
 								</span>
@@ -67,7 +68,7 @@
 
 							<div class="bir_mm">
 								<span class="ps_box"> 
-									<select id="mm" name="mm" class="sel val" aria-label="월" required="required">
+									<select id="mm" name="birth" class="sel val" aria-label="월" required="required">
 										<option value="">월</option>
 									</select>
 								</span>
@@ -75,7 +76,7 @@
 
 							<div class=" bir_dd">
 								<span class="ps_box">
-									<select id="dd" name="dd" class="sel val" aria-label="일" required="required">
+									<select id="dd" name="birth" class="sel val" aria-label="일" required="required">
 										<option value="">일</option>
 									</select>
 								</span>
@@ -87,12 +88,10 @@
 					</div>
 
 
-
-
 					<label> Phone</label> 
 					<div>
 						<input value="+82" id="country_code" type="hidden"/>
-						<input placeholder="phone number" id="phone_number" value="" onclick="phoneAuth(); "/>
+						<input placeholder="phone number" id="phone_number" name="phone" value="" onclick="phoneAuth(); "/>
 						<span id="phone_auth_finish" style="display: none">번호 인증 완료</span>
 					</div>
 
@@ -106,7 +105,7 @@
 
 				</div>
 				<div class="btn">
-					<input type="submit" value="Register">
+					<input type="submit" value="JOIN">
 				</div>
 			</form>
 		</div>

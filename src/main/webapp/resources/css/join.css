@@ -20,7 +20,7 @@
 	color: #fff;
 	font-weight: 400;
 	text-align: center;
-	margin: 146px 0px 0.4em;
+	margin: 100px 0px 0.4em;
 }
 
 .about-bottom {
@@ -48,9 +48,9 @@
 	color: #2baf2b;
 }
 
-.book-form input[type="text"], .book-form input[type="password"] {
+
+.book-form input[type="text"], .book-form input[type="password"]{
 	text-align: center;
-	width: 100%;
 	color: black;
 	outline: none;
 	font-size: 0.9em;
@@ -63,6 +63,18 @@
 	background: transparent;
 	font-family: 'Cuprum', sans-serif;
 	box-shadow: inset 0px 0px 4px 0px rgb(217, 214, 253);
+}
+
+.book-form input[type="text"] {
+	width: 100%;
+}
+
+.book-form input[type="password"] {
+	width: 49%;
+}
+
+#password {
+	margin-right: 2px;
 }
 
 .book-form form input[type="submit"] {

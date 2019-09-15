@@ -2,27 +2,29 @@ package com.dana.hos.member.module;
 
 import java.util.Date;
 
-public class Member {
-	private String id;
+public class MemberDTO {
+	private String username;
 	private String password;
 	private String name;
 	private String address;
 	private String phone;
-	private Date birth;
+	private String birth;
+	private int gender;
 	private String kakao_id;
+	private String type;
 	private String authority;
-	private int enabled; 
+	private int enabled;
 
-	public Member() {
+	public MemberDTO() {
 
 	}
 
-	public String getId() {
-		return id;
+	public String getUsername() {
+		return username;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	public String getPassword() {
@@ -57,12 +59,20 @@ public class Member {
 		this.phone = phone;
 	}
 
-	public Date getBirth() {
+	public String getBirth() {
 		return birth;
 	}
 
-	public void setBirth(Date birth) {
+	public void setBirth(String birth) {
 		this.birth = birth;
+	}
+
+	public int getGender() {
+		return gender;
+	}
+
+	public void setGender(int gender) {
+		this.gender = gender;
 	}
 
 	public String getKakao_id() {
@@ -71,6 +81,14 @@ public class Member {
 
 	public void setKakao_id(String kakao_id) {
 		this.kakao_id = kakao_id;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
 	}
 
 	public String getAuthority() {

@@ -12,7 +12,7 @@ td input[type=text] {
   height: 20px;
   border-radius: 4px;
   margin : 20px;
-  	vertical-align: middle;
+  vertical-align: middle;
 }
 /* 모달창 숨기는 클래스  */
 .insertHide {
@@ -88,4 +88,7 @@ td input[type=text] {
 }
 #time_chk:hover{
 	color: red;
+}
+#name{
+	font-size : 10px;
 }

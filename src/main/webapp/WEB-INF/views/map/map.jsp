@@ -86,7 +86,10 @@
 				</tr>
 				<tr>
 					<th>이&nbsp;&nbsp;&nbsp;&nbsp;름</th>
-					<td><input type="text" id="name"　name="name"　required="required"></td>
+					
+					<td><input type="hidden" id="name"　name="name"　value="${sessionScope.memberInfo.name }" required="required">
+						<p id="name">${sessionScope.memberInfo.name }</p>
+					</td>
 				</tr>
 				<tr>
 					<th>진료항목</th>

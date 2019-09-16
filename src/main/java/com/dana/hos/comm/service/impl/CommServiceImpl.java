@@ -97,4 +97,23 @@ public class CommServiceImpl implements CommService {
 		return commDAO.comList(vino);
 	}
 
+	
+	// 후기글 삭제하기
+	@Override
+	public void deleteReview(int vino) {
+		commDAO.deleteReview(vino);
+	}
+
+	@Override
+	public String updateReview(ReviewDTO rdto) {
+		int cnt = commDAO.updateReview(rdto);
+		String result = "";
+		if(cnt > 0) {
+			result = "후기 수정에 성공했습니다!!";
+		}else {
+			result = "후기 수정에 실패했습니다!!";
+		}
+		return result;
+	}
+
 }

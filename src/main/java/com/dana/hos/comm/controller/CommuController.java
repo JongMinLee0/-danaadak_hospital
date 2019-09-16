@@ -54,17 +54,16 @@ public class CommuController {
 		mav.addObject("hList", commService.hashList());
 		return mav;
 	}
-	
+
 	// 스크롤시 후기 리스트 가져오기
 	@ResponseBody
-	@RequestMapping(value = "scrollReview", method = RequestMethod.POST,produces = "application/json;charset=UTF-8")
+	@RequestMapping(value = "scrollReview", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	public List<ReviewDTO> scrollReview(String page) {
 		int page2 = Integer.parseInt(page);
 		PageDTO pdto = new PageDTO(page2);
-		/*mav.addAttribute("pList", commService.scrollList(pdto));*/
+		/* mav.addAttribute("pList", commService.scrollList(pdto)); */
 		return commService.scrollList(pdto);
 	}
-	
 
 	// 채팅 페이지
 	@RequestMapping("chat")
@@ -91,24 +90,46 @@ public class CommuController {
 		String result = commService.writeService(dto);
 		return result;
 	}
-	
+
 	// 후기 상세페이지
-	@RequestMapping(value="reviewDetail", method=RequestMethod.GET)
+	@RequestMapping(value = "reviewDetail", method = RequestMethod.GET)
 	public ModelAndView reviewDetail(int vino, ModelAndView mav) {
 		mav.addObject("dList", commService.reviewDetail(vino));
 		mav.addObject("cList", commService.commList(vino));
 		mav.setViewName("comm_redetail");
 		return mav;
 	}
-	
+
 	// 후기 댓글 쓰기
 	@ResponseBody
-	@RequestMapping(value="writeCom", method=RequestMethod.POST,produces = "application/text;charset=UTF-8")
+	@RequestMapping(value = "writeCom", method = RequestMethod.POST, produces = "application/text;charset=UTF-8")
 	public String reviewCom(@ModelAttribute CommentDTO dto) {
 		String result = commService.writeCom(dto);
 		return result;
 	}
-	
-	
+
+	// 후기글 삭제하기
+	@ResponseBody
+	@RequestMapping(value = "delete", method = RequestMethod.POST)
+	public void deleteDetail(int vino) {
+		commService.deleteReview(vino);
+	}
+
+	// 후기 글 수정페이지
+	@RequestMapping(value = "reviewModify", method = RequestMethod.GET)
+	public ModelAndView reviewModify(int vino, ModelAndView mav) {
+		mav.addObject("dList", commService.reviewDetail(vino));
+		mav.setViewName("comm_modify");
+		return mav;
+	}
+
+	// 후기 수정 요청
+	@ResponseBody
+	@RequestMapping(value = "modifyWrite", method = RequestMethod.POST, produces = "application/text;charset=UTF-8")
+	public String modifyWrite(@ModelAttribute ReviewDTO dto) {
+		System.out.println("dto" + dto.getVi_subject());
+		String result = commService.updateReview(dto);
+		return result;
+	}
 
 }

@@ -34,7 +34,7 @@
 				</tr>
 				<tr>
 					<th>이&nbsp;&nbsp;&nbsp;&nbsp;름</th>
-					<td><input  type="text" id="id" name="id" required="required"></td>
+					<td><input  type="text" id="username" name="username" required="required"></td>
 				</tr>
 				<!-- 	<tr>
 					<th>이&nbsp;&nbsp;&nbsp;&nbsp;름</th>

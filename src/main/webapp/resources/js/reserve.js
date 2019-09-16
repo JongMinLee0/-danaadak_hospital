@@ -34,12 +34,14 @@ $(document).ready(function(){
 		//선택한 예약날짜와 예약시간 받기 
 		var sel_time= $('#re_time option:selected').val();
 		var sel_date = $('#re_date').val();
+		var hos_id = $('#hos_id').val();
 		console.log(sel_time,sel_date);
-		
+		var totalData = 're_time='+sel_time+'&re_date='+sel_date+'&hos_id='+hos_id;
+		var data = encodeURI(totalData);
 		$.ajax({
 			type:'GET',
 			dataType:'json',
-			url : 'check_time?re_time='+sel_time+'&re_date='+sel_date,
+			url : 'check_time?'+data,
 			success: function(res){
 				if(res==1){
 					swal('선택하신 시간은 예약할 수 없습니다.');
@@ -92,7 +94,7 @@ $(document).ready(function(){
 			swal($('#hos_id').val()+'\n'
 					+$('#id').val()+'님'+'\n'
 					+$('#category').val()+'\n'
-					+$('#re_date').val()+'에    '+$('#re_time').val()+'예약이 완료되었습니다.').then(function(){
+					+$('#re_date').val()+'에    '+$('#re_time').val()+'  예약이 완료되었습니다.').then(function(){
 				$('#frm').submit();
 				});
 			}

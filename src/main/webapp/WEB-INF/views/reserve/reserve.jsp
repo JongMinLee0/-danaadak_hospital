@@ -29,11 +29,11 @@
 				<tr>
 					<th colspan="2">
 					<%-- ${list.hos_id} --%>
-					<input type="form-control" type=text id="hos_id" name="hos_id" value="${requestScope.hos_name}" readonly="readonly">
+					<input type="form-control" type=text id="hos_id" name="hos_id"  readonly="readonly">
 					</th>
 				</tr>
 				<tr>
-					<th>I&nbsp;&nbsp;&nbsp;&nbsp;D</th>
+					<th>이&nbsp;&nbsp;&nbsp;&nbsp;름</th>
 					<td><input  type="text" id="id" name="id" required="required"></td>
 				</tr>
 				<!-- 	<tr>
@@ -60,10 +60,10 @@
 				</tr>
 				<tr>
 					<td>
-				<input type="button" id="submitBtn" class="btn"value="예약하기"/>
+				<input type="button" id="submitBtn" class="reserve_btn"value="예약하기"/>
 					</td>
 					<td>
-					<input type="button" id="closeBtn" class="btn"value="닫기"/>
+					<input type="button" id="closeBtn" class="reserve_btn"value="닫기"/>
 					</td>
 				</tr>
 			</table>

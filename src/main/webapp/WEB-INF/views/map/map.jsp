@@ -29,7 +29,7 @@
 <tiles:insertAttribute name="navbar" />
 	<div class="map_wrap">
 		<div id="map"
-			style="width: 100%; height: 450px; position: relative; overflow: hidden;"></div>
+			style="width: 100%; height: 600px; position: relative; overflow: hidden;"></div>
 
 
 		<!-- 지도타입 컨트롤 div 입니다 -->
@@ -60,7 +60,7 @@
 			</div>
 			<hr />
 			<ul id="placesList"></ul>
-			<!-- 			<div id="pagination"></div> -->
+						<div id="pagination"></div>
 		</div>
 
 
@@ -86,7 +86,7 @@
 				</tr>
 				<tr>
 					<th>이&nbsp;&nbsp;&nbsp;&nbsp;름</th>
-					
+
 					<td><input type="hidden" id="name"　name="name"　value="${sessionScope.memberInfo.name }" required="required">
 						<p id="name">${sessionScope.memberInfo.name }</p>
 					</td>

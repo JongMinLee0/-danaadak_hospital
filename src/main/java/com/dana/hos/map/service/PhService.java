@@ -4,13 +4,13 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.dana.hos.map.module.HosDTO;
+import com.dana.hos.map.module.PhDTO;
 
 @Service
-public interface HosService {
-	public List<HosDTO> hosf_listProcess(
+public interface PhService {
+	public List<PhDTO> phf_listProcess(
 			int pageNo, int pageSize,
 			String keyword);
 	
-	public int hosf_countAllProcess(String data);
+	public int phf_countAllProcess(String data);
 }

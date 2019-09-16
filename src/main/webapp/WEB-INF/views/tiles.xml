@@ -43,6 +43,11 @@
   <definition name="comm_redetail" extends="commu/commain">
   	<put-attribute name="mainbody" value="/WEB-INF/views/commu/comm_redetail.jsp" />
   </definition>
+  
+  <!-- 후기 수정페이지  -->
+  <definition name="comm_modify" extends="commu/commain">
+  	<put-attribute name="mainbody" value="/WEB-INF/views/commu/com_modify.jsp" />
+  </definition>
 
    <!-- 병원 찾기(맵) 페이지 -->
   <definition name="map/map" template="/WEB-INF/views/map/map.jsp">

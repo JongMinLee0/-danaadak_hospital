@@ -53,4 +53,18 @@ public class CommDAOImpl implements CommDAO{
 		return sqlSession.selectList("com_list", vino);
 	}
 
+	// 후기 글 삭제하기
+	@Override
+	public int deleteReview(int vino) {
+		return sqlSession.delete("review_delete", vino);
+	}
+
+	// 후기 수정하기
+	@Override
+	public int updateReview(ReviewDTO rdto) {
+		int cnt = sqlSession.update("review_update", rdto);
+		System.out.println("cnt : " + cnt);
+		return sqlSession.update("review_update", rdto);
+	}
+
 }

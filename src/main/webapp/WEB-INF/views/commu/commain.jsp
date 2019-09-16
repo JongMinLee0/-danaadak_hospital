@@ -14,6 +14,7 @@
 <link rel="stylesheet" href="/hos/resources/css/comm_main.css" />
 <script type="text/javascript" src="/hos/resources/js/comm_main.js"></script>
 <link href="https://fonts.googleapis.com/css?family=Jua&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 <body>
 <!-- navbar 홈페이지 상단 메뉴바  -->

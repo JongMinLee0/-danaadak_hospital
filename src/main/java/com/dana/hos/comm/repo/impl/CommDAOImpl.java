@@ -6,6 +6,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.dana.hos.comm.module.CommentDTO;
+import com.dana.hos.comm.module.PageDTO;
 import com.dana.hos.comm.module.ReviewDTO;
 import com.dana.hos.comm.repo.CommDAO;
 
@@ -23,8 +25,32 @@ public class CommDAOImpl implements CommDAO{
 
 	// 전체 후기 리스트
 	@Override
-	public List<ReviewDTO> totalList() {
-		return sqlSession.selectList("comm.comList");
+	public List<ReviewDTO> totalList(PageDTO pdto) {
+		return sqlSession.selectList("comm.comList", pdto);
+	}
+
+	// 전체 해시 리스트
+	@Override
+	public List<ReviewDTO> hashList() {
+		return sqlSession.selectList("comm.hash_list");
+	}
+
+	// 특정 번호 후기 상세
+	@Override
+	public ReviewDTO reviewDetail(int vino) {
+		return sqlSession.selectOne("reviewDetail", vino);
+	}
+
+	// 후기 댓글 작성
+	@Override
+	public int writeCom(CommentDTO dto) {
+		return sqlSession.insert("write_com", dto);
+	}
+
+	// 댓글 가지고 오기
+	@Override
+	public List<CommentDTO> comList(int vino) {
+		return sqlSession.selectList("com_list", vino);
 	}
 
 }

@@ -3,17 +3,20 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <link rel="stylesheet" href="/hos/resources/css/com_review.css" />
+<script src="/hos/resources/js/comm_review.js"></script>
 <!-- <button id="reviewBtn" onclick="location.href='/hos/comm/reviewWrite'">후기작성</button> -->
 <div id="review_description">
 	리뷰에 페이지에 대한 설명입니다!!
 </div>
 <div id="hashTag">
-	해시태그를 위한 부분
+	<c:forEach items="${hList}" var="hdto">
+		<span><a href="#" class="badge badge-primary">#${hdto}</a></span>
+	</c:forEach>
 </div>
 <ul>
-	<c:forEach items="${rList}" var="rdto">
+	<c:forEach items="${rList}" var="rdto">  
 		<li>
-			<a class="list_link" href="">
+			<a class="list_link" href="/hos/comm/reviewDetail?vino=${rdto.vino}">
 				<table>
 					<tr>
 						<td><h4>${rdto.name}</h4></td>

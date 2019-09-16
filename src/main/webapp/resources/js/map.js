@@ -1,3 +1,8 @@
+/*<link rel="stylesheet" href="/hos/resources/css/reserve.css"/>
+<script src="/hos/resources/js/reserve.js"></script>*/
+
+document.write('<link rel="stylesheet" href="/hos/resources/css/reserve.css"/>');
+
 //기본값 저장
 var keyword;
 var pageNo;
@@ -262,7 +267,7 @@ function displayPagination(totalPage, total, blocksize, pageNo) {
 
 	var paginationEl = document.getElementById('pagination');
 
-	paginationEl.innerHTML = '';
+	paginationEl.innerHTML = "";
 	var totalpages = totalPage; // 총페이지수
 	var blockpage = 0; // 1,11,21,...각 블럭 들의 첫페이지 1~10 까지가 한블럭
 
@@ -313,16 +318,18 @@ function displayInfowindow(marker, title, searchs) {
     '                <div class="ellipsis">'+searchs.hos_address+'</div>' + 
     '                <div class="jibun ellipsis">'+searchs.hos_phone+'</div>' +
     '                <div><a href="'+searchs.hos_url+'" target="_blank" class="link">상세보기</a></div>' + 
+    /*'				<div><a href="/hos/reserve" class="reserve">예약하기</a></div>'+*/
+    '				<div><button class="insertBtn">예약하기</button>'	
     '            </div>' + 
     '        </div>' + 
     '    </div>' +    
     '</div>';
-
 //	// content의 내용을 인포윈도우에 등록
 	infowindow.setContent(content);
 	infowindow.open(map, marker);
+	$('#hos_name').html('<input type="text" value="'+searchs.hos_name+'"id="hos_id" name="hos_id"  readonly="readonly">');
+	/*$('#hos_name').html('<h4>'+searchs.hos_name+'</h4>');*/
 }
-
 
 // 검색결과 목록의 자식 Element를 제거하는 함수입니다
 function removeAllChildNods(el) {

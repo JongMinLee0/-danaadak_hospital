@@ -28,7 +28,7 @@
 	<c:if test="${param.error != null}">
 		<script>
 			swal("회원정보를 다시 확인해주세요.").then(function() {
-				location.href = "/hos/login/loginForm";
+				location.href = document.referrer;
 			});
 		</script>
 	</c:if>

@@ -21,11 +21,13 @@ html,body{
 body > div.comm_body > div.content_wrap > ul  li{
 	float: left;
 	list-style:none;
-	margin-left: 14%;
+	margin-left: 15%;
+	margin-bottom: 10%;
 }
 
 body > div.comm_body > div.content_wrap > ul{
 	margin-top: 100px;
+	display: inline-block;
 }
 
 .list_link{
@@ -35,6 +37,5 @@ body > div.comm_body > div.content_wrap > ul{
 }
 .list_link:hover{
 	text-decoration: none;
-	color: black;
-	margin-top: -10px;
+	color: rgb(229,229,229);
 }

@@ -11,8 +11,14 @@
 	</insert>
 	
 	<!-- 전체 후기 글 목록  -->
-	<select id="comList" resultType="com.dana.hos.comm.module.ReviewDTO">
-		select * from review
+	<select id="comList" resultType="com.dana.hos.comm.module.ReviewDTO" parameterType="com.dana.hos.comm.module.PageDTO">
+		<!-- select * from review -->
+		<![CDATA[
+			select b.* from 
+			(select rownum as rm, a.* from(
+			select * from review order by vino desc)a)b
+			where b.rm >= #{startPage} and b.rm <= #{endPage}
+		]]>
 	</select>
 	
 	<!-- 특정사용자 후기 글 목록  -->
@@ -20,5 +26,24 @@
 		select * from review where id=#{id}
 	</select>
 	
+	<!-- 전체 해시 태그  -->
+	<select id="hash_list" resultType="com.dana.hos.comm.module.ReviewDTO" >
+		select vi_hash from review
+	</select>
+	
+	<!-- 특정번호 후기 글 상세  -->
+	<select id="reviewDetail" resultType="com.dana.hos.comm.module.ReviewDTO" parameterType="int">
+		select * from review where vino=#{vino}
+	</select>
+	
+	<!-- 후기 댓글작성  -->
+	<insert id="write_com" parameterType="com.dana.hos.comm.module.CommentDTO">
+		insert into review_com values(cno_seq.nextval, #{com_content}, #{vino}, #{name, jdbcType=VARCHAR}, sysdate)
+	</insert>
+	
+	<!-- 해당 글의 댓글 가지고 오기  -->
+	<select id="com_list" parameterType="int" resultType="com.dana.hos.comm.module.CommentDTO">
+		select * from review_com where vino=#{vino} order by cno
+	</select>
 </mapper>
 

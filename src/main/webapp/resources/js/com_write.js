@@ -31,8 +31,7 @@ $(document).ready(function(){
 		
 		function subReview(){
 			oEditors.getById["smart"].exec("UPDATE_CONTENTS_FIELD", []);
-	        var queryString = $('form').serialize() ;
-	        console.log('queryString : ' + queryString);
+	        var queryString = $('form').serialize();
 			$.ajax({
 				type:'post',
 				url:'/hos/comm/write',

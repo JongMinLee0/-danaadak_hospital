@@ -37,6 +37,10 @@
   <definition name="write" extends="commu/commain">
   		<put-attribute name="mainbody" value="/WEB-INF/views/commu/com_write.jsp" />
   </definition>
-
+  
+  <!-- 후기 상세페이지  -->
+  <definition name="comm_redetail" extends="commu/commain">
+  	<put-attribute name="mainbody" value="/WEB-INF/views/commu/comm_redetail.jsp" />
+  </definition>
   
 </tiles-definitions>

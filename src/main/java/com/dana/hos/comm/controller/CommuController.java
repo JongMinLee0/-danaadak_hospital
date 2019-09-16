@@ -1,5 +1,7 @@
 package com.dana.hos.comm.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -7,12 +9,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.dana.hos.comm.module.CommentDTO;
+import com.dana.hos.comm.module.PageDTO;
 import com.dana.hos.comm.module.ReviewDTO;
 import com.dana.hos.comm.service.CommService;
 import com.dana.hos.comm.service.SmartPhotoService;
@@ -45,8 +51,20 @@ public class CommuController {
 	public ModelAndView comReview(ModelAndView mav) {
 		mav.setViewName("review");
 		mav.addObject("rList", commService.totalList());
+		mav.addObject("hList", commService.hashList());
 		return mav;
 	}
+	
+	// 스크롤시 후기 리스트 가져오기
+	@ResponseBody
+	@RequestMapping(value = "scrollReview", method = RequestMethod.POST,produces = "application/json;charset=UTF-8")
+	public List<ReviewDTO> scrollReview(String page) {
+		int page2 = Integer.parseInt(page);
+		PageDTO pdto = new PageDTO(page2);
+		/*mav.addAttribute("pList", commService.scrollList(pdto));*/
+		return commService.scrollList(pdto);
+	}
+	
 
 	// 채팅 페이지
 	@RequestMapping("chat")
@@ -73,5 +91,24 @@ public class CommuController {
 		String result = commService.writeService(dto);
 		return result;
 	}
+	
+	// 후기 상세페이지
+	@RequestMapping(value="reviewDetail", method=RequestMethod.GET)
+	public ModelAndView reviewDetail(int vino, ModelAndView mav) {
+		mav.addObject("dList", commService.reviewDetail(vino));
+		mav.addObject("cList", commService.commList(vino));
+		mav.setViewName("comm_redetail");
+		return mav;
+	}
+	
+	// 후기 댓글 쓰기
+	@ResponseBody
+	@RequestMapping(value="writeCom", method=RequestMethod.POST,produces = "application/text;charset=UTF-8")
+	public String reviewCom(@ModelAttribute CommentDTO dto) {
+		String result = commService.writeCom(dto);
+		return result;
+	}
+	
+	
 
 }

@@ -31,7 +31,6 @@ public class ReserveController {
 	
 	@RequestMapping("/reserve")
 	public ModelAndView reserveListpage(ModelAndView mav) {
-		System.out.println("여기로 들어와1");
 		mav.addObject("list",reserveService.reserveListProcess());
 		
 		mav.setViewName("reserve/reserve");
@@ -40,9 +39,8 @@ public class ReserveController {
 	
 	@RequestMapping(value="/re_register", method =RequestMethod.POST)
 	public ModelAndView registerPage(ReserveDTO dto, ModelAndView mav){
-		System.out.println("여기로 들어와2");
 		reserveService.re_registerProcess(dto);
-		mav.setViewName("reserve/reserve");
+		mav.setViewName("map/map");
 		return mav;
 	}//end registerPage
 	
@@ -58,6 +56,8 @@ public class ReserveController {
 		}
 		return res;
 	}//end timeCheckPage
+	
+	
 	
 
 }//end class

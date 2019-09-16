@@ -14,11 +14,11 @@
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <link rel="stylesheet" href="/hos/resources/css/reserve.css"/>
 <script src="/hos/resources/js/reserve.js"></script>
+<script src="/hos/resources/js/map.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 <body>
 
-	<button id="insertBtn">병원리스트 누르면 예약창 뜹니다.</button>
 
 
 	<!-- 예약 모달 창 -->
@@ -29,12 +29,12 @@
 				<tr>
 					<th colspan="2">
 					<%-- ${list.hos_id} --%>
-					<input type="form-control" type=text id="hos_id" name="hos_id" value="아나파정형외과""${list.hos_id}" readonly="readonly">
+					<input type="form-control" type=text id="hos_id" name="hos_id" value="${requestScope.hos_name}" readonly="readonly">
 					</th>
 				</tr>
 				<tr>
 					<th>I&nbsp;&nbsp;&nbsp;&nbsp;D</th>
-					<td><input  type="text" id="id" name="id"></td>
+					<td><input  type="text" id="id" name="id" required="required"></td>
 				</tr>
 				<!-- 	<tr>
 					<th>이&nbsp;&nbsp;&nbsp;&nbsp;름</th>
@@ -48,8 +48,8 @@
 				<tr>
 					<th>진&nbsp;료&nbsp;일</th>
 					<td>
-						 <input type="text" id="re_date" name="re_date"><br/>
-						 <select id="re_time" name="re_time">
+						 <input type="text" id="re_date" name="re_date" required="required"><br/>
+						 <select id="re_time" name="re_time" required="required">
 						</select> 
 					<input type="button" id="time_chk" value="예약가능 시간 확인" />
 					</td>

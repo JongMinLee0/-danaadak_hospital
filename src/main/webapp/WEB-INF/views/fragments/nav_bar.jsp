@@ -18,6 +18,7 @@
 	</nav>
 	<nav class="navbar transparent navbar-expand-lg">
 			<!-- link home으로 변경  -->
+			
 			<a class="navbar-brand" href="/hos/home">다나았닥!!</a> 
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
 				data-target="#navbarSupportedContent"

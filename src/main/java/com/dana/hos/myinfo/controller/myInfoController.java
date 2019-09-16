@@ -35,6 +35,11 @@ public class myInfoController {
 	public String myPharmDetail() {
 		return "/myinfo/myPharmDetail";
 	}
+	//내 리뷰
+	@RequestMapping("/myinfo/myReview")
+	public String myReview() {
+		return "/myinfo/myReview";
+	}
 	
 	
 }//end class

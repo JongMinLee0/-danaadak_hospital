@@ -7,6 +7,10 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<link rel="stylesheet" href="/hos/resources/css/myinfomain.css" />
+<script type="text/javascript" src="/hos/resources/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="/hos/resources/css/bootstrap.min.css" />
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
 
 <script type="text/javascript">
 //마이페이지 메인
@@ -34,90 +38,20 @@ $(document).ready(function() {
 	$('#pharmDetail').on('click', function() {
 		$('#myInfocontent').load('/hos/myinfo/myPharmDetail');
 	});
+	$('#myrevbtn').on('click', function() {
+		$('#myInfocontent').load('/hos/myinfo/myReview');
+	});
+	$('#nav_reviewList').on('click', function() {
+		$('#myInfocontent').load('/hos/myinfo/myReview');
+	});
 	
 	
 });
 </script>
-<style type="text/css">
 
-.sh_group {
-	height: 185px;
-	width : 300px;
-    margin: 16px 8px 0;
-    padding: 32px 29px 32px;
-    text-align: left;
-    border: 1px solid #dadada;
-    -webkit-border-radius: 2px;
-    border-radius: 2px;
-    background: #fff;
-    display: grid;
-    border-top-left-radius: 15px;
-	border-top-right-radius: 15px;
-	border-bottom-left-radius: 15px;
-	border-bottom-right-radius: 15px;
-}
-
-.column{
-	display: inline-block;
-}
-.section_home h2 {
-    font-size: 20px;
-	font-family: Dotum,sans-serif;
-}
-#resDiv{
-	display: block;
-}
-#pharmDiv{
-	display: block;
-}
-
-#resList{
-	display:flex;
-	height: 50px;
-}
-#pharmList{
-	display:flex;
-	height: 50px;
-}
-
-h6{
-	line-height: 3;
-}
-
-
-ul.nav.nav-tabs {
-  border-top:2px solid #FFFF05;
-  border-bottom:2px solid #FFFF05;
-  background: #F2E635;
-  letter-spacing:-1px;
-  height: 50px;
-  line-height:20px;
- }
-ul.nav.nav-tabs li {
-    display: inline-block;
-    margin-bottom:-2px;
-    width: 110px;
-    text-align: center;
-}
-ul.nav.nav-tabs li p {
-      border:none;
-      border-radius:0px;
-      color:#F25252;
-      margin-right:5px;
-      min-width:11px;
-      display:inline-block;
-      text-align: center;
-}
-
-
-ul.nav.nav-tabs li:hover {
-      background:#fff;
-      color:#000000;
-}
-
-</style>
 </head>
 <body>
+<jsp:include page="/WEB-INF/views/fragments/nav_bar.jsp"/>
 
 <div class="myinfomainDiv" id="container">
   <!-- 네비게이션 바 -->
@@ -140,13 +74,13 @@ ul.nav.nav-tabs li:hover {
 		
 		<!-- 회원정보 수정 -->
 		<div class="sh_group">
-			<h2>회원정보 수정</h2>
+			<span class="myinfoTitle">회원정보 수정</span>
 			<p>이름  ㅇㅇㅇ <input type="button" id="memberInfo" value="정보 수정"/></p>
 		</div>
 
 		<!-- 처방전 내역 -->
 		<div class="sh_group" id="pharmDiv">
-			<span id="pharmList"><h2>처방전 내역</h2><h6 style="color:gray;" id="pharmMore"> &nbsp; &nbsp;더보기</h6></span>
+			<span id="pharmList"><span class="myinfoTitle">처방전 내역</span><span style="color:gray;" id="pharmMore"> &nbsp; &nbsp;더보기</span></span>
 			<table id="pharmTable" style="width:100%;">
 			<!-- <p>복용중이면 발급일, 병원명 띄워줌, 없으면  이력확인 링크</p> -->
 			<tr align="center">
@@ -166,7 +100,7 @@ ul.nav.nav-tabs li:hover {
 	<div class="column">
 		<!-- 진료 현황 -->
 		<div class="sh_group" id="resDiv">
-			<span id="resList"><h2>진료 내역</h2><h6 style="color:gray;" id="resMore"> &nbsp; &nbsp;더보기</h6></span>
+			<span id="resList"><span class="myinfoTitle">진료 내역</span><span style="color:gray;" id="resMore"> &nbsp; &nbsp;더보기</span></span>
 			<table id="resTable" style="width:100%;">
 			<!-- <p>예약중이면 정보 띄워줌, 없으면 진료 완료 마지막거 띄워줌(병원 이름, 날짜, 시간) + 이력확인 링크</p> -->
 			<tr align="center">
@@ -183,9 +117,9 @@ ul.nav.nav-tabs li:hover {
 		</div>
 		
 		<!-- 내 병원 후기 -->
-		<div class="sh_group">
-			<h2>내 병원 후기</h2>
-			<p>내가 쓴 후기 링크 버튼</p>
+		<div class="sh_group" id="myrevDiv">
+			<span id="myRevList"><span class="myinfoTitle">내 병원 후기</span></span>
+			<p><input type="button" id="myrevbtn" value="내 후기 보기"/></p>
 		</div>
 	</div>
 	</div>

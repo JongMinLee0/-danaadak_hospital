@@ -11,38 +11,8 @@ $(document).ready(function() {
 		}
 	});
 
-	$('.logo img').on('click', function() {
-		location.href = '/semiRecipe/recipe/home';
-	});
 });
-function login() {
-	if ($('#save_id').prop('checked') && $('#user_id').val() != ""
-			&& $('#user_pw').val() != "") {
-		$.cookie('id', $('#user_id').val());
-	};
 
-	if ($('#user_id').val() != "" && $('#user_pw').val() != "") {
-		$.ajax({
-			type : 'POST',
-			dataType : 'text',
-			url : '/semiRecipe/recipe/login',
-			data : 'user_id=' + $('#user_id').val() + '&user_pw='
-					+ $('#user_pw').val(),
-			success : function(res) {
-				if (res != 1) {
-					swal("회원정보를 다시 확인해주세요.");
-				} else {
-					// swal(document.referrer);
-					location.href = document.referrer;
-				}
-			}
-		});
-		return false;
-	} else {
-		swal("아이디와 비밀번호를 모두 입력해주세요.");
-	}
-
-}
 
 function kakaoLogin(kakao_id, email, userNickName) {
 	$.ajax({

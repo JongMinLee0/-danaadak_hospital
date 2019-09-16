@@ -31,13 +31,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	public void configure(WebSecurity web) throws Exception
 	{
-		web.ignoring().antMatchers("/resources");
+		web.ignoring().antMatchers("/resources/**");
 	}
 
 	@Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-        .antMatchers("/login/loginForm").permitAll()
+        .antMatchers("/login/**").permitAll()
         .antMatchers("/home").permitAll()
         .antMatchers("/admin/**").hasRole("ADMIN")
         .antMatchers("/**").permitAll()

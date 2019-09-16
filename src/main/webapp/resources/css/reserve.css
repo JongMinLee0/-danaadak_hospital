@@ -1,21 +1,7 @@
 tr{
 	margin-bottom: 10px;	
 }
- /* 모달창 사이즈 */
-#insertModal {
-	width: 400px;
-	height: auto;
-	display: flex ;
-	border: 0px;
-	font-size: 15px;
-  z-index: 1; /* Sit on top */
-  overflow: auto; /* Enable scroll if needed */
-  background-color:  #ffffff;/* Black w/ opacity */
-     background: rgba(255, 255, 255, 0.8);
-  margin:auto ;
-  vertical-align: middle;
-  border-radius: 4px;	
-}
+
 #message{
 	border: 1px solid #007bff;
 	border-radius: 4px;
@@ -25,7 +11,8 @@ td input[type=text] {
   border: 1px solid #007bff;
   height: 20px;
   border-radius: 4px;
-  margin : 5px;
+  margin : 20px;
+  	vertical-align: middle;
 }
 /* 모달창 숨기는 클래스  */
 .insertHide {
@@ -41,19 +28,26 @@ td input[type=text] {
 }
 /* 모달창 보이는 클래스  */
 .insertShow {
-	display: block;
-	/*  top: 150px; */
-	left: 200px;
-	width: 400px;
-	height: 500px;
+	top: 150px;
+	left: 350px;
+	width: 60%;
+	height:70%;
 	z-index: 1000;
-	border: 1px solid black;
+	position: absolute;
 	text-align: center;
-  	opacity: 0.7;
-  
+	display: flex ;
+	border: 0px;
+	font-size: 20px;
+  	z-index: 1000; /* Sit on top */
+  	overflow: auto; /* Enable scroll if needed */
+  	background-color:  #ffffff;/* Black w/ opacity */
+    background: rgba(255, 255, 255, 0.8);
+ 	 margin:auto ;
+  	vertical-align: middle;
+  	border-radius: 4px;	
 }
 /* 예약/닫기 버튼 */
-.btn{
+.reserve_btn{
 	text-transform: uppercase;
     background: #007bff;
     color: #FFFFFF;
@@ -69,7 +63,7 @@ td input[type=text] {
     display: inline-block;
     border-radius: 4px;	
 }
-.btn:hover{
+.reserve_btn:hover{
   background-color: white; 
   color: black; 
   border: 2px solid #007bff;
@@ -77,6 +71,21 @@ td input[type=text] {
 /* 셀렉트박스  */
 #re_time{
 	 border: 1px solid #007bff;
-	   border-radius: 4px;	
+	 border-radius: 4px;	
 }
-
+/* 예약 테이블  */
+#hos_table{
+	width: 400px;
+    height: 400px;
+    margin: auto;
+}
+/* 예약가능시간 버튼  */
+#time_chk{
+	border: 0px;
+	background: none;
+	color : #5085BB;
+	text-decoration:  underline;
+}
+#time_chk:hover{
+	color: red;
+}

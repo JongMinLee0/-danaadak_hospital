@@ -25,5 +25,10 @@ public class MemberDaoImp implements MemberDAO {
 	public void joinMedthod(MemberDTO dto) {
 		sqlSession.insert("member.userjoin", dto);
 	}
+
+	@Override
+	public MemberDTO getUserInfo(String username) {
+		return sqlSession.selectOne("member.selectUserById", username);
+	}
 	
 }

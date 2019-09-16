@@ -9,4 +9,8 @@
 		values (#{username}, #{password}, #{name}, #{address}, #{phone}, #{birth}, #{kakao_id,jdbcType=VARCHAR}, 'user')
 	</insert>
 	
+	<select id="selectUserById" resultType="com.dana.hos.member.module.MemberDTO">
+		SELECT * FROM member WHERE username = #{username}
+    </select>
+    
 </mapper>

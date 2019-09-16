@@ -26,4 +26,9 @@ public class MemberServiceImp implements MemberService {
 		memberDAO.joinMedthod(dto);
 	}
 
+	@Override
+	public MemberDTO userInfoProcess(String username) {
+		return memberDAO.getUserInfo(username);
+	}
+
 }

@@ -31,13 +31,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	public void configure(WebSecurity web) throws Exception
 	{
-		web.ignoring().antMatchers("/resources");
+		web.ignoring().antMatchers("/resources/**");
 	}
 
 	@Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-        .antMatchers("/login/loginForm").permitAll()
+        .antMatchers("/login/**").permitAll()
         .antMatchers("/home").permitAll()
         .antMatchers("/admin/**").hasRole("ADMIN")
         .antMatchers("/**").permitAll()
@@ -50,8 +50,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.jdbcAuthentication().dataSource(dataSource)
-            .usersByUsernameQuery("select username, password, enabled FROM member WHERE ID=?")
-            .authoritiesByUsernameQuery("select username, authority FROM member WHERE ID=?");
+            .usersByUsernameQuery("select username, password, enabled FROM member WHERE username=?")
+            .authoritiesByUsernameQuery("select username, authority FROM member WHERE username=?");
     }   
     
     

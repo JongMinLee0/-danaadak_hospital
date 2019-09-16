@@ -56,11 +56,11 @@ function setMapType(maptype) {
 	if (maptype === 'roadmap') {
 		map.setMapTypeId(daum.maps.MapTypeId.ROADMAP);
 		roadmapControl.className = 'selected_btn';
-		skyviewControl.className = 'btn';
+		skyviewControl.className = 'Sky_btn';
 	} else {
 		map.setMapTypeId(daum.maps.MapTypeId.HYBRID);
 		skyviewControl.className = 'selected_btn';
-		roadmapControl.className = 'btn';
+		roadmapControl.className = 'Sky_btn';
 	}
 }
 
@@ -336,3 +336,7 @@ function removeAllChildNods(el) {
 		el.removeChild(el.lastChild);
 	}
 }
+
+$(document).ready(function(){
+	$('body > div.navbar_wrap.fixed-top').removeClass('fixed-top');
+});

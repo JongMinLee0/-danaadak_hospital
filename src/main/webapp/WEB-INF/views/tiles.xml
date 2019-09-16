@@ -37,6 +37,12 @@
   <definition name="write" extends="commu/commain">
   		<put-attribute name="mainbody" value="/WEB-INF/views/commu/com_write.jsp" />
   </definition>
+  
+   <!-- 병원 찾기(맵) 페이지 -->
+  <definition name="map/map" template="/WEB-INF/views/map/map.jsp">
+  <put-attribute name="navbar" value="/WEB-INF/views/fragments/nav_bar.jsp" />  
+       <put-attribute name="footer" value="/WEB-INF/views/fragments/footer.jsp" />
+  </definition>
 
   
 </tiles-definitions>

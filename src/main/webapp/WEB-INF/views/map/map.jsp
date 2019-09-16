@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
+	<%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
 
 <!DOCTYPE html>
 <html>
@@ -18,10 +19,17 @@
 <script
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f75d9f5f6c8fa127a77134992a06e786&libraries=services"></script>
 </head>
+
+<script type="text/javascript" src="/hos/resources/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="/hos/resources/css/bootstrap.min.css" />
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+<link rel="stylesheet" href="/hos/resources/css/comm_main.css" />
 <body>
+<!-- navbar 홈페이지 상단 메뉴바  -->
+<tiles:insertAttribute name="navbar" />
 	<div class="map_wrap">
 		<div id="map"
-			style="width: 100%; height: 1000px; position: relative; overflow: hidden;"></div>
+			style="width: 100%; height: 450px; position: relative; overflow: hidden;"></div>
 
 
 		<!-- 지도타입 컨트롤 div 입니다 -->
@@ -29,7 +37,7 @@
 			<span id="btnRoadmap" class="selected_btn"
 				onclick="setMapType('roadmap')">지도</span>
 			<!-- 오른쪽에 클릭 하는 부분 -->
-			<span id="btnSkyview" class="btn" onclick="setMapType('skyview')">
+			<span id="btnSkyview" class="Sky_btn" onclick="setMapType('skyview')">
 				스카이뷰</span>
 		</div>
 
@@ -105,6 +113,6 @@
 		</div>
 	</form>
 	<script src="/hos/resources/js/map.js"></script>
-
+<tiles:insertAttribute name="footer" />
 </body>
 </html>

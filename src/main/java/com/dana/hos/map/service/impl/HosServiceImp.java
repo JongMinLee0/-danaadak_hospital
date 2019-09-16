@@ -26,15 +26,15 @@ public class HosServiceImp implements HosService{
 	}
 	
 	@Override
-	public int f_countAllProcess(String data) {
-		return dao.lib_countAll(data);
+	public int hosf_countAllProcess(String data) {
+		return dao.hos_countAll(data);
 	}
 	@Override
-	public List<HosDTO> f_listProcess(int pageNo, int pageSize, String keyword) {
+	public List<HosDTO> hosf_listProcess(int pageNo, int pageSize, String keyword) {
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("startpage",((pageNo - 1) * pageSize) + 1);
 		map.put("endpage",pageNo* pageSize);
 		map.put("keyword",keyword);
-		return dao.lib_list(map);
+		return dao.hos_list(map);
 	}
 }

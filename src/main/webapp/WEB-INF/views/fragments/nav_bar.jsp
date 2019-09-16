@@ -28,8 +28,8 @@
 	
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav mr-auto">
-				<li class="nav-item"><a class="nav-link" href="#">병원</a></li>
-				<li class="nav-item"><a class="nav-link" href="#">약국</a></li>
+				<li class="nav-item"><a class="nav-link" href="/hos/map">병원</a></li>
+				<li class="nav-item"><a class="nav-link" href="/hos/phmap">약국</a></li>
 				<li class="nav-item"><a class="nav-link" href="/hos/comm/main">커뮤니티</a></li>
 				<li class="nav-item"><a class="nav-link" href="/hos/noticelist">공지사항</a></li>
 			</ul>

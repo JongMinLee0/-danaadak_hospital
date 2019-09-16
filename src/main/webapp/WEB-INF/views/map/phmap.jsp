@@ -53,7 +53,7 @@
 		<div id="menu_wrap" class="bg_white">
 			<div class="option">
 				<form onsubmit="searchPlaces(); return false">
-					<span>지역명:</span> <input type="text" placeholder="병원찾누?"
+					<span>지역명:</span> <input type="text" placeholder="약국찾지?"
 						id="keyword" size="15" />
 					<button type="submit">검색하기</button>
 				</form>
@@ -65,56 +65,8 @@
 
 
 	</div>
-
-	<!-- modal window -->
-	<!-- 예약 모달 창 -->
-	<form name="frm" id="frm" method="post" action="re_register">
-		<!-- Insert Modal-->
-		<div id="insertModal">
-			<table id="hos_table">
-				<tr>
-					<th id="hos_name" colspan="2">
-						<!-- jquery로 병원이름 받음 -->
-					</th>
-				</tr>
-				<tr>
-					<th>I&nbsp;&nbsp;&nbsp;&nbsp;D</th>
-					<td><sec:authorize access="isAuthenticated()">
-							<sec:authentication property="principal.username" var="user_id" />
-                   ${user_id }
-                </sec:authorize></td>
-				</tr>
-				<tr>
-					<th>이&nbsp;&nbsp;&nbsp;&nbsp;름</th>
-					<td><input type="hidden" id="name"　name="name"　value="${sessionScope.memberInfo.name }" required="required">
-						<p id="name">${sessionScope.memberInfo.name }</p>
-					</td>
-				</tr>
-				<tr>
-					<th>진료항목</th>
-					<td><input type="text" id="category" name="category"　required="required"></td>
-				</tr>
-				<tr>
-					<th>진&nbsp;료&nbsp;일</th>
-					<td><input type="text" id="re_date" name="re_date"
-						required="required"><br /> <select id="re_time"
-						name="re_time" required="required">
-					</select> <input type="button" id="time_chk" value="예약가능 시간 확인" /></td>
-				</tr>
-				<tr>
-					<th>전달 할 메세지</th>
-					<td><textarea id="message" name="message" cols="30" rows="5"></textarea></td>
-				</tr>
-				<tr>
-					<td><input type="button" id="submitBtn" class="reserve_btn"
-						value="예약하기" /></td>
-					<td><input type="button" id="closeBtn" class="reserve_btn"
-						value="닫기" /></td>
-				</tr>
-			</table>
-		</div>
-	</form>
-	<script src="/hos/resources/js/map.js"></script>
+	
+	<script src="/hos/resources/js/phmap.js"></script>
 <tiles:insertAttribute name="footer" />
 </body>
 </html>

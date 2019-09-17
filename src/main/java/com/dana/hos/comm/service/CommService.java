@@ -34,4 +34,10 @@ public interface CommService {
 	
 	// 후기글 수정하기
 	public String updateReview(ReviewDTO rdto);
+	
+	// 후기 댓글 삭제하기
+	public void comDelete(int cno);
+	
+	// 후기 댓글 수정하기
+	public String modifyCom(CommentDTO dto);
 }

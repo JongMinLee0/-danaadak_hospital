@@ -104,6 +104,8 @@ public class CommServiceImpl implements CommService {
 		commDAO.deleteReview(vino);
 	}
 
+	
+	// 후기 수정하기
 	@Override
 	public String updateReview(ReviewDTO rdto) {
 		int cnt = commDAO.updateReview(rdto);
@@ -112,6 +114,26 @@ public class CommServiceImpl implements CommService {
 			result = "후기 수정에 성공했습니다!!";
 		}else {
 			result = "후기 수정에 실패했습니다!!";
+		}
+		return result;
+	}
+
+	// 후기 댓글 삭제하기
+	@Override
+	public void comDelete(int cno) {
+		commDAO.comDelete(cno);
+	}
+
+	
+	// 후기 댓글 수정하기
+	@Override
+	public String modifyCom(CommentDTO dto) {
+		int cnt = commDAO.modifyCom(dto);
+		String result = "";
+		if(cnt > 0) {
+			result = "댓글 수정에 성공했습니다!!";
+		}else {
+			result = "댓글 수정에 실패했습니다!!";
 		}
 		return result;
 	}

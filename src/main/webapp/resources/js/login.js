@@ -1,16 +1,30 @@
 $(document).ready(function() {
+	$("#username").focus();
+	
 	if ($.cookie('id')) {
-		$('#user_id').val($.cookie('id'));
+		$('#username').val($.cookie('id'));
 		$('#save_id').prop('checked', 'true');
 	}
-
-	$('#login').on('click', login);
-	$("input").keypress(function(e) {
-		if (e.which == 13) { // 엔터키를 누르면
-			login();
+	
+	$('#loginForm').submit(function(){
+		if ($('#username').val() == '') {
+            swal('아이디를 입력해주세요');
+            return false;
+        }
+		
+		if ($('#password').val() == '') {
+			swal('비밀번호를 입력해주세요');
+			return false;
 		}
+		
+		if($('#save_id').prop('checked') && $('#username').val()!="" && $('#password').val()!=""){
+			$.cookie('id',$('#username').val());
+		};
+		
+		$(this).submit();
 	});
-
+	
+	
 });
 
 
@@ -49,4 +63,18 @@ function kakaoLogin(kakao_id, email, userNickName) {
 	});
 	return;
 
+}
+
+//회원구분 버튼
+function wloginCont(id, obj){
+	$('#perBtn,#comBtn').removeClass('active');
+	$('#perForm,#comForm').hide();
+	
+	$(obj).addClass('active');
+	
+	if(id == 'perForm') $('#'+id).show();
+	else if(id == 'comForm') {
+		$('#'+id).attr('style','visibility:visible');
+		$('#'+id).show();
+	}
 }

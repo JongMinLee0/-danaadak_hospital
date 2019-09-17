@@ -18,13 +18,22 @@ public class MemberController {
 	@Autowired
 	MemberService memberservice;
 
-	@RequestMapping(value = "/login/loginForm", method = RequestMethod.GET)
+/*	@RequestMapping(value = "/login/loginForm")
+	public String loginForm(HttpServletRequest request, Model model) {
+		String referer = request.getHeader("Referer");
+		request.getSession().setAttribute("prevPage", referer);
+
+		return "member/login/loginForm";
+	}*/
+	
+	@RequestMapping(value = "/login")
 	public String loginForm(HttpServletRequest request, Model model) {
 		String referer = request.getHeader("Referer");
 		request.getSession().setAttribute("prevPage", referer);
 
 		return "member/login/loginForm";
 	}
+	
 
 	@RequestMapping(value = "/login/accessDenied", method = RequestMethod.GET)
 	public String accessDenied() {
@@ -40,7 +49,6 @@ public class MemberController {
 	public String join(MemberDTO dto, ModelAndView mav) {
 		dto.setAddress(dto.getAddress().replaceAll(",", " "));
 		dto.setBirth(dto.getBirth().replaceAll(",", ""));
-		System.out.println(dto.getBirth());
 		memberservice.joinProcess(dto);
 		return "redirect:/home";
 	}

@@ -16,15 +16,14 @@ public class LoginFailureHandler implements AuthenticationFailureHandler {
 	@Override
 	public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response,
 			AuthenticationException exception) throws IOException, ServletException {
-		String username = request.getParameter("username");
-		String password = request.getParameter(username);
 		
-		request.setAttribute("loginId", username);
-        request.setAttribute("password", password);
+		String username = request.getParameter("username");
+		
+		request.setAttribute("username", username);
 		
 		// 로그인 실패시 필요한 작업 추가
-        request.getRequestDispatcher("login/loginForm?error").forward(request, response);
-	//	response.sendRedirect("login/loginForm?error");
+		request.getRequestDispatcher("login?error=true").forward(request, response);
+	//	response.sendRedirect("login?error=true");
 
 
 	}

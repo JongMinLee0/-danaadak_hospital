@@ -45,5 +45,24 @@
 	<select id="com_list" parameterType="int" resultType="com.dana.hos.comm.module.CommentDTO">
 		select * from review_com where vino=#{vino} order by cno
 	</select>
+	
+	<!-- 후기글 삭제하기  -->
+	<delete id="review_delete" parameterType="int">
+		delete from review where vino=#{vino}
+	</delete>
+	
+	<!-- 후기 글 수정하기  -->
+	<update id="review_update" parameterType="com.dana.hos.comm.module.ReviewDTO">
+		update review set vi_content=#{vi_content}, vi_hash=#{vi_hash}, vi_star=#{vi_star}, vi_date=sysdate where vino=#{vino}
+	</update>
+	
+	<!-- 후기 댓글 삭제  -->
+	<delete id="comDelete" parameterType="int">
+		delete from review_com where cno=#{cno}
+	</delete>
+	
+	<update id="modifyCom" parameterType="com.dana.hos.comm.module.CommentDTO">
+		update review_com set com_content=#{com_content}, com_date=sysdate where cno=#{cno}
+	</update>
+	
 </mapper>
-

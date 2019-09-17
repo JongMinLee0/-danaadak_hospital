@@ -5,8 +5,12 @@
 
 	<!-- 일반 사용자 회원가입 -->
 	<insert id="userjoin" parameterType="com.dana.hos.member.module.MemberDTO">
-		insert into member (username, password, name, address, phone, birth, kakao_id, type)
-		values (#{username}, #{password}, #{name}, #{address}, #{phone}, #{birth}, #{kakao_id,jdbcType=VARCHAR}, 'user')
+		insert into member (username, password, name, address, phone, birth, gender, kakao_id, type)
+		values (#{username}, #{password}, #{name}, #{address}, #{phone}, #{birth}, #{gender}, #{kakao_id,jdbcType=VARCHAR}, 'user')
 	</insert>
 	
+	<select id="selectUserById" resultType="com.dana.hos.member.module.MemberDTO">
+		SELECT * FROM member WHERE username = #{username}
+    </select>
+    
 </mapper>

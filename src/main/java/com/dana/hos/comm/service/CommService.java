@@ -28,4 +28,16 @@ public interface CommService {
 	
 	// 댓글 리스트
 	public List<CommentDTO> commList(int vino);
+	
+	// 후기글 삭제하기
+	public void deleteReview(int vino);
+	
+	// 후기글 수정하기
+	public String updateReview(ReviewDTO rdto);
+	
+	// 후기 댓글 삭제하기
+	public void comDelete(int cno);
+	
+	// 후기 댓글 수정하기
+	public String modifyCom(CommentDTO dto);
 }

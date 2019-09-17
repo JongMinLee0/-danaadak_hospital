@@ -24,4 +24,16 @@ public interface CommDAO {
 	
 	// 댓글 가지고 오기
 	public List<CommentDTO> comList(int vino);
+	
+	// 후기글 삭제하기
+	public int deleteReview(int vino);
+	
+	// 후기 수정하기
+	public int updateReview(ReviewDTO rdto);
+	
+	// 후기 댓글 삭제
+	public int comDelete(int cno);
+	
+	// 후기 댓글 수정
+	public int modifyCom(CommentDTO dto);
 }

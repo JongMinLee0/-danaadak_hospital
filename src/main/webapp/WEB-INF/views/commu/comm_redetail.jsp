@@ -13,7 +13,18 @@
 				<hr /></td>
 			</tr>
 			<tr>
-				<td><h4>${dList.name}</h4></td><td style="text-align: right;"><button>1:1대화</button></td>
+				<td><h4>${dList.name}</h4></td>
+				<c:choose>
+					<c:when test="${sessionScope.memberInfo.name eq dList.name}">
+						<td style="text-align: right;">
+							<button id="modifyBtn">수정</button>
+							<button id="deleteBtn">삭제</button>
+						</td>
+					</c:when>
+					<c:otherwise>
+						<td style="text-align: right;"><button>1:1대화</button></td>
+					</c:otherwise>
+				</c:choose>
 			</tr>
 			<tr>
 				<td>${dList.vi_hash}
@@ -31,8 +42,9 @@
 </div>
 <div class="comment_wrap">
 	<span>댓글:</span>
-	<form method="post" action="/hos/comm/writeCom" id="frm">
+	<form method="post" id="frm">
 		<input type="hidden" id="vino" name="vino" value="${dList.vino}" />
+		<input type="hidden" id="name" name="name" value="${sessionScope.memberInfo.name}" />
 		<textarea class="form-control" rows="5" id="comment" name="com_content"></textarea>
 		<input type="submit" value="작성" id="subBtn">
 		<input type="button" value="뒤로" id="backBtn">
@@ -43,6 +55,16 @@
 		<tr>
 			<td><hr /><h5>${cdto.name}</h5></td>
 			<td><hr />${cdto.com_date}</td>
+			<c:choose>
+					<c:when test="${sessionScope.memberInfo.name eq cdto.name}">
+						<td style="text-align: right;">
+							<hr />
+							<a href="">수정</a>
+							<a href="">삭제</a>
+							<input type="hidden" name="cno" value="${cdto.cno}" />
+						</td>
+					</c:when>
+			</c:choose>
 		</tr>
 		<tr>
 			<td colspan="2">${cdto.com_content}<br /><br /></td>

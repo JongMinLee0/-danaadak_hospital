@@ -8,10 +8,20 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<link href="https://fonts.googleapis.com/css?family=East+Sea+Dokdo&display=swap" rel="stylesheet">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script
-   src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="/hos/resources/css/notice/view.css" />
+
  <script type="text/javascript">
  	$(document).ready(function(){
+ 		$('body > div.navbar > div > nav.navbar.transparent.navbar-expand-lg > a').text('');
+ 		$('body > div.navbar > div > nav.navbar.transparent.navbar-expand-lg > a').append('<img alt="다나앗닥" src="/hos/resources/images/notice/logo.png" id="logo">');
  		$('#list').on('click',listRun);
  		$('#update').on('click',updateRun);
  		$('#delete').on('click',deleteRun);
@@ -33,24 +43,26 @@
  </script>    
 </head>
 <body>
-	<table border="1" width="80%">
-		<tr>
-			<th>글쓴이</th>
-			<td>${dto.writer }</td>
+<div class="navbar"><jsp:include page="/WEB-INF/views/fragments/nav_bar.jsp" /></div>
+	<!-- background 이미지 -->
+	<img src="/hos/resources/images/notice/bg3.jpeg" class="img-fluid"
+		alt="Responsive image">
+			<!-- 텍스트 -->
+		<div id="text">
+			<p id="p">다나앗닥의</br>
+			공지사항을 알려드립니다.</p>
+		</div>
+	<div id="wrap">
+	
+	<div id="form">
+		<%-- <tr>
 			<th>조회수</th>
 			<td>${dto.readcount }</td>
-		</tr>
+		</tr> --%>
 		
-		<tr>
-			<th>제목</th>
-			<td colspan="3">${dto.subject }</td>
-		</tr>
-		
-		<tr>
-			<th>내용</th>
-			<td colspan="3">${dto.content}</td>
-		</tr>
-		
+			<div id="subject">${dto.subject }</div>
+			<div colspan="3">${dto.content}</div>
+	
 		<tr>
 			<th>파일</th>
 			<td colspan="3">
@@ -63,8 +75,9 @@
 				</c:if>
 			</td>			
 		</tr>
-	</table>
-	
+		
+	</div>
+	</div>
 	<form name="frm" id="frm" method="get">
 		<input type="hidden" name="num" value="${dto.num}"/>
 		<input type="hidden" name="currentPage" id="currentPage" value="${currentPage }"/>
@@ -72,5 +85,7 @@
 		<input type="button" id="update" value="수정"/>
 		<input type="button" id="delete" value="삭제"/>
 	</form>
+	<jsp:include
+			page="/WEB-INF/views/fragments/footer.jsp" />
 </body>
 </html>

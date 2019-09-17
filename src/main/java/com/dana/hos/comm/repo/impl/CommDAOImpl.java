@@ -77,4 +77,10 @@ public class CommDAOImpl implements CommDAO{
 		return sqlSession.update("comm.modifyCom",dto);
 	}
 
+	// 해시 페이지
+	@Override
+	public List<ReviewDTO> reviewHash(PageDTO pdto) {
+		return sqlSession.selectList("comm.reviewHash", pdto);
+	}
+
 }

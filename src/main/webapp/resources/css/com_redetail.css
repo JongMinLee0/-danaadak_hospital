@@ -26,3 +26,8 @@ body > div.comm_body > div.content_wrap > div.comment_wrap > table > tbody > tr 
 body > div.comm_body > div.content_wrap > div.comment_wrap > table > tbody > tr td a:hover{
 	font-weight: bold;
 }
+/* 
+#comment{
+	width: 90%;
+	margin: auto;
+} */

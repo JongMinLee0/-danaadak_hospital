@@ -10,17 +10,17 @@
 </div>
 <div id="hashTag">
 	<c:forEach items="${hList}" var="hdto">
-		<span><a href="#" class="badge badge-primary">#${hdto}</a></span>
+		<span><a href="/hos/comm/reviewHash?vi_hash=${hdto}" class="badge badge-primary">#${hdto}</a></span>
 	</c:forEach>
 </div>
+<input type="hidden" name="vi_hash" id="vi_hash" value="${hash}"/>
 <ul>
 	<c:forEach items="${rList}" var="rdto">  
 		<li>
-			<a class="list_link" href="/hos/comm/reviewDetail?vino=${rdto.vino}">
+			<a class="list_link" href="/hos/comm/reviewDetail?vi_hash=${hash}&vino=${rdto.vino}">
 				<table>
 					<tr>
 						<td><h4>${rdto.name}</h4></td>
-						<td><button>1:1대화</button></td>
 					</tr>
 					<tr>
 						<td style="color:orange">

@@ -61,8 +61,19 @@
 		delete from review_com where cno=#{cno}
 	</delete>
 	
+	<!-- 후기 댓글 수정  -->
 	<update id="modifyCom" parameterType="com.dana.hos.comm.module.CommentDTO">
 		update review_com set com_content=#{com_content}, com_date=sysdate where cno=#{cno}
 	</update>
 	
+	<!-- 해시태그 리스트 -->
+	<select id="reviewHash" resultType="com.dana.hos.comm.module.ReviewDTO" parameterType="com.dana.hos.comm.module.PageDTO">
+		<!-- select * from review -->
+		<![CDATA[
+			select b.* from
+			(select rownum as rm, a.* from(
+			select * from review where vi_hash like '%' ||  #{vi_hash} || '%' order by vino desc)a)b
+			where b.rm >= #{startPage} and b.rm <= #{endPage}
+		]]>
+	</select>
 </mapper>

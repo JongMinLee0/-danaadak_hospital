@@ -138,4 +138,20 @@ public class CommServiceImpl implements CommService {
 		return result;
 	}
 
+	// 해시 페이지 목록
+	@Override
+	public List<ReviewDTO> hashPage(String vi_hash) {
+		PageDTO pdto = new PageDTO(1);
+		pdto.setVi_hash(vi_hash);
+		List<ReviewDTO> rList = commDAO.reviewHash(pdto);
+		return rList;
+	}
+
+	// 해시 스크롤
+	@Override
+	public List<ReviewDTO> scrollHash(PageDTO pdto) {
+		List<ReviewDTO> pList = commDAO.reviewHash(pdto);
+		return pList;
+	}
+
 }

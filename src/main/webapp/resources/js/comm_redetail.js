@@ -69,7 +69,7 @@ $(document).ready(function(){
 						 swal("글이 삭제되었습니다!!", {
 						      icon: "success",
 					  }).then((value) => {
-						  location.href='/hos/comm/review';
+						location.href='/hos/comm/review'; 
 					  });
 					 },error:function(){
 						 swal("글 삭제에 실패했습니다!!", {

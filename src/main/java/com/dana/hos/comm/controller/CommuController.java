@@ -147,4 +147,26 @@ public class CommuController {
 		return result;
 	}
 
+	// 해시 태그 클릭시 리스트
+	@RequestMapping("reviewHash")
+	public ModelAndView reviewHash(String vi_hash, ModelAndView mav) {
+		mav.setViewName("review");
+		// rList만 수정하면 된다.
+		mav.addObject("rList", commService.hashPage(vi_hash));
+		mav.addObject("hList", commService.hashList());
+		mav.addObject("hash", vi_hash);
+		return mav;
+	}
+	
+	// 스크롤시 후기 리스트 가져오기
+	@ResponseBody
+	@RequestMapping(value = "scrollHash", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	public List<ReviewDTO> scrollHash(String page, String vi_hash) {
+		int page2 = Integer.parseInt(page);
+		PageDTO pdto = new PageDTO(page2);
+		pdto.setVi_hash(vi_hash);
+		/* mav.addAttribute("pList", commService.scrollList(pdto)); */
+		return commService.scrollHash(pdto);
+	}
+
 }

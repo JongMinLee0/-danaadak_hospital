@@ -36,4 +36,7 @@ public interface CommDAO {
 	
 	// 후기 댓글 수정
 	public int modifyCom(CommentDTO dto);
+	
+	// 해시 페이지
+	public List<ReviewDTO> reviewHash(PageDTO pdto);
 }

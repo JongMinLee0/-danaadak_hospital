@@ -31,6 +31,19 @@
 		<div id="map"
 			style="width: 100%; height: 600px; position: relative; overflow: hidden;"></div>
 
+<ul id="category">
+        <li id="HP8" class="HP8" data-order="0"> 
+        <a href="/hos/map" >
+            <span><img id="category_img" src="/hos/resources/images/hospital.jpg"></span>
+        병원</a>
+        </li>       
+        <li id="PM9" class="PM9" data-order="1" style="background-color: pink">
+         <a href="/hos/phmap" > 
+            <span><img id="category_img" src="/hos/resources/images/ph.png"></span>
+            약국</a>
+        </li>
+    </ul>
+
 
 		<!-- 지도타입 컨트롤 div 입니다 -->
 		<div class="custom_typecontrol radius_border">

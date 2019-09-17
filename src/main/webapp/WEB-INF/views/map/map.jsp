@@ -24,12 +24,26 @@
 <link rel="stylesheet" href="/hos/resources/css/bootstrap.min.css" />
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
 <link rel="stylesheet" href="/hos/resources/css/comm_main.css" />
+
 <body>
 <!-- navbar 홈페이지 상단 메뉴바  -->
 <tiles:insertAttribute name="navbar" />
 	<div class="map_wrap">
 		<div id="map"
 			style="width: 100%; height: 600px; position: relative; overflow: hidden;"></div>
+			
+			<ul id="category">
+        <li id="HP8" class="HP8" data-order="0" style="background-color: pink"> 
+        <a href="/hos/map">
+            <span><img id="category_img" src="/hos/resources/images/hospital.jpg"></span>
+        병원</a>
+        </li>       
+        <li id="PM9" class="PM9" data-order="1">
+         <a href="/hos/phmap"> 
+            <span><img id="category_img" src="/hos/resources/images/ph.png"></span>
+            약국</a>
+        </li>
+    </ul>
 
 
 		<!-- 지도타입 컨트롤 div 입니다 -->
@@ -86,7 +100,6 @@
 				</tr>
 				<tr>
 					<th>이&nbsp;&nbsp;&nbsp;&nbsp;름</th>
-
 					<td><input type="hidden" id="name"　name="name"　value="${sessionScope.memberInfo.name }" required="required">
 						<p id="name">${sessionScope.memberInfo.name }</p>
 					</td>

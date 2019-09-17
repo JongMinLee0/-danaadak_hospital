@@ -132,4 +132,19 @@ public class CommuController {
 		return result;
 	}
 
+	// 후기 댓글 삭제
+	@ResponseBody
+	@RequestMapping(value = "comDelete", method = RequestMethod.POST)
+	public void deleteCom(int cno) {
+		commService.comDelete(cno);
+	}
+
+	// 후기 댓글 수정
+	@ResponseBody
+	@RequestMapping(value = "modifyCom", method = RequestMethod.POST, produces = "application/text;charset=UTF-8")
+	public String modifyCom(@ModelAttribute CommentDTO dto) {
+		String result = commService.modifyCom(dto);
+		return result;
+	}
+
 }

@@ -30,4 +30,10 @@ public interface CommDAO {
 	
 	// 후기 수정하기
 	public int updateReview(ReviewDTO rdto);
+	
+	// 후기 댓글 삭제
+	public int comDelete(int cno);
+	
+	// 후기 댓글 수정
+	public int modifyCom(CommentDTO dto);
 }

@@ -1,48 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"    "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<!DOCTYPE mapper    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="notice">
 
-	 <select id="count" resultType="int" >
-	 	select count(*) from notice 
-	 </select>
-	 
-	 <select id="list" parameterType="com.dana.hos.notice.module.PageDTO" resultType="com.dana.hos.notice.module.NoticeDTO">
+	<select id="count" resultType="int">
+		select count(*) from notice
+	</select>
+
+	<select id="list" parameterType="com.dana.hos.notice.module.PageDTO"
+		resultType="com.dana.hos.notice.module.NoticeDTO">
 	 	<![CDATA[
 	 		 select b.* from
 			(select rownum as rm, a.* from(
 			select * from notice order by num desc)a)b
 			where b.rm>=#{startRow} and b.rm<=#{endRow}
 	 	]]>
-	 </select>
-	 
-	 <select id="content" parameterType="int" resultType="com.dana.hos.notice.module.NoticeDTO">
-	 	select * from notice where num=#{num}
-	 </select>
-	 
-	 <update id="readCount" parameterType="int">
-	 	update notice set readcount = readcount+1 where num=#{num}
-	 </update>
-	 
-	 <insert id="save" parameterType="com.dana.hos.notice.module.NoticeDTO">
-	 	insert into
-	 		notice(num,writer,subject,reg_date,readcount,content,upload)
-	 		values(notice_num_seq.nextval,#{writer},#{subject},sysdate,0,
-	 		#{content},#{upload}
-	 		)
-	 </insert>
-	 
-	 <select id="uploadFile" parameterType="int" resultType="String">
-	 	select upload from notice where num=#{num}
-	 </select>
-	 
-	 
-	 <select id="update" parameterType="com.dana.hos.notice.module.NoticeDTO">
-	 	update notice set subject=#{subject},
-	 	content=#{content},upload=#{upload} where num=#{num}
-	 </select>
-	 
-	 <delete id="delete" parameterType="int">
-	 	delete from notice where num=#{num}
-	 </delete>
-	 
+	</select>
+
+	<select id="content" parameterType="int"
+		resultType="com.dana.hos.notice.module.NoticeDTO">
+		select * from notice where num=#{num}
+	</select>
+
+	<update id="readCount" parameterType="int">
+		update notice set readcount = readcount+1 where num=#{num}
+	</update>
+
+	<insert id="save" parameterType="com.dana.hos.notice.module.NoticeDTO">
+		insert into
+		notice(num,writer,subject,reg_date,readcount,content,upload)
+		values(notice_num_seq.nextval,#{writer},#{subject},sysdate,0,
+		#{content},#{upload}
+		)
+	</insert>
+
+	<select id="uploadFile" parameterType="int" resultType="String">
+		select upload from notice where num=#{num}
+	</select>
+
+
+	<select id="update" parameterType="com.dana.hos.notice.module.NoticeDTO">
+		update notice set subject=#{subject},
+		content=#{content},upload=#{upload} where num=#{num}
+	</select>
+
+	<delete id="delete" parameterType="int">
+		delete from notice where num=#{num}
+	</delete>
+
+	<select id="prenext" parameterType="com.dana.hos.notice.module.NoticeDTO" resultType="com.dana.hos.notice.module.NoticeDTO">
+		<![CDATA[
+		select b.subject from
+			(select rownum as rm, a.* from(
+			select * from notice order by num desc )a)b
+			where b.rm>=#{pre} and b.rm<=#{next} and b.rm!=#{rownum} order by num desc
+		]]>
+			
+	</select>
+	
+	<select id="rownumfind" parameterType="com.dana.hos.notice.module.NoticeDTO" resultType="int">
+		select rm as rn from(
+          (select rownum as rm, a.* from(
+			select * from notice order by num desc)a)) where num=#{num}
+	</select>
+	
 </mapper>

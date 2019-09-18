@@ -5,7 +5,7 @@ import java.util.Date;
 import org.springframework.web.multipart.MultipartFile;
 
 public class NoticeDTO {
-	private int num, readcount;
+	private int num, readcount, pre, next, rownum;
 	private String writer, subject, content, ip;
 	private Date reg_date;
 	
@@ -17,6 +17,43 @@ public class NoticeDTO {
 	}
 
 	
+	
+	public int getRownum() {
+		return rownum;
+	}
+
+
+
+	public void setRownum(int rownum) {
+		this.rownum = rownum;
+	}
+
+
+
+	public int getPre() {
+		return pre;
+	}
+
+
+
+	public void setPre(int pre) {
+		this.pre = pre;
+	}
+
+
+
+	public int getNext() {
+		return next;
+	}
+
+
+
+	public void setNext(int next) {
+		this.next = next;
+	}
+
+
+
 	public int getNum() {
 		return num;
 	}

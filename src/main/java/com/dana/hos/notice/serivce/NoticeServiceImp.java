@@ -55,4 +55,13 @@ public class NoticeServiceImp implements NoticeService{
 	public String fileSelectProcess(int num) {
 		return dao.getFile(num);
 	}
+	@Override
+	public List<NoticeDTO> prenextProcess(NoticeDTO dto) {
+		return dao.getPreNext(dto);
+	}
+	@Override
+	public int rownumfindProcess(int num) {
+		return dao.getRownum(num);
+	}
+	
 }

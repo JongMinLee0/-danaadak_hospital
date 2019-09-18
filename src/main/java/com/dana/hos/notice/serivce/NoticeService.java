@@ -15,4 +15,8 @@ public interface NoticeService {
 	public void deleteProcess(int num);
 	
 	public String fileSelectProcess(int num);
+	
+	public int rownumfindProcess(int num);
+	List<NoticeDTO> prenextProcess(NoticeDTO dto);
+	
 }//end interface

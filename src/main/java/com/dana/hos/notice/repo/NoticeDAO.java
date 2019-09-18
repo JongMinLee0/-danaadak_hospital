@@ -19,4 +19,8 @@ public interface NoticeDAO {
 	public void delete(int num);
 	public String getFile(int num);
 	public NoticeDTO content(int num);
+	public List<NoticeDTO> getPreNext(NoticeDTO dto);
+	public int getRownum(int num);
+	
+	
 }//end interface

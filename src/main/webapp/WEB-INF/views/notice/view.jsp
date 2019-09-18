@@ -1,13 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>    
-    
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>   
+ 
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<link href="https://fonts.googleapis.com/css?family=Do+Hyeon&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=East+Sea+Dokdo&display=swap" rel="stylesheet">
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
@@ -38,7 +40,8 @@
  	function deleteRun(){
  		$('#frm').attr('action','noticedelete').submit();
  	}
- 
+ 	
+
  	
  </script>    
 </head>
@@ -48,24 +51,34 @@
 	<img src="/hos/resources/images/notice/bg3.jpeg" class="img-fluid"
 		alt="Responsive image">
 			<!-- 텍스트 -->
-		<div id="text">
-			<p id="p">다나앗닥의</br>
-			공지사항을 알려드립니다.</p>
+			<div id="titletext">
+			<p id="title">다나앗닥</p>
 		</div>
 	<div id="wrap">
 	
 	<div id="form">
+		<div id="text">
+			<p id="p">공지사항</p>
+		</div>
+		
 		<%-- <tr>
 			<th>조회수</th>
 			<td>${dto.readcount }</td>
 		</tr> --%>
 		
 			<div id="subject">${dto.subject }</div>
-			<div colspan="3">${dto.content}</div>
-	
-		<tr>
-			<th>파일</th>
-			<td colspan="3">
+	                   
+                    
+			<%-- <label for="c_attachFile1">첨부파일</label>
+                     
+                    <c:foreach var="fileview" items="${fileview}">
+                    <a href="${path }/fileDownload4?fileName=${fileview.fileName}&downName=${fileview.realName }">${fileview.fileName}</a>
+                    ${fileview.size2String()}
+                    </c:foreach>  --%>
+		
+			<div id="file"><a id="filetext">파일&nbsp;&nbsp;</a>
+			<img alt="download" src="/hos/resources/images/notice/download1.jpg" id="download" >
+			<a></a>
 				<c:if test="${!empty dto.upload }">
 					<a href="contentdownload?num=${dto.num}">
 					${fn:substringAfter(dto.upload,"_")}</a>
@@ -73,18 +86,40 @@
 				<c:if test="${empty dto.upload}">
 					<c:out value="첨부파일 없음"/>
 				</c:if>
-			</td>			
-		</tr>
+		<div id="reg_date"><a>등록일&nbsp;&nbsp;</a><fmt:formatDate value="${dto.reg_date }" pattern="yyyy.MM.dd"/></div>
+				<div id="rc"><a>조회수&nbsp;&nbsp;</a>${dto.readcount }</div>
+			</div>		
+			<div id="content">${dto.content}</div>
+	
 		
 	</div>
-	</div>
+
+		
+		<div id="prenext">
+			<!-- <strong>이전글</strong>
+			<strong>다음글</strong>
+			 -->
+			 
+			    <c:forEach var="prenext" items="${prenext }">
+			   
+			<span id="prenext_text"> 
+			<a href="#">${prenext.subject }</a></span>
+			
+				
+	 </c:forEach>   
+		</div>
+		
+		
 	<form name="frm" id="frm" method="get">
 		<input type="hidden" name="num" value="${dto.num}"/>
-		<input type="hidden" name="currentPage" id="currentPage" value="${currentPage }"/>
-		<input type="button" id="list" value="리스트닷" />
-		<input type="button" id="update" value="수정"/>
-		<input type="button" id="delete" value="삭제"/>
+		<input type="hidden" name="currentPage" id="currentPage" value="${currentPage }"/> 
+		<button type="button" class="btn btn-dark" id="list" value="리스트">목록</button>
+		<!-- <input type="button"  value="리스트닷" /> -->
+		
+	<input type="button" id="update" value="수정"/>
+		<input type="button" id="delete" value="삭제"/> 
 	</form>
+	</div>
 	<jsp:include
 			page="/WEB-INF/views/fragments/footer.jsp" />
 </body>

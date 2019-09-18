@@ -31,4 +31,11 @@ public class MemberServiceImp implements MemberService {
 		return memberDAO.getUserInfo(username);
 	}
 
+	@Override
+	public int kakaoChkProcess(String kakao_id) {
+		return memberDAO.kakaoChkMethod(kakao_id);
+	}
+
+
+
 }

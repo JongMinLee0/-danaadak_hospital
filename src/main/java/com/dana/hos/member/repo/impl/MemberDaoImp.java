@@ -30,5 +30,10 @@ public class MemberDaoImp implements MemberDAO {
 	public MemberDTO getUserInfo(String username) {
 		return sqlSession.selectOne("member.selectUserById", username);
 	}
+
+	@Override
+	public int kakaoChkMethod(String kakao_id) {
+		return sqlSession.selectOne("member.kakaoChk", kakao_id);
+	}
 	
 }

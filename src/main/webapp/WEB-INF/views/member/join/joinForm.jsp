@@ -21,6 +21,10 @@
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript" src="/hos/resources/js/join.js"></script>
 
+<script type="text/javascript">
+	history.replaceState({}, null, location.pathname);
+</script>
+
 </head>
 
 <body id="register">
@@ -35,13 +39,14 @@
 		<div class="about-bottom main-agile book-form">
 			<form action="/hos/join/join" method="post">
 				<div class="form-date-w3-agileits">
+					<input type="hidden" id="kakao_id" name="kakao_id" value="${param.kakao_id }">
 					<label> ID </label> 
-					<input type="text" id="username" name="username" placeholder="Your ID" required=""> 
+					<input type="text" id="username" name="username" placeholder="Your ID" required="" value="${param.id }"> 
 					<label> Password </label> 
-					<input type="password" id="password" name="password" placeholder="Your Password" required="">
+					<input type="password" id="password" name="password" placeholder="Your Password" required="" >
 					<input type="password" id="passwordConfirm" name="passwordConfirm" placeholder="Confirm Password" required="">
 					<label> Name </label>
-					<input type="text" id="name" name="name" placeholder="Your Name" required="">
+					<input type="text" id="name" name="name" placeholder="Your Name" required="" value="${param.name }" >
 					<label> Address</label> 
 					<div id="address">
 						<input type="text" name="address" id="postcode" placeholder="우편번호" class="address_form mini" onclick="execDaumPostcode()">
@@ -51,7 +56,7 @@
 					</div>
 					<label> Gender</label> 
 					<div>
-						<input type="radio" name="gender" value="0">남자
+						<input type="radio" name="gender" value="0" checked="checked" >남자
 						<input type="radio" name="gender" value="1" style="margin-left: 150px">여자
 					</div>
 

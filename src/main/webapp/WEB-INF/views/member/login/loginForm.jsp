@@ -18,9 +18,7 @@
 <script src="/hos/resources/js/jquery.cookie.js"></script>
 <link rel="stylesheet" href="/hos/resources/css/bootstrap.min.css" />
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
-<script type="text/javascript">
-	
-</script>
+
 </head>
 
 <body>
@@ -61,8 +59,6 @@
 					<div>
 						<input id="kakao_login" type="button" value="카카오톡 로그인">
 					</div>
-
-
 					<div class="last">
 						<div>
 							<a href="/hos/join/joinForm" id="join">회원가입</a>
@@ -90,7 +86,7 @@
 						var email = res.kaccount_email; //유저가 등록한 계정
 						var userNickName = res.properties.nickname; //유저가 등록한 별명
 
-						console.log(kakao_id, email, userNickName);
+					//	console.log(kakao_id, email, userNickName);
 
 						kakaoLogin(kakao_id, email, userNickName);
 					},

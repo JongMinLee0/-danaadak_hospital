@@ -75,7 +75,7 @@ $(document).ready(function() {
 		<!-- 회원정보 수정 -->
 		<div class="sh_group">
 			<span class="myinfoTitle">회원정보 수정</span>
-			<p>이름  ㅇㅇㅇ <input type="button" id="memberInfo" value="정보 수정"/></p>
+			<p>이름  &nbsp;&nbsp;  ${sessionScope.memberInfo.name} &nbsp;&nbsp;  <input type="button" id="memberInfo" value="정보 수정"/></p>
 		</div>
 
 		<!-- 처방전 내역 -->

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="myinfo">
+
+	<!-- 내정보 수정 -->
+	<update id="myinfoUpdate" parameterType="com.dana.hos.member.module.MemberDTO">
+		update member set password=#{password}, address=#{address}, 
+		phone=#{phone}, birth=#{birth} where username=#{username}
+	</update>
+
+    <select id="selectUserById" resultType="com.dana.hos.member.module.MemberDTO">
+		SELECT * FROM member WHERE username = #{username}
+    </select>
+</mapper>

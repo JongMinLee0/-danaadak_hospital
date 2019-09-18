@@ -13,6 +13,68 @@
 <script>
  $(document).ready(function(){
         setDateBox();
+        //취소버튼 돌아가기
+        $('#modCancleBtn').on('click', function() {
+    		$('#myPageWrap').load('/hos/myinfo/myinfomain');
+    	});
+        
+        //저장버튼 수정내용 전송
+        $('#modFinishBtn').on('click', function() {
+        
+        var nowPw = '${sessionScope.memberInfo.password}';
+        if($('#now_pw').val() == ''){
+        	alert('비밀번호를 입력해주세요');
+        	return false;		
+        }else{
+        	if($('#now_pw').val() == nowPw){
+		        if($('#new_pw').val() != ''){
+			    	var pwConfirm = $('#new_pw').val();
+			    		
+			    	if ($('#new_pw_confirm').val() != pwConfirm  || $('#new_pw_confirm').val() == '') {
+			    		alert("비밀번호를 다시 확인해주세요");
+			    		return false;
+			    	} else {
+			    		$('#now_pw').removeAttr('name');
+			    		$('#new_pw').attr('name','password');
+			    	}
+		        }
+		        
+	        	if (confirm("정말 수정하시겠습니까?") == true){    //확인
+	            	document.form.submit();
+	       	 	}else{   //취소
+	            	return false;
+	        	}
+	        }else{
+	        	alert('비밀번호를 정확히 입력해주세요');
+	        	return false;
+	        }
+        }
+        
+        
+		});
+
+        
+        //주소 칸 나눠서 보여주기
+        var addr = '${sessionScope.memberInfo.address}';
+        $('#sample4_postcode').val(addr.split(",")[0]);
+        $('#sample4_roadAddress').val(addr.split(",")[1]);
+        $('#sample4_detailAddress').val(addr.split(",")[2]);
+        
+        //생년월일 셀렉트 박스 선택하지 
+        var birthday = '${sessionScope.memberInfo.birth}';
+        $('#yy').val(birthday.substring(0,4));
+        $('#mm').val(birthday.substring(4,6));
+        $('#dd').val(birthday.substring(6,8));
+        
+        
+        //성별 처리하기
+        var gend = '${sessionScope.memberInfo.gender}';
+
+        if (gend == '0'){
+        	$('#gender').append('남');
+        }else if(gend == '1'){
+        	$('#gender').append('여');
+        }
     });    
  
     // select box 연도 , 월 표시
@@ -24,14 +86,25 @@
         for(var y = (com_year-99); y <= (com_year+1); y++){
             $("#yy").append("<option value='"+ y +"'>"+ y + " 년" +"</option>");
         }
-        // 월 뿌려주기(1월부터 12월)
+        // 월 뿌려주기(1월부터 12월, 1~9월 0추가함)
         var month;
         for(var i = 1; i <= 12; i++){
-            $("#mm").append("<option value='"+ i +"'>"+ i + " 월" +"</option>");
+        	var j = i;
+        	
+        	if(i<10){
+        		j="0"+i;
+        	}
+        	$('#mm').append(new Option(i + "월", j));
         }
         var day;
         for(var d = 1; d <= 31; d++){
-            $("#dd").append("<option value='"+ d +"'>"+ d + " 일" +"</option>");
+        	var f = d;
+        	
+        	if(d<10){
+        		f="0"+d
+        	}
+    		
+            $("#dd").append(new Option(d + " 일", j));
         }
     }
     function sample4_execDaumPostcode() {
@@ -61,7 +134,6 @@
             // 우편번호와 주소 정보를 해당 필드에 넣는다.
             document.getElementById('sample4_postcode').value = data.zonecode;
             document.getElementById("sample4_roadAddress").value = roadAddr;
-            document.getElementById("sample4_jibunAddress").value = data.jibunAddress;
             
             // 참고항목 문자열이 있을 경우 해당 필드에 넣는다.
             if(roadAddr !== ''){
@@ -94,10 +166,55 @@
 <style type="text/css">
 #myPageBody {
 	border : 1px solid black;
+	margin : 0 auto;
 }
 
 .bir_wrap{
 	display: flex;
+}
+#modCancleBtn, #modFinishBtn{
+  background:#007bff;
+  color:#fff;
+  border:none;
+  position:relative;
+  width:100px;
+  height:30px;
+  font-size:15px;
+  padding:2px;
+  cursor:pointer;
+  transition:800ms ease all;
+  outline:none;
+  border-radius: 6px;
+}
+#modCancleBtn:hover, #modFinishBtn:hover{
+  background:#fff;
+  color:#007bff;
+}
+#modCancleBtn{
+  background:#7DDCFF;
+  color:#fff;
+  border:none;
+  position:relative;
+  width:100px;
+  height:30px;
+  font-size:15px;
+  padding:2px;
+  cursor:pointer;
+  transition:800ms ease all;
+  outline:none;
+  border-radius: 6px;
+}
+#modCancleBtn:hover{
+  background:#fff;
+  color:#007bff;
+}
+.myPageList{
+ height: 50px;
+}
+
+.pwHide{
+text-align: right;
+font-size: 14px;
 }
 
 </style>
@@ -105,22 +222,24 @@
 <body>
 	<div id='myPageWrap'>
 	<p><h3>회원 정보</h3></p>
-	
+<form id="frm" name="frm" action="/hos/myinfo/myinfoupdate" method="post">	
 		<table id="myPageBody" >
 			<tr class="content">
 				<!-- 아이디 -->
-				<td class="profile" rowspan="6" width="100px" align="center">프로필</td>
+				<td class="profile" rowspan="7" width="100px" align="center">프로필</td>
 				<td class="myPageList" width="100px" align="center">아이디</td>
-				<td id="loginId" colspan="3">  Danaadak </td>
+				<td id="loginId" colspan="3" > ${sessionScope.memberInfo.username} </td>
 			</tr>
 			
 			<tr class="content">
-				<!-- 닉네임 -->
-				<td class="myPageList" width="100px" align="center">닉네임</td>
-				<td id="nickname" width="150px"><span id="nValue">닉네임 받아옴</span></td>
-				<td><input type="text" class="nHide" id="nBox" value="${dto.user_nickname}" placeholder="닉네임 변경" style="width:100%;"/></td>
-				<td><a href="" id="nChangeBtn" class="chgbtns">변경</a> 
-				<a href="" id="nChangeCancleBtn" class="nHide canbtns">취소</a></td>
+				<!-- 이름 -->
+				<td class="myPageList" width="100px" align="center">이름</td>
+				<td id="loginName" colspan="3">${sessionScope.memberInfo.name}</td>
+			</tr>
+			<tr class="content">
+				<!-- 성별 -->
+				<td class="myPageList" width="100px" align="center">성별</td>
+				<td id="gender" colspan="3"></td>
 			</tr>
 			
 			<tr class="content">
@@ -128,17 +247,17 @@
 				<td class="myPageList" width="150px" align="center">비밀번호</td>
 				<td colspan="1">
 					<div class="pwHide">
-						<p>현재 비밀번호 :</p>
-						<p>변경 후 비밀번호 :</p>
-						<p>변경 후 비밀번호 확인 :</p>
+						<p>현재 비밀번호 : &nbsp;</p>
+						<p>변경 후 비밀번호 : &nbsp;</p>
+						<p>변경 후 비밀번호 확인 : &nbsp;</p>
 					</div>
 				</td>
 				<td>
 					<div class="pwHide">
 						<p>
-							<input type="password" id="now_pw" style="width:100%;">
+							<input type="password" name = "password" id="now_pw" style="width:100%;">
 						</p>
-						<p>
+ 						<p>
 							<input type="password" id="new_pw" style="width:100%;">
 						</p>
 						<p>
@@ -146,78 +265,70 @@
 						</p>
 					</div>
 				</td>
-				<td><a href="" id="pwChangeBtn" class="chgbtns">변경</a> <a
-					href="" id="pwChangeCancleBtn" class="pwHide canbtns">취소</a></td>
+				<td style="width:20px;"></td>
 			</tr>
 	
 			<tr class="content">
 				<!-- 생년월일 -->
 				<td class="myPageList" width="100px" align="center">생년월일</td>
-				<td><span id="birthValue">생년월일 받아옴</span></td>
-				<td>
+				<td colspan="2">
 					<div class="birthHide">
 						<div class="bir_wrap">
 							<div class="bir_yy">
-								<span class="ps_box"> <select id="yy" name="yy" class="sel" aria-label="년" required="required">
+								<span class="ps_box"> <select id="yy" name="birth" class="sel" aria-label="년" required="required">
 									<option value="">년</option></select>
 								</span>
-							</div>
+							</div> &nbsp;&nbsp;
 							<div class="bir_mm">
-								<span class="ps_box"> <select id="mm" name="mm"	class="sel" aria-label="월" required="required">
+								<span class="ps_box"> <select id="mm" name="birth"	class="sel" aria-label="월" required="required">
 									<option value="">월</option></select>
 								</span>
-							</div>
+							</div> &nbsp;&nbsp;
 							<div class=" bir_dd">
-								<span class="ps_box"> <select id="dd" name="dd" class="sel" aria-label="일" required="required">
+								<span class="ps_box"> <select id="dd" name="birth" class="sel" aria-label="일" required="required">
 									<option value="">일</option></select>
 								</span>
 							</div>
 						</div>
 					</div>
 				</td>
-				<td><a href="" id="birthChangeBtn" class="chgbtns">변경</a> <a
-					href="" id="birthChangeCancleBtn" class="birthHide canbtns">취소</a></td>
+				<td style="width:20px;"></td>
 			</tr>
 			
 			<tr class="content">
 				<!-- 주소 -->
 				<td class="myPageList" width="100px" align="center">주소</td>
-				<td colspan="2"><input type="text" id="sample4_postcode" placeholder="우편번호">
+				<td colspan="2"><input type="text" id="sample4_postcode" name="address" placeholder="우편번호" > &nbsp;&nbsp;&nbsp;
 					<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
-					<input type="text" id="sample4_roadAddress" placeholder="도로명주소">
-					<input type="text" id="sample4_jibunAddress" placeholder="지번주소">
-					<span id="guide" style="color:#999;display:none"></span>
-					<br/>
-					<input type="text" id="sample4_detailAddress" placeholder="상세주소">
+					<input type="text" id="sample4_roadAddress" size="40" name="address" placeholder="도로명주소">
+					<br>
+					<input type="text" id="sample4_detailAddress" size="40" name="address" placeholder="상세주소">
 				</td>
-				<td><a href="" id="birthChangeBtn" class="chgbtns">변경</a> <a href="" id="birthChangeCancleBtn" class="birthHide canbtns">취소</a></td>
+				<td style="width:20px;"></td>
 			</tr>
 			
 			<tr class="content">
 				<!-- 전화번호 -->
 				<td class="myPageList" width="100px" align="center">전화번호</td>
-				<td colspan="2"><select id="o_hp1" name="o_hp1" class="select_style01" >
-	            	<option>없음</option>
-	              	<option selected value="010">010</option>
-	              	<option value="011">011</option>
-	              	<option value="016">016</option>
-	              	<option value="017">017</option>
-	              	<option value="018">018</option>
-	              	<option value="019">019</option>
-	              	</select> -
-	            	
-	            	<input type="text" id="o_hp2" name="o_hp2"  value="0000" class="input_style04" maxLength=4 numeric itemname="휴대폰번호" title="휴대폰 가운데 자리" /> - 
-	            	<input type="text" id="o_hp3" name="o_hp3"  value="0002" class="input_style04" maxLength=4 numeric itemname="휴대폰번호" title="휴대폰 마지막 자리" />
+	            <td colspan="2"><input type="text" id="phoneText" name="phone" class="input_style04" itemname="전화번호" title="전화번호" value="${sessionScope.memberInfo.phone}"/>
 				</td>
-				<td><a href="" id="birthChangeBtn" class="chgbtns">변경</a> <a href="" id="birthChangeCancleBtn" class="birthHide canbtns">취소</a></td>
+				<td style="width:20px;"></td>
 			</tr>
 			
 		</table>
 	
 		<div id="finish">
-			<a href="" id="modCancleBtn" class="canbtns">취소</a> <a href=""
-				id="modFinishBtn" class="chgbtns">저장</a>
+			<input type="hidden" value="${sessionScope.memberInfo.username}" name="username"/>
+			<input type="hidden" value="${sessionScope.memberInfo.name}" name="name"/>
+			<input type="hidden" value="${sessionScope.memberInfo.gender}" name="gender"/>
+			<input type="hidden" value="${sessionScope.memberInfo.kakao_id}" name="kakao_id"/>
+			<input type="hidden" value="${sessionScope.memberInfo.type}" name="type"/>
+			<input type="hidden" value="${sessionScope.memberInfo.authority}" name="authority"/>
+			<input type="hidden" value="${sessionScope.memberInfo.enabled}" name="enabled"/>
+			<input type ="button" id="modCancleBtn" class="canbtns" value="취소" />
+			<input type ="submit" id="modFinishBtn" class="chgbtns" value="저장" />
 		</div>
+  </form>
 </div>
 </body>
 </html>

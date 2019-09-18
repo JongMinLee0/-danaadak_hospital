@@ -79,16 +79,14 @@
 				</tr>
 				<tr>
 					<th>I&nbsp;&nbsp;&nbsp;&nbsp;D</th>
-					<td><sec:authorize access="isAuthenticated()">
-							<sec:authentication property="principal.username" var="user_id" />
-                   ${user_id }
-                </sec:authorize></td>
+					<td><input type="hidden" id="username"name="username"value="${sessionScope.memberInfo.username }" >
+						<p id="name">${sessionScope.memberInfo.username }</p></td>
 				</tr>
 				<tr>
 					<th>이&nbsp;&nbsp;&nbsp;&nbsp;름</th>
 
-					<td><input type="hidden" id="name"　name="name"　value="${sessionScope.memberInfo.name }" required="required">
-						<p id="name">${sessionScope.memberInfo.name }</p>
+					<td><input type="hidden" id="name" name="name" value=" ${sessionScope.memberInfo.name }">
+						<p id="name"> ${sessionScope.memberInfo.name }</p>
 					</td>
 				</tr>
 				<tr>
@@ -109,7 +107,7 @@
 				<tr>
 					<td><input type="button" id="submitBtn" class="reserve_btn"
 						value="예약하기" /></td>
-					<td><input type="button" id="closeBtn" class="reserve_btn"
+					<td><input type="reset" id="closeBtn" class="reserve_btn"
 						value="닫기" /></td>
 				</tr>
 			</table>

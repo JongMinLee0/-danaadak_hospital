@@ -1,0 +1,26 @@
+/* nav-bar랑 띄우기 */
+body{
+margin-top: 150px;	
+margin-left: 100px;
+}
+
+/* 처방전 modal 숨기기 */
+.recHide {
+	visibility: hidden;
+	width: 0px;
+	height: 0px;
+}
+
+/* 처방전 modal 보이기  */
+.recShow{
+	width: 70%;
+	height: 500px;
+	border: 1px solid black;
+}
+#rec_top, #sub_wrap{
+	background-color: yellow;
+}
+td{
+	margin : 20px;
+}
+

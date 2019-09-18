@@ -89,6 +89,6 @@ td input[type=text] {
 #time_chk:hover{
 	color: red;
 }
-#name{
-	font-size : 10px;
+#name, #username{
+	font-size : 15px;
 }

@@ -340,3 +340,8 @@ function removeAllChildNods(el) {
 $(document).ready(function(){
 	$('body > div.navbar_wrap.fixed-top').removeClass('fixed-top');
 });
+//커스텀 오버레이를 닫기 위해 호출되는 함수입니다 
+function closeOverlay() {
+	infowindow.close();   
+}
+

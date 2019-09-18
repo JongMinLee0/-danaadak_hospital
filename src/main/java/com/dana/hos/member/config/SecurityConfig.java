@@ -20,10 +20,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	DataSource dataSource;
 	
-	@Bean
-    public LoginSuccessHandler successHandler() {
-      return new LoginSuccessHandler("/");
-    }
+	@Autowired
+	private LoginSuccessHandler loginSuccessHandler;
 	
 	@Autowired
 	private LoginFailureHandler loginFailureHandler;
@@ -41,7 +39,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         .antMatchers("/home").permitAll()
         .antMatchers("/admin/**").hasRole("ADMIN")
         .antMatchers("/**").permitAll()
-        .and().formLogin().successHandler(successHandler()).failureHandler(loginFailureHandler)
+        .and().formLogin().loginPage("/login").loginProcessingUrl("/login")
+        				  .successHandler(loginSuccessHandler)
+        				  .failureHandler(loginFailureHandler)
         .and().logout().logoutSuccessUrl("/home").permitAll()
         .and().headers().frameOptions().disable()
         .and().csrf().disable();

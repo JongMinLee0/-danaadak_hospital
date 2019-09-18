@@ -38,33 +38,49 @@ public class CommDAOImpl implements CommDAO{
 	// 특정 번호 후기 상세
 	@Override
 	public ReviewDTO reviewDetail(int vino) {
-		return sqlSession.selectOne("reviewDetail", vino);
+		return sqlSession.selectOne("comm.reviewDetail", vino);
 	}
 
 	// 후기 댓글 작성
 	@Override
 	public int writeCom(CommentDTO dto) {
-		return sqlSession.insert("write_com", dto);
+		return sqlSession.insert("comm.write_com", dto);
 	}
 
 	// 댓글 가지고 오기
 	@Override
 	public List<CommentDTO> comList(int vino) {
-		return sqlSession.selectList("com_list", vino);
+		return sqlSession.selectList("comm.com_list", vino);
 	}
 
 	// 후기 글 삭제하기
 	@Override
 	public int deleteReview(int vino) {
-		return sqlSession.delete("review_delete", vino);
+		return sqlSession.delete("comm.review_delete", vino);
 	}
 
 	// 후기 수정하기
 	@Override
 	public int updateReview(ReviewDTO rdto) {
-		int cnt = sqlSession.update("review_update", rdto);
-		System.out.println("cnt : " + cnt);
-		return sqlSession.update("review_update", rdto);
+		return sqlSession.update("comm.review_update", rdto);
+	}
+
+	// 후기 댓글 삭제
+	@Override
+	public int comDelete(int cno) {
+		return sqlSession.delete("comm.comDelete", cno);
+	}
+
+	// 후기 댓글 수정
+	@Override
+	public int modifyCom(CommentDTO dto) {
+		return sqlSession.update("comm.modifyCom",dto);
+	}
+
+	// 해시 페이지
+	@Override
+	public List<ReviewDTO> reviewHash(PageDTO pdto) {
+		return sqlSession.selectList("comm.reviewHash", pdto);
 	}
 
 }

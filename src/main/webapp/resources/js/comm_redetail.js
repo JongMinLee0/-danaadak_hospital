@@ -1,8 +1,14 @@
 $(document).ready(function(){
-	
+	var cno = '';
+	var vino = $('#vino').val();
 	// 뒤로가기 버튼 클릭시 발생하는 이벤트
 	$('#backBtn').on('click', function(){
-		location.href='/hos/comm/review';
+		// 수정 취소시
+		if($(this).val()=='취소'){
+			location.href='/hos/comm/reviewDetail?vino='+vino;
+		}else{
+			location.href='/hos/comm/review';
+		}
 	});
 	
 	// 전송버튼 클릭시 발생 이벤트
@@ -12,40 +18,39 @@ $(document).ready(function(){
 			return false;
 		}
 		var sendData = $('#frm').serialize();
-		$.ajax({
-			type:'POST',
-			url:'/hos/comm/writeCom',
-			data:sendData,
-			success:function(res){
-				var content = $('#comment').val();
-				$('#comment').val('');
-				swal(res);
-				var name = $('#name').val();
-				// 현재 시간 구하기
-				var Now = new Date();
-				var NowTime = Now.getFullYear();
-				NowTime += '-' + (Now.getMonth()+1);
-				NowTime += '-' + Now.getDate();
-				NowTime += ' ' + Now.getHours();
-				NowTime += ':' + Now.getMinutes();
-				NowTime += ':' + Now.getSeconds();
-				
-				$('.comment_table').append('<tr>'
-						+'<td><hr /><h5>'+name+'</h5></td>'
-						+'<td><hr />'+NowTime+'</td></tr><tr>'
-						+'<td colspan="2">'+content+'<br /><br /></td></tr>');
-				$("html, body").animate({ 
-                    scrollTop: $( 
-                      'html, body').get(0).scrollHeight
-                }, 2000); 
-			},error:function(res){
-				swal(res);
-			}
-		});
+		// 수정할 때의 로직
+		if($(this).val()=='수정완료'){
+			$.ajax({
+				type:'POST',
+				url:'/hos/comm/modifyCom',
+				data:sendData,
+				success:function(res){
+					swal(res).then((value) => {
+						location.href='/hos/comm/reviewDetail?vino='+vino;
+					  });
+				},error:function(res){
+					swal(res);
+				}
+			});
+		}else{
+			$.ajax({
+				type:'POST',
+				url:'/hos/comm/writeCom',
+				data:sendData,
+				success:function(res){
+					swal(res).then((value) => {
+						  location.href='/hos/comm/reviewDetail?vino='+vino;
+					  });
+					
+				},error:function(res){
+					swal(res);
+				}
+			});
+		}
 		return false;
 	});
 	
-	// 삭제 버튼 클릭시
+	// 후기글 삭제 버튼 클릭시
 	$('#deleteBtn').on('click', function(){
 		swal({
 			  title: "정말 삭제하시겠습니까??",
@@ -63,15 +68,15 @@ $(document).ready(function(){
 					 success:function(){
 						 swal("글이 삭제되었습니다!!", {
 						      icon: "success",
+					  }).then((value) => {
+						location.href='/hos/comm/review'; 
 					  });
 					 },error:function(){
-						 swal("글이 삭제에 실패했습니다!!", {
+						 swal("글 삭제에 실패했습니다!!", {
 						      icon: "warning",
 					  });
 					 }
 				  });
-				  
-				  
 			  } else {
 				// cancel 눌렀을 때
 			    swal("삭제가 취소되었습니다!");
@@ -79,8 +84,64 @@ $(document).ready(function(){
 			});
 	});
 	
-	// 수정 버튼 클릭시
+	// 후기글 수정 버튼 클릭시
 	$('#modifyBtn').on('click', function(){
-		location.href='/hos/comm/reviewModify?vino='+$('#vino').val();
+		location.href='/hos/comm/reviewModify?vino='+vino;
 	});
+	
+	
+	// 댓글 삭제 버튼 클릭시
+	$('body > div.comm_body > div.content_wrap > div.comment_wrap > table > tbody > tr td a:nth-child(3)').on('click', function(){
+		var cno = $(this).next().val();
+		
+		swal({
+			  title: "정말 삭제하시겠습니까??",
+			  text: "한번 삭제하면 복구 할 수 없습니다!",
+			  icon: "warning",
+			  buttons: true,
+			  dangerMode: true,
+			})
+			.then((willDelete) => {
+			  if (willDelete) {
+				  // ok 눌렀을 때
+				  $.ajax({
+					 type:'post',
+					 url:'/hos/comm/comDelete?cno='+cno,
+					 success:function(){
+						 swal("댓글이 삭제되었습니다!!", {
+						      icon: "success",
+					  }).then((value) => {
+						  location.href='/hos/comm/reviewDetail?vino='+vino;
+					  });
+					 },error:function(){
+						 swal("댓글 삭제에 실패했습니다!!", {
+						      icon: "warning",
+					  });
+					 }
+				  });
+			  } else {
+				// cancel 눌렀을 때
+			    swal("삭제가 취소되었습니다!");
+			  }
+			});
+		return false;
+	});
+	
+	
+	// 댓글 수정 버튼 클릭시
+	$('body > div.comm_body > div.content_wrap > div.comment_wrap > table > tbody > tr td a:nth-child(2)').on('click', function(){
+		cno = $(this).next().next().val();
+		var content = $(this).parent().parent().next().children().text();
+		$('#comment').val(content);
+		$('#subBtn').val('수정완료');
+		$('#backBtn').val('취소');
+		$('#vino').attr('name', 'cno');
+		$('#vino').val(cno);
+		$( 'html, body' ).animate( { scrollTop : 0 }, 400 );
+		$('body > div.comm_body > div.comm_header').removeClass('fixed-top');
+		return false;
+	});
+	
+	
+	
 });

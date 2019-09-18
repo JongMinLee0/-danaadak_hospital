@@ -4,7 +4,6 @@
 <link rel="stylesheet" href="/hos/resources/css/com_redetail.css" />
 <script src="/hos/resources/js/comm_redetail.js"></script>
 <div class="detail_wrap">
-	
 	<table class="detail_table">
 			<tr>
 				<td>${dList.vi_subject}
@@ -42,10 +41,10 @@
 </div>
 <div class="comment_wrap">
 	<span>댓글:</span>
-	<form method="post" action="/hos/comm/writeCom" id="frm">
+	<form method="post" id="frm">
 		<input type="hidden" id="vino" name="vino" value="${dList.vino}" />
 		<input type="hidden" id="name" name="name" value="${sessionScope.memberInfo.name}" />
-		<textarea class="form-control" rows="5" id="comment" name="com_content"></textarea>
+		<textarea class="form-control" rows="5" id="comment" name="com_content" placeholder="댓글을 작성해주세요."></textarea>
 		<input type="submit" value="작성" id="subBtn">
 		<input type="button" value="뒤로" id="backBtn">
 	</form>
@@ -55,6 +54,16 @@
 		<tr>
 			<td><hr /><h5>${cdto.name}</h5></td>
 			<td><hr />${cdto.com_date}</td>
+			<c:choose>
+					<c:when test="${sessionScope.memberInfo.name eq cdto.name}">
+						<td style="text-align: right;">
+							<hr />
+							<a href="">수정</a>
+							<a href="">삭제</a>
+							<input type="hidden" name="cno" value="${cdto.cno}" />
+						</td>
+					</c:when>
+			</c:choose>
 		</tr>
 		<tr>
 			<td colspan="2">${cdto.com_content}<br /><br /></td>

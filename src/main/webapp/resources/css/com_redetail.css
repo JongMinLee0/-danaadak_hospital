@@ -17,3 +17,17 @@ body > div.comm_body > div.content_wrap > div > table{
 .comment_table{
 	width: 100% !important;
 }
+
+/* 댓글 수정 삭제   */
+body > div.comm_body > div.content_wrap > div.comment_wrap > table > tbody > tr td a{
+	text-decoration: none;
+	color: black;
+}
+body > div.comm_body > div.content_wrap > div.comment_wrap > table > tbody > tr td a:hover{
+	font-weight: bold;
+}
+/* 
+#comment{
+	width: 90%;
+	margin: auto;
+} */

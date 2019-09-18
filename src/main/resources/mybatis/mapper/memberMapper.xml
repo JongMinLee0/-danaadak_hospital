@@ -13,4 +13,12 @@
 		SELECT * FROM member WHERE username = #{username}
     </select>
     
+    <select id="kakaoChk" resultType="int" parameterType="com.dana.hos.member.module.MemberDTO">
+    	select count(*) from member where kakao_id = #{kakao_id}
+    </select>
+    
+    <select id="kakaoLogin" resultType="com.dana.hos.member.module.MemberDTO" parameterType="com.dana.hos.member.module.MemberDTO">
+    	select username, password from member where kakao_id = #{kakao_id}
+    </select>
+    
 </mapper>

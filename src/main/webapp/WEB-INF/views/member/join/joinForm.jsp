@@ -21,6 +21,10 @@
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript" src="/hos/resources/js/join.js"></script>
 
+<script type="text/javascript">
+	history.replaceState({}, null, location.pathname);
+</script>
+
 </head>
 
 <body id="register">
@@ -35,27 +39,30 @@
 		<div class="about-bottom main-agile book-form">
 			<form action="/hos/join/join" method="post">
 				<div class="form-date-w3-agileits">
-					<label> ID </label> 
-					<input type="text" id="username" name="username" placeholder="Your ID" required=""> 
-					<label> Password </label> 
-					<input type="password" id="password" name="password" placeholder="Your Password" required="">
-					<input type="password" id="passwordConfirm" name="passwordConfirm" placeholder="Confirm Password" required="">
-					<label> Name </label>
-					<input type="text" id="name" name="name" placeholder="Your Name" required="">
-					<label> Address</label> 
+					<input type="hidden" id="kakao_id" name="kakao_id" value="${param.kakao_id }">
+					<label>아이디</label> 
+					<input type="text" id="username" name="username" placeholder="아이디를 입력해주세요" required="" value="${param.id }"> 
+					<label>패스워드</label> 
+					<input type="password" id="password" name="password" placeholder="비밀번호" required="" >
+					<input type="password" id="passwordConfirm" name="passwordConfirm" placeholder="비밀번호 확인" required="">
+					<label>이름</label>
+					<input type="text" id="name" name="name" placeholder="이름" required="" value="${param.name }" >
+					<label>병원이름</label>
+					<input type="text" id="hosname" name="hosname" placeholder="병원명" required="" >
+					<label>주소</label> 
 					<div id="address">
 						<input type="text" name="address" id="postcode" placeholder="우편번호" class="address_form mini" onclick="execDaumPostcode()">
 						<input type="button" onclick="execDaumPostcode()" class="address_form mini" value="우편번호 찾기"><br>
 						<input type="text" name="address" id="roadAddress" placeholder="도로명주소">
 						<input type="text" name="address" id="detailAddress" placeholder="상세주소">
 					</div>
-					<label> Gender</label> 
+					<label>성별</label> 
 					<div>
-						<input type="radio" name="gender" value="0">남자
+						<input type="radio" name="gender" value="0" checked="checked" >남자
 						<input type="radio" name="gender" value="1" style="margin-left: 150px">여자
 					</div>
 
-					<label for="yy"> Birth</label>
+					<label for="yy">생년월일</label>
 					<div class="birthday">
 						<div class="bir_wrap">
 							<div class="bir_yy">
@@ -88,10 +95,10 @@
 					</div>
 
 
-					<label> Phone</label> 
+					<label>전화번호</label> 
 					<div>
 						<input value="+82" id="country_code" type="hidden"/>
-						<input placeholder="phone number" id="phone_number" name="phone" value="" onclick="phoneAuth(); "/>
+						<input placeholder="전화번호" id="phone_number" name="phone" value="" onclick="phoneAuth(); "/>
 						<span id="phone_auth_finish" style="display: none">번호 인증 완료</span>
 					</div>
 

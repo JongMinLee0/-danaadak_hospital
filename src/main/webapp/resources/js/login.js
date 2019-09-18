@@ -29,32 +29,6 @@ $(document).ready(function() {
 
 });
 
-function setAuthorizationCode(code) {
-	var params = {
-		grant_type : "authorization_code",
-		code : code,
-		client_id : f90d0bc90a5a0e00f6930fef7657156e,
-		redirect_uri : 'http://localhost:8090/auth'
-	};
-
-	$.ajax({
-		type : "POST",
-		dataType : "json",
-		url : tokenRequestUrl,
-		data : params
-	}).success(function(data) {
-		setAuthObj(data);
-	}).error(function(jqXHR, error) {
-		var errorJson = JSON.parse(jqXHR.responseText);
-		console.log(errorJson);
-		if (errorJson.msg && /callerIp/.test(errorJson.msg))
-			$('#ip-auth-error-alert').modal('show');
-		else if (errorJson.msg)
-			authErrorAlert(errorJson.msg)
-		else
-			authErrorAlert('인증 중 에러가 발생하였습니다. 잠시 후 다시 시도해 주세요.')
-	});
-}
 
 // 카카오 로그인
 function kakaoLogin(kakao_id, email, userNickName) {
@@ -83,13 +57,34 @@ function kakaoLogin(kakao_id, email, userNickName) {
 							+ nickname + '&kakao_id=' + kakao_id;
 				}
 			} else {
-				location.href = document.referrer;
+				kakaoLoginAction(kakao_id);
 			}
 		}
 	});
 	return;
 
 }
+
+// 카카오로 회원가입한 사람일 때
+function kakaoLoginAction(kakao_id){
+	$.ajax({
+		type : 'POST',
+		dataType : 'json',
+		url : '/hos/kakao_login_action',
+		data : 'kakao_id=' + kakao_id,
+		success : function(res) {
+			login(res.username, res.password);
+		}
+	});
+}
+
+function login(username, password){
+	$('#username').val(username);
+	$('#password').val(password);
+	
+	$('#login').click();
+}
+
 
 // 회원구분 버튼
 function wloginCont(id, obj) {

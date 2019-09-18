@@ -17,4 +17,8 @@
     	select count(*) from member where kakao_id = #{kakao_id}
     </select>
     
+    <select id="kakaoLogin" resultType="com.dana.hos.member.module.MemberDTO" parameterType="com.dana.hos.member.module.MemberDTO">
+    	select username, password from member where kakao_id = #{kakao_id}
+    </select>
+    
 </mapper>

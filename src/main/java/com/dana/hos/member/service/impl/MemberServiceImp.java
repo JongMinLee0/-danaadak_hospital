@@ -36,6 +36,11 @@ public class MemberServiceImp implements MemberService {
 		return memberDAO.kakaoChkMethod(kakao_id);
 	}
 
+	@Override
+	public MemberDTO kakaoLoginProcess(String kakao_id) {
+		return memberDAO.kakaoLoginMethod(kakao_id);
+	}
+
 
 
 }

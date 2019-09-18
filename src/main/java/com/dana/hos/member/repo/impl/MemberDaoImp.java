@@ -35,5 +35,11 @@ public class MemberDaoImp implements MemberDAO {
 	public int kakaoChkMethod(String kakao_id) {
 		return sqlSession.selectOne("member.kakaoChk", kakao_id);
 	}
+
+	@Override
+	public MemberDTO kakaoLoginMethod(String kakao_id) {
+		System.out.println(kakao_id);
+		return sqlSession.selectOne("member.kakaoLogin", kakao_id);
+	}
 	
 }

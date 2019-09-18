@@ -40,15 +40,15 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value = "/kakao_login")
-	public @ResponseBody ModelAndView kakao_login(ModelAndView mav, MemberDTO dto) {
-		int chk = memberservice.kakaoChkProcess(dto.getKakao_id());
-		
-		mav.addObject("res", chk);
-		mav.setViewName("member/login/loginForm");
-		
-		return mav;
+	public @ResponseBody int kakao_login(MemberDTO dto) {
+		return memberservice.kakaoChkProcess(dto.getKakao_id());
 	}
 	
+	@RequestMapping(value = "/kakao_login_action")
+	public @ResponseBody MemberDTO kakao_login_action(MemberDTO dto) {
+		System.out.println(memberservice.kakaoLoginProcess(dto.getKakao_id()).getUsername());
+		return memberservice.kakaoLoginProcess(dto.getKakao_id());
+	}
 
 	@RequestMapping(value = "/login/accessDenied", method = RequestMethod.GET)
 	public String accessDenied() {

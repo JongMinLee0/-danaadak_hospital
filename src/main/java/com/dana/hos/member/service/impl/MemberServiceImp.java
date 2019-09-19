@@ -1,8 +1,11 @@
 package com.dana.hos.member.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.dana.hos.map.module.HosDTO;
 import com.dana.hos.member.module.MemberDTO;
 import com.dana.hos.member.repo.MemberDAO;
 import com.dana.hos.member.service.MemberService;
@@ -39,6 +42,11 @@ public class MemberServiceImp implements MemberService {
 	@Override
 	public MemberDTO kakaoLoginProcess(String kakao_id) {
 		return memberDAO.kakaoLoginMethod(kakao_id);
+	}
+
+	@Override
+	public List<HosDTO> findHospitalProcess(String keyword) {
+		return memberDAO.findHospitalMethod(keyword);
 	}
 
 

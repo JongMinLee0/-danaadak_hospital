@@ -1,5 +1,8 @@
 package com.dana.hos.member.repo;
 
+import java.util.List;
+
+import com.dana.hos.map.module.HosDTO;
 import com.dana.hos.member.module.MemberDTO;
 
 public interface MemberDAO {
@@ -7,4 +10,5 @@ public interface MemberDAO {
 	public MemberDTO getUserInfo(String username);
 	public int kakaoChkMethod(String kakao_id);
 	public MemberDTO kakaoLoginMethod(String kakao_id);
+	public List<HosDTO> findHospitalMethod(String keyword);
 }

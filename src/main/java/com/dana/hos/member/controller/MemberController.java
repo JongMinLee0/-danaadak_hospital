@@ -1,5 +1,7 @@
 package com.dana.hos.member.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.dana.hos.map.module.HosDTO;
 import com.dana.hos.member.module.MemberDTO;
 import com.dana.hos.member.service.MemberService;
 
@@ -71,6 +74,12 @@ public class MemberController {
 	@RequestMapping(value = "/join/phone", method = RequestMethod.GET)
 	public String phone(Model model) {
 		return "member/join/phone";
+	}
+	
+	@RequestMapping(value = "/join/findHos", method = RequestMethod.POST)
+	public @ResponseBody List<HosDTO> replyListPage(String keyword){
+		System.out.println(keyword);
+		return memberservice.findHospitalProcess(keyword);
 	}
 
 

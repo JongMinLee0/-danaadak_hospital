@@ -41,7 +41,7 @@
 				<div class="login_box">
 					
 				<div class="login_type">
-					<button type="button" class="active" id="perBtn" onclick="wloginCont('perForm',this)">개인회원</button><button type="button" class="" id="comBtn" onclick="wloginCont('comForm',this)">기업회원</button>
+					<button type="button" class="active" id="perBtn" onclick="wloginCont('perForm',this)">개인회원</button><button type="button" class="" id="comBtn" onclick="wloginCont('comForm',this)">병원회원</button>
 				</div>
 				
 					<div class="input_login">

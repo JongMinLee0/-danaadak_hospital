@@ -45,8 +45,14 @@ public class ChatRoomController {
 	// 채팅방 생성
 	@PostMapping("/room")
 	@ResponseBody
-	public ChatRoom createRoom(@RequestParam String name) {
-		return chatRoomRepository.createChatRoom(name);
+	public ChatRoom createRoom(@RequestParam String name1, @RequestParam String name2) {
+		boolean exist = chatRoomRepository.existRoom(name1, name2);
+		
+		// 이미 존재하는 경우라면
+		if(exist) {
+			return new ChatRoom().existCreate();
+		}
+		return chatRoomRepository.createChatRoom(name1, name2);
 	}
 
 	// 채팅방 입장 화면

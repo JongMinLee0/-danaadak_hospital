@@ -19,6 +19,45 @@ $(document).ready(function() {
 	var year = $('#yy').val();
 	var month = $('#mm').val();
 	var day = $('#dd').val();
+	
+	$('#hos_name').on('keyup', function(){
+		if($('#hos_name').val() != ""){
+			$('.list-group').css({
+				'display' : 'block'
+			});
+			$.ajax({
+				type : 'POST',
+				dataType : 'json',
+				url : '/hos/join/findHos',
+				data : 'keyword=' + $('#hos_name').val(),
+				success : function(res) {
+					console.log(res);
+					if(res.length != 0){
+						appendHospital(res);
+					}
+					
+				}
+			});
+		}else{
+			$('.list-group').css({
+				'display' : 'none'
+			});
+		}
+		
+	});
+	
+	$(document).on('click','.hosResult',function(){
+		var index = $(this).index();
+		var hosId = $('#hosid').eq(index).val();
+		var hosName = $('.m-0').eq(index).text();
+
+		$('.list-group').css({
+			'display' : 'none'
+		});
+		
+		$('#hos_id').val(hosId);
+		$('#hos_name').val(hosName);
+	}); 
 
 });
 
@@ -117,4 +156,15 @@ function phoneAuth() {
 	var name = "phone auth";
 	var option = "width = 500, height = 500, top = 100, left = 200, location = no"
 	window.open(url, name, option);
+}
+
+function appendHospital(res) {
+	$('.hosResult').remove();
+	for (var i = 0; i < res.length; i++) {
+		$('.list-group').append('<div class="hosResult list-group-item list-group-item-action">'
+				+'<p class="m-0" >'+res[i].hos_name+'</p>'
+				+'<small class="text-muted">'+res[i].hos_address+'</small>'
+				+'<input type="hidden" id="hosid" value="'+res[i].hos_id+'">'
+				+'</div>');
+	}
 }

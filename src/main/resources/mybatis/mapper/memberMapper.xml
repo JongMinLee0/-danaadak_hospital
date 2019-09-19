@@ -21,4 +21,8 @@
     	select username, password from member where kakao_id = #{kakao_id}
     </select>
     
+     <select id="findHospital" resultType="com.dana.hos.map.module.HosDTO" parameterType="string">
+    	select hos_id, hos_name, hos_address from hospital where hos_name LIKE '%' ||#{keyword} || '%'
+    </select>
+    
 </mapper>

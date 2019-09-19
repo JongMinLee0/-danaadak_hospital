@@ -1,9 +1,12 @@
 package com.dana.hos.member.repo.impl;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.dana.hos.map.module.HosDTO;
 import com.dana.hos.member.module.MemberDTO;
 import com.dana.hos.member.repo.MemberDAO;
 
@@ -40,6 +43,11 @@ public class MemberDaoImp implements MemberDAO {
 	public MemberDTO kakaoLoginMethod(String kakao_id) {
 		System.out.println(kakao_id);
 		return sqlSession.selectOne("member.kakaoLogin", kakao_id);
+	}
+
+	@Override
+	public List<HosDTO> findHospitalMethod(String keyword) {
+		return sqlSession.selectList("member.findHospital", keyword);
 	}
 	
 }

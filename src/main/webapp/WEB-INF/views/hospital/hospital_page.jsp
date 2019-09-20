@@ -14,7 +14,7 @@
 <link rel="stylesheet" href="resources/css/bootstrap.min.css" />
 <link rel="stylesheet" href="resources/css/home.css" />
 <link rel="stylesheet" href="resources/css/hospital_main.css" />
-
+<script type="text/javascript" src="/hos/resources/js/hospital_main.js"></script>
 <script type="text/javascript" src="/hos/resources/js/home.js"></script>
 
 
@@ -61,6 +61,10 @@
 	</table>
 </div>
 	</form>
+	<form id="evn_regi" action="" >
+		<input type="button" id="event_regi"value="이벤트 접수하기" >
+	</form>	
+		
 </body>
 	<jsp:include page="/WEB-INF/views/fragments/footer.jsp" />
 </html>

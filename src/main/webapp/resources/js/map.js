@@ -329,7 +329,9 @@ function displayInfowindow(marker, title, searchs) {
 //	// content의 내용을 인포윈도우에 등록
 	infowindow.setContent(content);
 	infowindow.open(map, marker);
-	$('#hos_name').html('<h4>'+searchs.hos_name+'</h4><input type="hidden" value="'+searchs.hos_id+'"id="hos_id" name="hos_id"  readonly="readonly">');
+	$('#hos_info').html('<h4>'+searchs.hos_name+
+			'</h4><input type="hidden" value="'+searchs.hos_id+'"id="hos_id" name="hos_id"  readonly="readonly">'+
+			'<input type="hidden" value="'+searchs.hos_name+'"id="hos_name" name="hos_name">');
 }
 
 // 검색결과 목록의 자식 Element를 제거하는 함수입니다

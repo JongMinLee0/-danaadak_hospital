@@ -16,43 +16,29 @@ public class NoticeDTO {
 
 	}
 
-	
-	
 	public int getRownum() {
 		return rownum;
 	}
-
-
 
 	public void setRownum(int rownum) {
 		this.rownum = rownum;
 	}
 
-
-
 	public int getPre() {
 		return pre;
 	}
-
-
 
 	public void setPre(int pre) {
 		this.pre = pre;
 	}
 
-
-
 	public int getNext() {
 		return next;
 	}
 
-
-
 	public void setNext(int next) {
 		this.next = next;
 	}
-
-
 
 	public int getNum() {
 		return num;

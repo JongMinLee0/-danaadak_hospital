@@ -18,7 +18,7 @@ $(document).ready(function(){
 				}
 			},
 			fOnAppLoad : function(){
-				// 기존 저장된 내용의 text애용을 에디터 상에 뿌려주고자 할 때 사용
+				// 기존 저장된 내용의 text내용을 에디터 상에 뿌려주고자 할 때 사용
 				oEditors.getById["smart"].exec("PASTE_HTML", [""]);
 			},
 			fCreator: "createSEditor2"

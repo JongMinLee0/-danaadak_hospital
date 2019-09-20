@@ -78,7 +78,7 @@ public class NoticeDaoImp implements NoticeDAO{
 		return sqlSession.selectOne("notice.rownumfind", num);
 	}
 
-	
+
 }//end class
 
 

@@ -44,11 +44,11 @@
 		<!-- 테이블 -->
 		<div id="table_wrap">
 			<!-- 글쓰기버튼 -->
-		<%-- 	<c:if test="">
+			
 			<form id="frm" name="frm" method="get" action="noticewrite">
 			 	<input type="submit" id="btnWrite" value="글쓰기닷">
 			</form>
-			</c:if>  --%>
+			
 		
 			<table class="table table-hover" id="title">
 				<thead>
@@ -67,7 +67,8 @@
 						<td><c:url var="path" value="noticeview">
 								<c:param name="currentPage" value="${pg.currentPage }" />
 								<c:param name="num" value="${dto.num }" />
-							</c:url> <a href="${path }">${dto.subject }</a></td>
+							</c:url> 
+							<a href="${path }">${dto.subject }</a></td>
 						<td><fmt:formatDate value="${dto.reg_date }"
 								pattern="yyyy.MM.dd" /></td>
 						<td>${dto.readcount }</td>

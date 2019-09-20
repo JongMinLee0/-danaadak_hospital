@@ -3,10 +3,12 @@ package com.dana.hos.notice.controller;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,6 +16,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
@@ -22,6 +26,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.dana.hos.notice.module.NoticeDTO;
 import com.dana.hos.notice.module.PageDTO;
 import com.dana.hos.notice.serivce.NoticeService;
+
 
 @ComponentScan("com.dana.hos")
 @Controller
@@ -68,16 +73,19 @@ public class NoticeController {
 
 	@RequestMapping("/noticeview")
 	public ModelAndView viewMethod(int currentPage, NoticeDTO dto, ModelAndView mav) {
-
+		System.out.println("빌드가 안돼..");
+		
 		dto.setRownum(noticeService.rownumfindProcess(dto.getNum()));
 		dto.setPre(dto.getRownum()-1);
 		dto.setNext(dto.getRownum()+1);
-		         
-		
+	
 		mav.addObject("prenext", noticeService.prenextProcess(dto));
 		mav.addObject("dto", noticeService.contentProcess(dto.getNum()));
 		mav.addObject("currentPage", currentPage);
+		mav.addObject("rownum", dto.getRownum());
+		
 		mav.setViewName("notice/view");
+		
 		return mav;
 
 	}// end viewMethod()/////////////////////////////////
@@ -91,13 +99,52 @@ public class NoticeController {
 	
 	@RequestMapping(value = "/noticewrite", method = RequestMethod.POST)
 	public String writeMethod(MultipartFile filename, NoticeDTO dto, HttpServletRequest request) throws Exception {
+		fileUpdate(dto, request);
 		
-		dto.setUpload(filename.getOriginalFilename());
+	//	dto.setUpload(filename.getOriginalFilename());
 		noticeService.insertProcess(dto);
 		
 		return "redirect:/noticelist";
 	}
 	
+	public void fileUpdate(NoticeDTO dto, HttpServletRequest request ) {
+		String filename = noticeService.fileSelectProcess(dto.getNum());
+		String root = request.getSession().getServletContext().getRealPath("/");
+
+		String saveDirectory = root + "temp" + File.separator;
+		File fe = new File(saveDirectory);
+		
+		System.out.println(saveDirectory);
+		
+		if(!fe.exists())
+			fe.mkdir();
+		// 수정할 첨부파일
+		MultipartFile file = dto.getFilename();
+		
+		//수정한 첨부파일이 있으면
+		if(!file.isEmpty()) {
+			//중복파일을 처리하기 위해 난수 발생
+			UUID random = UUID.randomUUID();
+			//기존 첨부파일이 있으면 기존첨부파일을 제거시켜줘라
+			if(filename !=null) {
+				File fi = new File(saveDirectory, filename);
+				fe.delete();
+			}
+			
+			String fileName = file.getOriginalFilename();
+			dto.setUpload(random + "_" +fileName);
+			File ff = new File (saveDirectory, random + "_" +fileName);
+			
+			try {
+				FileCopyUtils.copy(file.getInputStream(), new FileOutputStream(ff));
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		
+	}//end fileupdate()/////////////////////////////
+	
+
 //http://localhost:8090/hos/noticelist
 	@RequestMapping(value = "/noticeupdate", method = RequestMethod.GET)
 	public ModelAndView updateMethod(int num, int currentPage, ModelAndView mav) {
@@ -140,57 +187,11 @@ public class NoticeController {
 		return mav;
 	}// end deleteMehtod()//////////////////
 
-/*	public void fileDownload(HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException {
-		String path = request.getSession().getServletContext().getRealPath("저장경로");
+	@RequestMapping("/contentdownload")
+	public ModelAndView downMethod(int num, ModelAndView mav) {
+		mav.addObject("num", num);
+		mav.setViewName("download");
+		return mav;
 		
-		String filename = request.getParameter("fileName");
-		String downname= request.getParameter("downName");
-		String realPath= "";
-		System.out.println("downname:" +downname);
-		if(filename == null || "".equals(filename)) {
-			filename = downname;
-		}
-		 try {
-	            String browser = request.getHeader("User-Agent"); 
-	            //파일 인코딩 
-	            if (browser.contains("MSIE") || browser.contains("Trident")
-	                    || browser.contains("Chrome")) {
-	                filename = URLEncoder.encode(filename, "UTF-8").replaceAll("\\+",
-	                        "%20");
-	            } else {
-	                filename = new String(filename.getBytes("UTF-8"), "ISO-8859-1");
-	            }
-	        } catch (UnsupportedEncodingException ex) {
-	            System.out.println("UnsupportedEncodingException");
-	        }
-	        realPath = path +"/" +downname.substring(0,4) + "/"+downname;
-	        System.out.println(realPath);
-	        File file1 = new File(realPath);
-	        if (!file1.exists()) {
-	            return ;
-	        }
-	         
-	        // 파일명 지정        
-	        response.setContentType("application/octer-stream");
-	        response.setHeader("Content-Transfer-Encoding", "binary;");
-	        response.setHeader("Content-Disposition", "attachment; filename=\"" + filename + "\"");
-	        try {
-	            OutputStream os = response.getOutputStream();
-	            FileInputStream fis = new FileInputStream(realPath);
-	 
-	            int ncount = 0;
-	            byte[] bytes = new byte[512];
-	 
-	            while ((ncount = fis.read(bytes)) != -1 ) {
-	                os.write(bytes, 0, ncount);
-	            }
-	            fis.close();
-	            os.close();
-	        } catch (FileNotFoundException ex) {
-	            System.out.println("FileNotFoundException");
-	        } catch (IOException ex) {
-	            System.out.println("IOException");
-	        }
-	    }
-	*/
+	}
 }// end class

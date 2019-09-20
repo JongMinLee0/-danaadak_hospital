@@ -1,11 +1,7 @@
 package com.dana.hos.reserve.controller;
 
-import java.security.Principal;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,7 +13,6 @@ import com.dana.hos.reserve.module.ReserveDTO;
 import com.dana.hos.reserve.service.ReserveService;
 import com.dana.hos.reserve.service.impl.ReserveServiceImp;
 
-import ch.qos.logback.core.net.SyslogOutputStream;
 
 //http://localhost:8090/myproject/reserve.do
 @Controller

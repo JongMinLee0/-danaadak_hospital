@@ -4,11 +4,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<jsp:include page="/WEB-INF/views/fragments/nav_bar.jsp" />
+<%-- <jsp:include page="/WEB-INF/views/fragments/nav_bar.jsp" /> --%>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script type="text/javascript" src="resources/js/bootstrap.min.js"></script>
@@ -16,10 +14,12 @@
 <link rel="stylesheet" href="resources/css/home.css" />
 <script type="text/javascript" src="/hos/resources/js/home.js"></script>
 <link rel="stylesheet" href="resources/css/hospital_view.css" />
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
 <!-- hospital_view jquery -->
-<script type="text/javascript" src="/hos/resources/js/hospital_upt.js"></script>
+<script type="text/javascript" src="/hos/resources/js/hospital_view.js"></script>
 </head>
 <body>
+		<!--진료 상태 업데이트   -->
 	<form action="re_stateUpdate" method="post" id="frm">
 	<span id="sub_wrap">환자 진료 및 처방전 부여</span>
 	<table>
@@ -36,17 +36,19 @@
 		
 		</table>
 	</form>	
-		<form id="rec_frm" name="rec_frm" >
+	<i class="fa fa-pencil-square-o" id="rec_btn">처방전 작성</i>
+	<!--처방전 insert  -->
 		<div id="insert_modal">
+		<form id="rec_frm" name="rec_frm" method="post">
 			<span id="rec_top">처방전</span>
 			<table id="insert_rec">
 				<tr>
 					<th>발급일</th> 
-					<td><input type="date"></td>
+					<td>${param.re_date }</td>
 				</tr>
 				<tr>
 					<th>병원명 </th>
-					<td><input type="text" name="hos_id" value="${param.hos_id}"></td>
+					<td><input type="text" name="hos_name" value="sessionScope로 받을꺼다 "></td>
 				</tr>				
 				<tr>
 					<th>환자명</th>
@@ -54,26 +56,26 @@
 				</tr>
 				<tr>
 					<th>복용 횟수</th>
-					<td><input type="text" name="cnt" value=""></td>
+					<td><input type="text" name="eat_cnt"></td>
 				</tr>
 				<tr>
-					<th>처방 받은 약</th>
-					<td><input type="text" name="medecine">
-						<input type="text" name="medecine">
-						<input type="text" name="medecine">
-						<input type="text" name="medecine">
-						<input type="text" name="medecine"></td>
+				<th>처방 받을 약</th>
+				<td><p>	<input type="text" id="first" name="medicine">
+					<i class="fa fa-plus" id="add_input"></i></p> </td>
 				</tr>
 				<tr>
-				<td><input type="button" value="환자에게 처방전 보내기"/></td>
+				
+				<td colspan="2"><input type="button" id="recipe_ins" value="환자에게 처방전 보내기"/></td>
 				</tr>
+				
 			</table>
-			</div>	
 		</form>
+			</div>	
 		
 		
 		<!-- 최종 제출 -->
 		<input type="button" id="update" value="제출"/> 
 </body>
+
 <jsp:include page="/WEB-INF/views/fragments/footer.jsp" />
 </html>

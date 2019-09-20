@@ -10,8 +10,6 @@ margin-left: 100px;
 	width: 0px;
 	height: 0px;
 }
-
-/* 처방전 modal 보이기  */
 .recShow{
 	width: 70%;
 	height: 500px;
@@ -20,7 +18,16 @@ margin-left: 100px;
 #rec_top, #sub_wrap{
 	background-color: yellow;
 }
-td{
-	margin : 20px;
+#add_input {
+	font-size: 20px; !important;
 }
-
+#rec_btn{
+	font-size: 30px;
+	text-decoration: underline;
+	cursor: pointer;
+}
+input[type=text]{
+	background: none;
+	border : 0px;
+	border-bottom: 1px solid black;
+}

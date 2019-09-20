@@ -10,5 +10,5 @@ public interface HospitalDAO {
 	public List<ReserveDTO> bookListMethod(ReserveDTO dto);
 	public List<ReserveDTO> contentMethod(String username);
 	public void updateMethod(ReserveDTO dto);
-
+	public void recInsertMethod(ReserveDTO dto);
 }//end 

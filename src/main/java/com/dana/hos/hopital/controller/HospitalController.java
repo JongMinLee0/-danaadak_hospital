@@ -51,4 +51,10 @@ public class HospitalController {
 		mav.setViewName("hospital/view");
 		return mav;
 	}
+	
+	@RequestMapping(value="/event_register", method=RequestMethod.GET)
+	public ModelAndView eventInsertMethod(ModelAndView mav) {
+		mav.setViewName("hospital/eventRegister");
+		return mav;
+	}
 }//end class 

@@ -16,6 +16,14 @@
 <link rel="stylesheet" href="/hos/resources/css/reserve.css" />
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
+
+<!-- // jQuery UI CSS파일  -->
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />  
+<!-- // jQuery 기본 js파일 -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>  
+<!-- // jQuery UI 라이브러리 js파일 -->
+<script src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>  
+
 <script
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f75d9f5f6c8fa127a77134992a06e786&libraries=services"></script>
 </head>
@@ -87,7 +95,7 @@
 		<div id="insertModal">
 			<table id="hos_table">
 				<tr>
-					<th id="hos_name" colspan="2">
+					<th id="hos_info"colspan="2">
 						<!-- jquery로 병원이름 받음 -->
 					</th>
 				</tr>
@@ -116,7 +124,7 @@
 				</tr>
 				<tr>
 					<th>전달 할 메세지</th>
-					<td><textarea id="message" name="message" cols="30" rows="5"></textarea></td>
+					<td><textarea id="message" name="message" cols="30"></textarea></td>
 				</tr>
 				<tr>
 					<td><input type="button" id="submitBtn" class="reserve_btn"

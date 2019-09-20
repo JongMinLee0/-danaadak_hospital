@@ -29,6 +29,11 @@ $(document).ready(function(){
 		  );
 	 });
 	
+	$('#re_date').on('click',function(){
+		alert('달력눌렀니? ')
+		calendar();
+	});
+	
 	//예약시간 가능 여부 확인 위한 ajax !!!!
 	$('#time_chk').on('click',function(){
 		//선택한 예약날짜와 예약시간 받기 
@@ -91,8 +96,8 @@ $(document).ready(function(){
 			swal('선택하신 시간은 예약가능한 시간이 아닙니다.');
 			return false;
 		}else{
-			swal($('#hos_id').val()+'\n'
-					+$('#id').val()+'님'+'\n'
+			swal($('#hos_name').val()+'\n'
+					+$('#username').val()+'님'+'\n'
 					+$('#category').val()+'\n'
 					+$('#re_date').val()+'에    '+$('#re_time').val()+'  예약이 완료되었습니다.').then(function(){
 				$('#frm').submit();

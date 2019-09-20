@@ -1,5 +1,7 @@
 package com.dana.hos.myinfo.controller;
 
+import java.security.Principal;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -11,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.dana.hos.member.module.MemberDTO;
 import com.dana.hos.myinfo.service.MyinfoService;
+import com.dana.hos.reserve.module.ReserveDTO;
 
 @Controller
 public class MyInfoController {
@@ -18,12 +21,17 @@ public class MyInfoController {
 	@Autowired
 	private MyinfoService myinfoService;
 	
+	private ReserveDTO rdto;
+	
 	//마이페이지 메인
 	@RequestMapping("/myinfo/myinfomain")
-	public String process() {
-		return "/myinfo/myinfomain";
+	public ModelAndView process(ModelAndView mav, Principal principal) {
+		mav.addObject("myres", myinfoService.myresListProcess(principal.getName()));
+	//	System.out.println(myinfoService.myresListProcess(principal.getName()).get(0).getHos_name());
+		mav.setViewName("/myinfo/myinfomain");
+		return mav;
 	}
-	
+
 	//내 정보 페이지
 	@RequestMapping(value="/myinfo/memInfo", method=RequestMethod.GET)
 	public String memInfo() {
@@ -32,8 +40,10 @@ public class MyInfoController {
 	
 	//내 예약 조회
 	@RequestMapping("/myinfo/myResInfo")
-	public String myResInfo() {
-		return "/myinfo/myResInfo";
+	public ModelAndView myResInfo(ModelAndView mav, Principal principal) {
+		mav.addObject("myres", myinfoService.myresListProcess(principal.getName()));
+		mav.setViewName("/myinfo/myResInfo");
+		return mav;
 	}
 	
 	//내 처방전 목록
@@ -57,12 +67,12 @@ public class MyInfoController {
 	//마이페이지 수정
 	@RequestMapping(value="/myinfo/myinfoupdate", method=RequestMethod.POST)
 	public String updateProc(MemberDTO dto, HttpServletRequest request) {
-		System.out.println(dto.getUsername());
+		//System.out.println(dto.getUsername());
 		dto.setBirth(dto.getBirth().replaceAll(",", ""));
 		myinfoService.myinfoUpdateProcess(dto);
 		HttpSession session = request.getSession();
 		session.setAttribute("memberInfo", dto);
 		return "/myinfo/myinfomain";
 	}
-	
+
 }//end class

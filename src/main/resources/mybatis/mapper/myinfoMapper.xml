@@ -8,8 +8,21 @@
 		update member set password=#{password}, address=#{address}, 
 		phone=#{phone}, birth=#{birth} where username=#{username}
 	</update>
-
+	
+	<!-- 아이디 기준 멤버 테이블 보기 -->
     <select id="selectUserById" resultType="com.dana.hos.member.module.MemberDTO">
 		SELECT * FROM member WHERE username = #{username}
     </select>
+    
+    <!-- <select id="myresList"  resultType="com.dana.hos.reserve.module.ReserveDTO" parameterType="string">
+		select r.*, h.hos_name 
+		from reserve r, hospital h 
+		WHERE r.username = #{username} and r.hos_id = h.hos_id 
+		order by re_date, re_time
+	</select> -->
+	<select id="myresList"  resultType="com.dana.hos.reserve.module.ReserveDTO" parameterType="string">
+		select * from reserve 
+		WHERE username = #{username} 
+		order by re_date, re_time
+	</select>
 </mapper>

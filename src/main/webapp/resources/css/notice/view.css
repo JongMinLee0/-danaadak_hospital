@@ -28,9 +28,9 @@ body>div.navbar>div {
 	position: absolute;
 	z-index: 2;
 	width: 100%;
-	height: 170%;
+	height: 200%;
 	background-color: white;
-	margin-top: 20%;
+	margin-top: 30%;
 }
 
 #form {
@@ -53,18 +53,20 @@ body>div.navbar>div {
 
 /* 공지사항 소개글 */
 #title{
-	
+	font-family: 'East Sea Dokdo', cursive;
 	position: absolute;
 	z-index: 2;
-	width: 100%;
-	height:50px;
 	color :black;
+	font-size: 90px;
 }
 
 #titletext{
-	border:1px solid red;
+	width: 100%;
+	height:50px;
 	position: absolute;
 	z-index: 2;
+	padding-top: 90px;
+	padding-left: 250px;
 }
 /* 제목글 */
 #subject {
@@ -117,11 +119,20 @@ body>div.navbar>div {
 	float: right;
 	margin-right: 50px;
 }
+
+/* 화면에 나오는 파일*/
+#image {
+	max-width: 50%;
+	margin: 50px;
+}
 /* 내용 */
 #content {
-	height: 1000px;
-	border: 1px solid black;
+	height: 80%;
+	/* border: 1px solid black; */
+	text-align: center;
+
 }
+
 
 /* 이전다음글 */
 #prenext{
@@ -131,12 +142,22 @@ body>div.navbar>div {
 	border-top: 1px solid #cccccc;
 	
 }
-#prenext_text{
+.prenext_pre{
 	border-bottom: 1px solid #cccccc;
 	margin-top: 20px;
 	height: 40px;
 }
-
+.prenext_next{
+	border-bottom: 1px solid #cccccc;
+	margin-top: 20px;
+	height: 40px;
+}
+#pre{
+	font-weight: bold;
+}
+#next{
+	font-weight: bold;
+}
 
 /* 리스트로 가는버튼 */
 #list {
@@ -145,16 +166,16 @@ body>div.navbar>div {
 	margin-right: 280px;
 }
 
-/* body>div.footer {
+/* footer */
+#wrap > div.footer{
 	position: absolute;
 	z-index: 3;
-	margin-top: 1850px;
+	margin-top: 20%;
 	background-color: #ccccff;
 }
-
-body>div.footer-content {
+#wrap > div.footer-content {
 	position: absolute;
 	z-index: 3;
-	margin-top: 1850px;
+	margin-top:15%;
 	background-color: #ccccff;
-} */
+} 

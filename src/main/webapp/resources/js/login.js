@@ -1,6 +1,43 @@
 $(document).ready(function() {
 	$("#username").focus();
 
+	var getParameters = function (paramName) {
+	    // 리턴값을 위한 변수 선언
+	    var returnValue;
+
+	    // 현재 URL 가져오기
+	    var url = location.href;
+
+	    // get 파라미터 값을 가져올 수 있는 ? 를 기점으로 slice 한 후 split 으로 나눔
+	    var parameters = (url.slice(url.indexOf('?') + 1, url.length)).split('&');
+
+	    // 나누어진 값의 비교를 통해 paramName 으로 요청된 데이터의 값만 return
+	    for (var i = 0; i < parameters.length; i++) {
+	        var varName = parameters[i].split('=')[0];
+	        if (varName.toUpperCase() == paramName.toUpperCase()) {
+	            returnValue = parameters[i].split('=')[1];
+	            return decodeURIComponent(returnValue);
+	        }
+	    }
+	}
+	
+	// console.log(getParameters('type'));
+	var typeParam = getParameters('type');
+//	alert(typeof typeParam);
+//	alert(typeParam == 'hospital');
+//	alert(typeParam == 'user');
+	
+	if(typeParam == 'user' || typeParam == ""){
+		$('#perBtn').click();
+	}
+	
+	if(typeParam == 'hospital'){
+		$('#hosBtn').click();
+	}
+	
+	
+	
+
 	if ($.cookie('id')) {
 		$('#username').val($.cookie('id'));
 		$('#save_id').prop('checked', 'true');
@@ -25,6 +62,14 @@ $(document).ready(function() {
 			};
 
 			$(this).submit();
+	});
+	
+	$('#perBtn').on('click',function() {
+		location.href = 'login?type=user';
+	});
+	
+	$('#hosBtn').on('click',function() {
+		location.href = 'login?type=hospital';
 	});
 
 });
@@ -53,7 +98,7 @@ function kakaoLogin(kakao_id, email, userNickName) {
 						nickname = "";
 					}
 
-					location.href = '/hos/join/joinForm?id=' + id + '&name='
+					location.href = '/hos/join/joinForm?type=user&id=' + id + '&name='
 							+ nickname + '&kakao_id=' + kakao_id;
 				}
 			} else {
@@ -88,8 +133,8 @@ function login(username, password){
 
 // 회원구분 버튼
 function wloginCont(id, obj) {
-	$('#perBtn,#comBtn').removeClass('active');
-	$('#perForm,#comForm').hide();
+	$('#perBtn,#hosBtn').removeClass('active');
+	$('#perForm,#hosForm').hide();
 
 	$(obj).addClass('active');
 

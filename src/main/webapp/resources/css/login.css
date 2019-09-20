@@ -114,7 +114,7 @@ html, body {
 	text-align: center;
 }
 
-.login_box .last #join {
+.login_box .last .join {
 	color: #00a6de;
 }
 

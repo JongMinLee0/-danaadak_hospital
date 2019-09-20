@@ -88,6 +88,7 @@
               confirmationResult.confirm(code).then(function () {
             	  opener.document.getElementById("phone_number").value = document.getElementById("phone-number").value.replace("+82 ","");
             	  opener.document.getElementById("phone_auth_finish").style.display = "inline";
+            	  opener.document.getElementById("phone_auth_button").style.display = "none";
 	              window.close();
               }).catch(function (error) {
                 // User couldn't sign in (bad verification code?)

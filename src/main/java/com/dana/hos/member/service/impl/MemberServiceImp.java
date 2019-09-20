@@ -30,6 +30,11 @@ public class MemberServiceImp implements MemberService {
 	}
 
 	@Override
+	public void hosjoinProcess(MemberDTO dto) {
+		memberDAO.hosjoinMedthod(dto);
+	}
+	
+	@Override
 	public MemberDTO userInfoProcess(String username) {
 		return memberDAO.getUserInfo(username);
 	}
@@ -48,6 +53,12 @@ public class MemberServiceImp implements MemberService {
 	public List<HosDTO> findHospitalProcess(String keyword) {
 		return memberDAO.findHospitalMethod(keyword);
 	}
+
+	@Override
+	public int usernameChkProcess(String username) {
+		return memberDAO.userNameChkMethod(username);
+	}
+
 
 
 

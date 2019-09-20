@@ -7,7 +7,7 @@ tr{
 	border-radius: 4px;
 }
 /*  text box*/
-td input[type=text] {
+#name, #cate, #re_date, #re_time, #message {
   border: 1px solid #007bff;
   height: 20px;
   border-radius: 4px;

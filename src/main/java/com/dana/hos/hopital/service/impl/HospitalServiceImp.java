@@ -15,11 +15,12 @@ public class HospitalServiceImp implements HospitalService {
 	@Autowired
 	private HospitalDAO hospitalDAO;
 
-	public void setHospitalDAO(HospitalDAO hospitalDAO) {
-		this.hospitalDAO = hospitalDAO;
-	}
 
 	public HospitalServiceImp() {
+		
+	}
+	public void setHospitalDAO(HospitalDAO hospitalDAO) {
+		this.hospitalDAO = hospitalDAO;
 	}
 
 	@Override
@@ -34,5 +35,10 @@ public class HospitalServiceImp implements HospitalService {
 	@Override
 	public void updateProcess(ReserveDTO dto) {
 		 hospitalDAO.updateMethod(dto);
+	}
+
+	@Override
+	public void recInsertProcess(ReserveDTO dto) {
+		hospitalDAO.recInsertMethod(dto);
 	}
 }//end class 

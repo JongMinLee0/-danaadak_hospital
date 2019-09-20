@@ -11,9 +11,19 @@ public class ReserveDTO {
 	private String hos_id;
 	private String medicine;
 	private String birth;
+	private String eat_cnt;
+	
 	
 	public ReserveDTO() {
 		// TODO Auto-generated constructor stub
+	}
+	
+	public String getEat_cnt() {
+		return eat_cnt;
+	}
+
+	public void setEat_cnt(String eat_cnt) {
+		this.eat_cnt = eat_cnt;
 	}
 
 	public String getRe_date() {

@@ -106,14 +106,13 @@
 				</tr>
 				<tr>
 					<th>진료항목</th>
-					<td><input type="text" id="category" name="category"　required="required"></td>
+					<td><input type="text" id="cate" name="category"required="required"></td>
 				</tr>
 				<tr>
 					<th>진&nbsp;료&nbsp;일</th>
-					<td><input type="text" id="re_date" name="re_date"
-						required="required"><br /> <select id="re_time"
-						name="re_time" required="required">
-					</select> <input type="button" id="time_chk" value="예약가능 시간 확인" /></td>
+					<td><input type="text" id="re_date" name="re_date"required="required"><br />
+					 <select id="re_time" name="re_time" required="required"></select> 
+					<input type="button" id="time_chk" value="예약가능 시간 확인" /></td>
 				</tr>
 				<tr>
 					<th>전달 할 메세지</th>

@@ -36,6 +36,11 @@ public class HospitalDaoImp implements HospitalDAO{
 	public void updateMethod(ReserveDTO dto) {
 		sqlSession.selectList("hos.upt",dto);
 	}
+
+	@Override
+	public void recInsertMethod(ReserveDTO dto) {
+		sqlSession.selectList("hos.ins",dto);
+	}
 	
 	
 }

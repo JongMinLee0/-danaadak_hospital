@@ -310,6 +310,7 @@ function displayInfowindow(marker, title, searchs) {
     '            '+searchs.hos_name+'' + 
     '            <div class="close" onclick="closeOverlay()" title="닫기"></div>' + 
     '        </div>' + 
+    '        <input type="hidden" value="'+searchs.hos_id+'">' + 
     '        <div class="body">' + 
     '            <div class="img">' +
     '                <img src="/hos/resources/images/hospital.jpg" width="73" height="70">' +
@@ -324,10 +325,11 @@ function displayInfowindow(marker, title, searchs) {
     '        </div>' + 
     '    </div>' +    
     '</div>';
+	
 //	// content의 내용을 인포윈도우에 등록
 	infowindow.setContent(content);
 	infowindow.open(map, marker);
-	$('#hos_name').html('<h4>'+searchs.hos_name+'</h4><input type="hidden" value="'+searchs.hos_name+'"id="hos_id" name="hos_id"  readonly="readonly">');
+	$('#hos_name').html('<h4>'+searchs.hos_name+'</h4><input type="hidden" value="'+searchs.hos_id+'"id="hos_id" name="hos_id"  readonly="readonly">');
 }
 
 // 검색결과 목록의 자식 Element를 제거하는 함수입니다

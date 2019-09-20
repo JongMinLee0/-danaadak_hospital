@@ -329,6 +329,13 @@
 		    <scope>test</scope>
 		</dependency>
 		  		
+		 <!-- 현재 시간을 구할 때 사용 -->
+		<dependency>
+		    <groupId>joda-time</groupId>
+		    <artifactId>joda-time</artifactId>
+		    <version>2.9.9</version>
+		</dependency>
+		 
 	</dependencies>
 	<build>
 		<plugins>

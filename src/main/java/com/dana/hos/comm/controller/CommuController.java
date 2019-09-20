@@ -1,5 +1,6 @@
 package com.dana.hos.comm.controller;
 
+import java.security.Principal;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -17,15 +18,27 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.dana.hos.chat.module.ChatList;
+import com.dana.hos.chat.repo.ChatRoomRepository;
+import com.dana.hos.chat.service.ChatService;
 import com.dana.hos.comm.module.CommentDTO;
 import com.dana.hos.comm.module.PageDTO;
 import com.dana.hos.comm.module.ReviewDTO;
 import com.dana.hos.comm.service.CommService;
 import com.dana.hos.comm.service.SmartPhotoService;
 
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
 @Controller
 @RequestMapping("/comm/")
 public class CommuController {
+	@Autowired
+	private final ChatRoomRepository chatRoomRepository;
+	
+	@Autowired
+	private final ChatService chatService;
+	
 
 	@Autowired
 	SmartPhotoService smartPhotoService;
@@ -61,14 +74,23 @@ public class CommuController {
 	public List<ReviewDTO> scrollReview(String page) {
 		int page2 = Integer.parseInt(page);
 		PageDTO pdto = new PageDTO(page2);
+		
 		/* mav.addAttribute("pList", commService.scrollList(pdto)); */
 		return commService.scrollList(pdto);
 	}
 
 	// 채팅 페이지
 	@RequestMapping("chat")
-	public String comChat() {
-		return "chat";
+	public ModelAndView comChat(ModelAndView mav, Principal principal) {
+		// principal.getName() : 현재 세션에 저장되어 있는(현재 접속해 있는) 아이디를 반환해준다.
+		String id = principal.getName();
+		mav.setViewName("chat");
+		
+		List<ChatList> cList = chatService.chatList(id);
+		mav.addObject("cList", cList);
+		//List<Object> roomList = chatRoomRepository.roomList(id);
+		//List<Object> MessageList = chatRoomRepository.roomMessage(roomId);
+		return mav;
 	}
 
 	// 후기 작성페이지로 이동

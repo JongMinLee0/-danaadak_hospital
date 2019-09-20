@@ -143,5 +143,65 @@ $(document).ready(function(){
 	});
 	
 	
+	// 1:1 대화 클릭시
+	$('#username').on('click', function(){
+		// 채팅 요청자
+		var name1 = $('#userId').val();
+		// 후기글 작성자
+		var name2 = $('#username').val();
+		swal({
+			  title: $('body > div.comm_body > div.content_wrap > div.detail_wrap > table > tbody > tr:nth-child(2) > td:nth-child(1) > h4').text() 
+			  + "님과 대화하시겠습니까?",
+			  icon: "warning",
+			  buttons: true,
+			  dangerMode: true,
+			})
+			.then((willDelete) => {
+			  if (willDelete) {
+				  // ok 눌렀을 때
+				  $.ajax({
+						url:'/hos/chat/room?name1='+name1+'&name2='+name2,
+						type:'POST',
+						success:function(response){
+							console.log('response : ' + response);
+							
+							// 이미 대화 중인 상대 인경우
+							if(response.exist != null){
+								swal(response.exist);
+							}else{
+								swal('대화가 생성되었습니다');
+							}
+							//location.href='/hos/comm/chat?name1='+$('#userId').val();
+						},
+						error:function(){
+							alert('대화요청에 실패하였습니다.');
+						}
+					});
+			  } else {
+				// cancel 눌렀을 때
+			    swal("대화가 취소되었습니다!");
+			  }
+			});
+	});
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 });

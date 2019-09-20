@@ -7,8 +7,10 @@ import com.dana.hos.member.module.MemberDTO;
 
 public interface MemberDAO {
 	public void joinMedthod(MemberDTO dto);
+	public void hosjoinMedthod(MemberDTO dto);
 	public MemberDTO getUserInfo(String username);
 	public int kakaoChkMethod(String kakao_id);
 	public MemberDTO kakaoLoginMethod(String kakao_id);
 	public List<HosDTO> findHospitalMethod(String keyword);
+	public int userNameChkMethod(String username);
 }

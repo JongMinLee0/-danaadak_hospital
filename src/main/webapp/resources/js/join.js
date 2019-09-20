@@ -1,5 +1,39 @@
 $(document).ready(function() {
 	appendYear();
+	
+	var getParameters = function (paramName) {
+	    // 리턴값을 위한 변수 선언
+	    var returnValue;
+
+	    // 현재 URL 가져오기
+	    var url = location.href;
+
+	    // get 파라미터 값을 가져올 수 있는 ? 를 기점으로 slice 한 후 split 으로 나눔
+	    var parameters = (url.slice(url.indexOf('?') + 1, url.length)).split('&');
+
+	    // 나누어진 값의 비교를 통해 paramName 으로 요청된 데이터의 값만 return
+	    for (var i = 0; i < parameters.length; i++) {
+	        var varName = parameters[i].split('=')[0];
+	        if (varName.toUpperCase() == paramName.toUpperCase()) {
+	            returnValue = parameters[i].split('=')[1];
+	            return decodeURIComponent(returnValue);
+	        }
+	    }
+	}
+	
+	// console.log(getParameters('type'));
+	var typeParam = getParameters('type');
+//	alert(typeof typeParam);
+//	alert(typeParam == 'hospital');
+//	alert(typeParam == 'user');
+	
+	if(typeParam == 'user' || typeParam == ""){
+		$('#joinForm').prop('action','/hos/join/join');
+	}
+	
+	if(typeParam == 'hospital'){
+		$('#joinForm').prop('action','/hos/join/hosjoin');
+	}
 
 	$('#yy').change(function() { // 년도 값이 바뀌면
 		$('#mm').val(""); // 월 값 초기화
@@ -19,6 +53,75 @@ $(document).ready(function() {
 	var year = $('#yy').val();
 	var month = $('#mm').val();
 	var day = $('#dd').val();
+	
+	$('#username').on('keyup', function(){
+		var eventId = $(this).attr('id');
+		var username = $("#username").val();
+		var regUsername = /^[a-z0-9][a-z0-9_\-]{4,19}$/;
+		
+		if (username == "") {
+			showErrorMsg = "필수 정보입니다.";
+			changeErrorMsg(eventId, showErrorMsg);
+		} else if (!regUsername.test(username)) {
+			showErrorMsg = "5~20자의 영문 소문자, 숫자와 특수기호(_),(-)만 사용 가능합니다.";
+			changeErrorMsg(eventId, showErrorMsg);
+		} else if(username != "" && regUsername.test(username)){
+			$.ajax({
+                type:'POST',
+                dataType:'text',
+                url:'/hos/join/usernameChk',
+                data:'username='+$(this).val(),
+                success: function(res) {
+                	if(res != 0){
+                		showErrorMsg = "이미 존재하는 아이디입니다.";
+                	}else{
+                		showErrorMsg = "";
+                	}
+                	changeErrorMsg(eventId, showErrorMsg);
+                }
+			});
+		} else {
+			showErrorMsg="";
+			changeErrorMsg(eventId, showErrorMsg);
+		}
+		
+		return false;
+	});
+	
+	$('#password').on('keyup', function(){
+		var eventId = $(this).attr('id');
+		var password = $('#password').val();
+		var regPassword = /^[A-Za-z0-9`\-=\\\[\];',\./~!@#\$%\^&\*\(\)_\+|\{\}:"<>\?]{8,16}$/;
+
+		if (password == "") {
+			showErrorMsg = "필수 정보입니다.";
+			changeErrorMsg(eventId, showErrorMsg);
+		} else if (!regPassword.test(password)) {
+			showErrorMsg = "8~16자 영문 대 소문자, 숫자, 특수문자를 사용하세요.";
+			changeErrorMsg(eventId, showErrorMsg);
+		} else {
+			showErrorMsg="";
+			changeErrorMsg(eventId, showErrorMsg);
+		}
+		
+		return false;
+	});
+	
+	$('#passwordConfirm').on('keyup', function(){
+		var eventId = $(this).attr('id');
+		var passwordConfirm = $('#passwordConfirm').val();
+		
+		if ($('#password').val() != passwordConfirm) {
+			showErrorMsg = "비밀번호가 일치하지 않습니다.";
+			changeErrorMsg(eventId, showErrorMsg);
+		} else {
+			showErrorMsg="";
+			changeErrorMsg(eventId, showErrorMsg);
+		}
+		
+		return false;
+	});
+	
 	
 	$('#hos_name').on('keyup', function(){
 		if($('#hos_name').val() != ""){
@@ -50,12 +153,14 @@ $(document).ready(function() {
 		var index = $(this).index();
 		var hosId = $('#hosid').eq(index).val();
 		var hosName = $('.m-0').eq(index).text();
+		var hosAddress = $('.text-muted').eq(index).text();
 
 		$('.list-group').css({
 			'display' : 'none'
 		});
 		
 		$('#hos_id').val(hosId);
+		$('#hos_address').val(hosAddress);
 		$('#hos_name').val(hosName);
 	}); 
 
@@ -167,4 +272,8 @@ function appendHospital(res) {
 				+'<input type="hidden" id="hosid" value="'+res[i].hos_id+'">'
 				+'</div>');
 	}
+}
+
+function changeErrorMsg(eventId, showErrorMsg){
+	$('#'+eventId+'Msg').text(showErrorMsg);
 }

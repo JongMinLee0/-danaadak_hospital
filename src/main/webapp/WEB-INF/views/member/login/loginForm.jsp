@@ -24,12 +24,12 @@
 <body>
 	<jsp:include page="/WEB-INF/views/fragments/nav_bar.jsp" />
 
-	<c:if test="${param.error == true}">
+<%-- 	<c:if test="${param.error == true}">
 		<script>
-			swal("회원정보를 다시 확인해주세요.");
+			swal("회원정보를 다시 확인해주세요.").then(function(){});
 			history.replaceState({}, null, location.pathname);
 		</script>
-	</c:if>
+	</c:if> --%>
 
 	<form:form name="f" method="POST" id="loginForm">
 		<div class="wrapper">
@@ -41,9 +41,18 @@
 				<div class="login_box">
 					
 				<div class="login_type">
-					<button type="button" class="active" id="perBtn" onclick="wloginCont('perForm',this)">개인회원</button><button type="button" class="" id="comBtn" onclick="wloginCont('comForm',this)">병원회원</button>
+					<button type="button" class="active" id="perBtn" onclick="wloginCont('perForm',this)">개인회원</button><button type="button" class="" id="hosBtn" onclick="wloginCont('hosForm',this)">병원회원</button>
 				</div>
 				
+				<c:choose>
+					<c:when test="${param.type == null}">
+			        	<c:set value="user" var="type" />
+					</c:when>
+					<c:otherwise>
+			        	<c:set value="${param.type }" var="type" />
+					</c:otherwise>
+				</c:choose>
+					<input type="hidden" id="type" name="type" value="${type }">
 					<div class="input_login">
 						<input type="text" id="username" name="username" value="${username }" placeholder="아이디를 입력하세요">
 					</div>
@@ -56,12 +65,19 @@
 					<div>
 						<input id="login" type="submit" value="로그인">
 					</div>
-					<div>
-						<input id="kakao_login" type="button" value="카카오톡 로그인">
-					</div>
+					<c:if test="${type == 'user' }">
+						<div>
+							<input id="kakao_login" type="button" value="카카오톡 로그인">
+						</div>
+					</c:if>
 					<div class="last">
 						<div>
-							<a href="/hos/join/joinForm" id="join">회원가입</a>
+							<c:if test="${type == 'user' }">
+								<a href="/hos/join/joinForm?type=user" class="join">회원가입</a>
+							</c:if>
+							<c:if test="${type == 'hospital' }">
+								<a href="/hos/join/joinForm?type=hospital" class="join">병원 회원가입</a>
+							</c:if>
 						</div>
 					</div>
 				</div>
@@ -69,38 +85,40 @@
 		</div>
 	</form:form>
 
-	<script type='text/javascript'>
-		//<![CDATA[
-		// 사용할 앱의 JavaScript 키를 설정해 주세요.
-		Kakao.init('b3d7a633df59dd53f7c8ebabd3e89897');
-		// 카카오 로그인 버튼을 생성합니다.
-		Kakao.Auth.createLoginButton({
-			container : '#kakao_login',
-			success : function(authObj) {
-				// 로그인 성공시, API를 호출합니다.
-				Kakao.API.request({
-					url : '/v1/user/me',
-					success : function(res) {
-						console.log(res);
-						var kakao_id = res.id; //유저가 등록한 계정
-						var email = res.kaccount_email; //유저가 등록한 계정
-						var userNickName = res.properties.nickname; //유저가 등록한 별명
-
-					//	console.log(kakao_id, email, userNickName);
-
-						kakaoLogin(kakao_id, email, userNickName);
-					},
-					fail : function(error) {
-						swal(JSON.stringify(error));
-					}
-				});
-			},
-			fail : function(err) {
-				swal(JSON.stringify(err));
-			}
-		});
-		//]]>
-	</script>
+	<c:if test="${type == 'user' }">
+		<script type='text/javascript'>
+			//<![CDATA[
+			// 사용할 앱의 JavaScript 키를 설정해 주세요.
+			Kakao.init('b3d7a633df59dd53f7c8ebabd3e89897');
+			// 카카오 로그인 버튼을 생성합니다.
+			Kakao.Auth.createLoginButton({
+				container : '#kakao_login',
+				success : function(authObj) {
+					// 로그인 성공시, API를 호출합니다.
+					Kakao.API.request({
+						url : '/v1/user/me',
+						success : function(res) {
+							console.log(res);
+							var kakao_id = res.id; //유저가 등록한 계정
+							var email = res.kaccount_email; //유저가 등록한 계정
+							var userNickName = res.properties.nickname; //유저가 등록한 별명
+	
+						//	console.log(kakao_id, email, userNickName);
+	
+							kakaoLogin(kakao_id, email, userNickName);
+						},
+						fail : function(error) {
+							swal(JSON.stringify(error));
+						}
+					});
+				},
+				fail : function(err) {
+					swal(JSON.stringify(err));
+				}
+			});
+			//]]>
+		</script>
+	</c:if>
 </body>
 </html>
 

@@ -8,6 +8,11 @@
 		insert into member (username, password, name, address, phone, birth, gender, kakao_id, type)
 		values (#{username}, #{password}, #{name}, #{address}, #{phone}, #{birth}, #{gender}, #{kakao_id,jdbcType=VARCHAR}, 'user')
 	</insert>
+
+	<insert id="hosjoin" parameterType="com.dana.hos.member.module.MemberDTO">
+		insert into member (username, password, name, address, phone, type, enable)
+		values (#{username}, #{password}, #{name}, #{address}, #{phone}, 'hospital', 0)
+	</insert>
 	
 	<select id="selectUserById" resultType="com.dana.hos.member.module.MemberDTO">
 		SELECT * FROM member WHERE username = #{username}
@@ -23,6 +28,10 @@
     
      <select id="findHospital" resultType="com.dana.hos.map.module.HosDTO" parameterType="string">
     	select hos_id, hos_name, hos_address from hospital where hos_name LIKE '%' ||#{keyword} || '%'
+    </select>
+    
+    <select id="usernameChk" resultType="int" parameterType="string">
+    	select count(*) from member where username = #{username}
     </select>
     
 </mapper>

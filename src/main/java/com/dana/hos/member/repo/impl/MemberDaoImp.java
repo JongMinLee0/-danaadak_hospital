@@ -13,20 +13,25 @@ import com.dana.hos.member.repo.MemberDAO;
 @Repository
 public class MemberDaoImp implements MemberDAO {
 
-	@Autowired //빈 주입 !(의존성 주입)
+	@Autowired // 빈 주입 !(의존성 주입)
 	private SqlSession sqlSession;
 
 	public MemberDaoImp() {
-		
+
 	}
-	
+
 	public void setSqlSession(SqlSession sqlSession) {
 		this.sqlSession = sqlSession;
 	}
-	
+
 	@Override
 	public void joinMedthod(MemberDTO dto) {
 		sqlSession.insert("member.userjoin", dto);
+	}
+
+	@Override
+	public void hosjoinMedthod(MemberDTO dto) {
+		sqlSession.insert("member.hosjoin", dto);
 	}
 
 	@Override
@@ -49,5 +54,10 @@ public class MemberDaoImp implements MemberDAO {
 	public List<HosDTO> findHospitalMethod(String keyword) {
 		return sqlSession.selectList("member.findHospital", keyword);
 	}
-	
+
+	@Override
+	public int userNameChkMethod(String username) {
+		return sqlSession.selectOne("member.usernameChk", username);
+	}
+
 }

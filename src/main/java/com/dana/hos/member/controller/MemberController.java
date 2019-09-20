@@ -38,7 +38,7 @@ public class MemberController {
 	public String loginForm(HttpServletRequest request) {
 		String referer = request.getHeader("Referer");
 		request.getSession().setAttribute("prevPage", referer);
-
+		
 		return "member/login/loginForm";
 	}
 	
@@ -66,9 +66,17 @@ public class MemberController {
 	@RequestMapping(value = "/join/join", method = RequestMethod.POST)
 	public String join(MemberDTO dto, ModelAndView mav) {
 	//	dto.setAddress(dto.getAddress().replaceAll(",", " "));
-		dto.setBirth(dto.getBirth().replaceAll(",", ""));
+		if(dto.getBirth()!=null) {
+			dto.setBirth(dto.getBirth().replaceAll(",", ""));
+		}
 		memberservice.joinProcess(dto);
-		return "redirect:/home";
+		return "redirect:/login";
+	}
+	
+	@RequestMapping(value = "/join/hosjoin", method = RequestMethod.POST)
+	public String hosjoin(MemberDTO dto, ModelAndView mav) {
+		memberservice.hosjoinProcess(dto);
+		return "redirect:/login";
 	}
 
 	@RequestMapping(value = "/join/phone", method = RequestMethod.GET)
@@ -78,8 +86,12 @@ public class MemberController {
 	
 	@RequestMapping(value = "/join/findHos", method = RequestMethod.POST)
 	public @ResponseBody List<HosDTO> replyListPage(String keyword){
-		System.out.println(keyword);
 		return memberservice.findHospitalProcess(keyword);
+	}
+	
+	@RequestMapping(value = "/join/usernameChk", method = RequestMethod.POST)
+	public @ResponseBody int usernameChk(MemberDTO dto) {
+		return memberservice.usernameChkProcess(dto.getUsername());
 	}
 
 

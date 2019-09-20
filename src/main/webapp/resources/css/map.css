@@ -306,3 +306,6 @@ html, body {
 #category_img{ width: 27px; height: 28px;}
     
     
+    #map > div:nth-child(1) > div > div:nth-child(6) > div:nth-child(16) > img{
+    	display: none;
+    }

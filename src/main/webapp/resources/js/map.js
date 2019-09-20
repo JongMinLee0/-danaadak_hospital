@@ -157,6 +157,16 @@ function displayPlaces(search) {
 		bounds.extend(placePosition);
 
 		var searchs = search[i];
+		
+		function panTo(searchs){
+		    // 이동할 위도 경도 위치를 생성합니다 
+		    var moveLatLon = new kakao.maps.LatLng(searchs.ph_lat, searchs.ph_lon);
+		    
+		    // 지도 중심을 부드럽게 이동시킵니다
+		    // 만약 이동할 거리가 지도 화면보다 크면 부드러운 효과 없이 이동합니다
+		    map.panTo(moveLatLon);            
+		}
+		
 		// 마커와 검색결과 항목에 click 했을때
 		// 해당 장소에 인포윈도우에 장소명을 표시합니다
 		// 지도 click 했을 때는 인포윈도우를 닫습니다
@@ -165,6 +175,7 @@ function displayPlaces(search) {
 			daum.maps.event.addListener(marker, 'click', function() {
 			
 				displayInfowindow(marker, title, searchs);
+				panTo(searchs);
 			});
 
 			daum.maps.event.addListener(map, 'click', function() {
@@ -173,6 +184,7 @@ function displayPlaces(search) {
 
 			itemEl.onclick = function() {
 				displayInfowindow(marker, title, searchs);
+				panTo(searchs);
 			};
 
 			// itemEl.onclick = function() {

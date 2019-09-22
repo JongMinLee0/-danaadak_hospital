@@ -16,7 +16,7 @@ html, body {
 
 .wrapper:after {
 	content: "";
-	position: absolute;
+	position: fixed;
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center;

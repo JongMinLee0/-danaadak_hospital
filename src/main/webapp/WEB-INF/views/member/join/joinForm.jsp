@@ -48,32 +48,32 @@
 			<form action="" method="post" id="joinForm">
 				<div class="form-date-w3-agileits">
 					<input type="hidden" id="kakao_id" name="kakao_id" value="${param.kakao_id }">
-					<label>아이디</label>
-					<input type="text" id="username" name="username" placeholder="아이디를 입력해주세요" required="" value="${param.id }">
+					<label for="username">아이디</label>
+					<input type="text" id="username" name="username" class="val" placeholder="아이디를 입력해주세요" required="" value="${param.id }">
 					<p class="errorMsg"><span class="error_next_box" id="usernameMsg" role="alert"></span></p>
-					<label>패스워드</label>
-					<input type="password" id="password" name="password" placeholder="비밀번호" required="">
+					<label for="password">패스워드</label>
+					<input type="password" id="password" name="password" class="val" placeholder="비밀번호" required="">
 					<p class="errorMsg"><span class="error_next_box" id="passwordMsg" role="alert"></span></p>
-					<input type="password" id="passwordConfirm" name="passwordConfirm" placeholder="비밀번호 확인" required="">
+					<input type="password" id="passwordConfirm" name="passwordConfirm" class="val" placeholder="비밀번호 확인" required="">
 					<p class="errorMsg"><span class="error_next_box" id="passwordConfirmMsg" role="alert"></span></p>
 					
 					<c:if test="${type eq 'hospital'}">
-						<label>병원이름</label>
+						<label for="hos_name">병원이름</label>
 						<input type="hidden" id="hos_id" name="hos_id">
 						<input type="hidden" id="hos_address" name="address">
-						<input type="text" id="hos_name" name="hos_name" placeholder="병원명" required="">
+						<input type="text" id="hos_name" name="hos_name" class="val" placeholder="병원명" required="">
 						<p class="errorMsg"><span class="error_next_box" id="hos_nameMsg" role="alert"></span></p>
 						<div class="list-group" style="display: none; ">
 						</div>
 					</c:if>
 					
 					<c:if test="${type eq 'user'}">
-						<label>이름</label> 
+						<label for="name">이름</label> 
 					</c:if>
 					<c:if test="${type eq 'hospital'}">
-						<label>담당자 이름</label> 
+						<label for="name">담당자 이름</label> 
 					</c:if>
-						<input type="text" id="name" name="name" placeholder="이름" required="" value="${param.name }">
+						<input type="text" id="name" name="name" class="val" placeholder="이름" required="" value="${param.name }">
 						<p class="errorMsg"><span class="error_next_box" id="nameMsg" role="alert"></span></p>
 					
 					
@@ -81,10 +81,10 @@
 					<c:if test="${type eq 'user'}">
 						<label>주소</label>
 						<div id="address">
-							<input type="text" name="address" id="postcode" placeholder="우편번호" class="address_form mini" onclick="execDaumPostcode()">
-							<input type="button" onclick="execDaumPostcode()" class="address_form mini" value="우편번호 찾기"><br>
-							<input type="text" name="address" id="roadAddress" placeholder="도로명주소">
-							<input type="text" name="address" id="detailAddress" placeholder="상세주소">
+							<input type="text" name="address" id="postcode" class="val" placeholder="우편번호" class="address_form mini" onclick="execDaumPostcode()">
+							<input type="button" onclick="execDaumPostcode()" class="address_form mini input_button"  value="우편번호 찾기"><br>
+							<input type="text" onclick="execDaumPostcode()" name="address" id="roadAddress" class="val" placeholder="도로명주소">
+							<input type="text" name="address" id="detailAddress" class="val" placeholder="상세주소">
 							<p class="errorMsg"><span class="error_next_box" id="addressMsg" role="alert"></span></p>
 						</div>
 					
@@ -127,16 +127,16 @@
 					</c:if>
 					
 					<c:if test="${type eq 'user'}">
-						<label>전화번호</label>
+						<label for="phone_number">전화번호</label>
 					</c:if>
 					<c:if test="${type eq 'hospital'}">
-						<label>담당자 전화번호</label>
+						<label for="phone_number">담당자 전화번호</label>
 					</c:if>
 					<div>
 						<input value="+82" id="country_code" type="hidden" /> 
-						<input placeholder="전화번호" id="phone_number" name="phone" value="" onclick="phoneAuth(); " />
-						<button id="phone_auth_button" onclick="phoneAuth(); ">번호 인증</button>
-						<span id="phone_auth_finish" style="display: none">번호 인증 완료</span>
+						<input type="text" placeholder="전화번호" id="phone_number" name="phone" class="val" value="" onclick="phoneAuth(); " />
+						<input type="button" id="phone_auth_button" class="input_button" onclick="phoneAuth(); " value="번호인증">
+						<span id="phone_auth_finish" style="display: none; float: right; line-height: 35px;">번호 인증 완료</span>
 						<p class="errorMsg"><span class="error_next_box" id="phoneMsg" role="alert"></span></p>
 					</div>
 

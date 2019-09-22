@@ -37,7 +37,7 @@
 			<!-- Button that handles sign-in -->
 			<input type="submit" disabled
 				class="mdl-button mdl-js-button mdl-button--raised"
-				id="sign-in-button" value="Sign-in" />
+				id="sign-in-button" value="인증 요청" />
 
 			<!-- Container to display the re-captcha check -->
 			<div id="recaptcha-container"></div>

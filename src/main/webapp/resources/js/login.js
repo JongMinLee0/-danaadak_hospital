@@ -1,6 +1,6 @@
 $(document).ready(function() {
 	$("#username").focus();
-
+	
 	var getParameters = function (paramName) {
 	    // 리턴값을 위한 변수 선언
 	    var returnValue;
@@ -48,20 +48,22 @@ $(document).ready(function() {
 			if ($('#username').val() == '') {
 				swal('아이디를 입력해주세요');
 				return false;
-			}
+			};
 
 			if ($('#password').val() == '') {
 				swal('비밀번호를 입력해주세요');
 				return false;
-			}
-
-			if ($('#save_id').prop('checked')
-					&& $('#username').val() != ""
-					&& $('#password').val() != "") {
-				$.cookie('id', $('#username').val());
 			};
 
-			$(this).submit();
+			
+			if($('#username').val() != "" && $('#password').val() != ""){
+				if ($('#save_id').prop('checked') && $('#username').val()){
+					$.cookie('id', $('#username').val());
+				}
+				$(this).submit();
+				return false;
+			}
+
 	});
 	
 	$('#perBtn').on('click',function() {

@@ -19,17 +19,28 @@
 <link rel="stylesheet" href="/hos/resources/css/bootstrap.min.css" />
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
 
-</head>
+<script>
+$(document).ready(function(){
+	var responseMessage = "<c:out value="${successMsg}" />";
+	if(responseMessage != ""){
+		swal(responseMessage)
+		history.replaceState({}, null, location.pathname);	// 파라미터 지우기
+	}
+});
+   
+</script>
 
+
+</head>
 <body>
 	<jsp:include page="/WEB-INF/views/fragments/nav_bar.jsp" />
-
-<%-- 	<c:if test="${param.error == true}">
+	
+	
+ 	<c:if test="${param.error == true}">
 		<script>
-			swal("회원정보를 다시 확인해주세요.").then(function(){});
-			history.replaceState({}, null, location.pathname);
+			swal("회원정보를 확인해주세요.");
 		</script>
-	</c:if> --%>
+	</c:if> 
 
 	<form:form name="f" method="POST" id="loginForm">
 		<div class="wrapper">

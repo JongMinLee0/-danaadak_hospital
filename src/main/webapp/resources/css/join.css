@@ -1,6 +1,6 @@
 .wrapper:after {
 	content: "";
-	position: absolute;
+	position: fixed;
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center;
@@ -55,11 +55,9 @@
 	color: #2baf2b;
 }
 
-
-.book-form input[type="text"], .book-form input[type="password"]{
+.book-form input[type="text"], .book-form input[type="password"] {
 	text-align: center;
 	color: black;
-	outline: none;
 	font-size: 0.9em;
 	line-height: 25px;
 	padding: 4px 16px;
@@ -109,10 +107,6 @@
 	background-color: white;
 }
 
-#address .address_form.mini {
-	width: 7em;
-}
-
 input:focus::-webkit-input-placeholder {
 	color: transparent;
 }
@@ -121,25 +115,25 @@ input:focus::-webkit-input-placeholder {
 	width: 32%;
 }
 
-.bir_wrap > div {
+.bir_wrap>div {
 	display: inline;
 }
 
 .list-group {
-	position: absolute; 
-	width: 100%; 
+	position: absolute;
+	width: 100%;
 	left: 0;
 }
 
 .list-group-item {
 	cursor: pointer;
-    position: relative;
-    display: block;
-    line-height: 1.38;
-    padding: 1rem 1.25rem;
-    margin-bottom: -1px;
-    background-color: #fbfcfd;
-    border: 1px solid rgba(0,0,0,.125);
+	position: relative;
+	display: block;
+	line-height: 1.38;
+	padding: 1rem 1.25rem;
+	margin-bottom: -1px;
+	background-color: #fbfcfd;
+	border: 1px solid rgba(0, 0, 0, .125);
 }
 
 #hosResult:hover {
@@ -154,9 +148,26 @@ input:focus::-webkit-input-placeholder {
 
 .errorMsg {
 	line-height: 0.8;
-    margin-bottom: 2%;
+	margin-bottom: 2%;
 }
 
 #joinBtn {
 	padding: 0;
+}
+
+.input_button {
+	width: 30%;
+    background-color: #12a6ed;
+    border: none;
+    color: #fff;
+    text-decoration: none;
+    font-size: 15px;
+    cursor: pointer;
+    border-radius: 10px;
+    height: 35px;
+    float: right;
+}
+
+#postcode, #phone_number{
+	width: 65%;
 }

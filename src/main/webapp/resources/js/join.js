@@ -24,6 +24,8 @@ $(document).ready(function() {
 	
 	var typeParam = getParameters('type');
 	
+	history.replaceState({}, null, '/hos/login?type='+typeParam);	// 파라미터 지우기
+	
 	if(typeParam == 'user' || typeParam == ""){
 		$('#joinForm').prop('action','/hos/join/join');
 	}
@@ -273,12 +275,10 @@ function execDaumPostcode() {
 
 function phoneAuth() {
 	$('#phone_auth_finish').val("");
-	var url = "phone";
+	var url = "/hos/join/phone";
 	var name = "phone auth";
 	var option = "width = 500, height = 500, top = 100, left = 200, location = no"
 	window.open(url, name, option);
-	
-	return false;
 }
 
 function appendHospital(res) {

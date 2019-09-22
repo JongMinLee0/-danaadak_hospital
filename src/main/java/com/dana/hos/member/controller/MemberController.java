@@ -1,23 +1,17 @@
 package com.dana.hos.member.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import org.springframework.web.servlet.view.RedirectView;
 
 import com.dana.hos.map.module.HosDTO;
 import com.dana.hos.member.module.MemberDTO;
@@ -47,7 +41,6 @@ public class MemberController {
 	
 	@RequestMapping(value = "/kakao_login_action")
 	public @ResponseBody MemberDTO kakao_login_action(MemberDTO dto) {
-		System.out.println(memberservice.kakaoLoginProcess(dto.getKakao_id()).getUsername());
 		return memberservice.kakaoLoginProcess(dto.getKakao_id());
 	}
 

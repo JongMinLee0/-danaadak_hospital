@@ -1,4 +1,5 @@
 $(document).ready(function() {
+	
 	appendYear();
 	
 	var getParameters = function (paramName) {
@@ -21,11 +22,7 @@ $(document).ready(function() {
 	    }
 	}
 	
-	// console.log(getParameters('type'));
 	var typeParam = getParameters('type');
-//	alert(typeof typeParam);
-//	alert(typeParam == 'hospital');
-//	alert(typeParam == 'user');
 	
 	if(typeParam == 'user' || typeParam == ""){
 		$('#joinForm').prop('action','/hos/join/join');
@@ -162,7 +159,25 @@ $(document).ready(function() {
 		$('#hos_id').val(hosId);
 		$('#hos_address').val(hosAddress);
 		$('#hos_name').val(hosName);
-	}); 
+	});
+	
+	$('#joinBtn').click(function(){		// 회원가입 버튼을 누르면
+		if(!inputChk()) { 	// return값이 false이면
+			swal('빈 칸을 모두 입력해 주세요.'); 
+			return false;
+		}
+		if($('#phone_auth_finish').css('display')=='none'){
+			$('#phone_number').val("");
+			swal('번호 인증을 완료해주세요.'); 
+			return false;
+		}
+		if($('.error_next_box').text()!=""){
+			swal("입력한 값을 확인해주세요.");
+			return false;
+		}
+		
+		return true;
+	});
 
 });
 
@@ -257,10 +272,13 @@ function execDaumPostcode() {
 }
 
 function phoneAuth() {
+	$('#phone_auth_finish').val("");
 	var url = "phone";
 	var name = "phone auth";
 	var option = "width = 500, height = 500, top = 100, left = 200, location = no"
 	window.open(url, name, option);
+	
+	return false;
 }
 
 function appendHospital(res) {
@@ -276,4 +294,16 @@ function appendHospital(res) {
 
 function changeErrorMsg(eventId, showErrorMsg){
 	$('#'+eventId+'Msg').text(showErrorMsg);
+}
+
+
+function inputChk() {
+	var result = true;
+	$('.val').each(function(idx, ele) {
+		if ($(ele).val() == "") {
+			result = false;
+			return false;
+		}
+	});
+	return result;
 }

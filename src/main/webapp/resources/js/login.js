@@ -1,6 +1,6 @@
 $(document).ready(function() {
 	$("#username").focus();
-
+	
 	var getParameters = function (paramName) {
 	    // 리턴값을 위한 변수 선언
 	    var returnValue;

@@ -1,5 +1,7 @@
 package com.dana.hos.member.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.view.RedirectView;
 
 import com.dana.hos.map.module.HosDTO;
 import com.dana.hos.member.module.MemberDTO;
@@ -26,20 +29,15 @@ public class MemberController {
 	@Autowired
 	MemberService memberservice;
 
-/*	@RequestMapping(value = "/login/loginForm")
-	public String loginForm(HttpServletRequest request, Model model) {
-		String referer = request.getHeader("Referer");
-		request.getSession().setAttribute("prevPage", referer);
-
-		return "member/login/loginForm";
-	}*/
-	
 	@RequestMapping(value = "/login")
-	public String loginForm(HttpServletRequest request) {
+	public ModelAndView loginForm(HttpServletRequest request, String successMsg, ModelAndView mav) {
 		String referer = request.getHeader("Referer");
 		request.getSession().setAttribute("prevPage", referer);
 		
-		return "member/login/loginForm";
+		mav.addObject("successMsg", successMsg);
+		mav.setViewName("member/login/loginForm");
+
+		return mav;
 	}
 	
 	@RequestMapping(value = "/kakao_login")
@@ -63,17 +61,22 @@ public class MemberController {
 		return "member/join/joinForm";
 	}
 
-	@RequestMapping(value = "/join/join", method = RequestMethod.POST)
-	public String join(MemberDTO dto, ModelAndView mav) {
+	@RequestMapping(value = "/join/join", method = RequestMethod.POST)		// 일반 사용자 회원가입
+	public ModelAndView join(MemberDTO dto, ModelAndView mav, HttpServletRequest request) throws IOException {
 	//	dto.setAddress(dto.getAddress().replaceAll(",", " "));
 		if(dto.getBirth()!=null) {
 			dto.setBirth(dto.getBirth().replaceAll(",", ""));
 		}
 		memberservice.joinProcess(dto);
-		return "redirect:/login";
+		
+		mav.addObject("successMsg", "회원가입에 성공하셨습니다!");
+		request.setAttribute("successMsg", "회원가입에 성공하셨습니다.");
+		mav.setViewName("redirect:/login");
+		
+		return mav;
 	}
 	
-	@RequestMapping(value = "/join/hosjoin", method = RequestMethod.POST)
+	@RequestMapping(value = "/join/hosjoin", method = RequestMethod.POST)	// 병원 회원가입
 	public String hosjoin(MemberDTO dto, ModelAndView mav) {
 		memberservice.hosjoinProcess(dto);
 		return "redirect:/login";

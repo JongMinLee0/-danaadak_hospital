@@ -30,7 +30,7 @@
 <tiles:insertAttribute name="navbar" />
 	<div class="map_wrap">
 		<div id="map"
-			style="width: 100%; height: 600px; position: relative; overflow: hidden;"></div>
+			style="width: 100%; height: 800px; position: relative; overflow: hidden;"></div>
 			
 			<ul id="category">
         <li id="HP8" class="HP8" data-order="0" style="background-color: pink"> 

@@ -6,7 +6,22 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+  $('#resCancelBtn').on('click', function() {
+	  if (confirm("정말 취소하시겠습니까?") == true){    //확인
+      	document.form.submit();
+ 	 } else {   //취소
+      	return false;
+  	} 
+  });
+});
+</script>
 <style type="text/css">
+.myResInfoWrap{
+	text-align:-webkit-center;
+}
+
 .myResTable{
 	width:70%;
 	text-align: center;
@@ -20,26 +35,12 @@ td{
 	text-align : left;
 }
 </style>
-<script type="text/javascript">
-$(document).ready(function() {
-/* // 	$('.resStateTd').each(function(index, myres) {
-		if($('.resStateDetail').val() == '0') {
-			$('.resStateTd').append('예약 중0');
-			$('.resCancelBtn').attr("type","button");
-		} else if($('.resStateDetail').val() == '1') {
-			$('.resStateTd').append('완료133');
-			$('.resReviewBtn').attr("type","button");
-		} 
-		return null;
-		
-// 		$('resStateDetail').val() = null;
-// 	}); */
-});
-</script>
+
 </head>
 <body>
 <div class="myResInfoWrap">
 <p><h3>진료 내역</h3></p>
+<form id ="frm" name="frm" action="/hos/myinfo/myresCancel" method="post">
 <table class="myResTable">
 	<thead>
 	<tr>
@@ -56,49 +57,46 @@ $(document).ready(function() {
 	<tbody class="myResBody">
 	<c:forEach var="myresList" items="${myres}" varStatus="status">
 		<tr>
-			<td class="hosName">${myres[status.index].hos_id}</td>
+			<c:if test="${myres[status.index].hos_id == null}">
+				<input type="hidden">
+			</c:if>
+			<c:if test="${myres[status.index].hos_id != null}">
+			<td class="hosName">${myres[status.index].hosDTO.hos_name}</td>
 			<td class="resCate">${myres[status.index].category}</td>
 			<td class="resDate">${myres[status.index].re_date}</td>
 			<td class="resTime">${myres[status.index].re_time}</td>
 			<td class="resState resStateTd">
-			<c:if test="${myres[status.index].re_state == 1}">
+			<c:if test="${myres[status.index].re_state == 0}">
 			예약 중
 			</c:if>
-			<c:if test="${myres[status.index].re_state == 0}">
-			완료
+			<c:if test="${myres[status.index].re_state == 1}">
+			진료 완료
+			</c:if>
+			<c:if test="${myres[status.index].re_state == 2}">
+			예약 취소
 			</c:if></td>
 			<td class="resMess resMessDetail">${myres[status.index].message}</td>
 			<td class="resReview ">
-			<c:if test="${myres[status.index].re_state == 1}">
-			<input type ="button" class="resCancelBtn" value="예약 취소" />
-			</c:if>
+			<input type ="hidden" value="${myres[status.index].hosDTO.hos_name}" name="hos_name" />
+			<input type ="hidden" value="${myres[status.index].category}" name="category" />
+			<input type ="hidden" value="${myres[status.index].re_date}" name="re_date" />
+			<input type ="hidden" value="${myres[status.index].re_time}" name="re_time" />
+			<input type ="hidden" value="${myres[status.index].re_state}" name="re_state" />
+			<input type ="hidden" value="${myres[status.index].message}" name="message" />
+			<input type ="hidden" value="${sessionScope.memberInfo.username}" name="username" />
 			<c:if test="${myres[status.index].re_state == 0}">
-			<input type ="button" class="resReviewBtn" value="후기 작성" />
-			</c:if></td>
+			<input type ="submit" class="resCancelBtn" value="예약 취소" />
+			</c:if>
+			<c:if test="${myres[status.index].re_state == 1}">
+			<input type ="submit" class="resReviewBtn" value="후기 작성" />
+			</c:if>
+			</td>
+			</c:if>
 		</tr>
 	</c:forEach>
-		<tr>
-			<td class="hosName">진영내과</td>
-			<td class="resCate">복통</td>
-			<td class="resDate">2019-09-01</td>
-			<td class="resTime">15:00</td>
-			<td class="resState">진료완료</td>
-			<td class="resMess resMessDetail">메세지 있다요. 배가 아프다요.</td>
-			<td class="resReview "><input type ="button" class="resReviewBtn" value="후기 작성" /></td>
-		</tr>
-		<tr>
-			<td class="hosName">MH치과</td>
-			<td class="resCate">충치치료</td>
-			<td class="resDate">2019-08-12</td>
-			<td class="resTime">15:00</td>
-			<td class="resState">진료완료</td>
-			<td class="resMess resMessDetail">없음</td>
-			<td class="resReview "><input type ="button" class="resReviewBtn" value="후기 작성" /></td>
-		</tr>
-		<%-- <h2><input type="text" value="${myres[0].hos_id}" name="hos_id"/></h2>
-		 --%>
-			
 	</tbody>
 </table>
+</form>
+</div>
 </body>
 </html>

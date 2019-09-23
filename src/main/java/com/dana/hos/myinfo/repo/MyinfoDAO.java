@@ -13,5 +13,7 @@ public interface MyinfoDAO {
 	
 	//예약 내역 출력
 	public List<ReserveDTO> myresList(String username);
-	//내 예약 페이
+	
+	//내 예약 취소
+	public void cancelMyresMethod(ReserveDTO rdto);
 }//end interface

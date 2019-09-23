@@ -100,8 +100,8 @@ $(document).ready(function() {
 	<div class="column">
 		<!-- 진료 현황 -->
 		<div class="sh_group" id="resDiv">
-			<form action="/hos/myinfo/myResInfo" method="get">
-			<span id="resList"><span class="myinfoTitle">진료 내역</span><input type ="submit" value="더보기" id="resMore"></span>
+			<!-- <form action="/hos/myinfo/myResInfo" method="get"> -->
+			<span id="resList"><span class="myinfoTitle">진료 내역</span><span style="color:gray;" id="resMore"> &nbsp; &nbsp;더보기</span></span>
 			
 			<table id="resTable" style="width:100%;">
 			<!-- <p>예약중이면 정보 띄워줌, 없으면 진료 완료 마지막거 띄워줌(병원 이름, 날짜, 시간) + 이력확인 링크</p> -->
@@ -110,25 +110,21 @@ $(document).ready(function() {
 				<th>날짜</th>
 				<th>시간</th>
 			</tr>
-			
-			<tr align="center">
-				<td>${myres[0].hos_id}</td>
-				<td>${myres[0].re_date}</td>
-				<td>${myres[0].re_time}</td>
-			</tr>
-			<tr align="center">
-				<td>${myres[1].hos_id}</td>
-				<td>${myres[1].re_date}</td>
-				<td>${myres[1].re_time}</td>
-			</tr>
-			<tr align="center">
-				<td>${myres[2].hos_id}</td>
-				<td>${myres[2].re_date}</td>
-				<td>${myres[2].re_time}</td>
-			</tr>
+			<c:forEach var="myresList" items="${myres}" varStatus="status" begin="0" end="3">
+				<tr align="center">
+				<c:if test="${myres[status.index].hos_id == null}">
+				<input type="hidden">
+				</c:if>
+				<c:if test="${myres[status.index].hos_id != null}">
+						<td>${myres[status.index].hosDTO.hos_name}</td>
+						<td>${myres[status.index].re_date}</td>
+						<td>${myres[status.index].re_time}</td>
+				</c:if>
+				</tr>
+			</c:forEach>
 	
 			</table>
-			</form>
+			<!-- </form> -->
 		</div>
 		
 		<!-- 내 병원 후기 -->

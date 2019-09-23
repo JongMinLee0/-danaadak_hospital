@@ -14,4 +14,7 @@ public interface MyinfoService {
 	
 	//내 예약 목록
 	public List<ReserveDTO> myresListProcess(String username);
+	
+	//내 예약 취소
+	public void myresCancelProcess(ReserveDTO rdto);
 }//end interface

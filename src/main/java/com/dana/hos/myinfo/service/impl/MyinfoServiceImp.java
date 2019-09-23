@@ -41,4 +41,11 @@ public class MyinfoServiceImp implements MyinfoService{
 	public List<ReserveDTO> myresListProcess(String username) {
 		return dao.myresList(username);
 	}
+	
+	//내 예약 취소
+	@Override
+	public void myresCancelProcess(ReserveDTO rdto) {
+		dao.cancelMyresMethod(rdto);
+		
+	}
 }//end MyinfoServiceImp

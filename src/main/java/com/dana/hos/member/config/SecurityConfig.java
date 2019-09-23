@@ -11,6 +11,8 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 @ComponentScan("com.dana.hos")
 @Configuration
@@ -31,6 +33,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	{
 		web.ignoring().antMatchers("/resources/**");
 	}
+	
+	@Bean
+	public PasswordEncoder passwordEncoder() {
+		return new BCryptPasswordEncoder();
+	} 
 
 	@Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -47,12 +54,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         .and().csrf().disable();
     }
 	
-    @Autowired
+	@Autowired
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.jdbcAuthentication().dataSource(dataSource)
+        auth.jdbcAuthentication()
+        	.passwordEncoder(passwordEncoder())
+        	.dataSource(dataSource)
             .usersByUsernameQuery("select username, password, enabled FROM member WHERE username=?")
             .authoritiesByUsernameQuery("select username, authority FROM member WHERE username=?");
-    }   
-    
-    
+    }
+
 }

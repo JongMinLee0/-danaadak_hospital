@@ -6,6 +6,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,6 +23,9 @@ public class MemberController {
 
 	@Autowired
 	MemberService memberservice;
+	
+	@Autowired
+	private BCryptPasswordEncoder bCryptPasswordEncoder;
 
 	@RequestMapping(value = "/login")
 	public ModelAndView loginForm(HttpServletRequest request, String successMsg, ModelAndView mav) {
@@ -57,22 +61,27 @@ public class MemberController {
 	@RequestMapping(value = "/join/join", method = RequestMethod.POST)		// 일반 사용자 회원가입
 	public ModelAndView join(MemberDTO dto, ModelAndView mav, HttpServletRequest request) throws IOException {
 	//	dto.setAddress(dto.getAddress().replaceAll(",", " "));
+		dto.setPassword(this.bCryptPasswordEncoder.encode(dto.getPassword())); // 암호화 하여 테이블에 저장
 		if(dto.getBirth()!=null) {
 			dto.setBirth(dto.getBirth().replaceAll(",", ""));
 		}
 		memberservice.joinProcess(dto);
 		
-		mav.addObject("successMsg", "회원가입에 성공하셨습니다!");
-		request.setAttribute("successMsg", "회원가입에 성공하셨습니다.");
-		mav.setViewName("redirect:/login");
+		mav.addObject("successMsg", "회원가입에 성공하셨습니다.");
+		mav.setViewName("redirect:/login?type=user");
 		
 		return mav;
 	}
 	
 	@RequestMapping(value = "/join/hosjoin", method = RequestMethod.POST)	// 병원 회원가입
-	public String hosjoin(MemberDTO dto, ModelAndView mav) {
+	public ModelAndView hosjoin(MemberDTO dto, ModelAndView mav, HttpServletRequest request) {
+		dto.setPassword(this.bCryptPasswordEncoder.encode(dto.getPassword())); // 암호화 하여 테이블에 저장
 		memberservice.hosjoinProcess(dto);
-		return "redirect:/login";
+		
+		mav.addObject("successMsg", "회원가입에 성공하셨습니다.");
+		mav.setViewName("redirect:/login?type=hospital");
+		
+		return mav;
 	}
 
 	@RequestMapping(value = "/join/phone", method = RequestMethod.GET)

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.dana.hos.map.module.HosDTO;
 import com.dana.hos.member.module.MemberDTO;
 import com.dana.hos.myinfo.service.MyinfoService;
 import com.dana.hos.reserve.module.ReserveDTO;
@@ -73,6 +74,14 @@ public class MyInfoController {
 		HttpSession session = request.getSession();
 		session.setAttribute("memberInfo", dto);
 		return "/myinfo/myinfomain";
+	}
+	
+	//내 예약 취소
+	@RequestMapping(value="/myinfo/myresCancel", method=RequestMethod.POST)
+	public String myresCancel(ReserveDTO rdto) {
+		myinfoService.myresCancelProcess(rdto);
+		
+		return "/myinfo/myinfomain"; 
 	}
 
 }//end class

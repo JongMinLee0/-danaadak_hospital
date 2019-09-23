@@ -36,4 +36,10 @@ public class MyinfoDaoImp implements MyinfoDAO{
 		return sqlSession.selectList("myinfo.myresList", username);
 	}
 	
+	//내 예약 취소
+	@Override
+	public void cancelMyresMethod(ReserveDTO rdto) {
+		sqlSession.update("myinfo.myresCancel", rdto);
+		
+	}
 }//end MyinfoDaoImp

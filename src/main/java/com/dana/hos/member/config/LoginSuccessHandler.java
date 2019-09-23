@@ -76,23 +76,29 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
 		HttpSession session = request.getSession();
 		MemberDTO dto = memberservice.userInfoProcess(request.getParameter("username"));
 		
+		if(dto.getType().equals("user") || dto.getType()=="user") {
+			int intRedirectStrategy = decideRedirectStrategy(request, response);
+			switch (intRedirectStrategy) {
+			case 1:
+				useTargetUrl(request, response);
+				break;
+			case 2:
+				useSessionUrl(request, response);
+				break;
+			case 3:
+				useRefererUrl(request, response);
+				break;
+			default:
+				useDefaultUrl(request, response);
+			}
+		}else {
+			redirectStrategy.sendRedirect(request, response, "/hospital");
+		}
+		
 		session.setMaxInactiveInterval(30 * 60);
 		session.setAttribute("memberInfo", dto);
 
-		int intRedirectStrategy = decideRedirectStrategy(request, response);
-		switch (intRedirectStrategy) {
-		case 1:
-			useTargetUrl(request, response);
-			break;
-		case 2:
-			useSessionUrl(request, response);
-			break;
-		case 3:
-			useRefererUrl(request, response);
-			break;
-		default:
-			useDefaultUrl(request, response);
-		}
+		
 	}
 
 	private void clearAuthenticationAttributes(HttpServletRequest request) {

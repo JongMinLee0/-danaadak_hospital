@@ -11,6 +11,7 @@ public class MemberDTO {
 	private String birth;
 	private int gender;
 	private String kakao_id;
+	private String hos_id;
 	private String type;
 	private String authority;
 	private int enabled;
@@ -81,6 +82,14 @@ public class MemberDTO {
 
 	public void setKakao_id(String kakao_id) {
 		this.kakao_id = kakao_id;
+	}
+
+	public String getHos_id() {
+		return hos_id;
+	}
+
+	public void setHos_id(String hos_id) {
+		this.hos_id = hos_id;
 	}
 
 	public String getType() {

@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.Resource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.HashOperations;
@@ -14,6 +15,7 @@ import org.springframework.data.redis.listener.ChannelTopic;
 import org.springframework.data.redis.listener.RedisMessageListenerContainer;
 import org.springframework.stereotype.Repository;
 
+import com.dana.hos.chat.module.ChatMessage;
 import com.dana.hos.chat.module.ChatRoom;
 import com.dana.hos.chat.service.RedisSubscriber;
 
@@ -37,6 +39,11 @@ public class ChatRoomRepository {
 	private static final String CHAT_ROOMS = "CHAT_ROOM";
 	private HashOperations<String, String, ChatRoom> opsHashChatRoom; // 채팅방 정보 (방번호, 이름1, 이름2)
 	private ListOperations<String, Object> opsListChatRoom; // id에 저장되어 있는 채팅방 정보
+	
+	@Resource(name = "redisTemplate") 
+	private ListOperations<String, String> listOperation;
+
+	
 
 	// 채팅방의 대화 메시지를 발행하기 위한 redis topic 정보. 서버별로 채팅방에 매치되는 topic정보를 Map에 넣어
 	// roomId로 찾을 수 있도록 한다
@@ -89,8 +96,8 @@ public class ChatRoomRepository {
 	}
 	
 	// 해당 채팅방에 존재하는 모든 메시지를 가져온다.
-	public List<Object> roomMessage(String roomId){
-		return opsListChatRoom.range(roomId, 0, -1);
+	public List<String> roomMessage(String roomId){
+		return listOperation.range(roomId, 0, -1);
 	}
 	
 	// 서로 이미 채팅중인지를 확인하는 메소드

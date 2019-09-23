@@ -32,6 +32,11 @@
   		<put-attribute name="mainbody" value="/WEB-INF/views/commu/com_chat.jsp" />
   </definition>
   
+  <!-- 채팅 방 페이지  -->
+  <definition name="chatRoom" extends="commu/commain">
+  		<put-attribute name="mainbody" value="/WEB-INF/views/commu/com_chatDetail.jsp" />  
+  </definition>
+  
   
   <!-- 후기 작성페이지  -->
   <definition name="write" extends="commu/commain">

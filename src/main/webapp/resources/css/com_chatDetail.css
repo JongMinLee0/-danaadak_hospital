@@ -1,0 +1,29 @@
+/* 채팅창 전체를 감싸는 div  */
+.chat_wrap{
+	border: 1px solid black;
+	width: 60%;
+	height: 675px;
+	margin: 50px auto;
+}
+
+/* 메시지가 출력되는 부분  */
+#message_box{
+	margin-top: -15px;
+	width: 100%;
+	height: 500px;
+	border: 1px solid red;
+	overflow-y: scroll;
+}
+
+/* textarea  */
+#comment{
+	float: left;
+	resize: none;
+	width: 90%;
+	height: 90px;
+}
+
+/* 전송버튼  */
+#sendBtn{
+	margin: 5px 0 0 10px;
+}

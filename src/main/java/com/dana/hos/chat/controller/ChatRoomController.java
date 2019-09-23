@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.dana.hos.chat.module.ChatRoom;
 import com.dana.hos.chat.repo.ChatRoomRepository;
+import com.dana.hos.chat.service.ChatService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -25,6 +27,9 @@ public class ChatRoomController {
 
 	@Autowired
 	private final ChatRoomRepository chatRoomRepository;
+	
+	@Autowired
+	private ChatService chatService;
 
 	// 채팅 리스트 화면
 	// 바로 리스트를 뿌려주도록 변경
@@ -54,12 +59,15 @@ public class ChatRoomController {
 		}
 		return chatRoomRepository.createChatRoom(name1, name2);
 	}
-
-	// 채팅방 입장 화면
-	@GetMapping("/room/enter/{roomId}")
-	public String roomDetail(Model model, @PathVariable String roomId) {
-		model.addAttribute("roomId", roomId);
-		return "chat/roomdetail";
+	
+	// 채팅방 입장화면
+	@GetMapping("/room/enter")
+	public ModelAndView roomDetail(ModelAndView mav, @ModelAttribute ChatRoom chatroom) {
+		mav.setViewName("chatRoom");
+		// 메시지를 뿌려주는 메소드를 작성해야 한다.
+		mav.addObject("messageList", chatService.messageList(chatroom.getRoomId()));
+		mav.addObject("chatroom", chatroom);
+		return mav;
 	}
 
 	// 특정 채팅방 조회

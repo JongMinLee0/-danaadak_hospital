@@ -20,7 +20,6 @@
 
 </head>
 <body>
-
 <form>
 <div id="bookList_Wrap">
 	<h2>예약내역</h2>
@@ -61,10 +60,10 @@
 	</table>
 </div>
 	</form>
+	
 	<form id="evn_regi" action="" >
 		<input type="button" id="event_regi"value="이벤트 접수하기" >
 	</form>	
-		
 </body>
 	<jsp:include page="/WEB-INF/views/fragments/footer.jsp" />
 </html>

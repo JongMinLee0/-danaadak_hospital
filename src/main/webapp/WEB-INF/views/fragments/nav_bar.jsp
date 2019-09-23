@@ -5,6 +5,7 @@
 
 <link rel="stylesheet" href="/hos/resources/css/nav_bar.css" />
 <script src="/hos/resources/js/nav_bar.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <!--
 	공통 navbar
  -->

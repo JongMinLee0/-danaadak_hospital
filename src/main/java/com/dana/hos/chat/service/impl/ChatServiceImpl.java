@@ -11,6 +11,8 @@ import com.dana.hos.chat.module.ChatMessage;
 import com.dana.hos.chat.module.ChatRoom;
 import com.dana.hos.chat.repo.ChatRoomRepository;
 import com.dana.hos.chat.service.ChatService;
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 
 @Service
 public class ChatServiceImpl implements ChatService{
@@ -32,18 +34,42 @@ public class ChatServiceImpl implements ChatService{
 			
 			// 대상자의 이름 저장
 			String name = chatRoom.getName1().equals(id) ? chatRoom.getName2() : chatRoom.getName1();
-			
-			List<Object> roomMessage = chatRoomRepository.roomMessage((String)obj);
+			List<String> roomMessage = chatRoomRepository.roomMessage((String)obj);
 			
 			chatList.setOpponent(name);
 			if(roomMessage.size() > 0) {
-				chatList.setMessage((ChatMessage) roomMessage.get(roomMessage.size()-1));
+				// 마지막 메시지를 가지고 온다.
+				String json = roomMessage.get(roomMessage.size()-1);
+				JsonObject convertedObject = new Gson().fromJson(json, JsonObject.class);
+				chatList.setMessage(convertedObject.get("message").getAsString());
+				chatList.setTime(convertedObject.get("time").getAsString());
 				// setLastMessage에 JSON형식으로 들어간다(즉, 메세지와 시간이 들어가 있을 것)
 			}
+			chatList.setRoomId((String)obj);
 			cList.add(chatList);
 		}
 		
 		return cList;
+	}
+
+	@Override
+	public List<ChatMessage> messageList(String roomId) {
+		// ChatMessage를 저장해 놓았다.
+		List<ChatMessage> chatMessage = new ArrayList<>();
+		List<String> stringList = chatRoomRepository.roomMessage(roomId);
+		for(String str : stringList) {
+			String json = str;
+			JsonObject convertedObject = new Gson().fromJson(json, JsonObject.class);
+			ChatMessage chat = new ChatMessage();
+			
+			chat.setMessage(convertedObject.get("message").toString().replaceAll("\"", ""));
+			chat.setRoomId(convertedObject.get("roomId").toString().replaceAll("\"", ""));
+			chat.setSender(convertedObject.get("sender").toString().replaceAll("\"", ""));
+			chat.setTime(convertedObject.get("time").toString().replaceAll("\"", ""));
+			chatMessage.add(chat);
+		}
+		
+		return chatMessage;
 	}
 
 }

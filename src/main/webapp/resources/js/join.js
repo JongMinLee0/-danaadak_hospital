@@ -150,7 +150,7 @@ $(document).ready(function() {
 	
 	$(document).on('click','.hosResult',function(){
 		var index = $(this).index();
-		var hosId = $('#hosid').eq(index).val();
+		var hosId = $('.hosid').eq(index).val();
 		var hosName = $('.m-0').eq(index).text();
 		var hosAddress = $('.text-muted').eq(index).text();
 
@@ -287,7 +287,7 @@ function appendHospital(res) {
 		$('.list-group').append('<div class="hosResult list-group-item list-group-item-action">'
 				+'<p class="m-0" >'+res[i].hos_name+'</p>'
 				+'<small class="text-muted">'+res[i].hos_address+'</small>'
-				+'<input type="hidden" id="hosid" value="'+res[i].hos_id+'">'
+				+'<input type="hidden" class="hosid" value="'+res[i].hos_id+'">'
 				+'</div>');
 	}
 }

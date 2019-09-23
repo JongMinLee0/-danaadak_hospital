@@ -11,8 +11,8 @@
 
 	<!-- 병원 회원가입 -->
 	<insert id="hosjoin" parameterType="com.dana.hos.member.module.MemberDTO">
-		insert into member (username, password, name, address, phone, type, enabled)
-		values (#{username}, #{password}, #{name}, #{address}, #{phone}, 'hospital', 0)
+		insert into member (username, password, name, address, phone, type, hos_id, enabled)
+		values (#{username}, #{password}, #{name}, #{address}, #{phone}, 'hospital', #{hos_id}, 0)
 	</insert>
 	
 	<select id="selectUserById" resultType="com.dana.hos.member.module.MemberDTO">

@@ -6,7 +6,7 @@ $(document).ready(function(){
 	$('#insertModal').addClass('insertHide');
 	
 	//예약버튼 누르면 모달창 가져온다.
-	$(document).on('click','#map > div:nth-child(1) > div > div:nth-child(6) > div:nth-child(16) > div:nth-child(2) > div > div > div.body > div.desc > div:nth-child(4) > button',function(){
+	$(document).on('click','.insertBtn',function(){
 		$('#insertModal').removeClass('insertHide');
 		$('#insertModal').addClass('insertShow');
 		

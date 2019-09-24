@@ -1,5 +1,6 @@
 var charRoomId = '';
 var chatSender = '';
+var chatme = '';
 $(document).ready(function(){
 	/*
 	 GET 방식에서 URL 지워주는 건데 지워버리면 값이 없어서 새로고침시 값을 가지고 오지 않아 주석처리 해놓았다.
@@ -8,10 +9,10 @@ $(document).ready(function(){
 	// hidden으로 지정한 값을 받아온다.
 	chatRoomId = $('#roomId').val();
 	chatSender = $('#sender').val();
+	
 	connect();
 	
 	$("#comment").keyup(function(key) {
-		console.log(key.keyCode);
 		if (key.keyCode == 13) {
 			if (!key.shiftKey){
 				sendMessage();
@@ -20,6 +21,15 @@ $(document).ready(function(){
 			}
 		}
 	});
+	
+	// 방 나가기 클릭
+	$('body > div.comm_body > div.content_wrap > div > div:nth-child(3) > a:nth-child(3) > span').on('click', function(){
+		
+	});
+	
+
+	// 스크롤 최하단으로 이동시키기 위함
+	$("#message_box").scrollTop($("#message_box")[0].scrollHeight);
 });
 
 
@@ -38,13 +48,21 @@ function sendMessage(){
 
 //메시지를 받을 때
 function recvMessage(recv) {
-	console.log(recv);
 	var send = recv.type == 'ENTER' ? '[알림]':recv.sender;
 	var message = recv.message;
-	var time = recv.time;
-	$('#message_box > ul').append('<li class="list-group-item"><p>'+send+'<span>'+
-			time+'</span></p><p>'+
-			message+'</p></li>');
+	var time = recv.time.substring(11, 17);
+	var temp = time.split("시");
+	var temp2 = temp[0]+":"+temp[1];
+	
+	if(send==chatSender){
+		$('#message_box > ul').append('<li class="list-group-item me"><p>'+send+'</p><span>'
+				+temp2+'</span><div class="alert alert-warning">'+
+				message+'</div></li>');
+	}else{
+		$('#message_box > ul').append('<li class="list-group-item opponent"><p>'+
+				send+'</p><div class="alert alert-light">'+
+				message+'</div><span>'+temp2+'</span></li>');
+	}
 	
 	// 스크롤 최하단으로 이동시키기 위함
 	$("#message_box").scrollTop($("#message_box")[0].scrollHeight);
@@ -72,4 +90,8 @@ function connect() {
         }
     });
 }
+
+
+
+
 

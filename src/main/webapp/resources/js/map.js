@@ -344,6 +344,17 @@ function displayInfowindow(marker, title, searchs) {
 	$('#hos_info').html('<h4>'+searchs.hos_name+
 			'</h4><input type="hidden" value="'+searchs.hos_id+'"id="hos_id" name="hos_id"  readonly="readonly">'+
 			'<input type="hidden" value="'+searchs.hos_name+'"id="hos_name" name="hos_name">');
+	
+	$('.insertBtn').on('click', function(){
+		if($('#navbarSupportedContent > span').text()==''){
+			swal("로그인이 필요한 서비스 입니다!!", {
+			      icon: "warning",
+		  }).then((value) => {
+			  location.href='/hos/login';
+		  });
+			return false;
+		}
+	});
 }
 
 // 검색결과 목록의 자식 Element를 제거하는 함수입니다
@@ -352,12 +363,13 @@ function removeAllChildNods(el) {
 		el.removeChild(el.lastChild);
 	}
 }
-
-$(document).ready(function(){
-	$('body > div.navbar_wrap.fixed-top').removeClass('fixed-top');
-});
 //커스텀 오버레이를 닫기 위해 호출되는 함수입니다 
 function closeOverlay() {
 	infowindow.close();   
 }
 
+
+
+$(document).ready(function(){
+	$('body > div.navbar_wrap.fixed-top').removeClass('fixed-top');
+});

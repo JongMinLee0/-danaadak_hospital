@@ -17,6 +17,7 @@
 <script
 	src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="/hos/resources/css/notice/list.css" />
+
 <script type="text/javascript">
 	$(document).ready(function(){
 		$('body > div.navbar > div > nav.navbar.transparent.navbar-expand-lg > a').text('');
@@ -41,15 +42,18 @@
 			공지사항을 알려드립니다.</p>
 		</div>
 		
+		
 		<!-- 테이블 -->
 		<div id="table_wrap">
 			<!-- 글쓰기버튼 -->
-			
-			<form id="frm" name="frm" method="get" action="noticewrite">
-			 	<input type="submit" id="btnWrite" value="글쓰기닷">
-			</form>
-			
-		
+			<c:choose>
+				<c:when test="${sessionScope.memberInfo.username=='admin' }">
+					<form id="frm" name="frm" method="get" action="noticewrite">
+						<button type="submit" class="btn btn-dark" id="btnWrite" value="글쓰기">글쓰기</button>
+					</form>
+				</c:when>
+			</c:choose>
+
 			<table class="table table-hover" id="title">
 				<thead>
 					<tr>
@@ -108,8 +112,13 @@
 				</c:if>
 				<!-- 다음끝 -->
 			</div>
+	
+
 		</div>
+
 	</div>
+
+		
 		<jsp:include
 			page="/WEB-INF/views/fragments/footer.jsp" />
 </body>

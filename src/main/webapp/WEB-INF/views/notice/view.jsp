@@ -15,9 +15,6 @@
 <link
 	href="https://fonts.googleapis.com/css?family=Do+Hyeon&display=swap"
 	rel="stylesheet">
-<link
-	href="https://fonts.googleapis.com/css?family=East+Sea+Dokdo&display=swap"
-	rel="stylesheet">
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
@@ -82,14 +79,6 @@
 			<div id="subject">${dto.subject }</div>
 
 			<div id="file">
-				<a id="filetext">파일&nbsp;&nbsp;</a>
-				<c:if test="${!empty dto.upload }">
-					<%-- <a href="contentdownload?num=${dto.num}"> --%>
-						${fn:substringAfter(dto.upload,"_")}</a>
-				</c:if>
-				<c:if test="${empty dto.upload}">
-					<c:out value="첨부파일 없음" />
-				</c:if>
 
 				<div id="reg_date">
 					<a>등록일&nbsp;&nbsp;</a>
@@ -100,7 +89,6 @@
 			</div>
 
 			<div id="content">
-				<img id="image" src="/hos/temp/${dto.upload}">
 				<div id="content_text">${dto.content}</div>
 			</div>
 

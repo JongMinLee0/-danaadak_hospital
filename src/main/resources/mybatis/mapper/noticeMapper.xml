@@ -27,9 +27,9 @@
 
 	<insert id="save" parameterType="com.dana.hos.notice.module.NoticeDTO">
 		insert into
-		notice(num,writer,subject,reg_date,readcount,content,upload)
-		values(notice_num_seq.nextval,#{writer},#{subject},sysdate,0,
-		#{content},#{upload}
+		notice(num,writer,subject,reg_date,readcount,content)
+		values(notice_num_seq.nextval, '관리자' ,#{subject},sysdate,0,
+		#{content}
 		)
 	</insert>
 

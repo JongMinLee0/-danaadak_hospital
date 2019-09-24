@@ -14,14 +14,14 @@
 			<tr>
 				<td><h4>${dList.name}</h4></td>
 				<c:choose>
-					<c:when test="${sessionScope.memberInfo.name eq dList.name}">
+					<c:when test="${sessionScope.memberInfo.username eq dList.id}">
 						<td style="text-align: right;">
 							<button id="modifyBtn">수정</button>
 							<button id="deleteBtn">삭제</button>
 						</td>
 					</c:when>
 					<c:otherwise>
-						<td style="text-align: right;"><button>1:1대화</button></td>
+						<td style="text-align: right;"><button name="username" id="username" value="${dList.id}">1:1대화</button></td>
 					</c:otherwise>
 				</c:choose>
 			</tr>
@@ -44,6 +44,7 @@
 	<form method="post" id="frm">
 		<input type="hidden" id="vino" name="vino" value="${dList.vino}" />
 		<input type="hidden" id="name" name="name" value="${sessionScope.memberInfo.name}" />
+		<input type="hidden" id="userId" name="userId" value="${sessionScope.memberInfo.username}" />
 		<textarea class="form-control" rows="5" id="comment" name="com_content" placeholder="댓글을 작성해주세요."></textarea>
 		<input type="submit" value="작성" id="subBtn">
 		<input type="button" value="뒤로" id="backBtn">

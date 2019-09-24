@@ -6,7 +6,7 @@ $(document).ready(function(){
 	$('#insertModal').addClass('insertHide');
 	
 	//예약버튼 누르면 모달창 가져온다.
-	$(document).on('click','#map > div:nth-child(1) > div > div:nth-child(6) > div:nth-child(16) > div:nth-child(2) > div > div > div.body > div.desc > div:nth-child(4) > button',function(){
+	$(document).on('click','.insertBtn',function(){
 		$('#insertModal').removeClass('insertHide');
 		$('#insertModal').addClass('insertShow');
 		
@@ -28,6 +28,11 @@ $(document).ready(function(){
 		  		"<option value="+value+">"+value+"</option>"
 		  );
 	 });
+	
+	$('#re_date').on('click',function(){
+		alert('달력눌렀니? ')
+		calendar();
+	});
 	
 	//예약시간 가능 여부 확인 위한 ajax !!!!
 	$('#time_chk').on('click',function(){
@@ -91,8 +96,8 @@ $(document).ready(function(){
 			swal('선택하신 시간은 예약가능한 시간이 아닙니다.');
 			return false;
 		}else{
-			swal($('#hos_id').val()+'\n'
-					+$('#id').val()+'님'+'\n'
+			swal($('#hos_name').val()+'\n'
+					+$('#username').val()+'님'+'\n'
 					+$('#category').val()+'\n'
 					+$('#re_date').val()+'에    '+$('#re_time').val()+'  예약이 완료되었습니다.').then(function(){
 				$('#frm').submit();

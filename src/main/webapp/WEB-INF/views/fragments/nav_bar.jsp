@@ -5,6 +5,7 @@
 
 <link rel="stylesheet" href="/hos/resources/css/nav_bar.css" />
 <script src="/hos/resources/js/nav_bar.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <!--
 	공통 navbar
  -->
@@ -13,13 +14,13 @@
 		<div class="mr-auto"></div>
 		<ul class="navbar-nav">
 			<li class="nav-item-top"><a class="nav-link" href="#"><i class="fa fa-search" aria-hidden="true"></i></a></li>
-			<li class="nav-item-top"><a class="nav-link" href="#"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a></li>
+			<li class="nav-item-top"><a class="nav-link" href="/hos/myinfo/myinfomain"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a></li>
 		</ul>
 	</nav>
 	<nav class="navbar transparent navbar-expand-lg">
 			<!-- link home으로 변경  -->
 			
-			<a class="navbar-brand" href="/hos/home">다나았닥!!</a> 
+			<a class="navbar-brand" href="/hos/home"><img alt="다나앗닥" src="/hos/resources/images/notice/logo.png" id="logo"></a> 
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
 				data-target="#navbarSupportedContent"
 				aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -29,22 +30,21 @@
 	
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav mr-auto">
-				<li class="nav-item"><a class="nav-link" href="/hos/map">병원</a></li>
-				<li class="nav-item"><a class="nav-link" href="/hos/phmap">약국</a></li>
+				<li class="nav-item"><a class="nav-link" href="/hos/map">병원 / 약국</a></li>
+				<!-- <li class="nav-item"><a class="nav-link" href="/hos/phmap">약국</a></li> -->
 				<li class="nav-item"><a class="nav-link" href="/hos/comm/main">커뮤니티</a></li>
 				<li class="nav-item"><a class="nav-link" href="/hos/noticelist">공지사항</a></li>
 			</ul>
-			
-			<sec:authorize access="hasRole('ROLE_ADMIN')">
-				<p>관리자접속중</p>
-			</sec:authorize>
 			<c:choose>
-				<c:when test="${sessionScope.memberInfo.name eq null}"><button class="btn my-2 my-sm-0" type="submit" onClick="location.href='/hos/login'">로그인</button></c:when>
-				<c:otherwise><form:form action="/hos/logout" method="POST"> <button class="btn my-2 my-sm-0" type="submit">로그아웃</button> </form:form></c:otherwise>
+				<c:when test="${sessionScope.memberInfo.name eq null}">
+				</c:when>
+				<c:otherwise>
+					<span>${sessionScope.memberInfo.name}</span>님
+				</c:otherwise>
 			</c:choose>
+			<sec:authorize access="isAnonymous()"><button class="btn my-2 my-sm-0" type="submit" onClick="location.href='/hos/login'">로그인</button></sec:authorize>
+			<sec:authorize access="isAuthenticated()"><form:form action="${pageContext.request.contextPath}/logout" method="POST"> <button class="btn my-2 my-sm-0" type="submit">로그아웃</button> </form:form> </sec:authorize>
 
-			
-			
 		</div>
 	</nav>
 </div>

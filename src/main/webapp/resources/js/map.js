@@ -157,6 +157,16 @@ function displayPlaces(search) {
 		bounds.extend(placePosition);
 
 		var searchs = search[i];
+		
+		function panTo(searchs){
+		    // 이동할 위도 경도 위치를 생성합니다 
+		    var moveLatLon = new kakao.maps.LatLng(searchs.hos_lat, searchs.hos_lon);
+		    
+		    // 지도 중심을 부드럽게 이동시킵니다
+		    // 만약 이동할 거리가 지도 화면보다 크면 부드러운 효과 없이 이동합니다
+		    map.panTo(moveLatLon);            
+		}
+		
 		// 마커와 검색결과 항목에 click 했을때
 		// 해당 장소에 인포윈도우에 장소명을 표시합니다
 		// 지도 click 했을 때는 인포윈도우를 닫습니다
@@ -165,6 +175,7 @@ function displayPlaces(search) {
 			daum.maps.event.addListener(marker, 'click', function() {
 			
 				displayInfowindow(marker, title, searchs);
+				panTo(searchs);
 			});
 
 			daum.maps.event.addListener(map, 'click', function() {
@@ -173,6 +184,7 @@ function displayPlaces(search) {
 
 			itemEl.onclick = function() {
 				displayInfowindow(marker, title, searchs);
+				panTo(searchs);
 			};
 
 			// itemEl.onclick = function() {
@@ -310,6 +322,7 @@ function displayInfowindow(marker, title, searchs) {
     '            '+searchs.hos_name+'' + 
     '            <div class="close" onclick="closeOverlay()" title="닫기"></div>' + 
     '        </div>' + 
+    '        <input type="hidden" value="'+searchs.hos_id+'">' + 
     '        <div class="body">' + 
     '            <div class="img">' +
     '                <img src="/hos/resources/images/hospital.jpg" width="73" height="70">' +
@@ -324,10 +337,24 @@ function displayInfowindow(marker, title, searchs) {
     '        </div>' + 
     '    </div>' +    
     '</div>';
+	
 //	// content의 내용을 인포윈도우에 등록
 	infowindow.setContent(content);
 	infowindow.open(map, marker);
-	$('#hos_name').html('<h4>'+searchs.hos_name+'</h4><input type="hidden" value="'+searchs.hos_name+'"id="hos_id" name="hos_id"  readonly="readonly">');
+	$('#hos_info').html('<h4>'+searchs.hos_name+
+			'</h4><input type="hidden" value="'+searchs.hos_id+'"id="hos_id" name="hos_id"  readonly="readonly">'+
+			'<input type="hidden" value="'+searchs.hos_name+'"id="hos_name" name="hos_name">');
+	
+	$('.insertBtn').on('click', function(){
+		if($('#navbarSupportedContent > span').text()==''){
+			swal("로그인이 필요한 서비스 입니다!!", {
+			      icon: "warning",
+		  }).then((value) => {
+			  location.href='/hos/login';
+		  });
+			return false;
+		}
+	});
 }
 
 // 검색결과 목록의 자식 Element를 제거하는 함수입니다
@@ -336,12 +363,13 @@ function removeAllChildNods(el) {
 		el.removeChild(el.lastChild);
 	}
 }
-
-$(document).ready(function(){
-	$('body > div.navbar_wrap.fixed-top').removeClass('fixed-top');
-});
 //커스텀 오버레이를 닫기 위해 호출되는 함수입니다 
 function closeOverlay() {
 	infowindow.close();   
 }
 
+
+
+$(document).ready(function(){
+	$('body > div.navbar_wrap.fixed-top').removeClass('fixed-top');
+});

@@ -8,8 +8,48 @@
 		update member set password=#{password}, address=#{address}, 
 		phone=#{phone}, birth=#{birth} where username=#{username}
 	</update>
-
+	
+	<!-- 아이디 기준 멤버 테이블 보기 -->
     <select id="selectUserById" resultType="com.dana.hos.member.module.MemberDTO">
 		SELECT * FROM member WHERE username = #{username}
     </select>
+    
+    <!-- 내 예약 + 병원이름 조인 -->
+    <resultMap type="com.dana.hos.reserve.module.ReserveDTO" id="Reserve" autoMapping="false" >
+		<result column="hos_id" property="hos_id"/>
+		<result column="re_date" property="re_date"/>
+		<result column="re_time" property="re_time"/>
+		<result column="category" property="category"/>
+		<result column="message" property="message"/>
+		<result column="re_state" property="re_state"/>
+		<result column="username" property="username"/>
+		<result column="medicine" property="medicine"/>
+		<result column="eat_cnt" property="eat_cnt"/>
+	
+		<collection ofType="com.dana.hos.map.module.HosDTO" property="hosDTO" autoMapping="false" >
+			<result column="hos_name" property="hos_name"/>
+		</collection>
+	</resultMap>
+
+    
+    <!-- 내 예약 조인 -->
+	 <select id="myresList" resultMap="Reserve" parameterType="string">
+		select r.*, h.hos_name 
+		from reserve r, hospital h 
+		WHERE r.hos_id = h.hos_id(+) and r.username = #{username} 
+		order by re_date desc
+	 </select>
+	
+<!-- 	<select id="myresList"  resultType="com.dana.hos.reserve.module.ReserveDTO" parameterType="string">
+		select * from reserve 
+		WHERE username = #{username} 
+		order by re_date desc
+	</select> -->
+	
+	<!-- 내 예약 취소(예약 상태를 바꿈) -->
+	<update id="myresCancel" parameterType="com.dana.hos.reserve.module.ReserveDTO">
+		update reserve set re_state=2 where username=#{username}
+	</update>
+	
+	
 </mapper>

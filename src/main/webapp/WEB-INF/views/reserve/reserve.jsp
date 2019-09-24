@@ -10,9 +10,12 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
 <link rel="stylesheet" href="/hos/resources/css/reserve.css"/>
+
 <script src="/hos/resources/js/reserve.js"></script>
 <script src="/hos/resources/js/map.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>

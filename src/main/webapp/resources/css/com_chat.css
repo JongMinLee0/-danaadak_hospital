@@ -1,0 +1,24 @@
+/* 채팅 목록 감싸는 div  */
+body > div.comm_body > div.content_wrap > div{
+	width: 60%;
+	height: 500px;
+	margin: 50px auto;
+	border: 1px solid red;
+}
+
+/* 목록 높이  */
+body > div.comm_body > div.content_wrap > div > a table tbody tr td{
+	height: 40px;
+	width: 300px;
+	border: 1px solid blue;
+}
+
+body > div.comm_body > div.content_wrap > div a{
+	text-decoration: none;
+	color: black;
+}
+
+body > div.comm_body > div.content_wrap > div a:hover{
+	text-decoration: none;
+	color: gray;
+}

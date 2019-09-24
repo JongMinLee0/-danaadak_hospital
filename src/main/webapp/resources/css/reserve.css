@@ -7,13 +7,16 @@ tr{
 	border-radius: 4px;
 }
 /*  text box*/
-td input[type=text] {
+#name, #cate, #re_date, #re_time, #message {
   border: 1px solid #007bff;
-  height: 20px;
   border-radius: 4px;
   margin : 20px;
   vertical-align: middle;
 }
+#name, #username {
+	height: 30px;
+	}
+
 /* 모달창 숨기는 클래스  */
 .insertHide {
 	visibility: hidden;
@@ -62,6 +65,7 @@ td input[type=text] {
     cursor: pointer;
     display: inline-block;
     border-radius: 4px;	
+    width: 100px
 }
 .reserve_btn:hover{
   background-color: white; 

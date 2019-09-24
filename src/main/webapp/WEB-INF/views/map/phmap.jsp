@@ -28,8 +28,7 @@
 <!-- navbar 홈페이지 상단 메뉴바  -->
 <tiles:insertAttribute name="navbar" />
 	<div class="map_wrap">
-		<div id="map"
-			style="width: 100%; height: 600px; position: relative; overflow: hidden;"></div>
+		<div id="map"></div>
 
 <ul id="category">
         <li id="HP8" class="HP8" data-order="0"> 

@@ -16,6 +16,14 @@
 <link rel="stylesheet" href="/hos/resources/css/reserve.css" />
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
+
+<!-- // jQuery UI CSS파일  -->
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />  
+<!-- // jQuery 기본 js파일 -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>  
+<!-- // jQuery UI 라이브러리 js파일 -->
+<script src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>  
+
 <script
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f75d9f5f6c8fa127a77134992a06e786&libraries=services"></script>
 </head>
@@ -29,8 +37,7 @@
 <!-- navbar 홈페이지 상단 메뉴바  -->
 <tiles:insertAttribute name="navbar" />
 	<div class="map_wrap">
-		<div id="map"
-			style="width: 100%; height: 600px; position: relative; overflow: hidden;"></div>
+		<div id="map"></div>
 			
 			<ul id="category">
         <li id="HP8" class="HP8" data-order="0" style="background-color: pink"> 
@@ -64,7 +71,7 @@
 				alt="축소"></span>
 		</div>
 
-		<div id="menu_wrap" class="bg_white">
+		<div id="menu_wrap" class="bg_white" >
 			<div class="option">
 				<form onsubmit="searchPlaces(); return false">
 					<span>지역명:</span> <input type="text" placeholder="병원찾누?"
@@ -87,7 +94,7 @@
 		<div id="insertModal">
 			<table id="hos_table">
 				<tr>
-					<th id="hos_name" colspan="2">
+					<th id="hos_info"colspan="2">
 						<!-- jquery로 병원이름 받음 -->
 					</th>
 				</tr>
@@ -106,18 +113,17 @@
 				</tr>
 				<tr>
 					<th>진료항목</th>
-					<td><input type="text" id="category" name="category"　required="required"></td>
+					<td><input type="text" id="cate" name="category"required="required"></td>
 				</tr>
 				<tr>
 					<th>진&nbsp;료&nbsp;일</th>
-					<td><input type="text" id="re_date" name="re_date"
-						required="required"><br /> <select id="re_time"
-						name="re_time" required="required">
-					</select> <input type="button" id="time_chk" value="예약가능 시간 확인" /></td>
+					<td><input type="text" id="re_date" name="re_date"required="required"><br />
+					 <select id="re_time" name="re_time" required="required"></select> 
+					<input type="button" id="time_chk" value="예약가능 시간 확인" /></td>
 				</tr>
 				<tr>
 					<th>전달 할 메세지</th>
-					<td><textarea id="message" name="message" cols="30" rows="5"></textarea></td>
+					<td><textarea id="message" name="message" cols="30"></textarea></td>
 				</tr>
 				<tr>
 					<td><input type="button" id="submitBtn" class="reserve_btn"

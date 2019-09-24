@@ -27,18 +27,18 @@
         	return false;		
         }else{
         	if($('#now_pw').val() == nowPw){
-		        if($('#new_pw').val() != ''){
+        		$("#new_pw, #new_pw_confirm").on("change keyup paste", function() {
 			    	var pwConfirm = $('#new_pw').val();
 			    		
-			    	if ($('#new_pw_confirm').val() != pwConfirm  || $('#new_pw_confirm').val() == '') {
+			    	if ($('#new_pw').val() == '' || $('#new_pw_confirm').val() == '' || $('#new_pw_confirm').val() != pwConfirm) {
 			    		alert("비밀번호를 다시 확인해주세요");
 			    		return false;
 			    	} else {
 			    		$('#now_pw').removeAttr('name');
 			    		$('#new_pw').attr('name','password');
 			    	}
-		        }
-		        
+        		});
+
 	        	if (confirm("정말 수정하시겠습니까?") == true){    //확인
 	            	document.form.submit();
 	       	 	}else{   //취소
@@ -165,14 +165,14 @@
 
 <style type="text/css">
 #myPageBody {
-	border : 1px solid black;
+	border : 1px solid #007bff;
 	margin : 0 auto;
 }
 
 .bir_wrap{
 	display: flex;
 }
-#modCancleBtn, #modFinishBtn{
+#modFinishBtn{
   background:#007bff;
   color:#fff;
   border:none;
@@ -186,7 +186,7 @@
   outline:none;
   border-radius: 6px;
 }
-#modCancleBtn:hover, #modFinishBtn:hover{
+#modFinishBtn:hover{
   background:#fff;
   color:#007bff;
 }
@@ -316,7 +316,8 @@ font-size: 14px;
 			</tr>
 			
 		</table>
-	
+		<br/>
+		<br/>
 		<div id="finish">
 			<input type="hidden" value="${sessionScope.memberInfo.username}" name="username"/>
 			<input type="hidden" value="${sessionScope.memberInfo.name}" name="name"/>

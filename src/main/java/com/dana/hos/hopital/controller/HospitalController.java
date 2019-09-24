@@ -9,6 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.dana.hos.hopital.service.HospitalService;
 import com.dana.hos.reserve.module.ReserveDTO;
+import com.dana.hos.reserve.service.impl.ReserveServiceImp;
 
 @Controller
 public class HospitalController {
@@ -32,7 +33,6 @@ public class HospitalController {
 	}
 	@RequestMapping("/view")
 	public ModelAndView viewMethod(ModelAndView mav, String username) {
-		System.out.println("username : " + username);
 		mav.addObject("list",hospitalService.contentProcess(username));
 		mav.setViewName("hospital/view");
 		return mav;
@@ -40,10 +40,21 @@ public class HospitalController {
 	
 	@RequestMapping(value="/re_stateUpdate" ,method=RequestMethod.POST)
 	public ModelAndView  re_stateUpdateMethod(ModelAndView mav, ReserveDTO dto) {
-		System.out.println("여기탑니다.");
 		mav.setViewName("redirect:/hospital");
 		hospitalService.updateProcess(dto);
-		System.out.println(dto.getRe_state() + "update 진료상태");
+		return mav;
+	}
+	
+	@RequestMapping(value="/rec_insert", method= RequestMethod.POST)
+	public ModelAndView recipeInsertMethod(ModelAndView mav, ReserveDTO dto) {
+		hospitalService.recInsertProcess(dto);
+		mav.setViewName("hospital/view");
+		return mav;
+	}
+	
+	@RequestMapping(value="/event_register", method=RequestMethod.GET)
+	public ModelAndView eventInsertMethod(ModelAndView mav) {
+		mav.setViewName("hospital/eventRegister");
 		return mav;
 	}
 }//end class 

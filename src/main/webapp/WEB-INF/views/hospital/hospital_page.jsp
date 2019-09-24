@@ -14,13 +14,12 @@
 <link rel="stylesheet" href="resources/css/bootstrap.min.css" />
 <link rel="stylesheet" href="resources/css/home.css" />
 <link rel="stylesheet" href="resources/css/hospital_main.css" />
-
+<script type="text/javascript" src="/hos/resources/js/hospital_main.js"></script>
 <script type="text/javascript" src="/hos/resources/js/home.js"></script>
 
 
 </head>
 <body>
-
 <form>
 <div id="bookList_Wrap">
 	<h2>예약내역</h2>
@@ -41,6 +40,7 @@
 				<c:param name="username" value="${dto.username }"/>
 				<c:param name="re_state" value="${dto.re_state}"/>
 				<c:param name="hos_id" value="${dto.hos_id}"/>
+				<c:param name="re_date" value="${dto.re_date}"/>
 				</c:url><a href="${path }">${dto.username }</a>
 				</td>
 				<td>${dto.message }</td>
@@ -60,6 +60,10 @@
 	</table>
 </div>
 	</form>
+	
+	<form id="evn_regi" action="" >
+		<input type="button" id="event_regi"value="이벤트 접수하기" >
+	</form>	
 </body>
 	<jsp:include page="/WEB-INF/views/fragments/footer.jsp" />
 </html>

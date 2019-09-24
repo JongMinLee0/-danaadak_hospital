@@ -5,6 +5,24 @@
 	/* background-color: rgb(255,255,51); */
 	font-weight: bold;
 }
+
+/* 이미지 로고 */ 
+#logo {
+	margin-top: -40px;
+	width: 150px;
+	height: 60px;
+	position: absolute;
+	z-index: 5;
+}
+
+/* 메뉴 색상 및 hover 색상  */
+#navbarSupportedContent > ul > li a{
+	color: black;
+}
+
+#navbarSupportedContent > ul > li a:hover{
+	color: rgb(229,229,229);	
+}
 /* 위에 메뉴바 설정  */
 body > div.navbar_wrap > nav.navbar.navbar-expand-sm{
 	height: 30px;
@@ -28,6 +46,7 @@ body > div.navbar_wrap > nav.navbar.transparent.navbar-expand-lg.navbar-light{
 	border-bottom: 1px solid rgb(229,229,229);
 /* 	background-color: rgb(255,255,51); */
 	color: rgb(54,36,36) !important;
+	background-color: #fff;
 }
 
 
@@ -43,7 +62,7 @@ body > div.navbar_wrap > nav.navbar.navbar-expand-sm > ul > li > a > i:hover{
 /* navbar안에 목록 설정 */
 .nav-item{
 	margin-left: 10%;
-	width: 150px;
+	width: 200px;
 }
 
 #navbarSupportedContent > ul > li > a{
@@ -52,6 +71,11 @@ body > div.navbar_wrap > nav.navbar.navbar-expand-sm > ul > li > a > i:hover{
 
 #navbarSupportedContent{
 	margin-left: 10%;
+}
+
+/* 로그아웃  */
+#command > button:hover{
+	color: rgb(229, 229, 229);
 }
 
 /* 홈페이지 크기 변경시 설정  */

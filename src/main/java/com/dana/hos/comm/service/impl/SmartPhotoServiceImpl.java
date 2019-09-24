@@ -38,7 +38,7 @@ public class SmartPhotoServiceImpl implements SmartPhotoService {
 			// 파일 기본경로 _ 상세경로
 			
 			String filePath = dftFilePath + "review_image" + File.separator;
-			//System.out.println("filePath : " + filePath);
+			System.out.println("filePath : " + filePath);
 			File file = new File(filePath);
 			if (!file.exists()) {
 				file.mkdirs();

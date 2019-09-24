@@ -10,7 +10,7 @@
 		<!-- 병원 로그인 하면 ! !! !!!! 자기 병원 예약 내역 보이게 -->
 		select username, category, message, re_date, re_time, re_state
 		from reserve
-		where re_date = to_char((sysdate),'YYYY-mm-dd')
+		where re_date = to_char((sysdate),'YYYY-mm-dd') and hos_id=#{hos_id}
 		order by re_date, re_time
 	</select>
 
@@ -25,4 +25,9 @@
 		update reserve set re_state = #{re_state}
 		where username=#{username}
 	</update>
+	
+	<insert id="ins"  parameterType="com.dana.hos.reserve.module.ReserveDTO">
+		insert into reserve (username, eat_cnt, medicine)
+		values(#{username}, #{eat_cnt}, #{medicine})
+	</insert>
 </mapper>

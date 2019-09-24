@@ -13,10 +13,8 @@ public interface NoticeService {
 	public NoticeDTO updateSelectProcess(int num);
 	public void updateProcess(NoticeDTO dto);
 	public void deleteProcess(int num);
-	
 	public String fileSelectProcess(int num);
-	
-	public int rownumfindProcess(int num);
 	List<NoticeDTO> prenextProcess(NoticeDTO dto);
-	
+	public int rownumfindProcess(int num);
+
 }//end interface

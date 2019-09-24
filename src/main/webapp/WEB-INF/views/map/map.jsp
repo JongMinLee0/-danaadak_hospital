@@ -37,8 +37,7 @@
 <!-- navbar 홈페이지 상단 메뉴바  -->
 <tiles:insertAttribute name="navbar" />
 	<div class="map_wrap">
-		<div id="map"
-			style="width: 100%; height: 800px; position: relative; overflow: hidden;"></div>
+		<div id="map"></div>
 			
 			<ul id="category">
         <li id="HP8" class="HP8" data-order="0" style="background-color: pink"> 
@@ -72,7 +71,7 @@
 				alt="축소"></span>
 		</div>
 
-		<div id="menu_wrap" class="bg_white">
+		<div id="menu_wrap" class="bg_white" >
 			<div class="option">
 				<form onsubmit="searchPlaces(); return false">
 					<span>지역명:</span> <input type="text" placeholder="병원찾누?"

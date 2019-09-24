@@ -7,7 +7,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<select id="hos_countAll" parameterType="string" resultType="int">
 		select count(*) from HOSPITAL
-		where hos_category_name like '%' || #{data} || '%' or hos_name like '%' || #{data} || '%'
+		where hos_category_name like '%' || #{data} || '%' 
+		or hos_name like '%' || #{data} || '%' 
+		or hos_address like '%' || #{data} || '%'
 	</select>
 
 	<select id="hos_list" parameterType="java.util.HashMap"
@@ -16,7 +18,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select b.* from(
 		 select rownum as rowm, a.* from(
 		  select * from hospital
-		   where hos_category_name like '%' || #{keyword} || '%' or hos_name like '%' || #{keyword} || '%')a )b
+		   where hos_category_name like '%' || #{keyword} || '%' 
+		   or hos_name like '%' || #{keyword} || '%'
+		   or hos_address like '%' || #{keyword} || '%')a )b
 		    where b.rowm>=#{startpage} and b.rowm<=#{endpage}
 		]]>
 	</select>

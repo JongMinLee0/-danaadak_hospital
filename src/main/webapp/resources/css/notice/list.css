@@ -1,89 +1,95 @@
+
 /* 폰트설정 */
 @import url(http://fonts.googleapis.com/earlyaccess/nanumgothiccoding.css);
 /*navbar*/
 body > div.navbar > div{
-	background-color: white;	
-	font-family: 'Nanum Gothic Coding', serif;
-	margin-bottom: 10px;
-	
+   background-color: white;   
+   font-family: 'Nanum Gothic Coding', serif;
+   margin-bottom: 10px;
+   
 /* 이전다음 */
 }
 .pagelist{
-	position: absolute;
-	z-index: 2;
-	margin-top: 30px;
-	margin-left: 48%;
-	}
+   position: absolute;
+   z-index: 2;
+   margin-top: 30px;
+   margin-left: 48%;
+   }
 .pagelist a{
-	text-decoration: none;
-	color: black;
-	font-size:large;
+   text-decoration: none;
+   color: black;
+   font-size:large;
 }
 .pagelist a:hover, .pagelist .pagecolor{
-	text-decoration: underline;
-	color:#0c8bf3;
+   text-decoration: underline;
+   color:#0c8bf3;
 }
 /* 로고 */
 #logo{
-	margin-top: -40px;
-	width: 150px;
-	height: 60px;
-	position: absolute;
-	z-index: 5;	
-	
+   margin-top: -40px;
+   width: 150px;
+   height: 60px;
+   position: absolute;
+   z-index: 5;   
+   
 }
 /* 배경이미지 */
 .img-fluid{
-	position:fixed;
-	z-index: 1;
-	/* opacity: 0.5; */
+   position:fixed;
+   z-index: 1;
+   /* opacity: 0.5; */
+}
+#btnWrite{
+	float: right;
+	margin-right: 400px;
+	margin-top: 50px;
 }
 
 .table {
-	width: 60%;
-	text-align: center;
-	padding: 50px;
-	margin-left: 20%;
-	margin-top: 5%;
+   width: 60%;
+   text-align: center;
+   padding: 50px;
+   margin-left: 20%;
+   margin-top: 5%;
 }
 
 #table_wrap{
-	position: absolute;
-	z-index: 2;
-	width:100%;
-	height: 800px;
-	background-color: #ccccff;
-	margin-top: 50%;
-	
+   position: absolute;
+   z-index: 2;
+   width:100%;
+   height: 800px;
+   background-color: #ccccff;
+   margin-top: 50%;
+   
 }
 
 /* 공지사항 소개글 */
 #text{
-	position: absolute;
-	z-index: 2;
-	width: 100%;
-	height: 60%;
-	margin-top: 60px;
-	color :black;
+   position: absolute;
+   z-index: 2;
+   width: 100%;
+   height: 60%;
+   margin-top: 60px;
+   color :black;
 }
 
 #p{
-	text-align: center;
-	margin-top: 15%;
-	font-family: 'East Sea Dokdo', cursive;
-	font: bold;
-	font-size: 90px;
+   text-align: center;
+   margin-top: 15%;
+   font-family: 'East Sea Dokdo', cursive;
+   font: bold;
+   font-size: 90px;
 }
 /* footer */
  body > div.footer{
-	position :absolute;
-	z-index: 3;
-	margin-top: 1750px;
-	background-color: white;
+   position :absolute;
+   z-index: 3;
+   margin-top: 1750px;
+   background-color: white;
 } 
 body > div.footer-content{
-	position: absolute;
-	z-index: 3;
-	margin-top: 1750px;
-	background-color: white;
+   position: absolute;
+   z-index: 3;
+   margin-top: 1750px;
+   background-color: white;
 }

@@ -18,11 +18,13 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.util.FileCopyUtils;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.dana.hos.comm.service.SmartPhotoService;
 import com.dana.hos.notice.module.NoticeDTO;
 import com.dana.hos.notice.module.PageDTO;
 import com.dana.hos.notice.serivce.NoticeService;
@@ -36,7 +38,9 @@ public class NoticeController {
 	private NoticeService noticeService;
 	
 	private int currentPage;
-	
+	@Autowired
+	SmartPhotoService smartPhotoService;
+
 	private PageDTO pdto;
 
 	@Autowired
@@ -73,8 +77,7 @@ public class NoticeController {
 
 	@RequestMapping("/noticeview")
 	public ModelAndView viewMethod(int currentPage, NoticeDTO dto, ModelAndView mav) {
-		System.out.println("빌드가 안돼..");
-		
+
 		dto.setRownum(noticeService.rownumfindProcess(dto.getNum()));
 		dto.setPre(dto.getRownum()-1);
 		dto.setNext(dto.getRownum()+1);
@@ -97,16 +100,21 @@ public class NoticeController {
 
 	}// end writeMethod()////////////////////////////////
 	
-	@RequestMapping(value = "/noticewrite", method = RequestMethod.POST)
-	public String writeMethod(MultipartFile filename, NoticeDTO dto, HttpServletRequest request) throws Exception {
-		fileUpdate(dto, request);
-		
+	@RequestMapping(value = "/noticewrite", method = RequestMethod.POST, produces = "application/text;charset=UTF-8")
+	public String writeMethod(MultipartFile filename, @ModelAttribute NoticeDTO dto, HttpServletRequest request) throws Exception {
+	//	fileUpdate(dto, request);
+	//	System.out.println(dto.getContent());
 	//	dto.setUpload(filename.getOriginalFilename());
 		noticeService.insertProcess(dto);
 		
 		return "redirect:/noticelist";
 	}
-	
+	// 스마트에디터 파일 첨부
+		@RequestMapping(value = "smartPhoto", method = RequestMethod.POST)
+		public void multiSmartPhoto(HttpServletRequest request, HttpServletResponse response) {
+			smartPhotoService.smartUpload(request, response);
+		}
+
 	public void fileUpdate(NoticeDTO dto, HttpServletRequest request ) {
 		String filename = noticeService.fileSelectProcess(dto.getNum());
 		String root = request.getSession().getServletContext().getRealPath("/");

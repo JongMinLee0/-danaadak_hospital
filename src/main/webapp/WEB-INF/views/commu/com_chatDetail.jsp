@@ -13,17 +13,34 @@
 	<input type="hidden" id="sender" value="${chatroom.name1}" />
 	<input type="hidden" id="roomId" value="${chatroom.roomId}" />
 	<div>
-		<a href=""><i class="fa fa-angle-left" aria-hidden="true"></i></a>
-		<span>${chatroom.name2}</span>
+		<a href="/hos/comm/chat"><i class="fa fa-angle-left" aria-hidden="true"></i></a>
+		<span style="margin-left: 10px; font-size: 30px;">${chatroom.name2}</span>
+		<a href="">
+			<span style="margin-left: 370px; maring-top: 10px; font-size: 20px;"><i class="fa fa-sign-out" aria-hidden="true"></i>나가기</span>
+		</a>
 		<hr />
 	</div>
 	<div id="message_box">
 		<ul>
 			<c:forEach items="${messageList}" var="message">
-				<li>
-					<p>${message.sender}<span>${message.time}</span></p>
-					<p>${message.message}</p>
-				</li>
+				<c:choose>
+					<c:when test="${message.sender eq sessionScope.memberInfo.username}">
+						<li class="list-group-item me">
+							<p>${message.sender}</p>
+							<span>${message.time}</span><div class="alert alert-warning">
+								${message.message}
+							</div>
+						</li>
+					</c:when>
+					<c:otherwise>
+						<li class="list-group-item opponent">
+							<p>${message.sender}</p>
+							<div class="alert alert-light">
+								${message.message}
+							</div><span>${message.time}</span>
+						</li>
+					</c:otherwise>
+				</c:choose>
 			</c:forEach>
 		</ul>
 	</div>

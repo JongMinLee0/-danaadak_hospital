@@ -53,6 +53,7 @@ public class ChatController {
 			storeMessage.setTime(mTime);
 			String roomId = message.getRoomId();
 			String sender = message.getSender();
+			// textarea 줄바꿈 처리
 			String mes = message.getMessage();
 			storeMessage.setMessage(mes);
 			storeMessage.setRoomId(roomId);

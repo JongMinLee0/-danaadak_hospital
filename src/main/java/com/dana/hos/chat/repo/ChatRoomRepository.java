@@ -113,6 +113,14 @@ public class ChatRoomRepository {
 		return false;
 	}
 
+	// 채팅방 나가기
+	// key에서 채팅방을 삭제하고 사용자들 리스트에서도 채팅방을 삭제해야 한다.
+	public void exitRoom(String roomId, String name1, String name2) {
+		redisTemplate.delete(roomId);
+		
+	}
+	
+	
 	public ChannelTopic getTopic(String roomId) {
 		return topics.get(roomId);
 	}

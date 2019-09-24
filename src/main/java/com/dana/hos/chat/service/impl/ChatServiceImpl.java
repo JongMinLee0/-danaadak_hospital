@@ -61,11 +61,17 @@ public class ChatServiceImpl implements ChatService{
 			String json = str;
 			JsonObject convertedObject = new Gson().fromJson(json, JsonObject.class);
 			ChatMessage chat = new ChatMessage();
-			
-			chat.setMessage(convertedObject.get("message").toString().replaceAll("\"", ""));
+			String me = convertedObject.get("message").toString().replaceAll("\"", "");
+			chat.setMessage(me.substring(0, me.length()-2));
 			chat.setRoomId(convertedObject.get("roomId").toString().replaceAll("\"", ""));
 			chat.setSender(convertedObject.get("sender").toString().replaceAll("\"", ""));
-			chat.setTime(convertedObject.get("time").toString().replaceAll("\"", ""));
+			
+			// 시간 잘라내기 위함
+			String tie = convertedObject.get("time").toString().replaceAll("\"", "");
+			String temp = tie.substring(11, 17);
+			String[] strArray = temp.split("시");
+			String resultTime = strArray[0] + ":" + strArray[1];
+			chat.setTime(resultTime);
 			chatMessage.add(chat);
 		}
 		

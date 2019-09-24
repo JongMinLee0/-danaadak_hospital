@@ -6,7 +6,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="ph">
 <select id="ph_countAll" parameterType="string" resultType="int">
 		select count(*) from pharmacy
-		where ph_category_name like '%' || #{data} || '%' or ph_name like '%' || #{data} || '%'
+		where ph_category_name like '%' || #{data} || '%' 
+		or ph_name like '%' || #{data} || '%'
+		or ph_address like '%' || #{data} || '%'
 	</select>
 
 	<select id="ph_list" parameterType="java.util.HashMap"
@@ -15,7 +17,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select b.* from(
 		 select rownum as rowm, a.* from(
 		  select * from pharmacy
-		   where ph_category_name like '%' || #{keyword} || '%' or ph_name like '%' || #{keyword} || '%')a )b
+		   where ph_category_name like '%' || #{keyword} || '%' 
+		   or ph_name like '%' || #{keyword} || '%'
+		   or ph_address like '%' || #{keyword} || '%')a )b
 		    where b.rowm>=#{startpage} and b.rowm<=#{endpage}
 		]]>
 	</select>

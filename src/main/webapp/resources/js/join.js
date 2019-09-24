@@ -24,7 +24,7 @@ $(document).ready(function() {
 	
 	var typeParam = getParameters('type');
 	
-	history.replaceState({}, null, '/hos/login?type='+typeParam);	// 파라미터 지우기
+	history.replaceState({}, null, '/hos/join?type='+typeParam);	// 파라미터 지우기
 	
 	if(typeParam == 'user' || typeParam == ""){
 		$('#joinForm').prop('action','/hos/join/join');

@@ -24,7 +24,7 @@ $(document).ready(function(){
 	var responseMessage = "<c:out value="${successMsg}" />";
 	if(responseMessage != ""){
 		swal(responseMessage)
-		history.replaceState({}, null, location.pathname);	// 파라미터 지우기
+		history.replaceState({}, null, '/hos/login?type='+typeParam);
 	}
 });
    

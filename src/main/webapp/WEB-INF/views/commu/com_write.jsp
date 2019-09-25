@@ -35,6 +35,7 @@
 				        <a href="#">★</a>
 					</p>
 					<input type="hidden" id="vi_star" name="vi_star" value="" />
+					<input type="hidden" id="rno" name="rno" value="" />
 				</td>
 			</tr>
 			<tr>

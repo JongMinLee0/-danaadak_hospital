@@ -15,6 +15,7 @@ public class ReviewDTO {
 	private String name;
 	private String hos_name; // 병원 아이디 말고 병원 이름 넣는게 더 편할 듯
 	private String vi_date; // 작성일 추가 됨
+	private int rno; // 예약 번호
 }
 
 

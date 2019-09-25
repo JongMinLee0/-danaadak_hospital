@@ -7,7 +7,7 @@
 		<!-- 나중에 null 지워야됨 / 후기는 마이페이지에서 작성하는 게 좋을 듯  -->
 		insert into review 
 		values(vi_seq.nextval, #{vi_subject}, #{vi_content}, #{vi_hash, jdbcType=VARCHAR}, #{vi_star, jdbcType=VARCHAR},#{id, jdbcType=VARCHAR}, 
-		#{name, jdbcType=VARCHAR}, #{hos_name, jdbcType=VARCHAR}, sysdate)
+		#{name, jdbcType=VARCHAR}, #{hos_name, jdbcType=VARCHAR}, sysdate, #{rno})
 	</insert>
 	
 	<!-- 전체 후기 글 목록  -->

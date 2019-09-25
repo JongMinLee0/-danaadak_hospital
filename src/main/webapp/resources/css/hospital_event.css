@@ -1,0 +1,81 @@
+
+/* 글쓰기 폼  */
+#write_wrap{
+	width: 80%;
+	height: 600px;
+	margin: 100px auto;
+}
+#write_table{
+	width: 80%;
+	height: 100px;
+	margin: auto;
+}
+
+/* input type */
+#title{
+	width: 100%;
+}
+#hashTag{
+	width: 100%;
+}
+
+/* button  */
+.write_button{
+	width: 50px;
+	height: 30px;
+}
+
+#write_table > tbody > tr:nth-child(5) > td{
+	text-align: center;
+}
+
+/* 스마트 에디터 */
+
+/* 별점 주기 */
+#star_grade a{
+	text-decoration: none;
+    color: gray;
+    font-size: 20px;
+}
+#star_grade{
+	margin: 0 !important;
+}
+#star_grade a.on{
+    color: orange;
+}
+/* ----------------------------------------------------------------*/
+#event_registerFrm{
+	margin-left : 300px;
+	margin-top : 150px;	
+}
+#event_tab{
+	width: 1300px;
+}
+#event_tab td{
+	margin : 0px;
+}
+
+/* 버튼 css  */
+
+.event_register{
+	text-transform: uppercase;
+    background: #f4f160;
+    color: black;
+    padding: .7em 0em;
+    border: none;
+    font-size: 1em;
+    outline: none;
+    width: 80%;
+    letter-spacing: 1px;
+    font-weight: 600;
+    margin-top: 0.5em;
+    cursor: pointer;
+    display: inline-block;
+    border-radius: 4px;	
+    width: 100px	
+}
+.event_register:hover{
+  background-color: white; 
+  color: black; 
+  border: 2px solid #f4f160;
+}

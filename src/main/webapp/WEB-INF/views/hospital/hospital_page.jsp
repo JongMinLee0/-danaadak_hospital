@@ -37,11 +37,12 @@
 				<td>${dto.category }</td>
 				<td>
 				<c:url var="path" value="view">
-				<c:param name="username" value="${dto.username }"/>
-				<c:param name="re_state" value="${dto.re_state}"/>
-				<c:param name="hos_id" value="${dto.hos_id}"/>
-				<c:param name="re_date" value="${dto.re_date}"/>
-				</c:url><a href="${path }">${dto.username }</a>
+					<c:param name="username" value="${dto.username }"/>
+					<c:param name="re_state" value="${dto.re_state}"/>
+					<c:param name="hos_id" value="${dto.hos_id}"/>
+					<c:param name="re_date" value="${dto.re_date}"/>
+					<c:param name="re_time" value="${dto.re_time}"/>
+				</c:url><a href="${path}">${dto.username }</a>
 				</td>
 				<td>${dto.message }</td>
 				<td>${dto.re_date }</td>

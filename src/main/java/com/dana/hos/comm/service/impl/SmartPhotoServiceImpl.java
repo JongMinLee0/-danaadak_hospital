@@ -34,7 +34,7 @@ public class SmartPhotoServiceImpl implements SmartPhotoService {
 			String filename = request.getHeader("file-name");
 			// 파일 기본경로
 			String dftFilePath = request.getSession().getServletContext().getRealPath("/");
-			//System.out.println("dftFilePath : " + dftFilePath);
+			System.out.println("dftFilePath : " + dftFilePath);
 			// 파일 기본경로 _ 상세경로
 			
 			String filePath = dftFilePath + "review_image" + File.separator;

@@ -33,19 +33,19 @@
 
 <!-- 배경이미지 하단 카드  -->
 <div class="first-group">
-  <div class="container" onclick="location.href='#'">
+  <div class="container" onclick="location.href='/hos/map?keyword=정형외과'">
   	<img src="/hos/resources/images/home/정형외과.jpg" alt="정형외과" class="image">
   	<div class="overlay">
     	<div class="text"><p>정 형</p><p>외 과</p></div>
   		</div>
   </div>
-  <div class="container" onclick="location.href='#'">
+  <div class="container" onclick="location.href='/hos/map?keyword=내과'">
   	<img src="/hos/resources/images/home/내과.jpg" alt="내과" class="image">
   	<div class="overlay">
     	<div class="text">내 과</div>
   		</div>
   </div>
-  <div class="container" onclick="location.href='#'">
+  <div class="container" onclick="location.href='/hos/map?keyword=안과'">
   	<img src="/hos/resources/images/home/안과.jpg" alt="안과" class="image">
   	<div class="overlay">
     	<div class="text">안 과</div>
@@ -53,19 +53,19 @@
   </div>
 </div>
 <div class="second-group">
-  <div class="container" onclick="location.href='#'">
+  <div class="container" onclick="location.href='/hos/map?keyword=산부인과'">
   	<img src="/hos/resources/images/home/산부인과.jpg" alt="산부인과" class="image">
   	<div class="overlay">
     	<div class="text"><p>산 부</p><p>인 과</p></div>
   		</div>
   </div>
-  <div class="container" onclick="location.href='#'">
+  <div class="container" onclick="location.href='/hos/map?keyword=치과'">
   	<img src="/hos/resources/images/home/치과2.jpg" alt="치과2" class="image">
   	<div class="overlay">
     	<div class="text">치 과</div>
   		</div>
   </div>
-  <div class="container" onclick="location.href='#'">
+  <div class="container" onclick="location.href='/hos/map?keyword=피부과'">
   	<img src="/hos/resources/images/home/피부과.jpg" alt="피부과" class="image">
   	<div class="overlay">
     	<div class="text">피부과</div>

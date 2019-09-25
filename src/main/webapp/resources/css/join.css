@@ -123,6 +123,8 @@ input:focus::-webkit-input-placeholder {
 	position: absolute;
 	width: 100%;
 	left: 0;
+	height: 210px;
+	overflow: scroll;
 }
 
 .list-group-item {

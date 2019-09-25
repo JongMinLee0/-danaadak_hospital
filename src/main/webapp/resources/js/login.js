@@ -23,9 +23,9 @@ $(document).ready(function() {
 	
 	// console.log(getParameters('type'));
 	var typeParam = getParameters('type');
-//	alert(typeof typeParam);
-//	alert(typeParam == 'hospital');
-//	alert(typeParam == 'user');
+	var responseMessage = getParameters('successMsg');
+	
+//	alert(typeParam);
 	
 	if(typeParam == 'user' || typeParam == ""){
 		$('#perBtn').click();
@@ -34,6 +34,20 @@ $(document).ready(function() {
 	if(typeParam == 'hospital'){
 		$('#hosBtn').click();
 	}
+	
+	$('#perBtn').on('click',function() {
+		location.href = 'login?type=user';
+	});
+	
+	$('#hosBtn').on('click',function() {
+		location.href = 'login?type=hospital';
+	});
+
+	
+//	alert(typeof typeParam);
+//	alert(typeParam == 'hospital');
+//	alert(typeParam == 'user');
+	
 	
 	
 	
@@ -66,14 +80,6 @@ $(document).ready(function() {
 
 	});
 	
-	$('#perBtn').on('click',function() {
-		location.href = 'login?type=user';
-	});
-	
-	$('#hosBtn').on('click',function() {
-		location.href = 'login?type=hospital';
-	});
-
 });
 
 

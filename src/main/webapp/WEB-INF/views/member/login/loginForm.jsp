@@ -18,19 +18,41 @@
 <script src="/hos/resources/js/jquery.cookie.js"></script>
 <link rel="stylesheet" href="/hos/resources/css/bootstrap.min.css" />
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
-
-<script>
+<script type="text/javascript">
 $(document).ready(function(){
 	var responseMessage = "<c:out value="${successMsg}" />";
-	if(responseMessage != ""){
-		swal(responseMessage)
-		history.replaceState({}, null, '/hos/login?type='+typeParam);
+	
+	var getParameters = function (paramName) {
+	    // 리턴값을 위한 변수 선언
+	    var returnValue;
+
+	    // 현재 URL 가져오기
+	    var url = location.href;
+
+	    // get 파라미터 값을 가져올 수 있는 ? 를 기점으로 slice 한 후 split 으로 나눔
+	    var parameters = (url.slice(url.indexOf('?') + 1, url.length)).split('&');
+
+	    // 나누어진 값의 비교를 통해 paramName 으로 요청된 데이터의 값만 return
+	    for (var i = 0; i < parameters.length; i++) {
+	        var varName = parameters[i].split('=')[0];
+	        if (varName.toUpperCase() == paramName.toUpperCase()) {
+	            returnValue = parameters[i].split('=')[1];
+	            return decodeURIComponent(returnValue);
+	        }
+	    }
 	}
+	
+	// console.log(getParameters('type'));
+	var typeParam = getParameters('type');
+	
+	if(responseMessage != ""){
+		swal(responseMessage).then(function(){
+			window.location = '/hos/login?type='+typeParam;
+		});
+	};
 });
-   
+
 </script>
-
-
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/fragments/nav_bar.jsp" />
@@ -42,7 +64,7 @@ $(document).ready(function(){
 		</script>
 	</c:if> 
 
-	<form:form name="f" method="POST" id="loginForm">
+	<form:form name="f" method="POST" id="loginForm" action="/hos/login">
 		<div class="wrapper">
 			<div class="main">
 				<div class="header">

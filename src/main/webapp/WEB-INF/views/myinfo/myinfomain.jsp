@@ -34,7 +34,7 @@ $(document).ready(function() {
 		$('#myInfocontent').load('/hos/myinfo/myPharmInfo');
 	});
 	$('#pharmDetail').on('click', function() {
-		$('#myInfocontent').load('/hos/myinfo/myPharmDetail');
+		$('#myInfocontent').load('/hos/myinfo/myPharmInfo');
 	});
 // 	$('#myrevbtn').on('click', function() {
 // 		$('#myInfocontent').load('/hos/myinfo/myReview');
@@ -90,11 +90,18 @@ $(document).ready(function() {
 				<th>발급날짜</th>
 				<th>상세</th>
 			</tr>
+			<c:forEach var="myresList" items="${myres}" varStatus="status" begin="0" end="3">
 			<tr align="center">
-				<td>MH치과</td>
-				<td>2019-09-10</td>
+				<c:if test="${myres[status.index].medicine == null}">
+				<input type="hidden" >
+				</c:if>
+				<c:if test="${myres[status.index].medicine != null}">				
+				<td>${myres[status.index].hosDTO.hos_name}</td>
+				<td>${myres[status.index].re_date}</td>
 				<td id="pharmDetail">확인</td>
+				</c:if>
 			</tr>
+			</c:forEach>
 			</table>
 		</div>
 	</div>	

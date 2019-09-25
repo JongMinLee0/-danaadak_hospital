@@ -8,9 +8,7 @@
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
-	$('#pharmDetailPage').on('click', function(){
-		$('.myPharmInfoWrap').load('/hos/myinfo/myPharmDetail');
-	});
+
 });
 </script>
 <style type="text/css">
@@ -25,19 +23,29 @@ $(document).ready(function() {
 <table class="myPharmTable">
 	<thead>
 	<tr>
-		<th scope="col" class="rno" style="width:100px;"><span>예약 번호</span></th>
 		<th scope="col" class="hosName" style="width:200px;"><span>발급병원</span></th>				
 		<th scope="col" class="resDate" style="width:100px;"><span>발급날짜</span></th>				
-		<th scope="col" class="pharmDetail" style="width:100px;"><span>상세</span></th>
+		<th scope="col" class="pharmName" style="width:100px;"><span>약 이름</span></th>
+		<th scope="col" class="pharmQuan" style="width:100px;"><span>1회 복용량</span></th>
+		<th scope="col" class="pharmCount" style="width:100px;"><span>1일 복용횟수</span></th>
 	</tr>
 	</thead>
 	<tbody class="myPharmBody">
-		<tr>
-			<td class="rno">0002</td>
-			<td class="hosName">진영내과</td>
-			<td class="resDate">2019-09-01</td>
-			<td class="pharmDetail" id="pharmDetailPage">확인</td>
-		</tr>
+	<c:forEach var="myPharmList" items="${myres}" varStatus="status">
+		<tr class="myPharmLine" id="${myPharmList.rno}" value="${myPharmList.rno}">
+			<c:if test="${myres[status.index].medicine == null}">
+<!-- 				<input type="hidden"> -->
+			</c:if>
+			
+			<c:if test="${myres[status.index].medicine != null}">
+				<td class="hosName">${myres[status.index].hosDTO.hos_name}</td>
+				<td class="resDate">${myres[status.index].re_date}</td>
+				<td class="pharmName">${myres[status.index].medicine}</td>
+				<td class="pharmQuan">${myres[status.index].eat_cnt}</td>
+				<td class="pharmCountn">${myres[status.index].eat_cnt}</td>
+			</c:if>
+			</tr>
+	</c:forEach>		
 	</tbody>
 </table>
 </div>

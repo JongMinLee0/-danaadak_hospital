@@ -92,7 +92,7 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
 				useDefaultUrl(request, response);
 			}
 		}else {
-			redirectStrategy.sendRedirect(request, response, "/hospital");
+			redirectStrategy.sendRedirect(request, response, "/hospital?hos_id="+dto.getHos_id());
 		}
 		
 		session.setMaxInactiveInterval(30 * 60);

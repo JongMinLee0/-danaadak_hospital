@@ -20,7 +20,7 @@
 </head>
 <body>
 		<!--진료 상태 업데이트   -->
-	<form action="re_stateUpdate" method="post" id="frm">
+	<form action="re_stateUpdate" method="post" id="re_stateFrm">
 	<span id="sub_wrap">환자 진료 및 처방전 부여</span>
 	<table>
 			<tr>
@@ -29,7 +29,8 @@
 			</tr>
 			<tr>
 				<td><input type="text" value="${param.username}"
-					name="username" readonly="readonly"></td>
+					name="username" readonly="readonly">
+					<input type="hidden" name="hos_id" value="${param.hos_id }"></td>
 				<td><input type="radio" name=re_state value="0"checked="checked" /> 진료대기 
 					<input type="radio" name=re_state value="1" /> 진료완료</td>
 			</tr>
@@ -38,17 +39,19 @@
 	</form>	
 	<i class="fa fa-pencil-square-o" id="rec_btn">처방전 작성</i>
 	<!--처방전 insert  -->
-		<div id="insert_modal">
-		<form id="rec_frm" name="rec_frm" method="post">
-			<span id="rec_top">처방전</span>
+	<div id="insert_modal">
+	<span id="rec_top">처방전</span>
+		<form id="rec_frm">
 			<table id="insert_rec">
 				<tr>
 					<th>발급일</th> 
-					<td>${param.re_date }</td>
+					<td><input type="text" value="${param.re_date }" name="re_date">
+					<input type="hidden" value="${param.re_time }" name="re_time"></td>
 				</tr>
 				<tr>
 					<th>병원명 </th>
-					<td><input type="text" name="hos_name" value="sessionScope로 받을꺼다 "></td>
+					<td>
+						<input type="text" name="hos_id" value="${param.hos_id }"></td>
 				</tr>				
 				<tr>
 					<th>환자명</th>
@@ -64,17 +67,17 @@
 					<i class="fa fa-plus" id="add_input"></i></p> </td>
 				</tr>
 				<tr>
-				
-				<td colspan="2"><input type="button" id="recipe_ins" value="환자에게 처방전 보내기"/></td>
+				<td colspan="2">
+				<input type="button" id="recipe_ins" value="환자에게 처방전 보내기"/>
+				</td>
 				</tr>
-				
 			</table>
 		</form>
-			</div>	
-		
-		
+	</div>	
+	
+	
 		<!-- 최종 제출 -->
-		<input type="button" id="update" value="제출"/> 
+		<input type="button" id="update_reserve" value="제출"/> 
 </body>
 
 <jsp:include page="/WEB-INF/views/fragments/footer.jsp" />

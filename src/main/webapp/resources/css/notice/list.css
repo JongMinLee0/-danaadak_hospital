@@ -72,6 +72,12 @@ body > div.navbar > div{
    margin-top: 60px;
    color :black;
 }
+#subject{
+	color: black;
+}
+#subject:hover{
+	text-decoration: none;
+}
 
 #p{
    text-align: center;

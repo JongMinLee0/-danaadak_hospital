@@ -8,8 +8,8 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<link rel="stylesheet" href="/hos/resources/css/hospital_event.css"/>
-<script type="text/javascript" src="/hos/resources/js/com_write.js"></script>
 <script type="text/javascript" src="/hos/resources/smartEditor/js/HuskyEZCreator.js" charset="UTF-8"></script>
+<script type="text/javascript" src="/hos/resources/js/hospital_event.js"></script>
 </head>
 <body>
 	<form id="event_registerFrm">
@@ -39,14 +39,15 @@
 			</tr>
 			<tr align="center">
 				<td width="20%" align="center">이벤트 내용</td>
-				<td><textarea id="smart" name="vi_content" style="width: 700px !important;height: 500px" ></textarea></td>
+				<td><!-- <textarea id="smart" name="e_content" style="width: 700px !important;height: 500px" ></textarea> -->
+				<textarea rows="50" cols="50" name="e_content"></textarea></td>
 			</tr>
 
 
 		</table>
 
-		<input type="button" id="btn_List" value="리스트" class="event_register" style="margin-left : 350px;"/> 
-		<input type="button"id="btn_Save" value="관리자에게 보내기"  class="event_register" style="width : 300px;"/>
+		<input type="button" id="btn_goBack" value="리스트" class="event_register" style="margin-left : 350px;"/> 
+		<input type="button"id="btn_eventRegister" value="관리자에게 보내기"  class="event_register" style="width : 300px;"/>
 	</form>
 </body>
 </html>

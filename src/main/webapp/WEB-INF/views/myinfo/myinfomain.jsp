@@ -17,15 +17,13 @@
 
 //마이페이지 섹션
 $(document).ready(function() {
-	$('#memberInfo').on('click', function() {
+/* 	$('#memberInfo').on('click', function() {
 		$('#myInfocontent').load('/hos/myinfo/memInfo');
 	});
-	$('#nav_memInfo').on('click', function() {
-		$('#myInfocontent').load('/hos/myinfo/memInfo');
-	});
-	$('#resMore').on('click', function() {
+ */
+/* 	$('#resMore').on('click', function() {
 		$('#myInfocontent').load('/hos/myinfo/myResInfo');
-	});
+	}); */
 	$('#nav_reserList').on('click', function() {
 		$('#myInfocontent').load('/hos/myinfo/myResInfo');
 	});
@@ -45,21 +43,25 @@ $(document).ready(function() {
 		$('#myInfocontent').load('/hos/myinfo/myReview');
 	});
 	
+		$('body > div.navbar_wrap.fixed-top').removeClass('fixed-top');
+	
+	
 	
 });
 </script>
 
 </head>
 <body>
-<jsp:include page="/WEB-INF/views/fragments/nav_bar.jsp"/>
+<!-- navbar 홈페이지 상단 메뉴바  -->
+<tiles:insertAttribute name="navbar" />
 
 <div class="myinfomainDiv" id="container">
   <!-- 네비게이션 바 -->
   <ul class="nav nav-tabs">
 		<li class="active" id="nav_memInfo">
-			<p>회원정보수정</p>
+			<a href="/hos/myinfo/memInfo"><p>회원정보수정</p></a>
 		</li><li class="active" id="nav_reserList">
-			<p>진료 내역</p>
+			<a href="/hos/myinfo/myResInfo"><p>진료 내역</p></a>
 		</li><li class="active" id="nav_pharmList">
 			<p>처방전 내역</p>
 		</li><li class="active" id="nav_reviewList">
@@ -75,7 +77,7 @@ $(document).ready(function() {
 		<!-- 회원정보 수정 -->
 		<div class="sh_group">
 			<span class="myinfoTitle">회원정보 수정</span>
-			<p>이름  &nbsp;&nbsp;  ${sessionScope.memberInfo.name} &nbsp;&nbsp;  <input type="button" id="memberInfo" value="정보 수정"/></p>
+			<p>이름  &nbsp;&nbsp;  ${sessionScope.memberInfo.name} &nbsp;&nbsp;  <a href="/hos/myinfo/memInfo"><input type="button" id="memberInfo" value="정보 수정"/></a></p>
 		</div>
 
 		<!-- 처방전 내역 -->
@@ -101,7 +103,7 @@ $(document).ready(function() {
 		<!-- 진료 현황 -->
 		<div class="sh_group" id="resDiv">
 			<!-- <form action="/hos/myinfo/myResInfo" method="get"> -->
-			<span id="resList"><span class="myinfoTitle">진료 내역</span><span style="color:gray;" id="resMore"> &nbsp; &nbsp;더보기</span></span>
+			<span id="resList"><span class="myinfoTitle">진료 내역</span><span style="color:gray;" id="resMore"><a href="/hos/myinfo/myResInfo"> &nbsp; &nbsp;더보기</a></span></span>
 			
 			<table id="resTable" style="width:100%;">
 			<!-- <p>예약중이면 정보 띄워줌, 없으면 진료 완료 마지막거 띄워줌(병원 이름, 날짜, 시간) + 이력확인 링크</p> -->
@@ -134,6 +136,7 @@ $(document).ready(function() {
 		</div>
 	</div>
 	</div>
-</div>		
+</div>
+<tiles:insertAttribute name="footer" />	
 </body>
 </html>

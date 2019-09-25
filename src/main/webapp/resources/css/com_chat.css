@@ -1,16 +1,15 @@
 /* 채팅 목록 감싸는 div  */
 body > div.comm_body > div.content_wrap > div{
-	width: 60%;
+	width: 65%;
 	height: 500px;
-	margin: 50px auto;
-	border: 1px solid red;
+	margin: 80px auto;
+	overflow-y: scroll;
 }
 
 /* 목록 높이  */
 body > div.comm_body > div.content_wrap > div > a table tbody tr td{
 	height: 40px;
 	width: 300px;
-	border: 1px solid blue;
 }
 
 body > div.comm_body > div.content_wrap > div a{

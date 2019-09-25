@@ -109,6 +109,8 @@ public class CommuController {
 	@ResponseBody
 	@RequestMapping(value = "write", method = RequestMethod.POST, produces = "application/text;charset=UTF-8")
 	public String reviewWrite(@ModelAttribute ReviewDTO dto) {
+		System.out.println("요청 들어옴 후기 : " + dto.getRno());
+		System.out.println("병원 : " + dto.getHos_name());
 		String result = commService.writeService(dto);
 		return result;
 	}

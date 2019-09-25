@@ -101,21 +101,15 @@ $(document).ready(function() {
 				</td>
 				<td class="resMess resMessDetail">${myres[status.index].message}</td>
 				<td class="resReview ">
- 					<input type ="hidden" value="${myres[status.index].hosDTO.hos_name}" name="hos_name" />
-					<input type ="hidden" value="${myres[status.index].category}" name="category" />
-					<input type ="hidden" value="${myres[status.index].re_date}" name="re_date" />
-					<input type ="hidden" value="${myres[status.index].re_time}" name="re_time" />
-					<input type ="hidden" value="${myres[status.index].re_state}" name="re_state" />
-					<input type ="hidden" value="${myres[status.index].message}" name="message" />
+	 				<input type ="hidden" value="${myres[status.index].hosDTO.hos_name}" name="hos_name" />
 					<input type ="hidden" value="${myres[status.index].rno}" name="rno" />
-					<input type ="hidden" value="${sessionScope.memberInfo.username}" name="username" /> 
-			
+				
 					<c:if test="${myres[status.index].re_state == 0}">
 						<input type ="button" id="${myres[status.index].rno}" class="resCancelBtn btns" value="예약 취소" />
 					</c:if>
-					
 					<c:if test="${myres[status.index].re_state == 1}">
-						<input type ="button" id="${myres[status.index].rno}" class="resReviewBtn btns" value="후기 작성" onclick="location.href='/hos/comm/reviewWrite'" />
+						<input type ="submit" id="${myres[status.index].rno}" class="resReviewBtn writeBtns" value="후기 작성" 
+							onclick="location.href='/hos/comm/reviewWrite?rno=${myres[status.index].rno}&hos_name=${myres[status.index].hosDTO.hos_name}'"/>
 					</c:if>
 				</td>
 			</c:if>

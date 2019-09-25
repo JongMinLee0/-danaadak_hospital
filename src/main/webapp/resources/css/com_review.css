@@ -73,12 +73,12 @@ body > div.footer-content{
 
 
 /* top 화살표*/
-body > div.comm_body > div.content_wrap > div:nth-child(6){
+#top_btn_wrap{
 	position: fixed;
 	bottom: 50px;
 	right: 50px;
 }
 
-body > div.comm_body > div.content_wrap > div:nth-child(6) > i{
+#top_btn{
 	color: rgb(54,36,36);
 }

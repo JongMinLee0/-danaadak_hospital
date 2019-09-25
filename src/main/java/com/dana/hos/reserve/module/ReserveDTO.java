@@ -15,7 +15,7 @@ public class ReserveDTO {
 	private String birth;
 	private String eat_cnt;
 	private HosDTO hosDTO;
-	private int rownum;
+	private int rno;
 	
 	public ReserveDTO() {
 		// TODO Auto-generated constructor stub
@@ -109,12 +109,12 @@ public class ReserveDTO {
 		this.hosDTO = hosDTO;
 	}
 
-	public int getRownum() {
-		return rownum;
+	public int getRno() {
+		return rno;
 	}
 
-	public void setRownum(int rownum) {
-		this.rownum = rownum;
+	public void setRno(int rno) {
+		this.rno = rno;
 	}
 	
 }//end class 

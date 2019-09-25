@@ -24,7 +24,6 @@
 		where hos_id=#{hos_id}
 	</select>
 
-
 	<update id="upt" parameterType="com.dana.hos.reserve.module.ReserveDTO">
 		update reserve set re_state = #{re_state}
 		where username=#{username}

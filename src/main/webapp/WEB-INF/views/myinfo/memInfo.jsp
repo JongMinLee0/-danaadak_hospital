@@ -8,15 +8,22 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="/hos/resources/css/nav_bar.css" />
+<script src="/hos/resources/js/nav_bar.js"></script>
+<script type="text/javascript" src="/hos/resources/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="/hos/resources/css/bootstrap.min.css" />
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
  $(document).ready(function(){
+        $('body > div.navbar_wrap.fixed-top').removeClass('fixed-top');
         setDateBox();
         //취소버튼 돌아가기
-        $('#modCancleBtn').on('click', function() {
-    		$('#myPageWrap').load('/hos/myinfo/myinfomain');
-    	});
+//         $('#modCancleBtn').on('click', function() {
+//     		$('#myPageWrap').load('/hos/myinfo/myinfomain');
+//     	});
         
         //저장버튼 수정내용 전송
         $('#modFinishBtn').on('click', function() {
@@ -49,7 +56,6 @@
 	        	return false;
 	        }
         }
-        
         
 		});
 
@@ -216,17 +222,85 @@
 text-align: right;
 font-size: 14px;
 }
+.myicon img{
+	width:40px;
+    height:40px;
+    border: 1px solid #7DDCFF;
+    border-radius: 50%;
+}
 
+#icon {
+	width: 100px;
+	height: 100px;
+}
+.myicon{
+	text-align: center;
+}
+ul.nav.nav-tabs {
+  letter-spacing:-1px;
+  height: 50px;
+  line-height:50px;
+  width :100%;
+}
+ul.nav.nav-tabs li {
+    display: inline-block;
+    margin-bottom:-2px;
+    width: 110px;
+    height: 50px;
+    margin: 0 auto;
+}
+ul.nav.nav-tabs li p {
+      border:none;
+      border-radius:0px;
+      color:#0000ff;
+      margin-right:5px;
+      min-width:11px;
+      display:inline-block;
+      text-align: center;
+}
+
+ul.nav.nav-tabs li:hover {
+      background:#fff;
+      color:#000000;
+}
 </style>
 </head>
 <body>
-	<div id='myPageWrap'>
+
+<tiles:insertAttribute name="navbar" />
+
+<div id='myPageWrap'>
+  <!-- 네비게이션 바 -->
+  <ul class="nav nav-tabs">
+		<li class="active" id="nav_memInfo">
+			<a class="mynavA" href="/hos/myinfo/memInfo"><p>회원정보수정</p></a>
+		</li><li class="active" id="nav_reserList">
+			<a class="mynavA" href="/hos/myinfo/myResInfo"><p>진료 내역</p></a>
+		</li><li class="active" id="nav_pharmList">
+			<p>처방전 내역</p>
+		</li><li class="active" id="nav_reviewList">
+			<p>내 병원 후기</p>
+		</li>
+	</ul>
+	
 	<p><h3>회원 정보</h3></p>
 <form id="frm" name="frm" action="/hos/myinfo/myinfoupdate" method="post">	
 		<table id="myPageBody" >
+			<tr class = "content">
+				<!-- 아이콘 -->
+				<td class="profile" rowspan="8" width="100px" align="center">프로필</td>
+				
+				<td class = "myicon" colspan="4" align="center"><img id="icon" name="icon" src="/hos/resources/images/defaultIcon.png">
+				<br/>
+				<button id= "iconSelectBtn">아이콘 선택하기</button>
+				<input type="hidden" id="user_icon" name="user_icon" />
+				<input type="hidden" id="user_icon_before" name="user_icon" />
+				</td>
+				
+			</tr>
+			
 			<tr class="content">
 				<!-- 아이디 -->
-				<td class="profile" rowspan="7" width="100px" align="center">프로필</td>
 				<td class="myPageList" width="100px" align="center">아이디</td>
 				<td id="loginId" colspan="3" > ${sessionScope.memberInfo.username} </td>
 			</tr>
@@ -326,10 +400,11 @@ font-size: 14px;
 			<input type="hidden" value="${sessionScope.memberInfo.type}" name="type"/>
 			<input type="hidden" value="${sessionScope.memberInfo.authority}" name="authority"/>
 			<input type="hidden" value="${sessionScope.memberInfo.enabled}" name="enabled"/>
-			<input type ="button" id="modCancleBtn" class="canbtns" value="취소" />
+			<a class="mynavA" href="/hos/myinfo/myinfomain"><input type ="button" id="modCancleBtn" class="canbtns" value="취소" /></a>
 			<input type ="submit" id="modFinishBtn" class="chgbtns" value="저장" />
 		</div>
   </form>
 </div>
+<tiles:insertAttribute name="footer" />	
 </body>
 </html>

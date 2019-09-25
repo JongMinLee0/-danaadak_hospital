@@ -65,5 +65,25 @@
        <put-attribute name="footer" value="/WEB-INF/views/fragments/footer.jsp" />
   </definition>
   
+  <!-- 마이페이지 메인 -->
+  <definition name="/myinfo/myinfomain" template="/WEB-INF/views/myinfo/myinfomain.jsp">
+  	<put-attribute name="navbar" value="/WEB-INF/views/fragments/nav_bar.jsp" />  
+    <put-attribute name="footer" value="/WEB-INF/views/fragments/footer.jsp" />
+    <put-attribute name="mainbody" value="/WEB-INF/views/myinfo/myinfomain.jsp" />   
+  </definition>
+  
+    <!-- 내 정보 페이지  -->
+    <definition name="/myinfo/memInfo" template="/WEB-INF/views/myinfo/memInfo.jsp">
+  	<put-attribute name="navbar" value="/WEB-INF/views/fragments/nav_bar.jsp" />  
+    <put-attribute name="footer" value="/WEB-INF/views/fragments/footer.jsp" />
+    <put-attribute name="mainbody" value="/WEB-INF/views/myinfo/memInfo.jsp" />   
+  </definition>
+  
+    <!-- 내 예약 페이지  -->
+    <definition name="/myinfo/myResInfo" template="/WEB-INF/views/myinfo/myResInfo.jsp">
+  	<put-attribute name="navbar" value="/WEB-INF/views/fragments/nav_bar.jsp" />  
+    <put-attribute name="footer" value="/WEB-INF/views/fragments/footer.jsp" />
+    <put-attribute name="mainbody" value="/WEB-INF/views/myinfo/myResInfo.jsp" />   
+  </definition>
 
 </tiles-definitions>

@@ -5,9 +5,12 @@ html, body {
 }
 
 .myinfomainDiv{
-  position: fixed; top:80px; left:0;
   width :100%;
   text-align: center;
+}
+
+a{
+	text-decoration: none;
 }
 
 .sh_group {

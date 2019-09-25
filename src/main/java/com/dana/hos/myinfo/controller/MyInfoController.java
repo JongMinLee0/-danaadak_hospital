@@ -76,9 +76,10 @@ public class MyInfoController {
 		return "/myinfo/myinfomain";
 	}
 	
-	//내 예약 취소
+	//내 예약 취소(update)
 	@RequestMapping(value="/myinfo/myresCancel", method=RequestMethod.POST)
 	public String myresCancel(ReserveDTO rdto) {
+		System.out.println("AAAAA");
 		myinfoService.myresCancelProcess(rdto);
 		
 		return "/myinfo/myinfomain"; 

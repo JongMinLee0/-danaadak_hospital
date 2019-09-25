@@ -6,10 +6,8 @@
 <div class="detail_wrap">
 	<table class="detail_table">
 			<tr>
-				<td>${dList.vi_subject}
-				<hr /></td>
-				<td style="text-align: right;">${dList.vi_date}
-				<hr /></td>
+				<td>${dList.vi_subject}<hr></td>
+				<td style="text-align: right;">${dList.vi_date}<hr></td>
 			</tr>
 			<tr>
 				<td><h4>${dList.name}</h4></td>
@@ -53,8 +51,8 @@
 	<table class="comment_table">
 	<c:forEach items="${cList}" var="cdto">
 		<tr>
-			<td><hr /><h5>${cdto.name}</h5></td>
-			<td><hr />${cdto.com_date}</td>
+			<td style="font-weight: bold"><hr>${cdto.name}</td>
+			<td><hr>${cdto.com_date}</td>
 			<c:choose>
 					<c:when test="${sessionScope.memberInfo.name eq cdto.name}">
 						<td style="text-align: right;">

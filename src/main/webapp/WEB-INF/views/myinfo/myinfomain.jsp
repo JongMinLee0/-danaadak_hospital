@@ -36,12 +36,12 @@ $(document).ready(function() {
 	$('#pharmDetail').on('click', function() {
 		$('#myInfocontent').load('/hos/myinfo/myPharmDetail');
 	});
-	$('#myrevbtn').on('click', function() {
-		$('#myInfocontent').load('/hos/myinfo/myReview');
-	});
-	$('#nav_reviewList').on('click', function() {
-		$('#myInfocontent').load('/hos/myinfo/myReview');
-	});
+// 	$('#myrevbtn').on('click', function() {
+// 		$('#myInfocontent').load('/hos/myinfo/myReview');
+// 	});
+// 	$('#nav_reviewList').on('click', function() {
+// 		$('#myInfocontent').load('/hos/myinfo/myReview');
+// 	});
 	
 		$('body > div.navbar_wrap.fixed-top').removeClass('fixed-top');
 	
@@ -65,7 +65,7 @@ $(document).ready(function() {
 		</li><li class="active" id="nav_pharmList">
 			<p>처방전 내역</p>
 		</li><li class="active" id="nav_reviewList">
-			<p>내 병원 후기</p>
+			<a href="/hos/myinfo/myReview"><p>내 병원 후기</p></a>
 		</li>
 	</ul>
   
@@ -77,7 +77,7 @@ $(document).ready(function() {
 		<!-- 회원정보 수정 -->
 		<div class="sh_group">
 			<span class="myinfoTitle">회원정보 수정</span>
-			<p>이름  &nbsp;&nbsp;  ${sessionScope.memberInfo.name} &nbsp;&nbsp;  <a href="/hos/myinfo/memInfo"><input type="button" id="memberInfo" value="정보 수정"/></a></p>
+			<p>이름  &nbsp;&nbsp;  ${sessionScope.memberInfo.name} &nbsp;&nbsp; <a href="/hos/myinfo/memInfo"><input type="button" id="memberInfo" value="정보 수정"/></a></p>
 		</div>
 
 		<!-- 처방전 내역 -->
@@ -115,7 +115,7 @@ $(document).ready(function() {
 			<c:forEach var="myresList" items="${myres}" varStatus="status" begin="0" end="3">
 				<tr align="center">
 				<c:if test="${myres[status.index].hos_id == null}">
-				<input type="hidden">
+				<input type="hidden" >
 				</c:if>
 				<c:if test="${myres[status.index].hos_id != null}">
 						<td>${myres[status.index].hosDTO.hos_name}</td>
@@ -132,7 +132,8 @@ $(document).ready(function() {
 		<!-- 내 병원 후기 -->
 		<div class="sh_group" id="myrevDiv">
 			<span id="myRevList"><span class="myinfoTitle">내 병원 후기</span></span>
-			<p><input type="button" id="myrevbtn" value="내 후기 보기"/></p>
+			
+			<p><br/><br/><a href="/hos/myinfo/myReview"><input type="button" id="myrevbtn" value="내 후기 보기"/></a></p>
 		</div>
 	</div>
 	</div>

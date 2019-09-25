@@ -170,6 +170,10 @@
 </script>
 
 <style type="text/css">
+#myPageWrap{
+	text-align:-webkit-center;
+}
+
 #myPageBody {
 	border : 1px solid #007bff;
 	margin : 0 auto;
@@ -279,11 +283,14 @@ ul.nav.nav-tabs li:hover {
 		</li><li class="active" id="nav_pharmList">
 			<p>처방전 내역</p>
 		</li><li class="active" id="nav_reviewList">
-			<p>내 병원 후기</p>
+			<a href="/hos/myinfo/myReview"><p>내 병원 후기</p></a>
 		</li>
 	</ul>
-	
-	<p><h3>회원 정보</h3></p>
+
+<br/>	
+	<p><h3><b>회원 정보</b></h3></p>
+	<br/>
+<br/>
 <form id="frm" name="frm" action="/hos/myinfo/myinfoupdate" method="post">	
 		<table id="myPageBody" >
 			<tr class = "content">

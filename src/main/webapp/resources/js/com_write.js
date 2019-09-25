@@ -53,14 +53,6 @@ $(document).ready(function(){
         $('#vi_star').val($('#star_grade a.on').length);
         return false;
     });
-	
 
-	
-	
-	
-	
-	
-	
-	
 	
 })

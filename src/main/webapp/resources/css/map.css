@@ -29,10 +29,11 @@
 	margin: 80px 0 30px 210px;
 	padding: 5px;
 	overflow-y: auto;
-	background: white;
+	background: #e0e0eb;
 	z-index: 1;
 	font-size: 12px;
 	border-radius: 10px;
+	opacity: 0.9;
 }
 
 .bg_white {

@@ -21,9 +21,13 @@
 <!-- 홈페이지 상단 메뉴바와 배경을 감싸는 부분  -->
 <div class="home_image_wrap">
 	<div class="home_des">
-		<h1>디스크립션</h1><br />
-		<p>여기에 홈페이지에 대한 간략한 소개?</p>
-		<p>어떤 홈페이지? 아니면 환영인사</p>
+			<p class="des_comment_head"><strong>병원찾기</strong>부터</p>
+			<p class="des_comment_head">웹에서 <strong>간편접수</strong>까지</p>
+			<p class="des_comment">병원 가기 전에 다나았닥으로 접수해보세요.</p>
+			<p class="des_comment">대기실에서 기다리는 시간이 줄어듭니다.</p>
+			<p class="des_comment">커뮤니티를 통한 활동도 확인해보세요.</p>
+			<button class="btn btn-primary" onclick="location.href='/hos/map'">병원접수하기</button>
+		
 	</div>
 </div>
 
@@ -54,9 +58,7 @@
 <div class="second-group" onclick="location.href='#'">
   <div class="card">
     <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+      
     </div>
   </div>
   <div class="card" onclick="location.href='#'">

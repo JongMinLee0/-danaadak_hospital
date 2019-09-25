@@ -10,7 +10,7 @@ body{
    width: 100%;
    height: 1000px;
    border: 1px solid #ffffff00;
-   background-image: url('../images/home2.jpg');
+   background-image: url('../images/home_d1.jpg');
    background-repeat: no-repeat;
    background-size: 100% 100%;
 }
@@ -18,7 +18,7 @@ body{
 /* 홈페이지 디스크립션  */
 .home_des{
    width:60%;
-   height: 400px;
+   height: 500px;
    margin: 300px auto;
    font-size: 30px;
 }
@@ -46,6 +46,29 @@ body{
    background-color: #848484;
 }
 
+/* 홈 Description  */
+body > div.home_image_wrap > div .des_comment_head{
+	font-size: 50px;
+}
+
+body > div.home_image_wrap > div .des_comment{
+	font-size: 20px;
+	font-weight: bold;
+}
+
+/* 접수하기 버튼  */
+body > div.home_image_wrap > div > button{
+	width: 250px;
+	height: 60px;
+	margin-top: 50px;
+	font-size: 30px;
+}
+
+body > div.second-group > div:nth-child(1) > div{
+	background-image: url('../images/정형.jpg');
+   background-repeat: no-repeat;
+   background-size: 100% 60%;
+}
 
 @media(max-width:1000px){
    .home_image_wrap{

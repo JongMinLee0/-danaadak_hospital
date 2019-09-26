@@ -99,5 +99,17 @@
     <put-attribute name="footer" value="/WEB-INF/views/fragments/footer.jsp" />
     <put-attribute name="mainbody" value="/WEB-INF/views/myinfo/myPharmInfo.jsp" />   
   </definition>  
+    
+  <!-- 관리자 메인 페이지 -->
+  <definition name="admin/adminmain" template="/WEB-INF/views/admin/adminmain.jsp">
+  	  <put-attribute name="navbar" value="/WEB-INF/views/fragments/nav_bar.jsp" />  
+       <put-attribute name="footer" value="/WEB-INF/views/fragments/footer.jsp" />
+       <put-attribute name="admin_body" value="/WEB-INF/views/admin/admin_body.jsp" />   
+  </definition>
+  
+  <!-- 관리자 병원 가입 관리  -->
+  <definition name="admin/hos_join" extends="admin/adminmain">
+  		<put-attribute name="admin_body" value="/WEB-INF/views/admin/hos_join.jsp" />
+  </definition>
 
 </tiles-definitions>

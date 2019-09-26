@@ -2,12 +2,14 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<h1 style="margin-top: 30px">병원 회원 가입 요청 리스트</h1>
+<link rel="stylesheet" href="/hos/resources/css/admin_event.css" />
+
+<h1 id="admin_h">병원 회원 가입 요청 리스트</h1>
 <div>
-	<ul style="margin-top: 50px">
+	<ul id="admin_h">
 		<c:forEach items="${hsList}" var="dto">
-			<li>
-				<table style="width: 600px;">
+			<li class="joinList">
+				<table>
 					<form name="admin_frm" id="admin_frm" action="/hos/admin/hos_join"
 						method="post">
 						<tr>

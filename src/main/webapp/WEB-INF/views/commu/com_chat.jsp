@@ -7,14 +7,18 @@
 <div class="chatList_wrap">
 		<c:forEach items="${cList}" var="cdto">
 			<a href="/hos/chat/room/enter?roomId=${cdto.roomId}&name1=${sessionScope.memberInfo.username}&name2=${cdto.opponent}">	
-				<table class="chatList_table">
-					<tr>
-						<td>${cdto.opponent}<input type="hidden" class="roomNum" value="${cdto.roomId}" /></td>
-						<td>${cdto.time}</td>
-					</tr>
-					<tr class="message_wrap">
-						<td>${cdto.message}</td>
-					</tr>
+				<table class="table">
+					<thead class="thead-light">
+						<tr colspan="2">
+							<th>${cdto.opponent}<input type="hidden" class="roomNum" value="${cdto.roomId}" /></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="message_wrap">
+							<td>${cdto.message}</td>
+							<td>${cdto.time}</td>
+						</tr>
+					</tbody>
 				</table>
 			</a>
 		</c:forEach>

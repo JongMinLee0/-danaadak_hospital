@@ -281,7 +281,7 @@ ul.nav.nav-tabs li:hover {
 		</li><li class="active" id="nav_reserList">
 			<a class="mynavA" href="/hos/myinfo/myResInfo"><p>진료 내역</p></a>
 		</li><li class="active" id="nav_pharmList">
-			<p>처방전 내역</p>
+			<a href="/hos/myinfo/myPharmInfo"><p>처방전 내역</p></a>
 		</li><li class="active" id="nav_reviewList">
 			<a href="/hos/myinfo/myReview"><p>내 병원 후기</p></a>
 		</li>

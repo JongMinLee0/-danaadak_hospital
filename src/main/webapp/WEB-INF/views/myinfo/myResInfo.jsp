@@ -58,7 +58,7 @@ $(document).ready(function() {
 	</ul>
 	
 <br/>	
-<p><h3><b>진료 내역<b></b></h3></p>
+<p><h3><b>진료 내역</b></h3></p>
 <br/>
 <br/>
 <%-- <form id ="frm" name="frm" action="" method="post"> --%>

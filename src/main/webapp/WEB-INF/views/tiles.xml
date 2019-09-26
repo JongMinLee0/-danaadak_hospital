@@ -86,12 +86,18 @@
     <put-attribute name="mainbody" value="/WEB-INF/views/myinfo/myResInfo.jsp" />   
   </definition>
   
-  <!-- 내 리뷰 글 페이지  -->
+  <!-- 내 후기 글 페이지  -->
   <definition name="/myinfo/myReview" template="/WEB-INF/views/myinfo/myReview.jsp">
   	<put-attribute name="navbar" value="/WEB-INF/views/fragments/nav_bar.jsp" />  
     <put-attribute name="footer" value="/WEB-INF/views/fragments/footer.jsp" />
     <put-attribute name="mainbody" value="/WEB-INF/views/myinfo/myReview.jsp" />   
   </definition>
   
+  <!-- 내 처방전 페이지  -->
+  <definition name="/myinfo/myPharmInfo" template="/WEB-INF/views/myinfo/myPharmInfo.jsp">
+  	<put-attribute name="navbar" value="/WEB-INF/views/fragments/nav_bar.jsp" />  
+    <put-attribute name="footer" value="/WEB-INF/views/fragments/footer.jsp" />
+    <put-attribute name="mainbody" value="/WEB-INF/views/myinfo/myPharmInfo.jsp" />   
+  </definition>  
 
 </tiles-definitions>

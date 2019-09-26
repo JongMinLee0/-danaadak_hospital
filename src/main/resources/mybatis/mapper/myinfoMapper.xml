@@ -50,7 +50,7 @@
 	
  	<!-- 내 리뷰 목록-->
  	<select id="myReviewList" resultType="com.dana.hos.comm.module.ReviewDTO" parameterType="String">
- 		select * from review where username=#{username}
+ 		select * from review where username=#{username} 
 	</select>
 	
 </mapper>

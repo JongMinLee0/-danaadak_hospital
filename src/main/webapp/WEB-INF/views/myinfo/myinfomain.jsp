@@ -27,15 +27,15 @@ $(document).ready(function() {
 	$('#nav_reserList').on('click', function() {
 		$('#myInfocontent').load('/hos/myinfo/myResInfo');
 	});
-	$('#pharmMore').on('click', function() {
-		$('#myInfocontent').load('/hos/myinfo/myPharmInfo');
-	});
-	$('#nav_pharmList').on('click', function() {
-		$('#myInfocontent').load('/hos/myinfo/myPharmInfo');
-	});
-	$('#pharmDetail').on('click', function() {
-		$('#myInfocontent').load('/hos/myinfo/myPharmInfo');
-	});
+// 	$('#pharmMore').on('click', function() {
+// 		$('#myInfocontent').load('/hos/myinfo/myPharmInfo');
+// 	});
+// 	$('#nav_pharmList').on('click', function() {
+// 		$('#myInfocontent').load('/hos/myinfo/myPharmInfo');
+// 	});
+// 	$('#pharmDetail').on('click', function() {
+// 		$('#myInfocontent').load('/hos/myinfo/myPharmInfo');
+// 	});
 // 	$('#myrevbtn').on('click', function() {
 // 		$('#myInfocontent').load('/hos/myinfo/myReview');
 // 	});
@@ -63,7 +63,7 @@ $(document).ready(function() {
 		</li><li class="active" id="nav_reserList">
 			<a href="/hos/myinfo/myResInfo"><p>진료 내역</p></a>
 		</li><li class="active" id="nav_pharmList">
-			<p>처방전 내역</p>
+			<a href="/hos/myinfo/myPharmInfo"><p>처방전 내역</p></a>
 		</li><li class="active" id="nav_reviewList">
 			<a href="/hos/myinfo/myReview"><p>내 병원 후기</p></a>
 		</li>
@@ -74,6 +74,7 @@ $(document).ready(function() {
 	<div id="myInfocontent" class="section_home">
 	<div class="column">
 		<input type="hidden" value="${sessionScope.memberInfo.username}" name="username"/>
+		
 		<!-- 회원정보 수정 -->
 		<div class="sh_group">
 			<span class="myinfoTitle">회원정보 수정</span>
@@ -82,13 +83,12 @@ $(document).ready(function() {
 
 		<!-- 처방전 내역 -->
 		<div class="sh_group" id="pharmDiv">
-			<span id="pharmList"><span class="myinfoTitle">처방전 내역</span><span style="color:gray;" id="pharmMore"> &nbsp; &nbsp;더보기</span></span>
+			<span id="pharmList"><span class="myinfoTitle">처방전 내역</span><span style="color:gray;" id="pharmMore"><a href="/hos/myinfo/myPharmInfo"> &nbsp; &nbsp;더보기</a></span></span>
 			<table id="pharmTable" style="width:100%;">
 			<!-- <p>복용중이면 발급일, 병원명 띄워줌, 없으면  이력확인 링크</p> -->
 			<tr align="center">
 				<th>발급병원</th>
 				<th>발급날짜</th>
-				<th>상세</th>
 			</tr>
 			<c:forEach var="myresList" items="${myres}" varStatus="status" begin="0" end="3">
 			<tr align="center">
@@ -98,7 +98,6 @@ $(document).ready(function() {
 				<c:if test="${myres[status.index].medicine != null}">				
 				<td>${myres[status.index].hosDTO.hos_name}</td>
 				<td>${myres[status.index].re_date}</td>
-				<td id="pharmDetail">확인</td>
 				</c:if>
 			</tr>
 			</c:forEach>
@@ -106,8 +105,8 @@ $(document).ready(function() {
 		</div>
 	</div>	
 		
+		<!-- 진료 내역 -->
 	<div class="column">
-		<!-- 진료 현황 -->
 		<div class="sh_group" id="resDiv">
 			<!-- <form action="/hos/myinfo/myResInfo" method="get"> -->
 			<span id="resList"><span class="myinfoTitle">진료 내역</span><span style="color:gray;" id="resMore"><a href="/hos/myinfo/myResInfo"> &nbsp; &nbsp;더보기</a></span></span>

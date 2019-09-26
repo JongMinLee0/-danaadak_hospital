@@ -25,6 +25,8 @@
 		<result column="username" property="username"/>
 		<result column="medicine" property="medicine"/>
 		<result column="eat_cnt" property="eat_cnt"/>
+		<result column="rownum" property="rownum"/>
+		
 	
 		<collection ofType="com.dana.hos.map.module.HosDTO" property="hosDTO" autoMapping="false" >
 			<result column="hos_name" property="hos_name"/>
@@ -34,21 +36,16 @@
     
     <!-- 내 예약 조인 -->
 	 <select id="myresList" resultMap="Reserve" parameterType="string">
-		select r.*, h.hos_name 
+		select rownum, r.*, h.hos_name 
 		from reserve r, hospital h 
-		WHERE r.hos_id = h.hos_id(+) and r.username = #{username} 
+		WHERE r.hos_id = h.hos_id and r.username = #{username} 
 		order by re_date desc
 	 </select>
+
 	
-<!-- 	<select id="myresList"  resultType="com.dana.hos.reserve.module.ReserveDTO" parameterType="string">
-		select * from reserve 
-		WHERE username = #{username} 
-		order by re_date desc
-	</select> -->
-	
-	<!-- 내 예약 취소(예약 상태를 바꿈) -->
+	<!-- 내 예약 취소(예약 상태 update) -->
 	<update id="myresCancel" parameterType="com.dana.hos.reserve.module.ReserveDTO">
-		update reserve set re_state=2 where username=#{username}
+		update reserve set re_state=2 where username=#{username} and rownum=#{rownum}
 	</update>
 	
 	

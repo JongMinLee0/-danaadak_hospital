@@ -16,7 +16,6 @@
         from reserve r, member m
         where r.hos_id = m.hos_id and r.re_date = to_char((sysdate),'YYYY-mm-dd')and m.hos_id =#{hos_id}
         order by r.re_date, r.re_time
-
 	</select>
 
 	<select id="view" parameterType="com.dana.hos.member.module.MemberDTO" resultType="com.dana.hos.reserve.module.ReserveDTO">
@@ -24,6 +23,7 @@
 		from reserve
 		where hos_id=#{hos_id} 
 	</select>
+
 	<update id="upt" parameterType="com.dana.hos.reserve.module.ReserveDTO">
 		update reserve set re_state = #{re_state} ,eat_cnt=#{eat_cnt}, medicine =#{medicine}
 		where rno=#{rno} and username=#{username} and hos_id=#{hos_id}

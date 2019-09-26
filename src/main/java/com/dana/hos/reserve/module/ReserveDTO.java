@@ -25,7 +25,7 @@ public class ReserveDTO {
 	private String birth;
 	private String eat_cnt;
 	private HosDTO hosDTO;
-
+  
 	public ReserveDTO() {
 		// TODO Auto-generated constructor stub
 	}
@@ -118,4 +118,6 @@ public class ReserveDTO {
 		this.hosDTO = hosDTO;
 	}
 
-}// end class
+	
+}//end class 
+

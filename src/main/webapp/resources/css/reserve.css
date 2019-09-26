@@ -79,7 +79,7 @@ tr{
 }
 /* 예약 테이블  */
 #hos_table{
-	width: 400px;
+	width: 600px;
     height: 400px;
     margin: auto;
 }
@@ -95,4 +95,8 @@ tr{
 }
 #name, #username{
 	font-size : 15px;
+}
+
+#hos_table > tbody > tr th{
+	width: 200px !important;
 }

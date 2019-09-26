@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.dana.hos.hopital.module.EventDTO;
+import com.dana.hos.hopital.module.HospitalDTO;
 import com.dana.hos.hopital.repo.HospitalDAO;
 import com.dana.hos.hopital.service.HospitalService;
 import com.dana.hos.member.module.MemberDTO;
@@ -38,14 +39,19 @@ public class HospitalServiceImp implements HospitalService {
 	}
 	@Override
 	public void updateProcess(ReserveDTO dto) {
-		System.out.println("serviceImp");
 		 hospitalDAO.updateMethod(dto);
-		 System.out.println("serviceImp 끝");
 	}
 
 	@Override
 	public void eventInsertProcess(EventDTO dto) {
 		hospitalDAO.eventInsertMethod(dto);
-		
+	}
+	@Override
+	public List<EventDTO> eventListProcess(EventDTO dto) {
+		return hospitalDAO.eventListMethod(dto);
+	}
+	@Override
+	public String nameselctProcess(String hos_id) {
+		return hospitalDAO.nameselctMethod(hos_id);
 	}
 }//end class 

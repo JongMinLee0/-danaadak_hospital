@@ -16,13 +16,18 @@
 <link rel="stylesheet" href="resources/css/hospital_main.css" />
 <script type="text/javascript" src="/hos/resources/js/hospital_main.js"></script>
 <script type="text/javascript" src="/hos/resources/js/home.js"></script>
+<!-- 애니메이션 -->
+<link rel="stylesheet" href="resources/css/animate.css">
+<script type="text/javascript" src="/hos/resources/js/wow.min.js"></script>
 
+<script> new WOW().init(); </script>
 
 </head>
 <body>
 <form>
 <div id="bookList_Wrap">
-	<h2>예약내역</h2>
+	<span id="title" >예약내역</span>
+	
 	<table id="book_list">
 			<tr>
 			<th>예약 번호</th>
@@ -64,10 +69,30 @@
 	</table>
 </div>
 	</form>
-	
 	<form id="evn_regi" action="" >
-		<input type="button" id="event_regi"value="이벤트 접수하기" >
 	</form>	
+	<div id="event_wrap">
+		<input type="button" class="wow shake"id="event_regi"value="이벤트 접수하기" >
+			<span id="eventTop">우리 병원이 신청한 이벤트 내역</span>
+		<table id="eventListTable">
+			<tr>
+				<th>이벤트 번호</th>
+				<th>종류</th>
+				<th>이벤트 제목 </th>
+				<th>주&nbsp;&nbsp;&nbsp;소</th>
+			</tr>
+			<c:forEach var="edto" items="${edto }">
+				<tr>
+					<td>${edto.eno }</td>
+					<td>${edto.e_type }</td>
+					<td>${edto.e_subject }</td>
+					<td>${edto.e_url }</td>
+				</tr>
+			 
+			</c:forEach>
+			
+		</table>
+	</div>
 </body>
 	<jsp:include page="/WEB-INF/views/fragments/footer.jsp" />
 </html>

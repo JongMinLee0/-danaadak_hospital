@@ -1,11 +1,7 @@
-/* 폰트설정 */
-@import
-	url(http://fonts.googleapis.com/earlyaccess/nanumgothiccoding.css);
 
 /*navbar*/
 body>div.navbar>div {
 	background-color: white;
-	font-family: 'Nanum Gothic Coding', serif;
 	margin-bottom: 10px;
 }
 /* 로고 */

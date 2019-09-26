@@ -17,7 +17,10 @@
 <script
 	src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="/hos/resources/css/notice/list.css" />
-
+<!-- 애니메이션 -->
+<link rel="stylesheet" href="resources/css/animate.css">
+<script type="text/javascript" src="/hos/resources/js/wow.min.js"></script>
+<script> new WOW().init(); </script>
 <script type="text/javascript">
 	$(document).ready(function(){
 		$('body > div.navbar > div > nav.navbar.transparent.navbar-expand-lg > a').text('');
@@ -37,7 +40,7 @@
 	
 	<div id="bodywrap">
 		<!-- 텍스트 -->
-		<div id="text">
+		<div class="wow fadeInDownBig text">
 			<p id="p">다나앗닥의</br>
 			공지사항을 알려드립니다.</p>
 		</div>

@@ -31,8 +31,14 @@ public class FinalController {
 		this.phService = phService;
 	}
 	@RequestMapping("/map")
-	public String map() {
-		return "map/map";
+	public ModelAndView map(ModelAndView mav, String keyword) {
+		if(keyword != null) {
+			mav.addObject("pathKeyword", keyword);
+		}else {
+			mav.addObject("pathKeyword", "");
+		}
+		mav.setViewName("map/map");
+		return mav;
 	}
 	
 	@RequestMapping("/hosmap")

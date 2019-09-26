@@ -1,4 +1,6 @@
 $(document).ready(function(){
+	// url 삭제
+	history.replaceState({}, null, location.pathname);
 	var oEditors = [];
 	$(function(){
 		nhn.husky.EZCreator.createInIFrame({
@@ -38,10 +40,10 @@ $(document).ready(function(){
 				data:queryString,
 				success:function(res){
 					alert(res);
-					location.href='/hos/comm/review';
+					location.href='/hos/myinfo/myResInfo';
 				},error:function(e){
 					alert(e.status + ' 오류가 발생했습니다.');
-					location.href='/hos/comm/review';
+					location.href='/hos/myinfo/myResInfo';
 				}
 			});
 		}

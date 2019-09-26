@@ -1,5 +1,26 @@
 $(document).ready(function(){
 	
+	// 부모보다 크게 하기 위해서
+	// 화면의 크기를 구한 후 꽉차게 만든다.
+	var windowWidth = $(window).width();
+	$('#review_description').css({
+		'width':windowWidth
+	});
+
+	$( window ).resize(function() {
+		var windowWidth = $(window).width();
+
+		$('#review_description').css({
+			'width':windowWidth
+		});
+	});
+
+	// top으로 이동
+	$('#top_btn_wrap i').on('click', function(){
+		$('html').scrollTop(0);
+	});
+
+	
 	// 페이지 무한 스크롤 페이징 처리
 	var page = 2;
 	var url = $(location).attr('pathname');
@@ -15,18 +36,17 @@ $(document).ready(function(){
 					success:function(pList){
 						$.each(pList, function(index, item){
 							var appendCode = '';
-							appendCode += '<li>'+'<a class="list_link" href="/hos/comm/reviewDetail?vino='+item.vino+'"><table>'+'<tr><td><h4>'
-							+item.name+'</h4></td></tr><tr><td style="color:orange">'
+							appendCode += '<a class="list_link" href="/hos/comm/reviewDetail?vino='+item.vino+'"><div class="card border-secondary mb-3">'
+							+'<div class="card-header">'+item.name+'</div><div class="card-body text-secondary"><h5 class="card-title" style="font-weight: bold;">'
+							+item.vi_subject+'</h5><p class="card-text">'
 							
 							for(var i=0; i<item.vi_star; i++){
 								appendCode += '★';
 							}
 							
-							appendCode += '</td><td>'+item.vi_date+'</td></tr><tr>'+'<td>'
-							+item.vi_hash+'</td>'+'<td style="text-align: center">'
-							+item.hos_name+'</td>'+'</tr><tr><td><p> </p></td></tr><tr>'
-							+'<td>'+item.vi_subject+'</td></tr></table></a><hr /></li>';
-							$('body > div.comm_body > div.content_wrap > ul').append(appendCode);
+							appendCode += '</p><p class="card-text">'+item.vi_date+'</p><p class="card-text">'
+							+item.vi_hash+'</p><p class="card-text">'+item.hos_name+'</p>';
+							$('body > div.comm_body > div.content_wrap').append(appendCode);
 						});
 						page++;
 					}
@@ -39,18 +59,17 @@ $(document).ready(function(){
 					success:function(pList){
 						$.each(pList, function(index, item){
 							var appendCode = '';
-							appendCode += '<li>'+'<a class="list_link" href="/hos/comm/reviewDetail?vino='+item.vino+'"><table>'+'<tr><td><h4>'
-							+item.name+'</h4></td></tr><tr><td style="color:orange">'
+							appendCode += '<a class="list_link" href="/hos/comm/reviewDetail?vino='+item.vino+'"><div class="card border-secondary mb-3">'
+							+'<div class="card-header">'+item.name+'</div><div class="card-body text-secondary"><h5 class="card-title" style="font-weight: bold;">'
+							+item.vi_subject+'</h5><p class="card-text">'
 							
 							for(var i=0; i<item.vi_star; i++){
 								appendCode += '★';
 							}
 							
-							appendCode += '</td><td>'+item.vi_date+'</td></tr><tr>'+'<td>'
-							+item.vi_hash+'</td>'+'<td style="text-align: center">'
-							+item.hos_name+'</td>'+'</tr><tr><td><p> </p></td></tr><tr>'
-							+'<td>'+item.vi_subject+'</td></tr></table></a><hr /></li>';
-							$('body > div.comm_body > div.content_wrap > ul').append(appendCode);
+							appendCode += '</p><p class="card-text">'+item.vi_date+'</p><p class="card-text">'
+							+item.vi_hash+'</p><p class="card-text">'+item.hos_name+'</p>';
+							$('body > div.comm_body > div.content_wrap').append(appendCode);
 						});
 						page++;
 					}

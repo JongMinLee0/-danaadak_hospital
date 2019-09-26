@@ -132,7 +132,7 @@ ul.nav.nav-tabs li:hover {
 	<tbody class="myResBody">
 	<c:forEach var="myresList" items="${myres}" varStatus="status" begin="0">
 		<c:set var="i" value="0" />
-		<tr class="myResLine" id="${myresList.rownum}" value="${myresList.rownum}">
+		<tr class="myResLine" id="${myresList.rno}" value="${myresList.rno}">
 			<c:if test="${myres[status.index].hos_id == null}">
 <!-- 				<input type="hidden"> -->
 			</c:if>
@@ -153,18 +153,14 @@ ul.nav.nav-tabs li:hover {
 			</c:if></td>
 			<td class="resMess resMessDetail">${myres[status.index].message}</td>
 			<td class="resReview ">
-<%-- 			<input type ="hidden" value="${myres[status.index].hosDTO.hos_name}" name="hos_name" />
-			<input type ="hidden" value="${myres[status.index].category}" name="category" />
-			<input type ="hidden" value="${myres[status.index].re_date}" name="re_date" />
-			<input type ="hidden" value="${myres[status.index].re_time}" name="re_time" />
-			<input type ="hidden" value="${myres[status.index].re_state}" name="re_state" />
-			<input type ="hidden" value="${myres[status.index].message}" name="message" />
-			<input type ="hidden" value="${sessionScope.memberInfo.username}" name="username" /> --%>
+				<input type ="hidden" value="${myres[status.index].hosDTO.hos_name}" name="hos_name" />
+				<input type ="hidden" value="${myres[status.index].rno}" name="rno" />
 			<c:if test="${myres[status.index].re_state == 0}">
 			<input type ="button" class="resCancelBtn btns" value="예약 취소" />
 			</c:if>
 			<c:if test="${myres[status.index].re_state == 1}">
-			<input type ="button" class="resReviewBtn btns" value="후기 작성" />
+				<input type ="submit" id="${myres[status.index].rno}" class="resReviewBtn writeBtns" value="후기 작성" 
+							onclick="location.href='/hos/comm/reviewWrite?rno=${myres[status.index].rno}&hos_name=${myres[status.index].hosDTO.hos_name}'"/>
 			</c:if>
 			</td>
 			</c:if>

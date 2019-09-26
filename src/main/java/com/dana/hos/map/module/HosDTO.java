@@ -1,5 +1,6 @@
 package com.dana.hos.map.module;
 
+
 public class HosDTO {
 	private String hos_id;
 	private String hos_name;
@@ -8,6 +9,7 @@ public class HosDTO {
 	private String hos_lon;
 	private String hos_phone;
 	private String hos_url;
+	private String hos_category_name;
 	
 	public HosDTO() {
 	}
@@ -67,5 +69,12 @@ public class HosDTO {
 	public void setHos_url(String hos_url) {
 		this.hos_url = hos_url;
 	}
-	
+
+	public String getHos_category_name() {
+		return hos_category_name;
+	}
+
+	public void setHos_category_name(String hos_category_name) {
+		this.hos_category_name = hos_category_name;
+	}
 }

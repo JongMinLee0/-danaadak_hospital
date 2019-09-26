@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="admin">
+    
+    <!-- 병원 가입 관리 (승인 처리?)-->
+    <update id="hos_join" parameterType="com.dana.hos.member.module.MemberDTO">
+		update member set enabled =1 where username =#{username}
+	</update>
+	
+	<!-- 병원 리스트  -->
+	<select id="selectUserById" resultType="com.dana.hos.member.module.MemberDTO">
+		SELECT * FROM member WHERE enabled =0
+    </select>
+    
+    <!-- Hospital+member 테이블 조인 -->
+    <resultMap type="com.dana.hos.member.module.MemberDTO" id="hospital" autoMapping="false" >
+		<result column="username" property="username"/>
+			<result column="name" property="name"/>
+			<result column="phone" property="phone"/>
+			<result column="enabled" property="enabled"/>
+			<result column="hos_id" property="hos_id"/>
+		
+	
+		<collection ofType="com.dana.hos.map.module.HosDTO" property="hosDTO" autoMapping="false" >
+		<result column="hos_name" property="hos_name"/>
+		<result column="hos_address" property="hos_address"/>
+		<result column="hos_category_name" property="hos_category_name"/>
+		</collection>
+	</resultMap>
+	
+	<!-- Hospital+member 테이블 조인  소환-->
+	<select id="joinList" resultMap="hospital" parameterType="string">
+		select m.*, h.hos_name, h.HOS_CATEGORY_NAME, h.hos_address
+		from member m, hospital h 
+		WHERE m.hos_id = h.hos_id and enabled =0
+	 </select>
+    
+</mapper>

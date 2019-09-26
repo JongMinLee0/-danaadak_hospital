@@ -3,104 +3,330 @@
    
    카카오 배경색 : #1e1e1e
 */
-body{
-   background-color: rgb(250,251,254);
+body {
+	background-color: #e6e6ff;
 }
-.home_image_wrap{
-   width: 100%;
-   height: 1000px;
-   border: 1px solid #ffffff00;
-   background-image: url('../images/home_d1.jpg');
-   background-repeat: no-repeat;
-   background-size: 100% 100%;
+
+.home_image_wrap {
+	width: 100%;
+	height: 1000px;
+	border: 1px solid #ffffff00;
+	background-image: url('../images/home_d1.jpg');
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
 }
 
 /* 홈페이지 디스크립션  */
-.home_des{
-   width:60%;
-   height: 500px;
-   margin: 300px auto;
-   font-size: 30px;
+.home_des {
+	width: 60%;
+	height: 500px;
+	margin: 300px auto;
+	font-size: 30px;
 }
-
 
 /* 배경 밑에 카드 부분*/
-.first-group{
-   width: 100%;
-   height: 250px;
+.first-group {
+	width: 100%;
+	height: 250px;
 }
 
-.second-group{
-   width: 100%;
-   margin-bottom: 200px;
-   height: 250px;
+.second-group {
+	width: 100%;
+	margin-bottom: 200px;
+	height: 250px;
 }
 
 /* 홈 Description  */
-body > div.home_image_wrap > div .des_comment_head{
+body>div.home_image_wrap>div .des_comment_head {
 	font-size: 50px;
 }
 
-body > div.home_image_wrap > div .des_comment{
+body>div.home_image_wrap>div .des_comment {
 	font-size: 20px;
 	font-weight: bold;
 }
 
 /* 접수하기 버튼  */
-body > div.home_image_wrap > div > button{
+body>div.home_image_wrap>div>button {
 	width: 250px;
 	height: 60px;
 	margin-top: 50px;
 	font-size: 30px;
 }
 
-
-.container {
-  position: relative;
-   width: 20%;
-   height: 320px;
-   float: left;
-   margin: 100px 0 0 10%;
+body>div.container {
+	margin-top: 10%;
 }
 
-.image {
-  display: block;
-  width: 100%;
-  height: 100%;
+#internal {
+	top: 180px;
+	position: relative;
+	left: -150px;
 }
 
-.overlay {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 100%;
-  width: 100%;
-  opacity: 0;
-  transition: .5s ease;
-  background-color: rgb(229,229,229);
+body>div.container>img {
+	width: 40%;
+	height: 20%;
 }
 
 .container:hover .overlay {
-  opacity: 0.8;
+	opacity: 0.8;
 }
 
 .text {
-  color: black;
-  font-size: 50px;
-  position: absolute;
-  font-weight: bold;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  text-align: center;
+	color: black;
+	font-size: 50px;
+	position: absolute;
+	font-weight: bold;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	text-align: center;
 }
 
-@media(max-width:1000px){
-   .home_image_wrap{
-      background-size: cover;
-   }
+@media ( max-width :1000px) {
+	.home_image_wrap {
+		background-size: cover;
+	}
 }
+
+/* \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
+ol.even {
+	position: relative;
+	left: 7.2rem;
+}
+
+#wraptext {
+	position: absolute;
+	left: -40%;
+	top: 30%;
+	font-size: 40px;
+	height: 70px;
+	border-bottom: 2px solid #00284d;
+}
+
+#red {
+	background-color: #00284d;
+}
+.hex a{
+	color:white;
+	display: block;
+	text-decoration: none;
+}
+
+#red:hover {
+	background-color: #ff4d4d;
+}
+
+#orange {
+	background-color: #00284d;
+}
+#orange:hover {
+	background-color: #ff8000;
+}
+
+#yellow {
+	background-color: #00284d;
+}
+
+#yellow:hover {
+	background-color: #ffd633;
+}
+
+#green {
+	background-color: #00284d;
+}
+
+#green:hover {
+	background-color: #85e085;
+}
+
+#blue {
+	background-color: #00284d;
+}
+
+#blue:hover {
+	background-color: #0073e6;
+}
+
+#purple {
+	background-color: #00284d;
+}
+
+#purple:hover {
+	background-color: #b366ff;
+}
+
+#pink {
+	background-color: #00284d;
+}
+
+#pink:hover {
+	background-color: #ff6699;
+}
+
+ol.odd {
+	position: relative;
+	margin-bottom: -5.4%;
+}
+
+.wrap {
+	margin: auto;
+	width: fit-content;
+	margin-top: 10%;
+	position: relative;
+	left: 10%;
+}
+
+.hex {
+	position: relative;
+	margin: 0.6em auto;
+	width: 8rem;
+	height: 14rem;
+	background: #1e2530;
+	transform: rotate(-90deg);
+	display: inline-block;
+	list-style-type: none;
+	margin-right: 6.1rem;
+	transition: all 150ms ease-in-out;
+	z-index: 2;
+}
+
+.hex-content {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%) rotate(90deg);
+	color: white;
+	font-size: x-large;
+	width: max-content;
+}
+.hex-content:hover{
+	font-size: xx-large;
+	font-weight: bold;
+	color:black;
+}
+.hex:before, .hex:after {
+	position: absolute;
+	width: inherit;
+	height: inherit;
+	border-radius: inherit;
+	background: inherit;
+	content: '';
+	z-index: -1;
+}
+
+.hex:before {
+	transform: rotate(60deg);
+}
+
+.hex:after {
+	transform: rotate(-60deg);
+}
+
+.hex:hover {
+	background: #ea7432;
+	cursor: pointer;
+}
+
+/* .hexagon {
+	display: inline-block;
+	position: relative;
+	width: 200px;
+	height: 115.47px;
+	margin: 57.74px 0;
+	background-image:
+		url(https://cdn.crowdpic.net/list-thumb/thumb_l_BECDC8129C8C4F7B57BC57D03646CB32.jpg);
+	background-size: auto 224.0119px;
+	background-position: center;
+	border-left: solid 3px #333333;
+	border-right: solid 3px #333333;
+}
+.hexagon2 {
+	display: inline-block;
+	position: relative;
+	width: 200px;
+	height: 115.47px;
+	margin: 57.74px 0;
+	background-image:
+		url(http://daprs.com/page/popup/datube/datube_icon07_off.jpg?ver=2019);
+	background-size: auto 224.0119px;
+	background-position: center;
+	border-left: solid 3px #333333;
+	border-right: solid 3px #333333;
+}
+
+.hexagon3 {
+	display: inline-block;
+	position: relative;
+	width: 200px;
+	height: 115.47px;
+	margin: 57.74px 0;
+	background-image:
+		url(https://www.amc.seoul.kr/asan/file/imageView.do?fileId=F000000020083);
+	background-size: auto 224.0119px;
+	background-position: center;
+	border-left: solid 3px #333333;
+	border-right: solid 3px #333333;
+}
+
+.hexTop, .hexBottom {
+	position: absolute;
+	z-index: 1;
+	width: 141.42px;
+	height: 141.42px;
+	overflow: hidden;
+	-webkit-transform: scaleY(0.5774) rotate(-45deg);
+	-ms-transform: scaleY(0.5774) rotate(-45deg);
+	transform: scaleY(0.5774) rotate(-45deg);
+	background: inherit;
+	left: 26.29px;
+}
+
+counter transform the bg image on the caps
+.hexTop:after, .hexBottom:after {
+	content: "";
+	position: absolute;
+	width: 194.0000px;
+	height: 112.00595222278741px;
+	-webkit-transform: rotate(45deg) scaleY(1.7321) translateY(-56.0030px);
+	-ms-transform: rotate(45deg) scaleY(1.7321) translateY(-56.0030px);
+	transform: rotate(45deg) scaleY(1.7321) translateY(-56.0030px);
+	-webkit-transform-origin: 0 0;
+	-ms-transform-origin: 0 0;
+	transform-origin: 0 0;
+	background: inherit;
+}
+
+.hexTop {
+	top: -70.7107px;
+	border-top: solid 4.2426px #333333;
+	border-right: solid 4.2426px #333333;
+}
+
+.hexTop:after {
+	background-position: center top;
+}
+
+.hexBottom {
+	bottom: -70.7107px;
+	border-bottom: solid 4.2426px #333333;
+	border-left: solid 4.2426px #333333;
+}
+
+.hexBottom:after {
+	background-position: center bottom;
+}
+
+.hexagon:after {
+	content: "";
+	position: absolute;
+	top: 1.7321px;
+	left: 0;
+	width: 194.0000px;
+	height: 112.0060px;
+	z-index: 2;
+	background: inherit;
+} */

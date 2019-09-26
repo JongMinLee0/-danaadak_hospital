@@ -12,31 +12,36 @@
 		from reserve
 		where re_date = to_char((sysdate),'YYYY-mm-dd') and hos_id=#{hos_id}
 		order by re_date, re_time -->
-        select r.username, r.category, r.message, r.re_date, r.re_time, r.re_state, m.hos_id
+     	select r.rno ,r.username, r.category, r.message, r.re_date, r.re_time, r.re_state, m.hos_id
         from reserve r, member m
-        where r.hos_id = m.hos_id and r.re_date = to_char((sysdate),'YYYY-mm-dd')and m.hos_id = #{hos_id}
+        where r.hos_id = m.hos_id and r.re_date = to_char((sysdate),'YYYY-mm-dd')and m.hos_id =#{hos_id}
         order by r.re_date, r.re_time
+
 	</select>
 
 	<select id="view" parameterType="com.dana.hos.member.module.MemberDTO" resultType="com.dana.hos.reserve.module.ReserveDTO">
-		select username, category, message, re_state, hos_id
+		select rno, username, category, message, re_state, hos_id
 		from reserve
-		where hos_id=#{hos_id}
+		where hos_id=#{hos_id} 
 	</select>
-
-
 	<update id="upt" parameterType="com.dana.hos.reserve.module.ReserveDTO">
-		update reserve set re_state = #{re_state}
-		where username=#{username}
+		update reserve set re_state = #{re_state} ,eat_cnt=#{eat_cnt}, medicine =#{medicine}
+		where rno=#{rno} and username=#{username} and hos_id=#{hos_id}
 	</update>
 	
+	<!-- 
 	<update id="ins"  parameterType="com.dana.hos.reserve.module.ReserveDTO" >
 		update reserve set eat_cnt=#{eat_cnt} , medicine=#{medicine}
-		where username=#{username} and hos_id=#{hos_id} and re_date=#{re_date} and re_time = #{re_time}
+		where username=#{username} and hos_id=#{hos_id} and re_date = #{re_date} and re_time =#{re_time} 
 	</update>
 	
+	 -->
 	<insert id="event_ins" parameterType="com.dana.hos.hopital.module.EventDTO">
 	insert into event (ENO, hos_id, e_subject, e_content, e_type , e_price)
-    VALUES(event_seq.nextval,hos_id=#{hos_id},e_subject=#{e_subject},e_content=#{e_content},e_type=#{e_type},e_price=#{e_price})
+    VALUES(event_seq.nextval,#{hos_id},#{e_subject},#{e_content},#{e_type},#{e_price})
 	</insert>
+	
 </mapper>
+
+
+

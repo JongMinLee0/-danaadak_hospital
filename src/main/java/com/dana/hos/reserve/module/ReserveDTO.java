@@ -2,24 +2,34 @@ package com.dana.hos.reserve.module;
 
 import com.dana.hos.map.module.HosDTO;
 
+
 public class ReserveDTO {
-	
+	private int rno;
 	private String re_date;
 	private String re_time;
 	private String category;
 	private String message;
 	private int re_state;
 	private String username;
+
+	public int getRno() {
+		return rno;
+	}
+
+	public void setRno(int rno) {
+		this.rno = rno;
+	}
+
 	private String hos_id;
 	private String medicine;
 	private String birth;
 	private String eat_cnt;
 	private HosDTO hosDTO;
-	
+
 	public ReserveDTO() {
 		// TODO Auto-generated constructor stub
 	}
-	
+
 	public String getEat_cnt() {
 		return eat_cnt;
 	}
@@ -107,5 +117,5 @@ public class ReserveDTO {
 	public void setHosDTO(HosDTO hosDTO) {
 		this.hosDTO = hosDTO;
 	}
-	
-}//end class 
+
+}// end class

@@ -44,13 +44,14 @@
   	<div class="overlay">
     	<div class="text">내 과</div>
   		</div>
+
   </div>
   <div class="container" onclick="location.href='/hos/map?keyword=안과'">
   	<img src="/hos/resources/images/home/안과.jpg" alt="안과" class="image">
   	<div class="overlay">
     	<div class="text">안 과</div>
   		</div>
-  </div>
+    </div>
 </div>
 <div class="second-group">
   <div class="container" onclick="location.href='/hos/map?keyword=산부인과'">
@@ -63,13 +64,13 @@
   	<img src="/hos/resources/images/home/치과2.jpg" alt="치과2" class="image">
   	<div class="overlay">
     	<div class="text">치 과</div>
-  		</div>
+  	</div>
   </div>
   <div class="container" onclick="location.href='/hos/map?keyword=피부과'">
   	<img src="/hos/resources/images/home/피부과.jpg" alt="피부과" class="image">
   	<div class="overlay">
     	<div class="text">피부과</div>
-  		</div>
+    </div>
   </div>
 </div>
 

@@ -42,8 +42,15 @@
 					<span>${sessionScope.memberInfo.name}</span>님
 				</c:otherwise>
 			</c:choose>
-			<sec:authorize access="isAnonymous()"><button class="btn my-2 my-sm-0" type="submit" onClick="location.href='/hos/login'">로그인</button></sec:authorize>
-			<sec:authorize access="isAuthenticated()"><form:form action="${pageContext.request.contextPath}/logout" method="POST"> <button class="btn my-2 my-sm-0" type="submit">로그아웃</button> </form:form> </sec:authorize>
+			
+			<c:choose>
+				<c:when test="${sessionScope.memberInfo.name eq null}">
+					<button class="btn my-2 my-sm-0" type="submit" onClick="location.href='/hos/login'">로그인</button>
+				</c:when>
+				<c:otherwise>
+					<form:form action="/hos/logout" method="POST"> <button class="btn my-2 my-sm-0" type="submit">로그아웃</button></form:form>
+				</c:otherwise>
+			</c:choose>
 
 		</div>
 	</nav>

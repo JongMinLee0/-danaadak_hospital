@@ -25,6 +25,7 @@
 	<h2>예약내역</h2>
 	<table id="book_list">
 			<tr>
+			<th>예약 번호</th>
 			<th>진료 항목</th>
 			<th>이름</th>
 			<th>전달 메세지</th>
@@ -34,10 +35,12 @@
 			</tr>
 		<c:forEach var="dto" items="${list}">
 			<tr>
+				<td>${dto.rno }</td>
 				<td>${dto.category }</td>
 				<td>
 				<c:url var="path" value="view">
-					<c:param name="username" value="${dto.username }"/>
+					<c:param name="rno" value="${dto.rno }"/>
+					<c:param name="username" value="${dto.username}"/>
 					<c:param name="re_state" value="${dto.re_state}"/>
 					<c:param name="hos_id" value="${dto.hos_id}"/>
 					<c:param name="re_date" value="${dto.re_date}"/>

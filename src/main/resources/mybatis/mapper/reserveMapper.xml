@@ -9,8 +9,8 @@
 	
 	 <!-- 예약 -->
 	<insert id="ins" parameterType="com.dana.hos.reserve.module.ReserveDTO">
-		insert into reserve (hos_id, username, category, re_date, re_time, message,re_state)
-		values (#{hos_id},#{username},#{category},#{re_date},#{re_time},#{message},0)
+		insert into reserve (rno,hos_id, username, category, re_date, re_time, message,re_state)
+		values (re_seq.nextval,#{hos_id},#{username},#{category},#{re_date},#{re_time},#{message},0)
 	</insert>
 	
 	

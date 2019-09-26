@@ -57,34 +57,56 @@ $(document).ready(function() {
 		$('#save_id').prop('checked', 'true');
 	}
 
-	$('#loginForm').submit(
-		function() {
-			if ($('#username').val() == '') {
-				swal('아이디를 입력해주세요');
-				return false;
-			};
-
-			if ($('#password').val() == '') {
-				swal('비밀번호를 입력해주세요');
-				return false;
-			};
-
+	$('form').submit(function() {
 			
-			if($('#username').val() != "" && $('#password').val() != ""){
-				if ($('#save_id').prop('checked') && $('#username').val()){
-					$.cookie('id', $('#username').val());
-				}
-				$(this).submit();
-				return false;
+		if ($('#username').val() == '') {
+			swal('아이디를 입력해주세요');
+			return false;
+		};
+	
+		if ($('#password').val() == '') {
+			swal('비밀번호를 입력해주세요');
+			return false;
+		};
+		
+		if($('#username').val() != "" && $('#password').val() != ""){
+			if(typeParam==undefined){
+				typeParam = 'user';
 			}
-
+			
+			if ($('#save_id').prop('checked') && $('#username').val()){
+				$.cookie('id', $('#username').val());
+			}
+			
+			var rtn = false;
+				
+			$.ajax({
+				type : 'POST',
+				dataType : 'text',
+				url : '/hos/login/typeChk',
+				data : 'username=' + $('#username').val(),
+				async : false,
+				success : function(res){
+					if(res != typeParam){
+						swal('타입 선택 미스');
+						rtn = false;
+						return false;
+					}else{
+						rtn = true;
+					}
+				}
+			});
+		};
+		
+		return rtn;
+		
 	});
 	
 });
 
 
 // 카카오 로그인
-function kakaoLogin(kakao_id, email, userNickName) {
+function kakaoLogin(kakao_id, email, userNickName, profileImage) {
 	$.ajax({
 		type : 'POST',
 		dataType : 'text',
@@ -107,7 +129,7 @@ function kakaoLogin(kakao_id, email, userNickName) {
 					}
 
 					location.href = '/hos/join/joinForm?type=user&id=' + id + '&name='
-							+ nickname + '&kakao_id=' + kakao_id;
+							+ nickname + '&kakao_id=' + kakao_id + '&profile_image=' + profileImage ;
 				}
 			} else {
 				kakaoLoginAction(kakao_id);

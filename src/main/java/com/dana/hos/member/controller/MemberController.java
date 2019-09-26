@@ -38,6 +38,17 @@ public class MemberController {
 		return mav;
 	}
 	
+	@RequestMapping(value = "/login/accessDenied", method = RequestMethod.GET)
+	public String accessDenied() {
+		return "member/login/accessDenied";
+	}
+	
+	@RequestMapping(value = "/login/typeChk", method = RequestMethod.POST)
+	public @ResponseBody String typeChk(String username) {
+		MemberDTO dto = memberservice.userInfoProcess(username);
+		return dto.getType();
+	}
+
 	@RequestMapping(value = "/kakao_login")
 	public @ResponseBody int kakao_login(MemberDTO dto) {
 		return memberservice.kakaoChkProcess(dto.getKakao_id());
@@ -48,10 +59,7 @@ public class MemberController {
 		return memberservice.kakaoLoginProcess(dto.getKakao_id());
 	}
 
-	@RequestMapping(value = "/login/accessDenied", method = RequestMethod.GET)
-	public String accessDenied() {
-		return "member/login/accessDenied";
-	}
+	
 
 	@RequestMapping(value = "/join/joinForm", method = RequestMethod.GET)
 	public String joinForm() {

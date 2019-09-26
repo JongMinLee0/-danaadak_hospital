@@ -35,8 +35,8 @@
   					</div>
 				</div>
 			</a>
+			<hr />
 	</c:forEach>
-	<div>
-		<i class="fa fa-arrow-up" aria-hidden="true"></i>
+	<div id="top_btn_wrap">
+		<i class="fa fa-arrow-up" aria-hidden="true" id="top_btn"></i>
 	</div>
-

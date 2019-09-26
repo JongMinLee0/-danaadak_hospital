@@ -50,6 +50,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         				  .successHandler(loginSuccessHandler)
         				  .failureHandler(loginFailureHandler)
         .and().logout().logoutSuccessUrl("/home").permitAll()
+        .and().exceptionHandling().accessDeniedPage("/login/accessDenied")
         .and().headers().frameOptions().disable()
         .and().csrf().disable();
     }

@@ -381,5 +381,4 @@ $(document).ready(function(){
 		infowindow.close();
 		Searchkeyword(key);
 	}
-	
 });

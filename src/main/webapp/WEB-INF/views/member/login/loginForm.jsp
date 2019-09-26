@@ -50,6 +50,19 @@ $(document).ready(function(){
 			window.location = '/hos/login?type='+typeParam;
 		});
 	};
+	
+	var errorMsg = '${errorMsg}';
+	var type = '${type}';
+	
+	if(errorMsg != ""){
+		swal({
+			title : errorMsg.split(".")[0],
+			text : errorMsg.split(".")[1]
+		}).then(function(){
+			window.location = '/hos/login?type='+type;
+		});
+	}
+	
 });
 
 </script>
@@ -57,13 +70,6 @@ $(document).ready(function(){
 <body>
 	<jsp:include page="/WEB-INF/views/fragments/nav_bar.jsp" />
 	
-	
- 	<c:if test="${param.error == true}">
-		<script>
-			swal("회원정보를 확인해주세요.");
-		</script>
-	</c:if> 
-
 	<form:form name="f" method="POST" id="loginForm" action="/hos/login">
 		<div class="wrapper">
 			<div class="main">
@@ -135,10 +141,10 @@ $(document).ready(function(){
 							var kakao_id = res.id; //유저가 등록한 계정
 							var email = res.kaccount_email; //유저가 등록한 계정
 							var userNickName = res.properties.nickname; //유저가 등록한 별명
+							var profileImage = res.properties.thumbnail_image;
+							console.log(kakao_id, email, userNickName, profileImage);
 	
-						//	console.log(kakao_id, email, userNickName);
-	
-							kakaoLogin(kakao_id, email, userNickName);
+							kakaoLogin(kakao_id, email, userNickName, profileImage);
 						},
 						fail : function(error) {
 							swal(JSON.stringify(error));

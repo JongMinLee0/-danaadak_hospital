@@ -6,7 +6,7 @@ $(document).ready(function(){
 	$('#review_description').css({
 		'width':windowWidth
 	});
-	
+
 	$( window ).resize(function() {
 		var windowWidth = $(window).width();
 
@@ -14,9 +14,8 @@ $(document).ready(function(){
 			'width':windowWidth
 		});
 	});
-	
 	// top으로 이동
-	$('body > div.comm_body > div.content_wrap > div:nth-child(6) > i').on('click', function(){
+	$('#top_btn_wrap i').on('click', function(){
 		$('html').scrollTop(0);
 	});
 

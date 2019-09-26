@@ -12,11 +12,11 @@
 <script type="text/javascript" src="/hos/resources/js/hospital_event.js"></script>
 </head>
 <body>
-	<form id="event_registerFrm">
+	<form id="event_registerFrm" action="event_registerPro" method="post">
 		<table id="event_tab">
 			<tr>
 				<td width="20%" align="center">병원 ID</td>
-				<td><input type="text" name="hos_id" size="10" maxlength="10" value="${param.hos_id}" /></td>
+				<td><input type="text" name="hos_id" size="10" maxlength="10" value="${sessionScope.memberInfo.hos_id}"/></td>
 			</tr>
 
 			<tr>
@@ -39,15 +39,14 @@
 			</tr>
 			<tr align="center">
 				<td width="20%" align="center">이벤트 내용</td>
-				<td><!-- <textarea id="smart" name="e_content" style="width: 700px !important;height: 500px" ></textarea> -->
-				<textarea rows="50" cols="50" name="e_content"></textarea></td>
+				<td><textarea id="smart" name="e_content" style="width: 700px !important;height: 500px"></textarea></td>
 			</tr>
 
 
 		</table>
 
 		<input type="button" id="btn_goBack" value="리스트" class="event_register" style="margin-left : 350px;"/> 
-		<input type="button"id="btn_eventRegister" value="관리자에게 보내기"  class="event_register" style="width : 300px;"/>
+		<input type="button"id="subBtn" value="관리자에게 보내기"  class="event_register" style="width : 300px;"/>
 	</form>
 </body>
 </html>

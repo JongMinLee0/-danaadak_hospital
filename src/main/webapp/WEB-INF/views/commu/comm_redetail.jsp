@@ -10,16 +10,16 @@
 				<td style="text-align: right;">${dList.vi_date}<hr></td>
 			</tr>
 			<tr>
-				<td><h4>${dList.name}</h4></td>
+				<td><h4>${dList.username}</h4></td>
 				<c:choose>
-					<c:when test="${sessionScope.memberInfo.username eq dList.id}">
+					<c:when test="${sessionScope.memberInfo.username eq dList.username}">
 						<td style="text-align: right;">
 							<button id="modifyBtn">수정</button>
 							<button id="deleteBtn">삭제</button>
 						</td>
 					</c:when>
 					<c:otherwise>
-						<td style="text-align: right;"><button name="username" id="username" value="${dList.id}">1:1대화</button></td>
+						<td style="text-align: right;"><button name="username" id="username" value="${dList.username}">1:1대화</button></td>
 					</c:otherwise>
 				</c:choose>
 			</tr>

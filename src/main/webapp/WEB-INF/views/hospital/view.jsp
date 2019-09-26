@@ -35,22 +35,22 @@
 		<!--진료 상태 업데이트   -->
 	<form action="" method="post" id="re_stateFrm">
 	<span id="sub_wrap">환자 진료 및 처방전 부여</span>
-	
 	<table>
 			<tr>
-				<th>환&nbsp;자&nbsp;명</th>
-				<th>진료 상태</th>
+				<th>환&nbsp;자&nbsp;ID</th>
+				<td><input type="text" value="${param.username}" name="username" id ="username" readonly="readonly"></td>
 			</tr>
 			<tr>
-				<td><input type="text" value="${param.username}" name="username" id ="username" readonly="readonly"></td>
-					
+				<th>진료 상태</th>
 				<td>
 					<input type="radio" name=re_state value="0" id="before"/> 진료대기 
 					<input type="radio" name=re_state value="1" id="after"/> 진료완료</td>
 			</tr>
+			
+			<!-- //////////////////////////////////////////////////////////  -->
 					<tr><td><span id="rec_top">처방전</span></td></tr>
 			<tr>
-				<td><input type="text" name="rno" value="${param.rno}" /></td>
+				<td><input type="hidden" name="rno" value="${param.rno}" /></td>
 			</tr>
 				<tr>
 					<th>발급일</th> 
@@ -60,7 +60,9 @@
 				<tr>
 					<th>병원명 </th>
 					<td>
-						<input type="text" name="hos_id" value="${param.hos_id }"></td>
+						<input type="text" name="hos_name" value="${name}">
+						<input type="hidden" name="hos_id" value="${param.hos_id }">
+						</td>
 				</tr>				
 				<tr>
 					<th>복용 횟수</th>
@@ -71,15 +73,14 @@
 				<td><p>	<input type="text" id="first" name="medicine">
 					<i class="fa fa-plus" id="add_input"></i></p> </td>
 				</tr>
+				<tr>
+				<td>
+				<!-- 최종 제출 -->
+		<input type="submit" id="update_reserve" value="제출"/> 
+				</td>
+				</tr>
 		</table>
 	</form>
-
-
-
-	
-		<!-- 최종 제출 -->
-		<input type="submit" id="update_reserve" value="제출"/> 
 </body>
-
 <jsp:include page="/WEB-INF/views/fragments/footer.jsp" />
 </html>

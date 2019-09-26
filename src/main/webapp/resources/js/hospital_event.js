@@ -1,4 +1,14 @@
 $(document).ready(function(){
+	/*리스트로 돌아가기*/
+	$('#btn_goBack').click(function(){
+		  swal({
+              text : "리스트로 돌아가시겠습니까?",
+              buttons : ["YES", "NO"]
+           }).then((YES) => {
+       		location.href='/hos/hospital?hos_id='+$('input[name=hos_id]').val();
+           });
+	});
+	
 		var oEditors = [];
 		$(function(){
 			nhn.husky.EZCreator.createInIFrame({
@@ -34,4 +44,6 @@ $(document).ready(function(){
 		        $('#event_registerFrm').submit();
 			}
 		});
+	
+	
 });//end ready

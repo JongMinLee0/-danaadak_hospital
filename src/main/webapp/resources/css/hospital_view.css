@@ -1,23 +1,13 @@
-nav-bar랑 띄우기
-body{
+/* nav-bar랑 띄우기 */
+/* body{
 margin-top: 250px;	
-margin-left: 100px;
-
-}
-
-/* /* 처방전 modal 숨기기 */
-.recHide {
-	visibility: hidden;
-	width: 0px;
-	height: 0px;
-}
-.recShow{
-	width: 70%;
-	height: 500px;
-	border: 1px solid black;
+margin-left: 200px;
 } */
-#rec_top, #sub_wrap{
-	background-color: yellow;
+
+#sub_wrap, #rec_top{
+	background: #00284d;
+    color: white;
+    font-size: 35px;
 }
 #add_input {
 	font-size: 20px; !important;
@@ -32,4 +22,25 @@ input[type=text]{
 	background: none;
 	border : 0px;
 	border-bottom: 1px solid black;
+}
+
+#re_stateFrm{
+position: relative;
+    top: 180px;
+    left: 650px;
+    align-items: center;
+    font-size: 20px;
+}
+
+th {
+    text-align: inherit;
+    padding: 20px;
+}
+#update_reserve{
+	    background: none;
+    border: 1px solid black;
+    width: 300px;
+    position: absolute;
+    left: 80px;
+}
 }

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.dana.hos.hopital.module.EventDTO;
+import com.dana.hos.hopital.module.HospitalDTO;
 import com.dana.hos.hopital.service.HospitalService;
 import com.dana.hos.member.module.MemberDTO;
 import com.dana.hos.reserve.module.ReserveDTO;
@@ -31,24 +32,23 @@ public class HospitalController {
 	}
 	
 	@RequestMapping("/hospital")
-	public ModelAndView reserveListpage(ModelAndView mav, MemberDTO dto) {
+	public ModelAndView reserveListpage(ModelAndView mav, MemberDTO dto, EventDTO edto) {
 		mav.addObject("list", hospitalService.bookListProcess(dto));
+		mav.addObject("edto", hospitalService.eventListProcess(edto));
 		mav.setViewName("hospital/hospital_page");
 		return mav;
 	}
 	@RequestMapping(value="/view" , method= RequestMethod.GET)
 	public ModelAndView viewMethod(ModelAndView mav, MemberDTO dto) {
 		List<ReserveDTO> aList = hospitalService.contentProcess(dto);
-		mav.addObject("param1",aList.get(0));
+		/*mav.addObject("param1",aList.get(0));*/
+		mav.addObject("name",hospitalService.nameselctProcess(dto.getHos_id()));
 		mav.setViewName("hospital/view");
 		return mav;
 	}
 
 	@RequestMapping(value="/re_stateUpdate" ,method=RequestMethod.POST)
 	public ModelAndView re_stateUpdateMethod(ModelAndView mav, ReserveDTO dto) {
-		System.out.println(dto.getUsername());
-		System.out.println(dto.getRno());
-		System.out.println(dto.getHos_id());
 		
 		hospitalService.updateProcess(dto);
 		mav.setViewName("redirect:/hospital?hos_id="+dto.getHos_id());
@@ -67,5 +67,4 @@ public class HospitalController {
 		mav.setViewName("redirect:hospital?hos_id="+dto.getHos_id());
 		return mav;
 	}
-	
 }//end class 

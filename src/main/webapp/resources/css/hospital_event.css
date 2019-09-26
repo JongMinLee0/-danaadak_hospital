@@ -10,7 +10,15 @@
 	height: 100px;
 	margin: auto;
 }
+#event_tab > tbody > tr > th{
+	text-align: center;
+}
 
+
+#e_type {
+    word-wrap: break-word;
+    border: 1px solid black;
+}
 /* input type */
 #title{
 	width: 100%;
@@ -24,7 +32,11 @@
 	width: 50px;
 	height: 30px;
 }
-
+#event_tab > tbody > tr> td > input[type=text]{
+	background: none;
+    border: 0px;
+    border-bottom: 1px solid black;
+}
 #write_table > tbody > tr:nth-child(5) > td{
 	text-align: center;
 }

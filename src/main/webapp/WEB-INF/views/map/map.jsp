@@ -126,9 +126,9 @@
 					<td><textarea id="message" name="message" cols="30"></textarea></td>
 				</tr>
 				<tr>
-					<td><input type="button" id="submitBtn" class="reserve_btn"
-						value="예약하기" /></td>
-					<td><input type="reset" id="closeBtn" class="reserve_btn"
+					<td colspan="2"><input type="button" id="submitBtn" class="reserve_btn"
+						value="예약하기" />
+					<input type="reset" id="closeBtn" class="reserve_btn"
 						value="닫기" /></td>
 				</tr>
 			</table>

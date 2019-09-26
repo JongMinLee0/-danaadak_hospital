@@ -43,7 +43,8 @@
   	<img src="/hos/resources/images/home/내과.jpg" alt="내과" class="image">
   	<div class="overlay">
     	<div class="text">내 과</div>
-  	</div>
+  		</div>
+
   </div>
   <div class="container" onclick="location.href='/hos/map?keyword=안과'">
   	<img src="/hos/resources/images/home/안과.jpg" alt="안과" class="image">
@@ -59,7 +60,6 @@
     	<div class="text"><p>산 부</p><p>인 과</p></div>
   		</div>
   </div>
-
   <div class="container" onclick="location.href='/hos/map?keyword=치과'">
   	<img src="/hos/resources/images/home/치과2.jpg" alt="치과2" class="image">
   	<div class="overlay">

@@ -6,10 +6,8 @@
 <div class="detail_wrap">
 	<table class="detail_table">
 			<tr>
-				<td>${dList.vi_subject}
-				<hr /></td>
-				<td style="text-align: right;">${dList.vi_date}
-				<hr /></td>
+				<td>${dList.vi_subject}<hr></td>
+				<td style="text-align: right;">${dList.vi_date}<hr></td>
 			</tr>
 			<tr>
 				<td><h4>${dList.username}</h4></td>

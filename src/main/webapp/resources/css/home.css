@@ -36,7 +36,6 @@ body{
    height: 250px;
 }
 
-
 /* 홈 Description  */
 body > div.home_image_wrap > div .des_comment_head{
 	font-size: 50px;
@@ -54,7 +53,6 @@ body > div.home_image_wrap > div > button{
 	margin-top: 50px;
 	font-size: 30px;
 }
-
 .container {
   position: relative;
    width: 20%;

@@ -108,8 +108,8 @@
 				<button type="button" class="btn btn-dark" id="list" value="리스트">목록</button>
 				<!-- <input type="button"  value="리스트닷" /> -->
 
-				<input type="button" id="update" value="수정" /> <input type="button"
-					id="delete" value="삭제" />
+				<!-- <input type="button" id="update" value="수정" /> <input type="button"
+					id="delete" value="삭제" /> -->
 			</form>
 		</div>
 		<jsp:include page="/WEB-INF/views/fragments/footer.jsp" />

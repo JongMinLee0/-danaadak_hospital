@@ -4,7 +4,7 @@
 
 <link rel="stylesheet" href="/hos/resources/css/com_review.css" />
 <script src="/hos/resources/js/comm_review.js"></script>
-<!-- <button id="reviewBtn" onclick="location.href='/hos/comm/reviewWrite'">후기작성</button> -->
+<button id="reviewBtn" onclick="location.href='/hos/comm/reviewWrite'">후기작성</button>
 <div id="review_description">
 	<div id="description_write">
 		<br /><br /><br /><br /><br />

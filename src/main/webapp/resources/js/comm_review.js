@@ -14,7 +14,6 @@ $(document).ready(function(){
 			'width':windowWidth
 		});
 	});
-
 	// top으로 이동
 	$('#top_btn_wrap i').on('click', function(){
 		$('html').scrollTop(0);

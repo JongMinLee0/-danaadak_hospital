@@ -76,4 +76,17 @@
 			where b.rm >= #{startPage} and b.rm <= #{endPage}
 		]]>
 	</select>
+	
+	<!--이벤트 리스트  -->
+	
+	<select id="event_select" resultType="com.dana.hos.hopital.module.EventDTO">
+		select h.hos_name , e.e_subject , e.e_url
+		from event e , hospital h
+		where e.hos_id = h.hos_id 
+	</select>
+	
+	<!-- 이벤트 페이지 페이징  -->
+	<select id="e_count" resultType="int">
+		select count(*) from notice
+	</select>
 </mapper>

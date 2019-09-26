@@ -5,6 +5,7 @@ import java.util.List;
 import com.dana.hos.comm.module.CommentDTO;
 import com.dana.hos.comm.module.PageDTO;
 import com.dana.hos.comm.module.ReviewDTO;
+import com.dana.hos.hopital.module.EventDTO;
 
 public interface CommDAO {
 	// 후기 작성
@@ -39,4 +40,10 @@ public interface CommDAO {
 	
 	// 해시 페이지
 	public List<ReviewDTO> reviewHash(PageDTO pdto);
+	
+	//이벤트 리스트
+	public List<EventDTO> eventList(EventDTO edto);
+	
+	//이벤트 페이지
+	public int eventCount();
 }

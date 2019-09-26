@@ -13,6 +13,7 @@ import com.dana.hos.comm.module.PageDTO;
 import com.dana.hos.comm.module.ReviewDTO;
 import com.dana.hos.comm.repo.CommDAO;
 import com.dana.hos.comm.service.CommService;
+import com.dana.hos.hopital.module.EventDTO;
 
 @Service
 public class CommServiceImpl implements CommService {
@@ -152,6 +153,18 @@ public class CommServiceImpl implements CommService {
 	public List<ReviewDTO> scrollHash(PageDTO pdto) {
 		List<ReviewDTO> pList = commDAO.reviewHash(pdto);
 		return pList;
+	}
+	
+	
+	//이벤트 리스트
+	@Override
+	public List<EventDTO> eventList(EventDTO edto) {
+		return commDAO.eventList(edto);
+	}
+
+	@Override
+	public int eventCount() {
+		return commDAO.eventCount();
 	}
 
 }

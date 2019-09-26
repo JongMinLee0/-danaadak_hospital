@@ -10,6 +10,7 @@ import com.dana.hos.comm.module.CommentDTO;
 import com.dana.hos.comm.module.PageDTO;
 import com.dana.hos.comm.module.ReviewDTO;
 import com.dana.hos.comm.repo.CommDAO;
+import com.dana.hos.hopital.module.EventDTO;
 
 @Repository
 public class CommDAOImpl implements CommDAO{
@@ -81,6 +82,16 @@ public class CommDAOImpl implements CommDAO{
 	@Override
 	public List<ReviewDTO> reviewHash(PageDTO pdto) {
 		return sqlSession.selectList("comm.reviewHash", pdto);
+	}
+
+	@Override
+	public List<EventDTO> eventList(EventDTO edto) {
+		return sqlSession.selectList("comm.event_select",edto);
+	}
+
+	@Override
+	public int eventCount() {
+		return sqlSession.selectOne("comm.e_count");
 	}
 
 }

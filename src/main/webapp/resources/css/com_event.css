@@ -1,0 +1,26 @@
+#event_topimage{
+	width: 100%;
+	height: 500px;
+	background-image: url('../images/event_main.jpg');
+	background-size: cover;
+	background-repeat: no-repeat;
+	margin-left: -21%;
+}
+#description1_write{
+	width: 550px;
+	heigth: 300px !important;
+	margin: auto;
+}
+/* 제 목글 */
+#description1_write p{
+	font-size: 50px;
+	color : white;
+}
+
+/* 후기 글 목록 */
+body > div.comm_body > div.content_wrap > form > div{
+	float: left;
+	margin: 50px;
+	width: 300px;
+}
+

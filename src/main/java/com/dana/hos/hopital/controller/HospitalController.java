@@ -30,7 +30,7 @@ public class HospitalController {
 	public void setHospitalService(HospitalService hospitalService) {
 		this.hospitalService = hospitalService;
 	}
-	
+	//병원페이지 메인
 	@RequestMapping("/hospital")
 	public ModelAndView reserveListpage(ModelAndView mav, MemberDTO dto, EventDTO edto) {
 		mav.addObject("list", hospitalService.bookListProcess(dto));
@@ -38,6 +38,7 @@ public class HospitalController {
 		mav.setViewName("hospital/hospital_page");
 		return mav;
 	}
+	//병원 환자 뷰페이지
 	@RequestMapping(value="/view" , method= RequestMethod.GET)
 	public ModelAndView viewMethod(ModelAndView mav, MemberDTO dto) {
 		List<ReserveDTO> aList = hospitalService.contentProcess(dto);
@@ -46,7 +47,7 @@ public class HospitalController {
 		mav.setViewName("hospital/view");
 		return mav;
 	}
-
+	//환자상테 업데이트
 	@RequestMapping(value="/re_stateUpdate" ,method=RequestMethod.POST)
 	public ModelAndView re_stateUpdateMethod(ModelAndView mav, ReserveDTO dto) {
 		
@@ -54,13 +55,13 @@ public class HospitalController {
 		mav.setViewName("redirect:/hospital?hos_id="+dto.getHos_id());
 		return mav;
 	}
-	
+	//이벤트 등록
 	@RequestMapping(value="/event_register", method=RequestMethod.GET)
 	public ModelAndView eventInsertMethod(ModelAndView mav,ReserveDTO dto) {
 		mav.setViewName("hospital/eventRegister");
 		return mav;
 	}
-	
+	//이벤트등록 2
 	@RequestMapping(value="/event_registerPro", method=RequestMethod.POST)
 	public ModelAndView eventInsertProMethod(ModelAndView mav, EventDTO dto) {
 		hospitalService.eventInsertProcess(dto);

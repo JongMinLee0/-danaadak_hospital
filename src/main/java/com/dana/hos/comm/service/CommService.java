@@ -5,6 +5,7 @@ import java.util.List;
 import com.dana.hos.comm.module.CommentDTO;
 import com.dana.hos.comm.module.PageDTO;
 import com.dana.hos.comm.module.ReviewDTO;
+import com.dana.hos.hopital.module.EventDTO;
 
 public interface CommService {
 
@@ -46,4 +47,9 @@ public interface CommService {
 	
 	// 해시 스크롤 이벤트
 	public List<ReviewDTO> scrollHash(PageDTO pdto);
+	//이벤트 리스트
+	public List<EventDTO> eventList(EventDTO edto);
+	
+	//이벤트 페이징
+	public int eventCount();
 }

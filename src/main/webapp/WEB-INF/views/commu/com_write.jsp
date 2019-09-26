@@ -35,6 +35,10 @@
 				        <a href="#">★</a>
 					</p>
 					<input type="hidden" id="vi_star" name="vi_star" value="" />
+					<input type="hidden" id="hos_name" name="hos_name" value="${param.hos_name}" />
+					<input type="hidden" id="username" name="username" value="${sessionScope.memberInfo.username}" />
+					<input type="hidden" id="name" name="name" value="${sessionScope.memberInfo.name}" />
+					<input type="hidden" id="rno" name="rno" value="${param.rno}" />
 				</td>
 			</tr>
 			<tr>
@@ -46,7 +50,7 @@
 			<tr>
 				<td colspan="2">
 					<button type="button" id="subBtn" class="write_button">저장</button>
-					<button type="button" id="backBtn" class="write_button" onclick="location.href='/hos/comm/review'">뒤로</button>
+					<button type="button" id="backBtn" class="write_button" onclick="location.href='/hos/myinfo/myResInfo'">뒤로</button>
 				</td>
 			</tr>
 		</table>

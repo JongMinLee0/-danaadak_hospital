@@ -48,5 +48,9 @@
 		update reserve set re_state=2 where username=#{username} and rno=#{rno}
 	</update>
 	
+ 	<!-- 내 리뷰 목록-->
+ 	<select id="myReviewList" resultType="com.dana.hos.comm.module.ReviewDTO" parameterType="String">
+ 		select * from review where username=#{username} 
+	</select>
 	
 </mapper>

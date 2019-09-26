@@ -1,10 +1,11 @@
-/* nav-bar랑 띄우기 */
+nav-bar랑 띄우기
 body{
-margin-top: 150px;	
+margin-top: 250px;	
 margin-left: 100px;
+
 }
 
-/* 처방전 modal 숨기기 */
+/* /* 처방전 modal 숨기기 */
 .recHide {
 	visibility: hidden;
 	width: 0px;
@@ -14,14 +15,15 @@ margin-left: 100px;
 	width: 70%;
 	height: 500px;
 	border: 1px solid black;
-}
+} */
 #rec_top, #sub_wrap{
 	background-color: yellow;
 }
 #add_input {
 	font-size: 20px; !important;
 }
-#rec_btn{
+
+#add_input{
 	font-size: 30px;
 	text-decoration: underline;
 	cursor: pointer;

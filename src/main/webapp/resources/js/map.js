@@ -374,11 +374,11 @@ $(document).ready(function(){
 	$('body > div.navbar_wrap.fixed-top').removeClass('fixed-top');
 	
 	// keyword로 넘어온 값이 있으면 실행시킨다.
+	history.replaceState({}, null, location.pathname);
 	var key = $('#pathKeyword').val();
 	if(key != ''){
+		$('#keyword').val(key);
 		infowindow.close();
 		Searchkeyword(key);
-		$('#keyword').val(key);
 	}
-	
 });

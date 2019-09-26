@@ -72,18 +72,44 @@
     <put-attribute name="mainbody" value="/WEB-INF/views/myinfo/myinfomain.jsp" />   
   </definition>
   
-    <!-- 내 정보 페이지  -->
-    <definition name="/myinfo/memInfo" template="/WEB-INF/views/myinfo/memInfo.jsp">
+  <!-- 내 정보 페이지  -->
+  <definition name="/myinfo/memInfo" template="/WEB-INF/views/myinfo/memInfo.jsp">
   	<put-attribute name="navbar" value="/WEB-INF/views/fragments/nav_bar.jsp" />  
     <put-attribute name="footer" value="/WEB-INF/views/fragments/footer.jsp" />
     <put-attribute name="mainbody" value="/WEB-INF/views/myinfo/memInfo.jsp" />   
   </definition>
   
-    <!-- 내 예약 페이지  -->
-    <definition name="/myinfo/myResInfo" template="/WEB-INF/views/myinfo/myResInfo.jsp">
+  <!-- 내 예약 페이지  -->
+  <definition name="/myinfo/myResInfo" template="/WEB-INF/views/myinfo/myResInfo.jsp">
   	<put-attribute name="navbar" value="/WEB-INF/views/fragments/nav_bar.jsp" />  
     <put-attribute name="footer" value="/WEB-INF/views/fragments/footer.jsp" />
     <put-attribute name="mainbody" value="/WEB-INF/views/myinfo/myResInfo.jsp" />   
+  </definition>
+  
+  <!-- 내 후기 글 페이지  -->
+  <definition name="/myinfo/myReview" template="/WEB-INF/views/myinfo/myReview.jsp">
+  	<put-attribute name="navbar" value="/WEB-INF/views/fragments/nav_bar.jsp" />  
+    <put-attribute name="footer" value="/WEB-INF/views/fragments/footer.jsp" />
+    <put-attribute name="mainbody" value="/WEB-INF/views/myinfo/myReview.jsp" />   
+  </definition>
+  
+  <!-- 내 처방전 페이지  -->
+  <definition name="/myinfo/myPharmInfo" template="/WEB-INF/views/myinfo/myPharmInfo.jsp">
+  	<put-attribute name="navbar" value="/WEB-INF/views/fragments/nav_bar.jsp" />  
+    <put-attribute name="footer" value="/WEB-INF/views/fragments/footer.jsp" />
+    <put-attribute name="mainbody" value="/WEB-INF/views/myinfo/myPharmInfo.jsp" />   
+  </definition>  
+    
+  <!-- 관리자 메인 페이지 -->
+  <definition name="admin/adminmain" template="/WEB-INF/views/admin/adminmain.jsp">
+  	  <put-attribute name="navbar" value="/WEB-INF/views/fragments/nav_bar.jsp" />  
+       <put-attribute name="footer" value="/WEB-INF/views/fragments/footer.jsp" />
+       <put-attribute name="admin_body" value="/WEB-INF/views/admin/admin_body.jsp" />   
+  </definition>
+  
+  <!-- 관리자 병원 가입 관리  -->
+  <definition name="admin/hos_join" extends="admin/adminmain">
+  		<put-attribute name="admin_body" value="/WEB-INF/views/admin/hos_join.jsp" />
   </definition>
 
 </tiles-definitions>

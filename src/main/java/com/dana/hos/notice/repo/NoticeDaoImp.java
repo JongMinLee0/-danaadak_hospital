@@ -67,7 +67,7 @@ public class NoticeDaoImp implements NoticeDAO{
 	public String getFile(int num) {
 		return sqlSession.selectOne("notice.uploadFile",num);
 	}
-
+	
 	@Override
 	public List<NoticeDTO> getPreNext(NoticeDTO dto) {
 		return sqlSession.selectList("notice.prenext", dto);

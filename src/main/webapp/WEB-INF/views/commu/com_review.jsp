@@ -6,41 +6,37 @@
 <script src="/hos/resources/js/comm_review.js"></script>
 <button id="reviewBtn" onclick="location.href='/hos/comm/reviewWrite'">후기작성</button>
 <div id="review_description">
-	리뷰에 페이지에 대한 설명입니다!!
+	<div id="description_write">
+		<br /><br /><br /><br /><br />
+		<p><strong>리뷰</strong>를 둘러보고</p>
+		<p><strong>작성자</strong>와 <strong>대화</strong>를 통해 </p>
+		<p><strong>정보</strong>를 <strong>공유</strong>해보세요.</p>
+	</div>
 </div>
 <div id="hashTag">
 	<c:forEach items="${hList}" var="hdto">
-		<span><a href="/hos/comm/reviewHash?vi_hash=${hdto}" class="badge badge-primary">#${hdto}</a></span>
+		<span><a href="/hos/comm/reviewHash?vi_hash=${hdto}" class="badge">#${hdto}</a></span>
 	</c:forEach>
 </div>
 <input type="hidden" name="vi_hash" id="vi_hash" value="${hash}"/>
-<ul>
+
 	<c:forEach items="${rList}" var="rdto">  
-		<li>
 			<a class="list_link" href="/hos/comm/reviewDetail?vi_hash=${hash}&vino=${rdto.vino}">
-				<table>
-					<tr>
-						<td><h4>${rdto.name}</h4></td>
-					</tr>
-					<tr>
-						<td style="color:orange">
-							<c:forEach var="i" begin="1" end="${rdto.vi_star}" step="1">
-								★
-							</c:forEach>
-						</td>
-						<td>${rdto.vi_date}</td>
-					</tr>
-					<tr>
-						<td>${rdto.vi_hash}</td>
-						<td style="text-align: center">${rdto.hos_name}</td>
-					</tr>
-					<tr><td><p> </p></td></tr>
-					<tr>
-						<td>${rdto.vi_subject}</td>
-					</tr>
-				</table>
+				<div class="card border-secondary mb-3" >
+					<div class="card-header">${rdto.name}</div>
+				  	<div class="card-body text-secondary">
+				    	<h5 class="card-title" style="font-weight: bold;">${rdto.vi_subject}</h5>
+				    		<p class="card-text"><c:forEach var="i" begin="1" end="${rdto.vi_star}" step="1">
+												★
+											</c:forEach></p>
+							<p class="card-text">${rdto.vi_date}</p>
+							<p class="card-text">${rdto.vi_hash}</p>
+							<p class="card-text">${rdto.hos_name}</p>
+  					</div>
+				</div>
 			</a>
 			<hr />
-		</li>
 	</c:forEach>
-</ul>
+	<div id="top_btn_wrap">
+		<i class="fa fa-arrow-up" aria-hidden="true" id="top_btn"></i>
+	</div>

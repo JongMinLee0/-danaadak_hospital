@@ -31,7 +31,6 @@ public class ReserveController {
 	@RequestMapping("/reserve")
 	public ModelAndView reserveListpage(ModelAndView mav) {
 		mav.addObject("list", reserveService.reserveListProcess());
-
 		mav.setViewName("reserve/reserve");
 		return mav;
 	}

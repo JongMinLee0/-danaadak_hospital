@@ -33,46 +33,43 @@
 
 <!-- 배경이미지 하단 카드  -->
 <div class="first-group">
-  <div class="card" onclick="location.href='#'">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-    </div>
+  <div class="container" onclick="location.href='/hos/map?keyword=정형외과'">
+  	<img src="/hos/resources/images/home/정형외과.jpg" alt="정형외과" class="image">
+  	<div class="overlay">
+    	<div class="text"><p>정 형</p><p>외 과</p></div>
+  		</div>
   </div>
-  <div class="card" onclick="location.href='#'">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-    </div>
+  <div class="container" onclick="location.href='/hos/map?keyword=내과'">
+  	<img src="/hos/resources/images/home/내과.jpg" alt="내과" class="image">
+  	<div class="overlay">
+    	<div class="text">내 과</div>
+  		</div>
+
   </div>
-  <div class="card" onclick="location.href='#'">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+  <div class="container" onclick="location.href='/hos/map?keyword=안과'">
+  	<img src="/hos/resources/images/home/안과.jpg" alt="안과" class="image">
+  	<div class="overlay">
+    	<div class="text">안 과</div>
+  		</div>
     </div>
-  </div>
 </div>
-<div class="second-group" onclick="location.href='#'">
-  <div class="card">
-    <div class="card-body">
-      
-    </div>
+<div class="second-group">
+  <div class="container" onclick="location.href='/hos/map?keyword=산부인과'">
+  	<img src="/hos/resources/images/home/산부인과.jpg" alt="산부인과" class="image">
+  	<div class="overlay">
+    	<div class="text"><p>산 부</p><p>인 과</p></div>
+  		</div>
   </div>
-  <div class="card" onclick="location.href='#'">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-    </div>
+  <div class="container" onclick="location.href='/hos/map?keyword=치과'">
+  	<img src="/hos/resources/images/home/치과2.jpg" alt="치과2" class="image">
+  	<div class="overlay">
+    	<div class="text">치 과</div>
+  	</div>
   </div>
-  <div class="card" onclick="location.href='#'">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+  <div class="container" onclick="location.href='/hos/map?keyword=피부과'">
+  	<img src="/hos/resources/images/home/피부과.jpg" alt="피부과" class="image">
+  	<div class="overlay">
+    	<div class="text">피부과</div>
     </div>
   </div>
 </div>

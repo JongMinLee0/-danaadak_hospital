@@ -72,7 +72,7 @@
 								<c:param name="currentPage" value="${pg.currentPage }" />
 								<c:param name="num" value="${dto.num }" />
 							</c:url> 
-							<a href="${path }">${dto.subject }</a></td>
+							<a href="${path }" id="subject">${dto.subject }</a></td>
 						<td><fmt:formatDate value="${dto.reg_date }"
 								pattern="yyyy.MM.dd" /></td>
 						<td>${dto.readcount }</td>

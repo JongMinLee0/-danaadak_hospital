@@ -9,6 +9,7 @@
 <title>Insert title here</title>
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <link rel="stylesheet" href="/hos/resources/css/nav_bar.css" />
+<link rel="stylesheet" href="/hos/resources/css/myResInfo.css" />
 <script src="/hos/resources/js/nav_bar.js"></script>
 <script type="text/javascript" src="/hos/resources/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="/hos/resources/css/bootstrap.min.css" />
@@ -17,85 +18,27 @@
 <script type="text/javascript">
 $(document).ready(function() {
   $('body > div.navbar_wrap.fixed-top').removeClass('fixed-top');
+  
   $('.btns').on('click', function() {
-	  /* if (confirm("정말 취소하시겠습니까?") == true){    //확인
-		  
-		  
-		  $('form').attr("action","/hos/myinfo/myresCance")
-				$.ajax({
-				type : 'POST',
-				data : $(this).prev('.myResLine').val(),
-				url : '/myinfo/myresCancel',
-				success : function(res) {
-					alert('ㅎㅎ');
-				}
-		});
-		
- 	 } else {   //취소
+	  if (confirm("정말 취소하시겠습니까? - 취소 기능 작동 안돼요ㅠㅠ") == true){    //확인
+		 var cancelNo = $(this).attr('id'); 
+	  	 var userName = '${sessionScope.memberInfo.username}';
+		 alert(cancelNo + userName);
+		 
+// 		 $.ajax({
+//  			type : 'POST',
+//  			data : {'rno='+cancelNo, 'username='+userName},
+//  			url : '/myinfo/myresCancel',
+//  			success : function(data) {
+	
+//  			}
+// 		 });		
+  	 } else {   //취소
       	return false;
-  	} 
-	  */
-	  var tr = $(this);
-      var td = tr.children();
-
-	  alert(tr.text());
+   	 } 
   });
-  
- 
-  
-  
 });
 </script>
-<style type="text/css">
-.myResInfoWrap{
-	text-align:-webkit-center;
-}
-
-.myResTable{
-	width:70%;
-	text-align: center;
-}
-
-td{
-	height: 50px;
-}
-
-a{
-	text-decoration: none;
-}
-
-.resMessDetail{
-	text-align : left;
-}
-ul.nav.nav-tabs {
-  letter-spacing:-1px;
-  height: 50px;
-  line-height:50px;
-  width :100%;
-}
-ul.nav.nav-tabs li {
-    display: inline-block;
-    margin-bottom:-2px;
-    width: 110px;
-    height: 50px;
-    margin: 0 auto;
-}
-ul.nav.nav-tabs li p {
-      border:none;
-      border-radius:0px;
-      color:#0000ff;
-      margin-right:5px;
-      min-width:11px;
-      display:inline-block;
-      text-align: center;
-}
-
-ul.nav.nav-tabs li:hover {
-      background:#fff;
-      color:#000000;
-}
-
-</style>
 
 </head>
 <body>
@@ -104,17 +47,20 @@ ul.nav.nav-tabs li:hover {
   <!-- 네비게이션 바 -->
   <ul class="nav nav-tabs">
 		<li class="active" id="nav_memInfo">
-			<a class="mynavA" href="/hos/myinfo/memInfo"><p>회원정보수정</p></a>
+			<a href="/hos/myinfo/memInfo"><p>회원정보수정</p></a>
 		</li><li class="active" id="nav_reserList">
-			<a class="mynavA" href="/hos/myinfo/myResInfo"><p>진료 내역</p></a>
+			<a href="/hos/myinfo/myResInfo"><p>진료 내역</p></a>
 		</li><li class="active" id="nav_pharmList">
 			<p>처방전 내역</p>
 		</li><li class="active" id="nav_reviewList">
-			<p>내 병원 후기</p>
+			<a href="/hos/myinfo/myReview"><p>내 병원 후기</p></a>
 		</li>
 	</ul>
 	
-<p><h3>진료 내역</h3></p>
+<br/>	
+<p><h3><b>진료 내역</b></h3></p>
+<br/>
+<br/>
 <%-- <form id ="frm" name="frm" action="" method="post"> --%>
 <table class="myResTable">
 	<thead>
@@ -132,11 +78,12 @@ ul.nav.nav-tabs li:hover {
 	<tbody class="myResBody">
 	<c:forEach var="myresList" items="${myres}" varStatus="status" begin="0">
 		<c:set var="i" value="0" />
-		<tr class="myResLine" id="${myresList.rownum}" value="${myresList.rownum}">
+		<tr class="myResLine" id="${myresList.rno}" value="${myresList.rno}">
 			<c:if test="${myres[status.index].hos_id == null}">
 <!-- 				<input type="hidden"> -->
 			</c:if>
-			<c:if test="${myres[status.index].hos_id != null}">
+			
+			<c:if test="${myres[status.index].rno != null}">
 				<td class="hosName">${myres[status.index].hosDTO.hos_name}</td>
 				<td class="resCate">${myres[status.index].category}</td>
 				<td class="resDate">${myres[status.index].re_date}</td>
@@ -153,18 +100,14 @@ ul.nav.nav-tabs li:hover {
 			</c:if></td>
 			<td class="resMess resMessDetail">${myres[status.index].message}</td>
 			<td class="resReview ">
-<%-- 			<input type ="hidden" value="${myres[status.index].hosDTO.hos_name}" name="hos_name" />
-			<input type ="hidden" value="${myres[status.index].category}" name="category" />
-			<input type ="hidden" value="${myres[status.index].re_date}" name="re_date" />
-			<input type ="hidden" value="${myres[status.index].re_time}" name="re_time" />
-			<input type ="hidden" value="${myres[status.index].re_state}" name="re_state" />
-			<input type ="hidden" value="${myres[status.index].message}" name="message" />
-			<input type ="hidden" value="${sessionScope.memberInfo.username}" name="username" /> --%>
+				<input type ="hidden" value="${myres[status.index].hosDTO.hos_name}" name="hos_name" />
+				<input type ="hidden" value="${myres[status.index].rno}" name="rno" />
 			<c:if test="${myres[status.index].re_state == 0}">
 			<input type ="button" class="resCancelBtn btns" value="예약 취소" />
 			</c:if>
 			<c:if test="${myres[status.index].re_state == 1}">
-			<input type ="button" class="resReviewBtn btns" value="후기 작성" />
+				<input type ="submit" id="${myres[status.index].rno}" class="resReviewBtn writeBtns" value="후기 작성" 
+							onclick="location.href='/hos/comm/reviewWrite?rno=${myres[status.index].rno}&hos_name=${myres[status.index].hosDTO.hos_name}'"/>
 			</c:if>
 			</td>
 			</c:if>

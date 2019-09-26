@@ -49,15 +49,17 @@ public class MyInfoController {
 	
 	//내 처방전 목록
 	@RequestMapping("/myinfo/myPharmInfo")
-	public String myPharmInfo() {
-		return "/myinfo/myPharmInfo";
+	public ModelAndView myPharmInfo(ModelAndView mav, Principal principal) {
+		mav.addObject("myres", myinfoService.myresListProcess(principal.getName()));
+		mav.setViewName("/myinfo/myPharmInfo");
+		return mav;
 	}
-	
-	//내 처방전 상세
-	@RequestMapping("/myinfo/myPharmDetail")
-	public String myPharmDetail() {
-		return "/myinfo/myPharmDetail";
-	}
+
+//	//내 처방전 상세 - 안씀!!!!! 처방전 목록에 통합함
+//	@RequestMapping("/myinfo/myPharmDetail")
+//	public String myPharmDetail() {
+//		return "/myinfo/myPharmDetail";
+//	}
 	
 	//내 리뷰
 	@RequestMapping("/myinfo/myReview")

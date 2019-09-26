@@ -1,6 +1,8 @@
 package com.dana.hos.hopital.controller;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -36,18 +38,18 @@ public class HospitalController {
 	}
 	@RequestMapping(value="/view" , method= RequestMethod.GET)
 	public ModelAndView viewMethod(ModelAndView mav, MemberDTO dto) {
-		mav.addObject("list",hospitalService.contentProcess(dto));
+		List<ReserveDTO> aList = hospitalService.contentProcess(dto);
+		mav.addObject("param1",aList.get(0));
 		mav.setViewName("hospital/view");
 		return mav;
 	}
-	@RequestMapping(value="/rec_insert", method= RequestMethod.GET)
-	public String recipeInsertMethod(ModelAndView mav, ReserveDTO dto) {
-		hospitalService.recInsertProcess(dto);
-		return "redirect:/view?hos_id="+dto.getHos_id();
-	}
-	
+
 	@RequestMapping(value="/re_stateUpdate" ,method=RequestMethod.POST)
 	public ModelAndView re_stateUpdateMethod(ModelAndView mav, ReserveDTO dto) {
+		System.out.println(dto.getUsername());
+		System.out.println(dto.getRno());
+		System.out.println(dto.getHos_id());
+		
 		hospitalService.updateProcess(dto);
 		mav.setViewName("redirect:/hospital?hos_id="+dto.getHos_id());
 		return mav;
@@ -59,10 +61,10 @@ public class HospitalController {
 		return mav;
 	}
 	
-	@RequestMapping(value="/event_registerPro", method=RequestMethod.GET)
+	@RequestMapping(value="/event_registerPro", method=RequestMethod.POST)
 	public ModelAndView eventInsertProMethod(ModelAndView mav, EventDTO dto) {
 		hospitalService.eventInsertProcess(dto);
-		mav.setViewName("hospital/hospital_page");
+		mav.setViewName("redirect:hospital?hos_id="+dto.getHos_id());
 		return mav;
 	}
 	

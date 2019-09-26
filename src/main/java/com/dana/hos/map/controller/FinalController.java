@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
 import com.dana.hos.map.module.HosDTO;
 import com.dana.hos.map.module.PhDTO;
@@ -31,8 +32,14 @@ public class FinalController {
 		this.phService = phService;
 	}
 	@RequestMapping("/map")
-	public String map() {
-		return "map/map";
+	public ModelAndView map(ModelAndView mav, String keyword) {
+		if(keyword != null) {
+			mav.addObject("pathKeyword", keyword);
+		}else {
+			mav.addObject("pathKeyword", "");
+		}
+		mav.setViewName("map/map");
+		return mav;
 	}
 	
 	@RequestMapping("/hosmap")

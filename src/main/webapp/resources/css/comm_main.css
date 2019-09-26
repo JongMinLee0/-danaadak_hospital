@@ -43,3 +43,11 @@
 	margin: auto;
 }
 
+body > div.comm_body > div.comm_header > ul li a{
+	color: black;
+	font-weight: bold;
+}
+body > div.comm_body > div.comm_header > ul li a:hover{
+	color: rgb(229, 229, 229);
+}
+

@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.dana.hos.comm.module.ReviewDTO;
 import com.dana.hos.member.module.MemberDTO;
 import com.dana.hos.myinfo.repo.MyinfoDAO;
 import com.dana.hos.reserve.module.ReserveDTO;
@@ -41,5 +42,9 @@ public class MyinfoDaoImp implements MyinfoDAO{
 	public void cancelMyresMethod(ReserveDTO rdto) {
 		sqlSession.update("myinfo.myresCancel", rdto);
 		
+	}
+	@Override
+	public List<ReviewDTO> myreviewList(String username) {
+		return sqlSession.selectList("myinfo.myReviewList", username);
 	}
 }//end MyinfoDaoImp

@@ -30,7 +30,6 @@ $(document).ready(function(){
 	 });
 	
 	$('#re_date').on('click',function(){
-		alert('달력눌렀니? ')
 		calendar();
 	});
 	

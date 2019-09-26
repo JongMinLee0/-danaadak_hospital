@@ -6,8 +6,8 @@
 	<insert id="write" parameterType="com.dana.hos.comm.module.ReviewDTO">
 		<!-- 나중에 null 지워야됨 / 후기는 마이페이지에서 작성하는 게 좋을 듯  -->
 		insert into review 
-		values(vi_seq.nextval, #{vi_subject}, #{vi_content}, #{vi_hash, jdbcType=VARCHAR}, #{vi_star, jdbcType=VARCHAR},#{id, jdbcType=VARCHAR}, 
-		#{name, jdbcType=VARCHAR}, #{hos_name, jdbcType=VARCHAR}, sysdate)
+		values(vi_seq.nextval, #{vi_subject}, #{vi_content}, #{vi_hash, jdbcType=VARCHAR}, #{vi_star, jdbcType=VARCHAR},#{username}, 
+		#{name}, #{hos_name}, sysdate, #{rno})
 	</insert>
 	
 	<!-- 전체 후기 글 목록  -->
@@ -23,7 +23,7 @@
 	
 	<!-- 특정사용자 후기 글 목록  -->
 	<select id="myList" resultType="com.dana.hos.comm.module.ReviewDTO" parameterType="String">
-		select * from review where id=#{id}
+		select * from review where username=#{username}
 	</select>
 	
 	<!-- 전체 해시 태그  -->

@@ -11,6 +11,5 @@ public interface HospitalService {
 	public List<ReserveDTO> bookListProcess(MemberDTO dto);
 	public List<ReserveDTO> contentProcess(MemberDTO dto);
 	public void updateProcess(ReserveDTO dto);
-	public void recInsertProcess(ReserveDTO dto);
 	public void eventInsertProcess(EventDTO dto);
 }

@@ -11,10 +11,11 @@ public class ReviewDTO {
 	private String vi_content;
 	private String vi_hash;
 	private int vi_star;
-	private String id;
-	private String name;
+	private String username; // 아이디
+	private String name; // 이름
 	private String hos_name; // 병원 아이디 말고 병원 이름 넣는게 더 편할 듯
 	private String vi_date; // 작성일 추가 됨
+	private int rno; // 예약 번호
 }
 
 

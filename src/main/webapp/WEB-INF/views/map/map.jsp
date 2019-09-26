@@ -71,6 +71,8 @@
 				alt="축소"></span>
 		</div>
 
+		<!-- 페이지로 넘어올 때 key word를 써주냐?  -->
+		<input type="hidden" value="${pathKeyword}" id="pathKeyword" />
 		<div id="menu_wrap" class="bg_white" >
 			<div class="option">
 				<form onsubmit="searchPlaces(); return false">

@@ -22,9 +22,10 @@ $(document).ready(function() {
 	    }
 	}
 	
+	
 	var typeParam = getParameters('type');
 	
-	history.replaceState({}, null, '/hos/join?type='+typeParam);	// 파라미터 지우기
+	history.replaceState({}, null, '/hos/join/joinForm?type='+typeParam);	// 파라미터 지우기
 	
 	if(typeParam == 'user' || typeParam == ""){
 		$('#joinForm').prop('action','/hos/join/join');
@@ -179,6 +180,14 @@ $(document).ready(function() {
 		}
 		
 		return true;
+	});
+	
+	$('#hos_id').on('focus change keyup', function(){
+		if($('#hos_id').val()==""){
+			$('#hos_nameMsg').text('검색 후 클릭해주세요.');
+		}else{
+			$('#hos_nameMsg').text('');
+		}
 	});
 
 });

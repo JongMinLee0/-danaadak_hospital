@@ -38,13 +38,11 @@ public class HospitalServiceImp implements HospitalService {
 	}
 	@Override
 	public void updateProcess(ReserveDTO dto) {
+		System.out.println("serviceImp");
 		 hospitalDAO.updateMethod(dto);
+		 System.out.println("serviceImp 끝");
 	}
 
-	@Override
-	public void recInsertProcess(ReserveDTO dto) {
-		hospitalDAO.recInsertMethod(dto);
-	}
 	@Override
 	public void eventInsertProcess(EventDTO dto) {
 		hospitalDAO.eventInsertMethod(dto);

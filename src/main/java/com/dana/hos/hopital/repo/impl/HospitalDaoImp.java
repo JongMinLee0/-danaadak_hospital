@@ -36,13 +36,13 @@ public class HospitalDaoImp implements HospitalDAO{
 
 	@Override
 	public void updateMethod(ReserveDTO dto) {
+		System.out.println("daoImp");
 		sqlSession.update("hos.upt",dto);
+		System.out.println("daoImp 끝");
+		
 	}
 
-	@Override
-	public void recInsertMethod(ReserveDTO dto) {
-		sqlSession.update("hos.ins",dto);
-	}
+
 
 	@Override
 	public void eventInsertMethod(EventDTO dto) {

@@ -2,6 +2,8 @@ package com.dana.hos.member.module;
 
 import java.util.Date;
 
+import com.dana.hos.map.module.HosDTO;
+
 public class MemberDTO {
 	private String username;
 	private String password;
@@ -15,6 +17,8 @@ public class MemberDTO {
 	private String type;
 	private String authority;
 	private int enabled;
+	private HosDTO hosDTO;
+	private String profile_image;
 
 	public MemberDTO() {
 
@@ -115,5 +119,22 @@ public class MemberDTO {
 	public void setEnabled(int enabled) {
 		this.enabled = enabled;
 	}
+
+	public HosDTO getHosDTO() {
+		return hosDTO;
+	}
+
+	public void setHosDTO(HosDTO hosDTO) {
+		this.hosDTO = hosDTO;
+	}
+
+	public String getProfile_image() {
+		return profile_image;
+	}
+
+	public void setProfile_image(String profile_image) {
+		this.profile_image = profile_image;
+	}
+	
 
 }

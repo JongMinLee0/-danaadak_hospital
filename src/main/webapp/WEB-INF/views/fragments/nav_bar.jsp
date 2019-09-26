@@ -35,13 +35,22 @@
 				<li class="nav-item"><a class="nav-link" href="/hos/comm/main">커뮤니티</a></li>
 				<li class="nav-item"><a class="nav-link" href="/hos/noticelist">공지사항</a></li>
 			</ul>
+			
+			<c:if test="${sessionScope.memberInfo.type eq 'hospital'}">
+            	<button class="btn my-2 my-sm-0" type="submit" onClick="location.href='/hos/hospital?hos_id='+${sessionScope.memberInfo.hos_id}">병원 페이지</button>
+         	</c:if>
+         
 			<c:choose>
 				<c:when test="${sessionScope.memberInfo.name eq null}">
 				</c:when>
 				<c:otherwise>
 					<span>${sessionScope.memberInfo.name}</span>님
+					<c:if test="${sessionScope.memberInfo.name == 'admin'}">
+						<button class="btn my-2 my-sm-0" type="submit" onClick="location.href='/hos/admin/adminmain'">관리자 페이지</button>
+					</c:if>
 				</c:otherwise>
 			</c:choose>
+			
 			<sec:authorize access="isAnonymous()"><button class="btn my-2 my-sm-0" type="submit" onClick="location.href='/hos/login'">로그인</button></sec:authorize>
 			<sec:authorize access="isAuthenticated()"><form:form action="${pageContext.request.contextPath}/logout" method="POST"> <button class="btn my-2 my-sm-0" type="submit">로그아웃</button> </form:form> </sec:authorize>
 

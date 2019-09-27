@@ -19,18 +19,14 @@
 <link rel="stylesheet" href="/hos/resources/css/notice/list.css" />
 <!-- 애니메이션 -->
 <link rel="stylesheet" href="resources/css/animate.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
 <script type="text/javascript" src="/hos/resources/js/wow.min.js"></script>
+
 <script> new WOW().init(); </script>
-<script type="text/javascript">
-	$(document).ready(function(){
-		$('body > div.navbar > div > nav.navbar.transparent.navbar-expand-lg > a').text('');
-		$('body > div.navbar > div > nav.navbar.transparent.navbar-expand-lg > a').append('<img alt="다나앗닥" src="/hos/resources/images/notice/logo.png" id="logo">');
-	});
-</script>
+
 </head>
 <body>
-	<div class="navbar"><jsp:include
-			page="/WEB-INF/views/fragments/nav_bar.jsp" /></div>
+	<jsp:include page="/WEB-INF/views/fragments/nav_bar.jsp" />
 			
 	<!-- background 이미지 -->
 	<img src="/hos/resources/images/notice/bg3.jpeg" class="img-fluid"

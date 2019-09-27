@@ -79,14 +79,20 @@
 	
 	<!--이벤트 리스트  -->
 	
-	<select id="event_select" resultType="com.dana.hos.hopital.module.EventDTO">
-		select h.hos_name , e.e_subject , e.e_url
+	<select id="event_select" parameterType="com.dana.hos.comm.module.PageDTO" 
+	 resultType="com.dana.hos.hopital.module.EventDTO">
+		<!-- select h.hos_name , e.e_subject , e.e_url
 		from event e , hospital h
-		where e.hos_id = h.hos_id 
+		where e.hos_id = h.hos_id --> 
+			<![CDATA[ select b.* from
+			(select rownum as rm, a.* from(
+			select * from event order by eno desc)a)b
+			where b.rm>=#{startRow} and b.rm<=#{endRow}
+			]]> 
 	</select>
 	
 	<!-- 이벤트 페이지 페이징  -->
 	<select id="e_count" resultType="int">
-		select count(*) from notice
+		select count(*) from event
 	</select>
 </mapper>

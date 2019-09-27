@@ -48,12 +48,13 @@
 	
 		<collection ofType="com.dana.hos.map.module.HosDTO" property="e_hosDTO" autoMapping="false" >
 		<result column="hos_name" property="hos_name"/>
+		<result column="hos_phone" property="hos_phone"/>
 		</collection>
 	</resultMap>
 	
 	<!-- Hospital+Event 테이블 조인  소환 Event 종류별 리스트-->
 	<select id="e_type" resultMap="a_eventList" parameterType="com.dana.hos.hopital.module.EventDTO">
-		select e.*, h.hos_name
+		select e.*, h.hos_name, h.hos_phone
 		from event e, hospital h 
 		WHERE h.hos_id = e.hos_id and h.hos_id=#{hos_id} and e.e_type=#{e_type}
 	 </select>

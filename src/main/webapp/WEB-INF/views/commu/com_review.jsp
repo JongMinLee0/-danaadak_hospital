@@ -38,5 +38,5 @@
 			<hr />
 	</c:forEach>
 	<div id="top_btn_wrap">
-		<i class="fa fa-arrow-up" aria-hidden="true" id="top_btn"></i>
+		<i class="fa fa-chevron-up" aria-hidden="true"  id="top_btn"></i>
 	</div>

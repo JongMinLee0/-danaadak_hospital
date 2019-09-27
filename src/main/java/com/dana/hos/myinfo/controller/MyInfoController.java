@@ -1,6 +1,10 @@
 package com.dana.hos.myinfo.controller;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.security.Principal;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -8,8 +12,10 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.dana.hos.map.module.HosDTO;
@@ -74,17 +80,51 @@ public class MyInfoController {
 		return mav;
 	}
 	
-	//마이페이지 수정
+	//내 정보  수정
 	@RequestMapping(value="/myinfo/myinfoupdate", method=RequestMethod.POST)
 	public String updateProc(MemberDTO dto, HttpServletRequest request) {
-		//System.out.println(dto.getUsername());
-		dto.setBirth(dto.getBirth().replaceAll(",", ""));
+		fileUpload(dto, request);
 		
+		dto.setBirth(dto.getBirth().replaceAll(",", ""));	
 		myinfoService.myinfoUpdateProcess(dto);
 		HttpSession session = request.getSession();
 		session.setAttribute("memberInfo", dto);
 		return "/myinfo/myinfomain";
 	}
+	
+	public void fileUpload(MemberDTO dto, HttpServletRequest request) {
+		//기존 첨부파일
+		String filename = myinfoService.fileSelectprocess(dto.getUsername());
+		String root = request.getSession().getServletContext().getRealPath("/");
+		String saveDirectory = root + "temp" + File.separator;
+		
+		System.out.println(saveDirectory);
+		
+		//수정할 첨부파일
+		MultipartFile profile = dto.getFilename();
+		
+		//수정한 첨부파일이 있으면
+		if(!profile.isEmpty()) {
+			//중복파일을 처리하기 위해 난수 발생
+			UUID random = UUID.randomUUID();
+			//기존 첨부파일이 있으면 기존첨부파일을 제거시켜줘라
+			if(filename !=null) {
+				File pro = new File(saveDirectory, filename);
+				if(!pro.exists())
+					pro.mkdir();
+				pro.delete();
+			}
+			String fileName = profile.getOriginalFilename();
+			dto.setProfile_image(random + "_" + fileName);
+			File ff = new File(saveDirectory, random + "_" + fileName);
+			try {
+		            FileCopyUtils.copy(profile.getInputStream(), new FileOutputStream(ff));
+		         } catch (IOException e) {
+		            // TODO Auto-generated catch block
+		            e.printStackTrace();
+		         }
+		}
+	}//end fileUpload
 	
 	//내 예약 취소(update)
 	@RequestMapping(value="/myinfo/myresCancel", method=RequestMethod.POST)

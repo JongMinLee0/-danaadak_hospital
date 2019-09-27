@@ -27,35 +27,35 @@
         
         //저장버튼 수정내용 전송
         $('#modFinishBtn').on('click', function() {
-        
-        var nowPw = '${sessionScope.memberInfo.password}';
-        if($('#now_pw').val() == ''){
-        	alert('비밀번호를 입력해주세요');
-        	return false;		
-        }else{
-        	if($('#now_pw').val() == nowPw){
-        		$("#new_pw, #new_pw_confirm").on("change keyup paste", function() {
-			    	var pwConfirm = $('#new_pw').val();
+        	document.form.submit();
+//         var nowPw = '${sessionScope.memberInfo.password}';
+//         if($('#now_pw').val() == ''){
+//         	alert('비밀번호를 입력해주세요');
+//         	return false;		
+//         }else{
+//         	if($('#now_pw').val() == nowPw){
+//         		$("#new_pw, #new_pw_confirm").on("change keyup paste", function() {
+// 			    	var pwConfirm = $('#new_pw').val();
 			    		
-			    	if ($('#new_pw').val() == '' || $('#new_pw_confirm').val() == '' || $('#new_pw_confirm').val() != pwConfirm) {
-			    		alert("비밀번호를 다시 확인해주세요");
-			    		return false;
-			    	} else {
-			    		$('#now_pw').removeAttr('name');
-			    		$('#new_pw').attr('name','password');
-			    	}
-        		});
+// 			    	if ($('#new_pw').val() == '' || $('#new_pw_confirm').val() == '' || $('#new_pw_confirm').val() != pwConfirm) {
+// 			    		alert("비밀번호를 다시 확인해주세요");
+// 			    		return false;
+// 			    	} else {
+// 			    		$('#now_pw').removeAttr('name');
+// 			    		$('#new_pw').attr('name','password');
+// 			    	}
+//         		});
 
-	        	if (confirm("정말 수정하시겠습니까?") == true){    //확인
-	            	document.form.submit();
-	       	 	}else{   //취소
-	            	return false;
-	        	}
-	        }else{
-	        	alert('비밀번호를 정확히 입력해주세요');
-	        	return false;
-	        }
-        }
+// 	        	if (confirm("정말 수정하시겠습니까?") == true){    //확인
+// 	            	document.form.submit();
+// 	       	 	}else{   //취소
+// 	            	return false;
+// 	        	}
+// 	        }else{
+// 	        	alert('비밀번호를 정확히 입력해주세요');
+// 	        	return false;
+// 	        }
+//         }
         
 		});
 
@@ -297,7 +297,7 @@ ul.nav.nav-tabs li:hover {
 				<!-- 아이콘 -->
 				<td class="profile" rowspan="8" width="100px" align="center">프로필</td>
 				
-				<td class = "myicon" colspan="4" align="center"><img id="icon" name="icon" src="/hos/resources/images/defaultIcon.png">
+				<td class = "myicon" colspan="4" align="center"><img id="icon" name="icon" src="${sessionScope.memberInfo.profile_image}">
 				<br/>
 				<button id= "iconSelectBtn">아이콘 선택하기</button>
 				<input type="hidden" id="user_icon" name="user_icon" />

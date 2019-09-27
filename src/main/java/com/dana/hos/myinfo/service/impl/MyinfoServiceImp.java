@@ -37,6 +37,11 @@ public class MyinfoServiceImp implements MyinfoService{
 	public void myinfoUpdateProcess(MemberDTO dto) {
 		dao.updateMyinfoMethod(dto);
 	}
+	//내 정보 프로필 사진
+	@Override
+	public String fileSelectprocess(String username) {
+		return dao.getFile(username);
+	}
 	
 	//내 예약 목록
 	@Override

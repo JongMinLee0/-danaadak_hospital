@@ -6,8 +6,17 @@
 	<!-- 내정보 수정 -->
 	<update id="myinfoUpdate" parameterType="com.dana.hos.member.module.MemberDTO">
 		update member set password=#{password}, address=#{address}, 
-		phone=#{phone}, birth=#{birth} where username=#{username}
+		phone=#{phone}, birth=#{birth}
+		<if test="profile_image!=null">
+		, profile_image=#{profile_image, jdbcType=VARCHAR} 
+		</if>
+		where username=#{username}
 	</update>
+	
+	<!-- 프로필 사진 확인 -->
+	<select id="uploadProfile_image" parameterType="String" resultType="String">
+		select profile_image from member where username=#{username}
+	</select>
 	
 	<!-- 아이디 기준 멤버 테이블 보기 -->
     <select id="selectUserById" resultType="com.dana.hos.member.module.MemberDTO">

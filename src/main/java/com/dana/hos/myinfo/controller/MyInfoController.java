@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -21,6 +22,9 @@ public class MyInfoController {
 
 	@Autowired
 	private MyinfoService myinfoService;
+	
+	@Autowired
+	private BCryptPasswordEncoder  bCryptPasswordEncoder;
 	
 	private ReserveDTO rdto;
 	
@@ -75,6 +79,7 @@ public class MyInfoController {
 	public String updateProc(MemberDTO dto, HttpServletRequest request) {
 		//System.out.println(dto.getUsername());
 		dto.setBirth(dto.getBirth().replaceAll(",", ""));
+		
 		myinfoService.myinfoUpdateProcess(dto);
 		HttpSession session = request.getSession();
 		session.setAttribute("memberInfo", dto);
@@ -86,8 +91,7 @@ public class MyInfoController {
 	public String myresCancel(ReserveDTO rdto) {
 		System.out.println("AAAAA");
 		myinfoService.myresCancelProcess(rdto);
-		
-		return "/myinfo/myResInfo"; 
+		return "redirect:/myinfo/myResInfo?rno="+rdto.getRno(); 
 	}
 
 }//end class

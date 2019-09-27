@@ -65,9 +65,9 @@
 	</update>
 	
 	<!-- 내 예약 후기버튼 확인 -->
-	<select id="reviewBtnCheck" resultMap="Review">
-		select re.rno,rev.rno from reserve re, review rev
-		where re.rno = rev.rno and re.username=#{username}
+	<select id="reviewBtnCheck" resultMap="Review" parameterType="string">
+		select rno from review
+		where username=#{username}
 	</select>
 	
  	<!-- 내 리뷰 조인-->

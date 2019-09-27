@@ -1,5 +1,6 @@
 package com.dana.hos.myinfo.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,7 +59,14 @@ public class MyinfoServiceImp implements MyinfoService{
 	
 	//내 예약 후기버튼 확인
 	@Override
-	public List<ReviewDTO> myReviewBtnCheck(String username) {
-		return dao.myresRevBtn(username);
+	public List<Integer> myReviewBtnCheck(String username) {
+		List<Integer> aList = new ArrayList<Integer>();
+		List<ReviewDTO> reviewDTO = dao.myresRevBtn(username);
+		
+		for(ReviewDTO dto : reviewDTO) {
+			aList.add(dto.getRno());
+		}
+		
+		return aList;
 	}
 }//end MyinfoServiceImp

@@ -192,23 +192,23 @@
 			<artifactId>jackson-databind</artifactId>
 			<version>2.9.5</version>
 		</dependency>
-		
+
 		<!-- lombok -->
 		<dependency>
-		    <groupId>org.projectlombok</groupId>
-		    <artifactId>lombok</artifactId>
-		    <version>1.16.20</version>
-		    <scope>provided</scope>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.16.20</version>
+			<scope>provided</scope>
 		</dependency>
-		
-		<!-- logback  -->
+
+		<!-- logback -->
 		<dependency>
-		    <groupId>ch.qos.logback</groupId>
-		    <artifactId>logback-classic</artifactId>
-		    <version>1.2.3</version>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>1.2.3</version>
 		</dependency>
-    
-    <!-- Spring Security -->
+
+		<!-- Spring Security -->
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-core</artifactId>
@@ -232,110 +232,163 @@
 			<artifactId>spring-security-taglibs</artifactId>
 			<version>4.2.1.RELEASE</version>
 		</dependency>
-		
-		<!-- tiles 추가  -->
-		<dependency>
-	         <groupId>org.apache.tiles</groupId>
-	         <artifactId>tiles-core</artifactId>
-	         <version>3.0.7</version>
-        </dependency>
 
-	      <dependency>
-	         <groupId>org.apache.tiles</groupId>
-	         <artifactId>tiles-servlet</artifactId>
-	         <version>3.0.7</version>
-	      </dependency>
-
-	      <dependency>
-	         <groupId>org.apache.tiles</groupId>
-	         <artifactId>tiles-jsp</artifactId>
-	         <version>3.0.7</version>
-	      </dependency>    
-	      
-	      <!-- commons file upload  -->
-			<dependency>
-			    <groupId>commons-io</groupId>
-			    <artifactId>commons-io</artifactId>
-			    <version>2.4</version>
-			</dependency>
-			
+		<!-- tiles 추가 -->
 		<dependency>
-		    <groupId>commons-fileupload</groupId>
-		    <artifactId>commons-fileupload</artifactId>
-		    <version>1.3.1</version>
+			<groupId>org.apache.tiles</groupId>
+			<artifactId>tiles-core</artifactId>
+			<version>3.0.7</version>
 		</dependency>
-					
+
+		<dependency>
+			<groupId>org.apache.tiles</groupId>
+			<artifactId>tiles-servlet</artifactId>
+			<version>3.0.7</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.tiles</groupId>
+			<artifactId>tiles-jsp</artifactId>
+			<version>3.0.7</version>
+		</dependency>
+
+		<!-- commons file upload -->
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.4</version>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>1.3.1</version>
+		</dependency>
+
 		<!-- Spring Websocket -->
 		<dependency>
-		    <groupId>org.springframework</groupId>
-		    <artifactId>spring-websocket</artifactId>
-		    <version>5.1.3.RELEASE</version>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-websocket</artifactId>
+			<version>5.1.3.RELEASE</version>
 		</dependency>
-		
+
 		<!-- socketjs-client -->
 		<dependency>
-		    <groupId>org.webjars</groupId>
-		    <artifactId>sockjs-client</artifactId>
-		    <version>1.0.2</version>
+			<groupId>org.webjars</groupId>
+			<artifactId>sockjs-client</artifactId>
+			<version>1.0.2</version>
 		</dependency>
-		
+
 		<!-- gson -->
 		<dependency>
-		    <groupId>com.google.code.gson</groupId>
-		    <artifactId>gson</artifactId>
-		    <version>2.8.5</version>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>2.8.5</version>
 		</dependency>
-				
+
 		<!-- stomp-websocket -->
 		<dependency>
-		    <groupId>org.webjars</groupId>
-		    <artifactId>stomp-websocket</artifactId>
-		    <version>2.3.3</version>
+			<groupId>org.webjars</groupId>
+			<artifactId>stomp-websocket</artifactId>
+			<version>2.3.3</version>
 		</dependency>
-				
+
 		<!-- spring-messaging -->
 		<dependency>
-		    <groupId>org.springframework</groupId>
-		    <artifactId>spring-messaging</artifactId>
-		    <version>5.1.3.RELEASE</version>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-messaging</artifactId>
+			<version>5.1.3.RELEASE</version>
 		</dependency>
-				
+
 		<!-- spring-data-redis -->
 		<dependency>
-		    <groupId>org.springframework.data</groupId>
-		    <artifactId>spring-data-redis</artifactId>
-		    <version>2.1.3.RELEASE</version>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-redis</artifactId>
+			<version>2.1.3.RELEASE</version>
 		</dependency>
-		
+
 		<!-- jedis -->
 		<dependency>
-		    <groupId>redis.clients</groupId>
-		    <artifactId>jedis</artifactId>
-		    <version>2.9.0</version>
+			<groupId>redis.clients</groupId>
+			<artifactId>jedis</artifactId>
+			<version>2.9.0</version>
 		</dependency>
-		
+
 		<!-- commons-pool2 -->
 		<dependency>
-		    <groupId>org.apache.commons</groupId>
-		    <artifactId>commons-pool2</artifactId>
-		    <version>2.4.2</version>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-pool2</artifactId>
+			<version>2.4.2</version>
 		</dependency>
-		
+
 		<!-- embedded redis -->
 		<dependency>
-		    <groupId>it.ozimov</groupId>
-		    <artifactId>embedded-redis</artifactId>
-		    <version>0.7.2</version>
-		    <scope>test</scope>
+			<groupId>it.ozimov</groupId>
+			<artifactId>embedded-redis</artifactId>
+			<version>0.7.2</version>
+			<scope>test</scope>
 		</dependency>
-		  		
-		 <!-- 현재 시간을 구할 때 사용 -->
+
+		<!-- 현재 시간을 구할 때 사용 -->
 		<dependency>
-		    <groupId>joda-time</groupId>
-		    <artifactId>joda-time</artifactId>
-		    <version>2.9.9</version>
+			<groupId>joda-time</groupId>
+			<artifactId>joda-time</artifactId>
+			<version>2.9.9</version>
 		</dependency>
-		 
+
+		<!-- https://mvnrepository.com/artifact/com.github.bongki/spring-social-kakao -->
+		<dependency>
+			<groupId>com.github.bongki</groupId>
+			<artifactId>spring-social-kakao</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>${basedir}/src/main/resources/lib/spring-social-kakao-1.0.0.jar</systemPath>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.springframework.security.oauth/spring-security-oauth2 -->
+		<dependency>
+			<groupId>org.springframework.security.oauth</groupId>
+			<artifactId>spring-security-oauth2</artifactId>
+			<version>2.0.9.RELEASE</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot</artifactId>
+			<version>2.0.4.RELEASE</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter</artifactId>
+			<version>2.0.4.RELEASE</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.social</groupId>
+			<artifactId>spring-social-core</artifactId>
+			<version>1.1.4.RELEASE</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.social</groupId>
+			<artifactId>spring-social-web</artifactId>
+			<version>1.1.4.RELEASE</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.social</groupId>
+			<artifactId>spring-social-config</artifactId>
+			<version>1.1.4.RELEASE</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.social</groupId>
+			<artifactId>spring-social-security</artifactId>
+			<version>1.1.4.RELEASE</version>
+		</dependency>
+
 	</dependencies>
 	<build>
 		<plugins>

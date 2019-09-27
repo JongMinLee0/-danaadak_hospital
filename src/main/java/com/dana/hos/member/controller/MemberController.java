@@ -4,19 +4,29 @@ import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.authority.AuthorityUtils;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
+import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.client.RestOperations;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.dana.hos.map.module.HosDTO;
 import com.dana.hos.member.module.MemberDTO;
 import com.dana.hos.member.service.MemberService;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 
 @Controller
 public class MemberController {
@@ -27,6 +37,46 @@ public class MemberController {
 	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
 
+	@Autowired
+    @Qualifier("kakaoRestTemplate")
+    private RestOperations kakaoRestTemplate;
+	
+	@RequestMapping("/kakao/userinfo")
+
+    public String userinfo(Model model,HttpServletRequest request) {
+        String returnUrl = "redirect:/login.do?error";
+        ObjectNode result = (ObjectNode)kakaoRestTemplate.getForObject(
+                "https://kapi.kakao.com/v1/user/me",ObjectNode.class);
+
+//      result {"id":120160638,"properties":{"nickname":"nickname","thumbnail_image":"","profile_image":""}}
+        if (result != null) {
+            final HttpSession session = request.getSession();
+            final SecurityContext securityContext = SecurityContextHolder.getContext();
+            final UsernamePasswordAuthenticationToken authentication = 
+                  new UsernamePasswordAuthenticationToken(
+                      result.findPath("id").asText(), 
+                      "null",
+                      AuthorityUtils.commaSeparatedStringToAuthorityList("ROLE_SOCIAL")
+                  );
+
+            authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+//          Security Login
+
+            securityContext.setAuthentication(authentication);
+            SecurityContextHolder.setContext(securityContext);
+
+//          session.setAttribute("SPRING_SECURITY_CONTEXT", securityContext);
+            session.setAttribute(HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY, securityContext);
+
+            returnUrl = "redirect:/";
+        }
+
+
+
+        return returnUrl;   
+
+    }
+	
 	@RequestMapping(value = "/login")
 	public ModelAndView loginForm(HttpServletRequest request, String successMsg, ModelAndView mav) {
 		String referer = request.getHeader("Referer");

@@ -43,26 +43,31 @@ public class MyInfoController {
 	@RequestMapping("/myinfo/myResInfo")
 	public ModelAndView myResInfo(ModelAndView mav, Principal principal) {
 		mav.addObject("myres", myinfoService.myresListProcess(principal.getName()));
+		mav.addObject("myRevBtn", myinfoService.myReviewBtnCheck(principal.getName()));
 		mav.setViewName("/myinfo/myResInfo");
 		return mav;
 	}
 	
 	//내 처방전 목록
 	@RequestMapping("/myinfo/myPharmInfo")
-	public String myPharmInfo() {
-		return "/myinfo/myPharmInfo";
+	public ModelAndView myPharmInfo(ModelAndView mav, Principal principal) {
+		mav.addObject("myres", myinfoService.myresListProcess(principal.getName()));
+		mav.setViewName("/myinfo/myPharmInfo");
+		return mav;
 	}
-	
-	//내 처방전 상세
-	@RequestMapping("/myinfo/myPharmDetail")
-	public String myPharmDetail() {
-		return "/myinfo/myPharmDetail";
-	}
+
+//	//내 처방전 상세 - 안씀!!!!! 처방전 목록에 통합함
+//	@RequestMapping("/myinfo/myPharmDetail")
+//	public String myPharmDetail() {
+//		return "/myinfo/myPharmDetail";
+//	}
 	
 	//내 리뷰
 	@RequestMapping("/myinfo/myReview")
-	public String myReview() {
-		return "/myinfo/myReview";
+	public ModelAndView myReview(ModelAndView mav, Principal principal) {
+		mav.addObject("myReview", myinfoService.myReviewListProcess(principal.getName()));
+		mav.setViewName("/myinfo/myReview");
+		return mav;
 	}
 	
 	//마이페이지 수정
@@ -82,7 +87,7 @@ public class MyInfoController {
 		System.out.println("AAAAA");
 		myinfoService.myresCancelProcess(rdto);
 		
-		return "/myinfo/myinfomain"; 
+		return "/myinfo/myResInfo"; 
 	}
 
 }//end class

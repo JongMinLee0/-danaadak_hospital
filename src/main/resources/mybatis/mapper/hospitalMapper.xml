@@ -37,10 +37,21 @@
 	
 	 -->
 	<insert id="event_ins" parameterType="com.dana.hos.hopital.module.EventDTO">
-	insert into event (ENO, hos_id, e_subject, e_content, e_type , e_price)
-    VALUES(event_seq.nextval,#{hos_id},#{e_subject},#{e_content},#{e_type},#{e_price})
+	insert into event (ENO, hos_id, e_subject, e_content, e_type , e_url)
+    VALUES(event_seq.nextval,#{hos_id},#{e_subject},#{e_content},#{e_type},#{e_url})
 	</insert>
 	
+	<select id="event_sel" parameterType="com.dana.hos.hopital.module.EventDTO" resultType="com.dana.hos.hopital.module.EventDTO">
+	select eno, e_type, e_subject, e_url
+		from event 
+		where hos_id = #{hos_id}
+	</select>
+	
+	<select id="name" parameterType="String" resultType="String">
+		select DISTINCT h.hos_name 
+		from reserve r , hospital h
+		where r.hos_id = h.hos_id and r.hos_id=#{hos_id} 
+	</select>
 </mapper>
 
 

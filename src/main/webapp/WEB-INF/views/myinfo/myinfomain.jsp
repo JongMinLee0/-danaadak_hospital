@@ -21,28 +21,7 @@ $(document).ready(function() {
 		$('#myInfocontent').load('/hos/myinfo/memInfo');
 	});
  */
-/* 	$('#resMore').on('click', function() {
-		$('#myInfocontent').load('/hos/myinfo/myResInfo');
-	}); */
-	$('#nav_reserList').on('click', function() {
-		$('#myInfocontent').load('/hos/myinfo/myResInfo');
-	});
-	$('#pharmMore').on('click', function() {
-		$('#myInfocontent').load('/hos/myinfo/myPharmInfo');
-	});
-	$('#nav_pharmList').on('click', function() {
-		$('#myInfocontent').load('/hos/myinfo/myPharmInfo');
-	});
-	$('#pharmDetail').on('click', function() {
-		$('#myInfocontent').load('/hos/myinfo/myPharmDetail');
-	});
-	$('#myrevbtn').on('click', function() {
-		$('#myInfocontent').load('/hos/myinfo/myReview');
-	});
-	$('#nav_reviewList').on('click', function() {
-		$('#myInfocontent').load('/hos/myinfo/myReview');
-	});
-	
+
 		$('body > div.navbar_wrap.fixed-top').removeClass('fixed-top');
 	
 	
@@ -63,9 +42,9 @@ $(document).ready(function() {
 		</li><li class="active" id="nav_reserList">
 			<a href="/hos/myinfo/myResInfo"><p>진료 내역</p></a>
 		</li><li class="active" id="nav_pharmList">
-			<p>처방전 내역</p>
+			<a href="/hos/myinfo/myPharmInfo"><p>처방전 내역</p></a>
 		</li><li class="active" id="nav_reviewList">
-			<p>내 병원 후기</p>
+			<a href="/hos/myinfo/myReview"><p>내 병원 후기</p></a>
 		</li>
 	</ul>
   
@@ -74,33 +53,39 @@ $(document).ready(function() {
 	<div id="myInfocontent" class="section_home">
 	<div class="column">
 		<input type="hidden" value="${sessionScope.memberInfo.username}" name="username"/>
+		
 		<!-- 회원정보 수정 -->
 		<div class="sh_group">
 			<span class="myinfoTitle">회원정보 수정</span>
-			<p>이름  &nbsp;&nbsp;  ${sessionScope.memberInfo.name} &nbsp;&nbsp;  <a href="/hos/myinfo/memInfo"><input type="button" id="memberInfo" value="정보 수정"/></a></p>
+			<p>이름  &nbsp;&nbsp;  ${sessionScope.memberInfo.name} &nbsp;&nbsp; <a href="/hos/myinfo/memInfo"><input type="button" id="memberInfo" value="정보 수정"/></a></p>
 		</div>
 
 		<!-- 처방전 내역 -->
 		<div class="sh_group" id="pharmDiv">
-			<span id="pharmList"><span class="myinfoTitle">처방전 내역</span><span style="color:gray;" id="pharmMore"> &nbsp; &nbsp;더보기</span></span>
+			<span id="pharmList"><span class="myinfoTitle">처방전 내역</span><span style="color:gray;" id="pharmMore"><a href="/hos/myinfo/myPharmInfo"> &nbsp; &nbsp;더보기</a></span></span>
 			<table id="pharmTable" style="width:100%;">
 			<!-- <p>복용중이면 발급일, 병원명 띄워줌, 없으면  이력확인 링크</p> -->
 			<tr align="center">
 				<th>발급병원</th>
 				<th>발급날짜</th>
-				<th>상세</th>
 			</tr>
+			<c:forEach var="myresList" items="${myres}" varStatus="status" begin="0" end="2">
 			<tr align="center">
-				<td>MH치과</td>
-				<td>2019-09-10</td>
-				<td id="pharmDetail">확인</td>
+				<c:if test="${myres[status.index].medicine == null}">
+				<input type="hidden" >
+				</c:if>
+				<c:if test="${myres[status.index].medicine != null}">				
+				<td>${myres[status.index].hosDTO.hos_name}</td>
+				<td>${myres[status.index].re_date}</td>
+				</c:if>
 			</tr>
+			</c:forEach>
 			</table>
 		</div>
 	</div>	
 		
+		<!-- 진료 내역 -->
 	<div class="column">
-		<!-- 진료 현황 -->
 		<div class="sh_group" id="resDiv">
 			<!-- <form action="/hos/myinfo/myResInfo" method="get"> -->
 			<span id="resList"><span class="myinfoTitle">진료 내역</span><span style="color:gray;" id="resMore"><a href="/hos/myinfo/myResInfo"> &nbsp; &nbsp;더보기</a></span></span>
@@ -115,7 +100,7 @@ $(document).ready(function() {
 			<c:forEach var="myresList" items="${myres}" varStatus="status" begin="0" end="3">
 				<tr align="center">
 				<c:if test="${myres[status.index].hos_id == null}">
-				<input type="hidden">
+				<input type="hidden" >
 				</c:if>
 				<c:if test="${myres[status.index].hos_id != null}">
 						<td>${myres[status.index].hosDTO.hos_name}</td>
@@ -132,7 +117,8 @@ $(document).ready(function() {
 		<!-- 내 병원 후기 -->
 		<div class="sh_group" id="myrevDiv">
 			<span id="myRevList"><span class="myinfoTitle">내 병원 후기</span></span>
-			<p><input type="button" id="myrevbtn" value="내 후기 보기"/></p>
+			
+			<p><br/><br/><a href="/hos/myinfo/myReview"><input type="button" id="myrevbtn" value="내 후기 보기"/></a></p>
 		</div>
 	</div>
 	</div>

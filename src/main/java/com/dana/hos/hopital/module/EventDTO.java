@@ -1,9 +1,12 @@
 package com.dana.hos.hopital.module;
 
+import com.dana.hos.map.module.HosDTO;
+
 public class EventDTO {
 	private int eno;
 	private String e_subject;
-	private String e_content , e_price, e_type, hos_id;
+	private String e_content , e_url, e_type, hos_id, hos_name;
+	private HosDTO e_hosDTO;
 	
 	
 	public EventDTO() {
@@ -41,13 +44,13 @@ public class EventDTO {
 	}
 
 
-	public String getE_price() {
-		return e_price;
+	public String getE_url() {
+		return e_url;
 	}
 
 
-	public void setE_price(String e_price) {
-		this.e_price = e_price;
+	public void setE_url(String e_url) {
+		this.e_url = e_url;
 	}
 
 
@@ -69,5 +72,30 @@ public class EventDTO {
 	public void setHos_id(String hos_id) {
 		this.hos_id = hos_id;
 	}
+
+
+	public HosDTO getE_hosDTO() {
+		return e_hosDTO;
+	}
+
+
+	public void setE_hosDTO(HosDTO e_hosDTO) {
+		this.e_hosDTO = e_hosDTO;
+	}
+
+
+	public String getHos_name() {
+		return hos_name;
+	}
+
+
+	public void setHos_name(String hos_name) {
+		this.hos_name = hos_name;
+	}
+	
+	
+	
+
+	
 
 }

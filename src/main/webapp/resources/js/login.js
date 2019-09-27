@@ -43,15 +43,6 @@ $(document).ready(function() {
 		location.href = 'login?type=hospital';
 	});
 
-	
-//	alert(typeof typeParam);
-//	alert(typeParam == 'hospital');
-//	alert(typeParam == 'user');
-	
-	
-	
-	
-
 	if ($.cookie('id')) {
 		$('#username').val($.cookie('id'));
 		$('#save_id').prop('checked', 'true');
@@ -114,8 +105,11 @@ function kakaoLogin(kakao_id, email, userNickName, profileImage) {
 		data : 'kakao_id=' + kakao_id,
 		success : function(res) {
 			if (res != 1) {
-				var chk = confirm("등록되지 않은 회원입니다. 카카오톡 정보로 회원가입 하시겠습니까?");
-				if (chk) {
+				swal({
+					title : "등록되지 않은 회원입니다.",
+					text : "카카오톡 정보로 회원가입 하시겠습니까?",
+					buttons : ["YES", "NO"]
+				}).then((YES) => {
 					if (!(typeof email == "undefined")) {
 						id = email.split("@")[0];
 					} else {
@@ -130,7 +124,7 @@ function kakaoLogin(kakao_id, email, userNickName, profileImage) {
 
 					location.href = '/hos/join/joinForm?type=user&id=' + id + '&name='
 							+ nickname + '&kakao_id=' + kakao_id + '&profile_image=' + profileImage ;
-				}
+				});
 			} else {
 				kakaoLoginAction(kakao_id);
 			}
@@ -174,4 +168,11 @@ function wloginCont(id, obj) {
 		$('#' + id).attr('style', 'visibility:visible');
 		$('#' + id).show();
 	}
+}
+
+function findIdPw(){
+    var url = "/hos/member/findIdPwForm";
+    var name = "아이디/비밀번호 찾기";
+    var option = "width = 440, height = 510, top = 100, left = 200, location = no"
+    window.open(url, name, option);
 }

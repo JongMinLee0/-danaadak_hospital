@@ -114,10 +114,6 @@ html, body {
 	text-align: center;
 }
 
-.login_box .last .join {
-	color: #00a6de;
-}
-
 .navbar_wrap {
 	background-color: white;
 }
@@ -145,3 +141,14 @@ html, body {
     color: #8c9496;
     cursor: pointer;
 }
+
+.findIdPw {
+	float: left;
+	font-weight: bold;
+}
+
+.join {
+	float: right;
+	font-weight: bold;
+}
+

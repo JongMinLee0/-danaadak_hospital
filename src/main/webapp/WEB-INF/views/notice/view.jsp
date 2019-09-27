@@ -23,21 +23,20 @@
 <script
 	src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="/hos/resources/css/notice/view.css" />
-
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
 <script type="text/javascript">
 	$(document)
 			.ready(
 					function() {
-						$(
-								'body > div.navbar > div > nav.navbar.transparent.navbar-expand-lg > a')
-								.text('');
-						$(
-								'body > div.navbar > div > nav.navbar.transparent.navbar-expand-lg > a')
-								.append(
-										'<img alt="다나앗닥" src="/hos/resources/images/notice/logo.png" id="logo">');
 						$('#list').on('click', listRun);
 						$('#update').on('click', updateRun);
 						$('#delete').on('click', deleteRun);
+						
+						// top으로 이동
+						$('#top_btn_wrap i').on('click', function(){
+							$('html').scrollTop(0);
+						});
+
 					});//end ready
 
 	function listRun() {
@@ -55,8 +54,7 @@
 </head>
 <body>
 
-	<div class="navbar"><jsp:include
-			page="/WEB-INF/views/fragments/nav_bar.jsp" /></div>
+	<jsp:include page="/WEB-INF/views/fragments/nav_bar.jsp" />
 	<!-- background 이미지 -->
 	<img src="/hos/resources/images/notice/bg3.jpeg" class="img-fluid"
 		alt="Responsive image">
@@ -108,10 +106,16 @@
 				<button type="button" class="btn btn-dark" id="list" value="리스트">목록</button>
 				<!-- <input type="button"  value="리스트닷" /> -->
 
-				<input type="button" id="update" value="수정" /> <input type="button"
-					id="delete" value="삭제" />
+				<!-- <input type="button" id="update" value="수정" /> <input type="button"
+					id="delete" value="삭제" /> -->
 			</form>
 		</div>
+		
+		<div id="top_btn_wrap">
+			<i class="fa fa-chevron-up" aria-hidden="true"  id="top_btn"></i>
+		</div>
+		
 		<jsp:include page="/WEB-INF/views/fragments/footer.jsp" />
+		</div>
 </body>
 </html>

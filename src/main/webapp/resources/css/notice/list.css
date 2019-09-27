@@ -1,10 +1,7 @@
 
-/* 폰트설정 */
-@import url(http://fonts.googleapis.com/earlyaccess/nanumgothiccoding.css);
 /*navbar*/
 body > div.navbar > div{
    background-color: white;   
-   font-family: 'Nanum Gothic Coding', serif;
    margin-bottom: 10px;
    
 /* 이전다음 */
@@ -64,13 +61,19 @@ body > div.navbar > div{
 }
 
 /* 공지사항 소개글 */
-#text{
+.text{
    position: absolute;
    z-index: 2;
    width: 100%;
    height: 60%;
    margin-top: 60px;
    color :black;
+}
+#subject{
+	color: black;
+}
+#subject:hover{
+	text-decoration: none;
 }
 
 #p{

@@ -13,4 +13,8 @@ public interface MemberDAO {
 	public MemberDTO kakaoLoginMethod(String kakao_id);
 	public List<HosDTO> findHospitalMethod(String keyword);
 	public int userNameChkMethod(String username);
+	public int hosIdChkMethod(String hos_id);
+	public MemberDTO findIdMethod(MemberDTO dto);
+	public int findPwMethod(MemberDTO dto);
+	public void changePw(MemberDTO dto);
 }

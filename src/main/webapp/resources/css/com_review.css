@@ -29,6 +29,10 @@ body > div.comm_body > div.content_wrap > a div > div.card-body.text-secondary >
 	color: orange;
 }
 
+body > div.comm_body > div.content_wrap > a div > div.card-body.text-secondary > p:nth-child(2){
+	color: orange;
+}
+
 /* 후기 글 목록 */
 body > div.comm_body > div.content_wrap > a > div{
 	float: left;

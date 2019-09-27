@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.dana.hos.hopital.module.EventDTO;
+import com.dana.hos.hopital.module.HospitalDTO;
 import com.dana.hos.hopital.repo.HospitalDAO;
 import com.dana.hos.member.module.MemberDTO;
 import com.dana.hos.reserve.module.ReserveDTO;
@@ -36,17 +37,22 @@ public class HospitalDaoImp implements HospitalDAO{
 
 	@Override
 	public void updateMethod(ReserveDTO dto) {
-		System.out.println("daoImp");
 		sqlSession.update("hos.upt",dto);
-		System.out.println("daoImp 끝");
 		
 	}
-
-
 
 	@Override
 	public void eventInsertMethod(EventDTO dto) {
 		sqlSession.insert("hos.event_ins",dto);
+	}
+	@Override
+	public List<EventDTO> eventListMethod(EventDTO dto) {
+		return sqlSession.selectList("hos.event_sel",dto);
+	}
+
+	@Override
+	public String nameselctMethod(String hos_id) {
+		return sqlSession.selectOne("hos.name",hos_id);
 	}
 
 

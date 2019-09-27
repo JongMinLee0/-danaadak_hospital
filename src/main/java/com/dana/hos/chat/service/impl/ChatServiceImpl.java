@@ -49,9 +49,15 @@ public class ChatServiceImpl implements ChatService {
 					  }
 				});
 				ChatMessage chatMessage = roomMessage.get(roomMessage.size() - 1);
-				chatList.setMessage(chatMessage.getMessage());
+				String text = chatMessage.getMessage();
+				if(text.length()>15) {
+					text = text.substring(0, 15)+"...";
+				}
+				chatList.setMessage(text);
 				chatList.setTime(chatMessage.getTime());
 				// setLastMessage에 JSON형식으로 들어간다(즉, 메세지와 시간이 들어가 있을 것)
+			}else {
+				chatList.setMessage("새로 생성된 대화입니다!!");
 			}
 			chatList.setRoomId(str.getRoomId());
 			cList.add(chatList);

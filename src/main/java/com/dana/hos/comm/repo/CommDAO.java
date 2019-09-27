@@ -42,7 +42,7 @@ public interface CommDAO {
 	public List<ReviewDTO> reviewHash(PageDTO pdto);
 	
 	//이벤트 리스트
-	public List<EventDTO> eventList(EventDTO edto);
+	public List<EventDTO> eventList(PageDTO pd);
 	
 	//이벤트 페이지
 	public int eventCount();

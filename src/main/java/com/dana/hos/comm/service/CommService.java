@@ -48,7 +48,7 @@ public interface CommService {
 	// 해시 스크롤 이벤트
 	public List<ReviewDTO> scrollHash(PageDTO pdto);
 	//이벤트 리스트
-	public List<EventDTO> eventList(EventDTO edto);
+	public List<EventDTO> eventList(PageDTO pd);
 	
 	//이벤트 페이징
 	public int eventCount();

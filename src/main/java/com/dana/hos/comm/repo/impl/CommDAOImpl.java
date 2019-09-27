@@ -85,8 +85,8 @@ public class CommDAOImpl implements CommDAO{
 	}
 
 	@Override
-	public List<EventDTO> eventList(EventDTO edto) {
-		return sqlSession.selectList("comm.event_select",edto);
+	public List<EventDTO> eventList(PageDTO pd) {
+		return sqlSession.selectList("comm.event_select", pd);
 	}
 
 	@Override

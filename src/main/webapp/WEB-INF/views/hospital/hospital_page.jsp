@@ -79,14 +79,13 @@
 				<th>이벤트 번호</th>
 				<th>종류</th>
 				<th>이벤트 제목 </th>
-				<th>주&nbsp;&nbsp;&nbsp;소</th>
 			</tr>
 			<c:forEach var="edto" items="${edto }">
 				<tr>
 					<td>${edto.eno }</td>
 					<td>${edto.e_type }</td>
 					<td>${edto.e_subject }</td>
-					<td>${edto.e_url }</td>
+				<%-- 	<td>${edto.e_content }</td> --%>
 				</tr>
 			 
 			</c:forEach>
@@ -94,5 +93,5 @@
 		</table>
 	</div>
 </body>
-	<jsp:include page="/WEB-INF/views/fragments/footer.jsp" />
 </html>
+	<jsp:include page="/WEB-INF/views/fragments/footer.jsp" />

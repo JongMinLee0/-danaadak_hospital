@@ -8,13 +8,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -59,16 +55,16 @@ public class CommuController {
 	@RequestMapping("event")
 	public ModelAndView comEvent(ModelAndView mav, EventDTO edto, PageDTO pd) {
 		int total = commService.eventCount();
+		
 		if (total >= 1) {
-			if (pd.getCurr() == 0) {
+			if (pd.getCurrPage() == 0) {
 				currpage = 1;
 			} else {
-				currpage = pd.getCurr();
+				currpage = pd.getCurrPage();
 			}
 			pdto = new PageDTO(currpage, total);
-					
 			mav.addObject("pd", pdto);
-			mav.addObject("eList",commService.eventList(edto));
+			mav.addObject("eList", commService.eventList(pdto));
 		}
 		mav.setViewName("event");
 		return mav;

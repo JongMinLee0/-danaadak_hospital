@@ -158,8 +158,8 @@ public class CommServiceImpl implements CommService {
 	
 	//이벤트 리스트
 	@Override
-	public List<EventDTO> eventList(EventDTO edto) {
-		return commDAO.eventList(edto);
+	public List<EventDTO> eventList(PageDTO pd) {
+		return commDAO.eventList(pd);
 	}
 
 	@Override

@@ -26,6 +26,7 @@ import com.dana.hos.comm.module.PageDTO;
 import com.dana.hos.comm.module.ReviewDTO;
 import com.dana.hos.comm.service.CommService;
 import com.dana.hos.comm.service.SmartPhotoService;
+import com.dana.hos.hopital.module.EventDTO;
 
 import lombok.RequiredArgsConstructor;
 
@@ -38,6 +39,8 @@ public class CommuController {
 	
 	@Autowired
 	private final ChatService chatService;
+	private int currpage;
+	private PageDTO pdto;
 	
 
 	@Autowired
@@ -54,8 +57,21 @@ public class CommuController {
 
 	// 이벤트 페이지
 	@RequestMapping("event")
-	public String comEvent() {
-		return "event";
+	public ModelAndView comEvent(ModelAndView mav, EventDTO edto, PageDTO pd) {
+		int total = commService.eventCount();
+		if (total >= 1) {
+			if (pd.getCurr() == 0) {
+				currpage = 1;
+			} else {
+				currpage = pd.getCurr();
+			}
+			pdto = new PageDTO(currpage, total);
+					
+			mav.addObject("pd", pdto);
+			mav.addObject("eList",commService.eventList(edto));
+		}
+		mav.setViewName("event");
+		return mav;
 	}
 
 	// 후기 페이지
@@ -190,5 +206,6 @@ public class CommuController {
 		/* mav.addAttribute("pList", commService.scrollList(pdto)); */
 		return commService.scrollHash(pdto);
 	}
-
-}
+	
+	
+}//end class 

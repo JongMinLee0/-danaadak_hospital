@@ -82,3 +82,12 @@ body > div.comm_body > div.content_wrap > div > div.card.border-secondary.mb-3 >
 #message_box > ul li span{
 	font-size: 10px;
 }
+
+/* 채팅 리스트 페이지 배경 추가  */
+body > div.comm_body{
+	background-image: url('../images/chatdetail_img.jpg');
+	background-size: 30% 70%;
+	background-repeat: no-repeat;
+	height: 1000px;
+	z-index: -1;
+}

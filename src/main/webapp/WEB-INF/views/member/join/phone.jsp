@@ -9,10 +9,8 @@
 <title>Phone Authentication simple popup flow</title>
 
 <!-- Material Design Theming -->
-<link rel="stylesheet"
-	href="https://code.getmdl.io/1.1.3/material.orange-indigo.min.css">
-<link rel="stylesheet"
-	href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.orange-indigo.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <script defer src="https://code.getmdl.io/1.1.3/material.min.js"></script>
 
 <link rel="stylesheet" href="/hos/resources/css/phone.css">
@@ -21,17 +19,13 @@
 
 	<main class="mdl-layout__content mdl-color--grey-100">
 	<div class="mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-grid">
-		<p>Enter your phone number below.</p>
-
 		<form id="sign-in-form" action="#">
 			<!-- Input to enter the phone number -->
 			<div
 				class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-				<input class="mdl-textfield__input" type="text"
-					pattern="\+[0-9\s\-\(\)]+" id="phone-number"
-					value="+82 ${param.phone_number }"> <label
-					class="mdl-textfield__label" for="phone-number">전화번호를
-					입력해주세요</label> <span class="mdl-textfield__error">전화번호 형식이 아닙니다.</span>
+				<input class="mdl-textfield__input" type="text" pattern="\+[0-9\s\-\(\)]+" id="phone-number" value="+82 ${param.phone_number }"> 
+					<label class="mdl-textfield__label" for="phone-number">전화번호를 입력해주세요</label>
+					<span class="mdl-textfield__error">전화번호 형식이 아닙니다.</span>
 			</div>
 
 			<!-- Button that handles sign-in -->

@@ -47,6 +47,7 @@
 		<div class="about-bottom main-agile book-form">
 			<form action="" method="post" id="joinForm">
 				<div class="form-date-w3-agileits">
+					<input type="hidden" id="profile_image" name="profile_image" value="${param.profile_image }" />
 					<input type="hidden" id="kakao_id" name="kakao_id" value="${param.kakao_id }">
 					<label for="username">아이디</label>
 					<input type="text" id="username" name="username" class="val" placeholder="아이디를 입력해주세요" required="" value="${param.id }">
@@ -59,8 +60,8 @@
 					
 					<c:if test="${type eq 'hospital'}">
 						<label for="hos_name">병원이름</label>
-						<input type="hidden" id="hos_id" name="hos_id">
-						<input type="hidden" id="hos_address" name="address">
+						<input type="text" id="hos_id" name="hos_id">
+						<input type="text" id="hos_address" name="address">
 						<input type="text" id="hos_name" name="hos_name" class="val" placeholder="병원명" required="">
 						<p class="errorMsg"><span class="error_next_box" id="hos_nameMsg" role="alert"></span></p>
 						<div class="list-group" style="display: none; ">

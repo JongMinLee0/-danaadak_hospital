@@ -46,7 +46,6 @@ public class MemberDaoImp implements MemberDAO {
 
 	@Override
 	public MemberDTO kakaoLoginMethod(String kakao_id) {
-		System.out.println(kakao_id);
 		return sqlSession.selectOne("member.kakaoLogin", kakao_id);
 	}
 
@@ -58,6 +57,26 @@ public class MemberDaoImp implements MemberDAO {
 	@Override
 	public int userNameChkMethod(String username) {
 		return sqlSession.selectOne("member.usernameChk", username);
+	}
+
+	@Override
+	public int hosIdChkMethod(String hos_id) {
+		return sqlSession.selectOne("member.hosIdChk", hos_id);
+	}
+
+	@Override
+	public MemberDTO findIdMethod(MemberDTO dto) {
+		return sqlSession.selectOne("member.findId", dto);
+	}
+	
+	@Override
+	public int findPwMethod(MemberDTO dto) {
+		return sqlSession.selectOne("member.findPw", dto);
+	}
+
+	@Override
+	public void changePw(MemberDTO dto) {
+		sqlSession.update("member.changePw", dto);
 	}
 
 }

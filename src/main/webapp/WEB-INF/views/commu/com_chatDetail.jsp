@@ -11,14 +11,19 @@
 
 <div class="chat_wrap">
 	<input type="hidden" id="sender" value="${chatroom.name1}" />
-	<input type="hidden" id="roomId" value="${chatroom.roomId}" />
-	<div>
-		<a href="/hos/comm/chat"><i class="fa fa-angle-left" aria-hidden="true"></i></a>
-		<span style="margin-left: 10px; font-size: 30px;">${chatroom.name2}</span>
-		<a href="">
-			<span style="margin-left: 370px; maring-top: 10px; font-size: 20px;"><i class="fa fa-sign-out" aria-hidden="true"></i>나가기</span>
-		</a>
-		<hr />
+	<form id="frm" action="/hos/chat/exit" method="post">
+		<input type="hidden" name="name1" value="${chatroom.name1}"/>
+		<input type="hidden" id="reciver" name="name2" value="${chatroom.name2}"/>
+		<input type="hidden" id="roomId" name="roomId" value="${chatroom.roomId}"/>
+	</form>
+	<div class="card border-secondary mb-3">
+		<div class="card-header">
+			<a href="/hos/comm/chat"><i class="fa fa-angle-left" aria-hidden="true"></i></a>
+				<span>${chatroom.name2}</span>
+			<a href="">
+				<span style="margin-left: 600px; maring-top: 10px; font-size: 20px;"><i class="fa fa-sign-out" aria-hidden="true"></i>나가기</span>
+			</a>
+		</div>
 	</div>
 	<div id="message_box">
 		<ul>
@@ -35,7 +40,7 @@
 					<c:otherwise>
 						<li class="list-group-item opponent">
 							<p>${message.sender}</p>
-							<div class="alert alert-light">
+							<div class="alert alert-success">
 								${message.message}
 							</div><span>${message.time}</span>
 						</li>

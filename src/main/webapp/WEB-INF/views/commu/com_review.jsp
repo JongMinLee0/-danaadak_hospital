@@ -4,7 +4,7 @@
 
 <link rel="stylesheet" href="/hos/resources/css/com_review.css" />
 <script src="/hos/resources/js/comm_review.js"></script>
-<button id="reviewBtn" onclick="location.href='/hos/comm/reviewWrite'">후기작성</button>
+<!-- <button id="reviewBtn" onclick="location.href='/hos/comm/reviewWrite'">후기작성</button> -->
 <div id="review_description">
 	<div id="description_write">
 		<br /><br /><br /><br /><br />
@@ -14,6 +14,7 @@
 	</div>
 </div>
 <div id="hashTag">
+		<span><a href="/hos/comm/review" class="badge">#전체</a></span>
 	<c:forEach items="${hList}" var="hdto">
 		<span><a href="/hos/comm/reviewHash?vi_hash=${hdto}" class="badge">#${hdto}</a></span>
 	</c:forEach>
@@ -35,8 +36,7 @@
   					</div>
 				</div>
 			</a>
-			<hr />
 	</c:forEach>
 	<div id="top_btn_wrap">
-		<i class="fa fa-chevron-up" aria-hidden="true"  id="top_btn"></i>
+		<i class="fa fa-arrow-up" aria-hidden="true" id="top_btn"></i>
 	</div>

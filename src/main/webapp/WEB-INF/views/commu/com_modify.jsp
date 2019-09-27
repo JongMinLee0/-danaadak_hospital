@@ -40,8 +40,8 @@
 			<tr>
 				<td></td>
 				<td>
-					<textarea id="smart" name="vi_content" style="width: 700px !important;height: 500px"></textarea>
 					<input type="hidden" id="content" name="content" value="${dList.vi_content}" />
+					<textarea id="smart" name="vi_content" style="width: 700px !important;height: 500px"></textarea>
 				</td>
 			</tr>
 			<tr>

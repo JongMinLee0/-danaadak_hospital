@@ -19,6 +19,8 @@ $(document).ready(function(){
 	$('#top_btn_wrap i').on('click', function(){
 		$('html').scrollTop(0);
 	});
+	
+	
 
 	
 	// 페이지 무한 스크롤 페이징 처리

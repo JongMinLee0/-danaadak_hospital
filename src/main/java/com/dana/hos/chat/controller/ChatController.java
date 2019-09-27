@@ -4,6 +4,7 @@ import javax.annotation.PostConstruct;
 
 import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.HashOperations;
 import org.springframework.data.redis.core.ListOperations;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.messaging.handler.annotation.MessageMapping;
@@ -30,41 +31,52 @@ public class ChatController {
 
 	@Autowired
 	private RedisTemplate<String, Object> redisTemplate;
-	
-	// 채팅방에 메시지를 저장 key : roomID, data : ChatMessage
-	private ListOperations<String, Object> opsListChatRoom;
-	
+
+	// 채팅방에 메시지를 저장
+	private HashOperations<String, String, ChatMessage> opsHashChatRoom;
+
 	@PostConstruct
 	public void init() {
-		opsListChatRoom = redisTemplate.opsForList();
+		opsHashChatRoom = redisTemplate.opsForHash();
 	}
 
 	@MessageMapping("/chat/message")
 	public void message(ChatMessage message) {
 		ChatMessage storeMessage = message;
-		if (ChatMessage.MessageType.ENTER.equals(message.getType())) {
-			// 리스너 설정
-			chatRoomRepository.enterChatRoom(message.getRoomId());
-			/* message.setMessage(message.getSender() + "님이 입장하셨습니다."); */
+		/*
+		 * if (ChatMessage.MessageType.ENTER.equals(message.getType())) { // 리스너 설정
+		 * chatRoomRepository.enterChatRoom(message.getRoomId());
+		 * message.setMessage(message.getSender() + "님이 입장하셨습니다.");
+		 * 
+		 * // 메시지를 저장해 준다. } else {
+		 */
+		String mTime = DateTime.now().toString("yyyy년MM월dd일 HH시mm분ss초");
+		storeMessage.setTime(mTime);
+		String roomId = message.getRoomId();
+		String sender = message.getSender();
+		// textarea 줄바꿈 처리
+		String mes = message.getMessage();
+		storeMessage.setMessage(mes);
+		storeMessage.setRoomId(roomId);
+		storeMessage.setSender(sender);
 
-			// 메시지를 저장해 준다. 지금 roomId, message, sender 저장 되어 있음, 시간만 저장해주면된다
-		} else {
-			String mTime = DateTime.now().toString("yyyy년MM월dd일 HH시mm분ss초");
-			storeMessage.setTime(mTime);
-			String roomId = message.getRoomId();
-			String sender = message.getSender();
-			// textarea 줄바꿈 처리
-			String mes = message.getMessage();
-			storeMessage.setMessage(mes);
-			storeMessage.setRoomId(roomId);
-			storeMessage.setSender(sender);
-			Gson gson = new Gson();
-			String json = gson.toJson(storeMessage);
-			
-			opsListChatRoom.rightPush(roomId, json);
-			// Websocket에 발행된 메시지를 redis로 발행한다(publish)
+		// roomId, time, ChatMessage => Hash 형태로 저장
+		if(ChatMessage.MessageType.ENTER.equals(message.getType())) {
+			chatRoomRepository.enterChatRoom(roomId);
+			/*if(message.getReciver()!=null) {
+				chatRoomRepository.enterChatRoom(message.getReciver());
+			}*/
+		}else {
+			if(roomId.length()>30) {
+				opsHashChatRoom.put(roomId, mTime, storeMessage);
+			}
 			redisPublisher.publish(chatRoomRepository.getTopic(message.getRoomId()), message);
 		}
+		/*if(message.getReciver()!=null) {
+			System.out.println("reciver한테 pub..................");
+			redisPublisher.publish(chatRoomRepository.getTopic(message.getReciver()), message);
+		}*/
+		
 	}
 
 }

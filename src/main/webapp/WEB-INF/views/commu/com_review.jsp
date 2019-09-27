@@ -14,6 +14,7 @@
 	</div>
 </div>
 <div id="hashTag">
+		<span><a href="/hos/comm/review" class="badge">#전체</a></span>
 	<c:forEach items="${hList}" var="hdto">
 		<span><a href="/hos/comm/reviewHash?vi_hash=${hdto}" class="badge">#${hdto}</a></span>
 	</c:forEach>
@@ -35,7 +36,6 @@
   					</div>
 				</div>
 			</a>
-			<hr />
 	</c:forEach>
 	<div id="top_btn_wrap">
 		<i class="fa fa-arrow-up" aria-hidden="true" id="top_btn"></i>

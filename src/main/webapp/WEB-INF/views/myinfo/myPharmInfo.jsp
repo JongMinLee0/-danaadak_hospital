@@ -17,10 +17,15 @@
 <script type="text/javascript">
 $(document).ready(function() {
 	$('body > div.navbar_wrap.fixed-top').removeClass('fixed-top');
+// //	var rno = $('.pharmName').attr('id');
+// //	rno.replace(',','<br/>');
 	
-	var medicine = $('.pharmName').val();
-	
-	alert(medicine);
+// //	$('.pharmName').each(function() {
+// 	var rno = $('.pharmName').attr('id');	
+// 	var text = rno.html();
+// 		alert(text)
+// //		$('.pharmName').children().html(text.replace(',', '<br/>'));
+// //	});
 });
 </script>
 <style type="text/css">
@@ -98,7 +103,7 @@ ul.nav.nav-tabs li:hover {
 	</thead>
 	<tbody class="myPharmBody">
 	<c:forEach var="myPharmList" items="${myres}" varStatus="status">
-		<tr class="myPharmLine" id="${myPharmList.rno}" value="${myPharmList.rno}">
+		<tr class="myPharmLine" value="${myPharmList.rno}">
 			<c:if test="${myres[status.index].medicine == null}">
 <!-- 				<input type="hidden"> -->
 			</c:if>
@@ -106,7 +111,7 @@ ul.nav.nav-tabs li:hover {
 			<c:if test="${myres[status.index].medicine != null}">
 				<td class="hosName">${myres[status.index].hosDTO.hos_name}</td>
 				<td class="resDate">${myres[status.index].re_date}</td>
-				<td class="pharmName">${myres[status.index].medicine}</td>
+				<td class="pharmName" id="${myPharmList.rno}">${myres[status.index].medicine}</td>
 				<td class="pharmQuan">${myres[status.index].eat_cnt}</td>
 				<td class="pharmCountn">${myres[status.index].eat_cnt}</td>
 			</c:if>

@@ -20,4 +20,7 @@ public interface MyinfoDAO {
 	
 	//내 리뷰 목록 출력
 	public List<ReviewDTO> myreviewList(String username);
+	
+	//진료완료 건 리뷰 작성 버튼 확인
+	public List<ReviewDTO> myresRevBtn(String username);
 }//end interface

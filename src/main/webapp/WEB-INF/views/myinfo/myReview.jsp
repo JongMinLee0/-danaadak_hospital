@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
 <html>
 <head>
@@ -30,7 +31,9 @@ $(document).ready(function() {
 .revTitleDetail{
 	text-align : left;
 }
-
+.revTitleLink{
+	color:#007bff;
+}
 
 ul.nav.nav-tabs {
   letter-spacing:-1px;
@@ -80,7 +83,7 @@ td{
 		</li><li class="active" id="nav_reserList">
 			<a href="/hos/myinfo/myResInfo"><p>진료 내역</p></a>
 		</li><li class="active" id="nav_pharmList">
-			<p>처방전 내역</p>
+			<a href="/hos/myinfo/myPharmInfo"><p>처방전 내역</p>
 		</li><li class="active" id="nav_reviewList">
 			<a href="/hos/myinfo/myReview"><p>내 병원 후기</p></a>
 		</li>
@@ -91,24 +94,29 @@ td{
 <br/>
 <br/>
 <table class="myReviewTable">
-	<thead>
 	<tr>
 		<th scope="col" class="hosName" style="width:15%;"><span>병원이름</span></th>				
 		<th scope="col" class="hosDate" style="width:10%;"><span>진료일</span></th>				
 		<th scope="col" class="revTitle" style="width:55%;"><span>리뷰제목</span></th>
 		<th scope="col" class="revStar" style="width:10%;"><span>별점</span></th>
-		<th scope="col" class="revDate" style="width:10%;"><span>작성일</span></th>
+		<th scope="col" class="revDate" style="width:10%;"><span>작성일</span>
+		<input type="hidden" name="username" value="${sessionScope.memberInfo.username}" />
+		</th>
 	</tr>
-	</thead>
-	<tbody class="myResBody">
+
+	<c:forEach var="myreviewList" items="${myReview}" varStatus="status">
 	  <tr>
-		<td class="hosName">MH치과</td>
-		<td class="hosDate">2019.09.23</td>
-		<td class="revTitle revTitleDetail"><a href="#">원장님이 잘생겼어요</a></td>
-		<td class="revStar">★★★★★</td>
-		<td class="revDate">2019.09.25</td>
+		<td class="hosName" name="hos_name">${myreviewList.hos_name}</td>
+		<td class="hosDate">${myreviewList.reserveDTO.re_date}</td>
+		<td class="revTitle revTitleDetail" name="vi_subject"><span class="revTitleLink" onclick="location.href='/hos/comm/reviewDetail?vino=${myreviewList.vino}'">${myreviewList.vi_subject}</span></td>
+		<td class="revStar" name="vi_star">
+		  <c:forEach var="i" begin="1" end="${myreviewList.vi_star}" step="1">
+												★
+		  </c:forEach></td>
+		<td class="revDate" name="vi_date">${myreviewList.vi_date}</td>
 	  </tr>
-	</tbody>
+	</c:forEach> 
+
 </table>	
 </div>
 <tiles:insertAttribute name="footer" />	

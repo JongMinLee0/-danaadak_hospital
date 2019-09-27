@@ -21,28 +21,7 @@ $(document).ready(function() {
 		$('#myInfocontent').load('/hos/myinfo/memInfo');
 	});
  */
-/* 	$('#resMore').on('click', function() {
-		$('#myInfocontent').load('/hos/myinfo/myResInfo');
-	}); */
-	$('#nav_reserList').on('click', function() {
-		$('#myInfocontent').load('/hos/myinfo/myResInfo');
-	});
-// 	$('#pharmMore').on('click', function() {
-// 		$('#myInfocontent').load('/hos/myinfo/myPharmInfo');
-// 	});
-// 	$('#nav_pharmList').on('click', function() {
-// 		$('#myInfocontent').load('/hos/myinfo/myPharmInfo');
-// 	});
-// 	$('#pharmDetail').on('click', function() {
-// 		$('#myInfocontent').load('/hos/myinfo/myPharmInfo');
-// 	});
-// 	$('#myrevbtn').on('click', function() {
-// 		$('#myInfocontent').load('/hos/myinfo/myReview');
-// 	});
-// 	$('#nav_reviewList').on('click', function() {
-// 		$('#myInfocontent').load('/hos/myinfo/myReview');
-// 	});
-	
+
 		$('body > div.navbar_wrap.fixed-top').removeClass('fixed-top');
 	
 	
@@ -90,7 +69,7 @@ $(document).ready(function() {
 				<th>발급병원</th>
 				<th>발급날짜</th>
 			</tr>
-			<c:forEach var="myresList" items="${myres}" varStatus="status" begin="0" end="3">
+			<c:forEach var="myresList" items="${myres}" varStatus="status" begin="0" end="2">
 			<tr align="center">
 				<c:if test="${myres[status.index].medicine == null}">
 				<input type="hidden" >

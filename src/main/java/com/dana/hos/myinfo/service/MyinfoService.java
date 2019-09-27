@@ -2,6 +2,7 @@ package com.dana.hos.myinfo.service;
 
 import java.util.List;
 
+import com.dana.hos.comm.module.ReviewDTO;
 import com.dana.hos.member.module.MemberDTO;
 import com.dana.hos.reserve.module.ReserveDTO;
 
@@ -17,4 +18,10 @@ public interface MyinfoService {
 	
 	//내 예약 취소
 	public void myresCancelProcess(ReserveDTO rdto);
+	
+	//내 후기 목록
+	public List<ReviewDTO> myReviewListProcess(String username);
+	
+	//내 예약 후기버튼 확인
+	public List<ReviewDTO> myReviewBtnCheck(String username);
 }//end interface

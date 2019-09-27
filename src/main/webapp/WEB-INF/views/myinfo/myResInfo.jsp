@@ -18,25 +18,18 @@
 <script type="text/javascript">
 $(document).ready(function() {
   $('body > div.navbar_wrap.fixed-top').removeClass('fixed-top');
-  
-  $('.btns').on('click', function() {
-	  if (confirm("정말 취소하시겠습니까? - 취소 기능 작동 안돼요ㅠㅠ") == true){    //확인
-		 var cancelNo = $(this).attr('id'); 
-	  	 var userName = '${sessionScope.memberInfo.username}';
-		 alert(cancelNo + userName);
+//   function subCancel(){
+//   	var rno = $(this).attr('name');
+//   	var userName = '${sessionScope.memberInfo.username}';
 		 
-// 		 $.ajax({
-//  			type : 'POST',
-//  			data : {'rno='+cancelNo, 'username='+userName},
-//  			url : '/myinfo/myresCancel',
-//  			success : function(data) {
-	
-//  			}
-// 		 });		
-  	 } else {   //취소
-      	return false;
-   	 } 
-  });
+//   	alert(rno+' '+userName);
+//  		 $.ajax({
+//   			type : 'POST',
+//   			data : {'rno='+rno, 'username='+userName},
+// 			url : '/myinfo/myresCancel',
+//   			success : function(res){
+//   				location.href='/hos/myinfo/myResinfo';
+
 });
 </script>
 
@@ -51,7 +44,7 @@ $(document).ready(function() {
 		</li><li class="active" id="nav_reserList">
 			<a href="/hos/myinfo/myResInfo"><p>진료 내역</p></a>
 		</li><li class="active" id="nav_pharmList">
-			<p>처방전 내역</p>
+			<a href="/hos/myinfo/myPharmInfo"><p>처방전 내역</p></a>
 		</li><li class="active" id="nav_reviewList">
 			<a href="/hos/myinfo/myReview"><p>내 병원 후기</p></a>
 		</li>
@@ -61,7 +54,7 @@ $(document).ready(function() {
 <p><h3><b>진료 내역</b></h3></p>
 <br/>
 <br/>
-<%-- <form id ="frm" name="frm" action="" method="post"> --%>
+<%-- <form id ="frm" name="frm" action="/myinfo/myresCancel" method="post"> --%>
 <table class="myResTable">
 	<thead>
 	<tr>
@@ -80,7 +73,7 @@ $(document).ready(function() {
 		<c:set var="i" value="0" />
 		<tr class="myResLine" id="${myresList.rno}" value="${myresList.rno}">
 			<c:if test="${myres[status.index].hos_id == null}">
-<!-- 				<input type="hidden"> -->
+		<!-- 	<input type="hidden"> -->
 			</c:if>
 			
 			<c:if test="${myres[status.index].rno != null}">
@@ -99,23 +92,32 @@ $(document).ready(function() {
 			예약 취소
 			</c:if></td>
 			<td class="resMess resMessDetail">${myres[status.index].message}</td>
-			<td class="resReview ">
-				<input type ="hidden" value="${myres[status.index].hosDTO.hos_name}" name="hos_name" />
-				<input type ="hidden" value="${myres[status.index].rno}" name="rno" />
-			<c:if test="${myres[status.index].re_state == 0}">
-			<input type ="button" class="resCancelBtn btns" value="예약 취소" />
-			</c:if>
-			<c:if test="${myres[status.index].re_state == 1}">
-				<input type ="submit" id="${myres[status.index].rno}" class="resReviewBtn writeBtns" value="후기 작성" 
-							onclick="location.href='/hos/comm/reviewWrite?rno=${myres[status.index].rno}&hos_name=${myres[status.index].hosDTO.hos_name}'"/>
+			<td class="resReview">
+ 				<input type ="hidden" value="${myres[status.index].rno}" name="rno" />
+ 				<input type ="hidden" value="${myres[status.index].hosDTO.hos_name}" name="hos_name" />
+
+			  <c:if test="${myres[status.index].re_state == 0}">
+			    <input type ="button" class="resCancelBtn btns" name="${myres[status.index].rno}" value="예약 취소"/>
+			  </c:if>
+			  <c:if test="${myres[status.index].re_state == 1}">
+<%-- 					<c:choose> --%>
+<%-- 					  <c:when test="${empty myRevBtn.rno}"> --%>
+				        <input type ="submit" id="${myres[status.index].rno}" class="resReviewBtn writeBtns" value="후기 작성" 
+								onclick="location.href='/hos/comm/reviewWrite?rno=${myres[status.index].rno}&hos_name=${myres[status.index].hosDTO.hos_name}'"/>
+<%-- 			          </c:when>
+					  <c:when test="${not empty myRevBtn.rno}"> --%>
+<!-- 					          후기 작성 완료 -->
+<%-- 					  </c:when>
+					</c:choose> --%>
 			</c:if>
 			</td>
-			</c:if>
+			
+			 </c:if>
 		</tr>
 	</c:forEach>
 	</tbody>
 </table>
-<%-- </form> --%>
+<%-- </form>  --%>
 </div>
 <tiles:insertAttribute name="footer" />	
 </body>

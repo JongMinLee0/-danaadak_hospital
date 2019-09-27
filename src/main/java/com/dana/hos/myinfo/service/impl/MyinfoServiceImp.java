@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.dana.hos.comm.module.ReviewDTO;
 import com.dana.hos.member.module.MemberDTO;
 import com.dana.hos.myinfo.repo.MyinfoDAO;
 import com.dana.hos.myinfo.service.MyinfoService;
@@ -47,5 +48,17 @@ public class MyinfoServiceImp implements MyinfoService{
 	public void myresCancelProcess(ReserveDTO rdto) {
 		dao.cancelMyresMethod(rdto);
 		
+	}
+	
+	//내 리뷰 목록
+	@Override
+	public List<ReviewDTO> myReviewListProcess(String username) {
+		return dao.myreviewList(username);
+	}
+	
+	//내 예약 후기버튼 확인
+	@Override
+	public List<ReviewDTO> myReviewBtnCheck(String username) {
+		return dao.myresRevBtn(username);
 	}
 }//end MyinfoServiceImp

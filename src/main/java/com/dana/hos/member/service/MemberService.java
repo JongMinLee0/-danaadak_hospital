@@ -13,4 +13,8 @@ public interface MemberService {
 	public MemberDTO kakaoLoginProcess(String kakao_id);
 	public List<HosDTO> findHospitalProcess(String keyword);
 	public int usernameChkProcess(String username);
+	public int hospitalChkProcess(String hos_id);
+	public MemberDTO findIdProcess(MemberDTO dto);
+	public int findPwProcess(MemberDTO dto);
+	public void changePw(MemberDTO dto);
 }

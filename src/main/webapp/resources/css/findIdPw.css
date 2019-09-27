@@ -1,0 +1,77 @@
+@font-face { 
+	font-family: 'GyeonggiBatang';
+	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/GyeonggiBatang.woff') format('woff');
+	font-weight: normal; 
+	font-style: normal; 
+}
+
+html, body{
+	font-family: 'GyeonggiBatang' !important;
+}
+.findIdPwHeader h3 {
+	text-align: center;
+	color: black;
+}
+
+#findFrm input {
+	width: 100%;
+	text-align: center;
+	color: black;
+	font-size: 0.9em;
+	line-height: 25px;
+	border: 1px solid #007bff;
+	letter-spacing: 1px;
+	-webkit-appearance: none;
+	margin-bottom: 1em;
+	background: transparent;
+	font-family: 'Cuprum', sans-serif;
+	margin-top: 4px;
+}
+
+.findIdPwForm {
+	width: 80%;
+	margin: 0 auto;
+	border-radius: 10px;
+	background: white;
+	padding: 2em;
+}
+
+.findIdPwForm ul li {
+	min-height: 40px;
+	border-bottom: 2px solid transparent;
+	color: #767676;
+	font-weight: bold;
+	font-size: 1.2em;
+	cursor: pointer;
+	text-align: center;
+	list-style: none;
+	width: 50%;
+	display: inline-block;
+}
+
+.findIdPwForm ul li.on {
+	color: #1428a0;
+	border-color: #1428a0;
+	cursor: default;
+}
+
+.btns {
+	width: 100%;
+}
+
+#findBtn {
+	background-color: #5569e2;
+	color: #fff;
+	border-radius: 10px;
+	border: 0;
+	height: 30px;
+	margin-top: 20px;
+	width: 100%;
+	font-size: 14px;
+	font-weight: bold;
+	cursor: pointer;
+}
+
+label {
+	font-weight: bold;
+}

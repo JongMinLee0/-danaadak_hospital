@@ -128,6 +128,7 @@ $(document).ready(function() {
 			$('.list-group').css({
 				'display' : 'block'
 			});
+			
 			$.ajax({
 				type : 'POST',
 				dataType : 'json',
@@ -147,6 +148,35 @@ $(document).ready(function() {
 			});
 		}
 		
+		return false;
+		
+	});
+	
+	$('#hos_id').on('change', function(){
+		alert($(this).val());
+		
+		$.ajax({
+            type:'POST',
+            dataType:'text',
+            url:'/hos/join/hospitalChk',
+            data:'hos_id='+$(this).val(),
+            success: function(res) {
+            	console.log(res);
+            	if(res != 0){
+            		$('#hos_nameMsg').text('이미 가입한 병원입니다.');
+            	}else{
+            		$('#hos_nameMsg').text('');
+            	}
+            }
+		});
+	});
+	
+	$('#hos_name').on('focus change keyup', function(){
+		if($('#hos_id').val()==""){
+			$('#hos_nameMsg').text('검색 후 클릭해주세요.');
+		}else{
+			$('#hos_nameMsg').text('');
+		}
 	});
 	
 	$(document).on('click','.hosResult',function(){
@@ -160,6 +190,7 @@ $(document).ready(function() {
 		});
 		
 		$('#hos_id').val(hosId);
+		$('#hos_id').change();		// 값을 동적으로 넣어줘서 강제로 change 이벤트 실행하게
 		$('#hos_address').val(hosAddress);
 		$('#hos_name').val(hosName);
 	});
@@ -182,14 +213,6 @@ $(document).ready(function() {
 		return true;
 	});
 	
-	$('#hos_id').on('focus change keyup', function(){
-		if($('#hos_id').val()==""){
-			$('#hos_nameMsg').text('검색 후 클릭해주세요.');
-		}else{
-			$('#hos_nameMsg').text('');
-		}
-	});
-
 });
 
 // option 추가 new Option("option text", "value");

@@ -59,7 +59,25 @@ public class MemberServiceImp implements MemberService {
 		return memberDAO.userNameChkMethod(username);
 	}
 
+	@Override
+	public int hospitalChkProcess(String hos_id) {
+		return memberDAO.hosIdChkMethod(hos_id);
+	}
 
+	@Override
+	public MemberDTO findIdProcess(MemberDTO dto) {
+		return memberDAO.findIdMethod(dto);
+	}
+	
+	@Override
+	public int findPwProcess(MemberDTO dto) {
+		return memberDAO.findPwMethod(dto);
+	}
+
+	@Override
+	public void changePw(MemberDTO dto) {
+		memberDAO.changePw(dto);
+	}
 
 
 }

@@ -59,8 +59,47 @@ public class MemberController {
 		return memberservice.kakaoLoginProcess(dto.getKakao_id());
 	}
 
+	@RequestMapping(value = "/member/findIdPwForm", method = RequestMethod.GET)
+	public String findIdPwForm() {
+		return "member/login/findIdPw";
+	}
 	
+	@RequestMapping(value = "/member/findIdPwForm", method = RequestMethod.POST)
+	public String findIdPw(String result, ModelAndView mav) {
+		mav.addObject("result", result);
+		System.out.println(result);
+		return "member/login/findIdPw";
+	}
+	
+	@RequestMapping(value = "/member/findIdPw", method = RequestMethod.POST, produces = "application/text; charset=utf8")
+	public @ResponseBody String findIdPw(String type, MemberDTO dto, ModelAndView mav) {
+		String result = "";
+		if(type.equals("findId")) {
+			try{
+				String username = memberservice.findIdProcess(dto).getUsername();
+				System.out.println(username);
+				result = "고객님의 아이디는 '"+username+"'입니다.";
+			}catch(NullPointerException e){
+				result = "해당하는 정보가 없습니다.";
+			}
+		}else {
+			if(memberservice.findPwProcess(dto)!=1) {
+				result = "해당하는 정보가 없습니다.";
+			}else {
+				result = "비밀번호 수정";
+			}
+		}
+		
+		return result;
+	}
 
+	@RequestMapping(value = "/member/passwordChange", method = RequestMethod.POST, produces = "application/text; charset=utf8")
+	public @ResponseBody String changePw(MemberDTO dto) {
+		dto.setPassword(this.bCryptPasswordEncoder.encode(dto.getPassword())); // 암호화 하여 테이블에 저장
+		memberservice.changePw(dto);
+		return "비밀번호 변경에 성공하셨습니다.";
+	}
+	
 	@RequestMapping(value = "/join/joinForm", method = RequestMethod.GET)
 	public String joinForm() {
 		return "member/join/joinForm";
@@ -73,6 +112,11 @@ public class MemberController {
 		if(dto.getBirth()!=null) {
 			dto.setBirth(dto.getBirth().replaceAll(",", ""));
 		}
+		
+		if(dto.getProfile_image()==null) {
+			dto.setProfile_image("/hos/resources/images/defaultIcon.png");
+		}
+		
 		memberservice.joinProcess(dto);
 		
 		mav.addObject("successMsg", "회원가입에 성공하셨습니다.");
@@ -105,6 +149,11 @@ public class MemberController {
 	@RequestMapping(value = "/join/usernameChk", method = RequestMethod.POST)
 	public @ResponseBody int usernameChk(MemberDTO dto) {
 		return memberservice.usernameChkProcess(dto.getUsername());
+	}
+	
+	@RequestMapping(value = "/join/hospitalChk", method = RequestMethod.POST)
+	public @ResponseBody int hospitalChk(MemberDTO dto) {
+		return memberservice.hospitalChkProcess(dto.getHos_id());
 	}
 
 

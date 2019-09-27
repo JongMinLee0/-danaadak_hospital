@@ -81,6 +81,8 @@ $(document).ready(function() {
 				<td class="resCate">${myres[status.index].category}</td>
 				<td class="resDate">${myres[status.index].re_date}</td>
 				<td class="resTime">${myres[status.index].re_time}</td>
+<%-- 				<td><input type="text" value="너의 rno번호:${myres[status.index].rno }"></td> --%>
+<%-- <td><input type="text" value="asd${myRevBtn[status.index].rno }"></td> --%>
 				<td class="resState resStateTd">
 			<c:if test="${myres[status.index].re_state == 0}">
 			예약 중
@@ -101,14 +103,31 @@ $(document).ready(function() {
 			  </c:if>
 			  <c:if test="${myres[status.index].re_state == 1}">
 <%-- 					<c:choose> --%>
-<%-- 					  <c:when test="${empty myRevBtn.rno}"> --%>
-				        <input type ="submit" id="${myres[status.index].rno}" class="resReviewBtn writeBtns" value="후기 작성" 
+<%--  					  <c:when test="${empty myRevBtn.rno}"> --%>
+					<!-- myRevBtn : rno가 저장되어 있는 List num이 rno이다. -->
+					<c:set var="doneLoop" value="false" />
+					<c:forEach items="${myRevBtn}" var="num">
+						<c:if test="${not doneLoop}">
+							<c:choose>
+								<c:when test="${myres[status.index].rno == num}">
+									<c:set var="result" value="true" />
+									<c:set var="doneLoop" value="true" />
+								</c:when>
+								<c:otherwise>
+									<c:set var="result" value="false" />
+								</c:otherwise>
+							</c:choose>
+						</c:if>
+					</c:forEach>
+					<c:choose>
+						<c:when test="${result}">
+							<span>후기작성완료</span>
+						</c:when>
+						<c:otherwise>
+							<input type ="submit" id="${myres[status.index].rno}" class="resReviewBtn writeBtns" value="후기 작성" 
 								onclick="location.href='/hos/comm/reviewWrite?rno=${myres[status.index].rno}&hos_name=${myres[status.index].hosDTO.hos_name}'"/>
-<%-- 			          </c:when>
-					  <c:when test="${not empty myRevBtn.rno}"> --%>
-<!-- 					          후기 작성 완료 -->
-<%-- 					  </c:when>
-					</c:choose> --%>
+						</c:otherwise>
+					</c:choose>
 			</c:if>
 			</td>
 			
@@ -117,7 +136,7 @@ $(document).ready(function() {
 	</c:forEach>
 	</tbody>
 </table>
-<%-- </form>  --%>
+<%-- </form> --%>
 </div>
 <tiles:insertAttribute name="footer" />	
 </body>

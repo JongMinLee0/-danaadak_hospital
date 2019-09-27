@@ -23,5 +23,5 @@ public interface MyinfoService {
 	public List<ReviewDTO> myReviewListProcess(String username);
 	
 	//내 예약 후기버튼 확인
-	public List<ReviewDTO> myReviewBtnCheck(String username);
+	public List<Integer> myReviewBtnCheck(String username);
 }//end interface

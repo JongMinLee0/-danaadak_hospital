@@ -1,6 +1,6 @@
 @font-face { 
 	font-family: 'GyeonggiBatang';
-	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/GyeonggiBatang.woff') format('woff');
+	src: url('../gyeonggi_font.ttf');
 	font-weight: normal; 
 	font-style: normal; 
 }
@@ -8,6 +8,7 @@
 html, body{
 	font-family: 'GyeonggiBatang' !important;
 }
+
 .findIdPwHeader h3 {
 	text-align: center;
 	color: black;

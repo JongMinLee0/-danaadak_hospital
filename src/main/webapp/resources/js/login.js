@@ -97,7 +97,7 @@ $(document).ready(function() {
 
 
 // 카카오 로그인
-function kakaoLogin(kakao_id, email, userNickName, profileImage) {
+/*function kakaoLogin(kakao_id, email, userNickName, profileImage) {
 	$.ajax({
 		type : 'POST',
 		dataType : 'text',
@@ -145,6 +145,13 @@ function kakaoLoginAction(kakao_id){
 			login(res.username, res.password);
 		}
 	});
+}*/
+
+function kakaoLogin(){
+	var url = "https://kauth.kakao.com/oauth/authorize?client_id=f90d0bc90a5a0e00f6930fef7657156e&redirect_uri=/hos/kakaoLogin&response_type=code";
+    var name = "카카오 로그인";
+    var option = "width = 440, height = 510, top = 100, left = 200, location = no"
+    window.open(url, name, option);
 }
 
 function login(username, password){

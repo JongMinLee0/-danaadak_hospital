@@ -35,5 +35,35 @@
 		from member m, hospital h 
 		WHERE m.hos_id = h.hos_id and enabled =0
 	 </select>
+	 
+	 <!-- Hospital+Event 테이블 조인 -->
+    <resultMap type="com.dana.hos.hopital.module.EventDTO" id="a_eventList" autoMapping="false" >
+		<result column="eno" property="eno"/>
+			<result column="e_subject" property="e_subject"/>
+			<result column="e_content" property="e_content"/>
+			<result column="e_type" property="e_type"/>
+			<result column="e_url" property="e_url"/>
+			<result column="hos_id" property="hos_id"/>
+		
+	
+		<collection ofType="com.dana.hos.map.module.HosDTO" property="e_hosDTO" autoMapping="false" >
+		<result column="hos_name" property="hos_name"/>
+		</collection>
+	</resultMap>
+	
+	<!-- Hospital+Event 테이블 조인  소환 Event 종류별 리스트-->
+	<select id="e_type" resultMap="a_eventList" parameterType="com.dana.hos.hopital.module.EventDTO">
+		select e.*, h.hos_name
+		from event e, hospital h 
+		WHERE h.hos_id = e.hos_id and h.hos_id=#{hos_id} and e.e_type=#{e_type}
+	 </select>
+	 
+	 <!-- Hospital+Event 테이블 조인  소환 Event 종류 리스트 -->
+	 <select id="e_typeList" resultMap="a_eventList" parameterType="string">
+	 	select DISTINCT e.hos_id, h.hos_name,e.e_type
+		from event e, hospital h 
+		WHERE h.hos_id = e.hos_id
+        order by hos_id
+	 </select>
     
 </mapper>

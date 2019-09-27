@@ -21,14 +21,15 @@
 <tiles:insertAttribute name="navbar" />
 
 	<div class="admin_body">
-	<!-- 커뮤니티 header -->
+	<!-- 관리자 페이지 header -->
 	<div class="admin_header">
 		<ul class="admin_menu">
 			<li><a href="/hos/admin/hos_joinmanagement">병원 가입 관리</a></li>
-			<li><a href="#">병원 관리</a></li>
+			<li><a href="/hos/admin/admin_event_list">병원 이벤트 관리</a></li>
 		</ul>
 	</div>
 	
+	<!-- 관리자 페이지 body -->
 	<div class="no_wrap">
 		<tiles:insertAttribute name="admin_body" />
 	</div>

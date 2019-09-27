@@ -111,5 +111,15 @@
   <definition name="admin/hos_join" extends="admin/adminmain">
   		<put-attribute name="admin_body" value="/WEB-INF/views/admin/hos_join.jsp" />
   </definition>
+  
+   <!-- 관리자 이벤트 관리  -->
+  <definition name="admin/admin_event_list" extends="admin/adminmain">
+  		<put-attribute name="admin_body" value="/WEB-INF/views/admin/admin_event_list.jsp" />
+  </definition>
+  
+  <!-- 관리자 이벤트 타입 관리  -->
+  <definition name="admin/admin_event_type" extends="admin/adminmain">
+  		<put-attribute name="admin_body" value="/WEB-INF/views/admin/admin_event_type.jsp" />
+  </definition>
 
 </tiles-definitions>

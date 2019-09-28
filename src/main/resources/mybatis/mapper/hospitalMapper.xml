@@ -42,7 +42,7 @@
 	</insert>
 	
 	<select id="event_sel" parameterType="com.dana.hos.hopital.module.EventDTO" resultType="com.dana.hos.hopital.module.EventDTO">
-	select eno, e_type, e_subject, e_url
+	select eno, e_type, e_subject, e_content
 		from event 
 		where hos_id = #{hos_id}
 	</select>

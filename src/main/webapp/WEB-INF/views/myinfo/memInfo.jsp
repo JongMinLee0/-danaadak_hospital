@@ -18,6 +18,7 @@
 <script src="/hos/resources/js/nav_bar.js"></script>
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
+
 	$(document).ready(function() {
 		$('body > div.navbar_wrap.fixed-top').removeClass('fixed-top');
 		setDateBox();
@@ -69,7 +70,7 @@
 				alert('현재 비밀번호와 수정할 비밀번호, 수정할 비밀번호 확인을 모두 입력해주세요.');
 				return false;
 			}
-			
+
 		});
 
 		//주소 칸 나눠서 보여주기
@@ -297,6 +298,7 @@ ul.nav.nav-tabs li:hover {
 </head>
 <body>
 
+  
 	<tiles:insertAttribute name="navbar" />
 
 	<div id='myPageWrap'>

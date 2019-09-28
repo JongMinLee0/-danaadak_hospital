@@ -4,6 +4,7 @@
 	width: 65%;
 	height: 675px;
 	margin: 100px auto;
+	background-color: skyblue;
 }
 
 /* 메시지가 출력되는 부분  */
@@ -12,6 +13,7 @@
 	width: 100%;
 	height: 500px;
 	overflow-y: scroll;
+	opacity: 0.6;
 }
 
 /* textarea  */
@@ -48,15 +50,54 @@ body > div.comm_body > div.content_wrap{
 
 
 /* 뒤로가기 버튼  */
-body > div.comm_body > div.content_wrap > div > div:nth-child(3) > a > i{
+body > div.comm_body > div.content_wrap > div > div.card.border-secondary.mb-3 > div > a:nth-child(1) > i{
 	font-size: 30px;
+	color: black;
+}
+body > div.comm_body > div.content_wrap > div > div.card.border-secondary.mb-3 > div > a:nth-child(1) > i:hover{
+	color: rgb(229, 229, 229);
 }
 /* 나가기 버튼 아이콘 */
-body > div.comm_body > div.content_wrap > div > div:nth-child(3) > a:nth-child(3) > span > i{
+body > div.comm_body > div.content_wrap > div > div.card.border-secondary.mb-3 > div > a:nth-child(3) > span > i{
 	font-size: 20px;
+}
+
+body > div.comm_body > div.content_wrap > div > div.card.border-secondary.mb-3 > div > a:nth-child(3) > span{
+	color: black;
+}
+body > div.comm_body > div.content_wrap > div > div.card.border-secondary.mb-3 > div > a:nth-child(3) > span:hover{
+	color: rgb(229, 229, 229);
+}
+
+/*  나가기 버튼 a태그  */
+body > div.comm_body > div.content_wrap > div > div.card.border-secondary.mb-3 > div > a:nth-child(3){
+	text-decoration: none;
+}
+
+/* 상대방 이름 */
+body > div.comm_body > div.content_wrap > div > div.card.border-secondary.mb-3 > div > span{
+	font-size: 20px;
+	margin-left: 20px;
 }
 
 /* 시간 사이즈 */
 #message_box > ul li span{
 	font-size: 10px;
 }
+
+body > div.comm_body > div.content_wrap > img{
+	width: 500px;
+	height: 500px;
+	left: 18px;
+	top: 300px;
+	position: absolute;
+}
+
+/* 채팅 리스트 페이지 배경 추가  */
+/* body > div.comm_body{
+	background-image: url('../images/chatdetail_img.jpg');
+	background-size: 30% 70%;
+	background-repeat: no-repeat;
+	height: 1000px;
+	z-index: -1;
+} */

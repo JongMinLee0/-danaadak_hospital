@@ -8,17 +8,22 @@
 
 <link rel="stylesheet" href="/hos/resources/css/com_chatDetail.css" />
 <script src="/hos/resources/js/com_chatDetail.js"></script>
-
+<img src="/hos/resources/images/chatdetail_img.jpg" alt="채팅이미지" />
 <div class="chat_wrap">
 	<input type="hidden" id="sender" value="${chatroom.name1}" />
-	<input type="hidden" id="roomId" value="${chatroom.roomId}" />
-	<div>
-		<a href="/hos/comm/chat"><i class="fa fa-angle-left" aria-hidden="true"></i></a>
-		<span style="margin-left: 10px; font-size: 30px;">${chatroom.name2}</span>
-		<a href="">
-			<span style="margin-left: 370px; maring-top: 10px; font-size: 20px;"><i class="fa fa-sign-out" aria-hidden="true"></i>나가기</span>
-		</a>
-		<hr />
+	<form id="frm" action="/hos/chat/exit" method="post">
+		<input type="hidden" name="name1" value="${chatroom.name1}"/>
+		<input type="hidden" id="reciver" name="name2" value="${chatroom.name2}"/>
+		<input type="hidden" id="roomId" name="roomId" value="${chatroom.roomId}"/>
+	</form>
+	<div class="card border-secondary mb-3">
+		<div class="card-header">
+			<a href="/hos/comm/chat"><i class="fa fa-angle-left" aria-hidden="true"></i></a>
+				<span>${chatroom.name2}</span>
+			<a href="">
+				<span style="margin-left: 600px; maring-top: 10px; font-size: 20px;"><i class="fa fa-sign-out" aria-hidden="true"></i>나가기</span>
+			</a>
+		</div>
 	</div>
 	<div id="message_box">
 		<ul>
@@ -27,17 +32,19 @@
 					<c:when test="${message.sender eq sessionScope.memberInfo.username}">
 						<li class="list-group-item me">
 							<p>${message.sender}</p>
-							<span>${message.time}</span><div class="alert alert-warning">
-								${message.message}
-							</div>
+							<span>${message.time}</span>
+							  <div style="width: 100px; word-wrap:break-word">
+							  <pre style="font-size: 17px; font-weight: bold;width: 100px; height: 100%; overflow: auto; display: contents;
+							  white-space:pre-wrap;"><c:out value="${message.message}" /></pre></div>
+							
 						</li>
 					</c:when>
 					<c:otherwise>
 						<li class="list-group-item opponent">
 							<p>${message.sender}</p>
-							<div class="alert alert-light">
-								${message.message}
-							</div><span>${message.time}</span>
+							<div style="width: 100px; word-wrap:break-word">
+							  <pre style="font-size: 17px; font-weight: bold; color: brown;width: 100px; height: 100%; overflow: auto; display: contents;
+							  white-space:pre-wrap;"><c:out value="${message.message}" /></pre></div><span>${message.time}</span>
 						</li>
 					</c:otherwise>
 				</c:choose>

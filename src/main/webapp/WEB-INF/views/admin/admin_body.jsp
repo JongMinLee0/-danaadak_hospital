@@ -7,6 +7,3 @@
 
 <h2 id="admin_h">관리자 님 뭐 할라고요?</h2>
 
-
-
-관리자 메인 바디 admin_body.jsp

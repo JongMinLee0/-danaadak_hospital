@@ -12,11 +12,3 @@
 		<p>Copyright&copy; 2019.team 다나았닥 All rights reserved.</p>
 	</div>
 </div>
-<div class="quick-menu">
-	<a href="">
-		<i class="fa fa-question-circle-o" aria-hidden="true"></i>
-	</a>
-	<a href="">
-		<i class="fa fa-book" aria-hidden="true"></i>
-	</a>
-</div>

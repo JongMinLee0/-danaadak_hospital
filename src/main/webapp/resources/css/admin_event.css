@@ -11,6 +11,7 @@
 .joinList{
 	width: 600px;
 }
+/* 이벤트 타입 리스트에서 제목  */
 #red{
 	color: red;
 }

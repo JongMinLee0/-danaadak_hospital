@@ -371,6 +371,7 @@ function closeOverlay() {
 
 
 $(document).ready(function(){
+	// 스크롤 내릴때 메인 nav_bar 따라 오는거 삭제 
 	$('body > div.navbar_wrap.fixed-top').removeClass('fixed-top');
 	
 	// keyword로 넘어온 값이 있으면 실행시킨다.

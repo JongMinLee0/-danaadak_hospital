@@ -18,17 +18,24 @@
 <script type="text/javascript">
 $(document).ready(function() {
   $('body > div.navbar_wrap.fixed-top').removeClass('fixed-top');
-//   function subCancel(){
-//   	var rno = $(this).attr('name');
-//   	var userName = '${sessionScope.memberInfo.username}';
-		 
-//   	alert(rno+' '+userName);
-//  		 $.ajax({
-//   			type : 'POST',
-//   			data : {'rno='+rno, 'username='+userName},
-// 			url : '/myinfo/myresCancel',
-//   			success : function(res){
-//   				location.href='/hos/myinfo/myResinfo';
+  
+  /* 예약 취소 버튼  */
+  $('.myResTable .myResBody td.resReview input.resCancelBtn.btns').on('click', function(){
+	  
+	  var rno = $(this).prev().val();
+	  $.ajax({
+		  type:'POST',
+		  url:'/hos/cancel?rno='+rno,
+			success:function(res){
+					swal(res).then((value) => {
+						location.href='/hos/myinfo/myResInfo';
+					  });
+				},error:function(res){
+					swal(res);
+				}
+			}); 
+	  
+  });
 
 });
 </script>
@@ -81,6 +88,8 @@ $(document).ready(function() {
 				<td class="resCate">${myres[status.index].category}</td>
 				<td class="resDate">${myres[status.index].re_date}</td>
 				<td class="resTime">${myres[status.index].re_time}</td>
+<%-- 				<td><input type="text" value="너의 rno번호:${myres[status.index].rno }"></td> --%>
+<%-- <td><input type="text" value="asd${myRevBtn[status.index].rno }"></td> --%>
 				<td class="resState resStateTd">
 			<c:if test="${myres[status.index].re_state == 0}">
 			예약 중
@@ -93,22 +102,42 @@ $(document).ready(function() {
 			</c:if></td>
 			<td class="resMess resMessDetail">${myres[status.index].message}</td>
 			<td class="resReview">
- 				<input type ="hidden" value="${myres[status.index].rno}" name="rno" />
  				<input type ="hidden" value="${myres[status.index].hosDTO.hos_name}" name="hos_name" />
 
 			  <c:if test="${myres[status.index].re_state == 0}">
-			    <input type ="button" class="resCancelBtn btns" name="${myres[status.index].rno}" value="예약 취소"/>
+			  	<input type ="hidden" value="${myres[status.index].rno}" name="rno" />
+			    <input type ="button" class="resCancelBtn btns" value="예약 취소"/>
 			  </c:if>
 			  <c:if test="${myres[status.index].re_state == 1}">
 <%-- 					<c:choose> --%>
-<%-- 					  <c:when test="${empty myRevBtn.rno}"> --%>
-				        <input type ="submit" id="${myres[status.index].rno}" class="resReviewBtn writeBtns" value="후기 작성" 
+<%--  					  <c:when test="${empty myRevBtn.rno}"> --%>
+					<!-- myRevBtn : rno가 저장되어 있는 List num이 rno이다. -->
+					<c:set var="doneLoop" value="false" />
+					<c:forEach items="${myRevBtn}" var="num">
+						<c:if test="${not doneLoop}">
+							<c:choose>
+								<c:when test="${myres[status.index].rno == num}">
+									<c:set var="result" value="true" />
+									<c:set var="doneLoop" value="true" />
+								</c:when>
+								<c:otherwise>
+									<c:set var="result" value="false" />
+								</c:otherwise>
+							</c:choose>
+						</c:if>
+					</c:forEach>
+					<c:choose>
+						<c:when test="${result}">
+							<span>후기작성완료</span>
+						</c:when>
+						<c:otherwise>
+							<input type ="submit" id="${myres[status.index].rno}" class="resReviewBtn writeBtns" value="후기 작성" 
 								onclick="location.href='/hos/comm/reviewWrite?rno=${myres[status.index].rno}&hos_name=${myres[status.index].hosDTO.hos_name}'"/>
-<%-- 			          </c:when>
-					  <c:when test="${not empty myRevBtn.rno}"> --%>
-<!-- 					          후기 작성 완료 -->
-<%-- 					  </c:when>
-					</c:choose> --%>
+						</c:otherwise>
+					</c:choose>
+			</c:if>
+			<c:if test="${myres[status.index].re_state == 2}">
+				<span>예약취소완료</span>
 			</c:if>
 			</td>
 			
@@ -117,7 +146,7 @@ $(document).ready(function() {
 	</c:forEach>
 	</tbody>
 </table>
-<%-- </form>  --%>
+<%-- </form> --%>
 </div>
 <tiles:insertAttribute name="footer" />	
 </body>

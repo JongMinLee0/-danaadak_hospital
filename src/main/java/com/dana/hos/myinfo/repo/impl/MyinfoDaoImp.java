@@ -33,7 +33,13 @@ public class MyinfoDaoImp implements MyinfoDAO {
 		return sqlSession.selectOne("myinfo.selectUserById", username);
 	}
 
-	// 내 예약 정보 확인
+	//내정보 프로필 사진
+	@Override
+	public String getFile(String username) {
+		return sqlSession.selectOne("myinfo.uploadProfile_image", username);
+	}
+	
+	//내 예약 정보 확인
 	@Override
 	public List<ReserveDTO> myresList(String username) {
 		return sqlSession.selectList("myinfo.myresList", username);
@@ -41,9 +47,8 @@ public class MyinfoDaoImp implements MyinfoDAO {
 
 	// 내 예약 취소
 	@Override
-	public void cancelMyresMethod(ReserveDTO rdto) {
-		sqlSession.update("myinfo.myresCancel", rdto);
-
+	public int cancelMyresMethod(int rno) {
+		return sqlSession.update("myinfo.myresCancel", rno);
 	}
 
 	// 내 후기글 보기

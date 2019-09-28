@@ -4,6 +4,8 @@ body > div.comm_body > div.content_wrap > div{
 	height: 500px;
 	margin: 80px auto;
 	overflow-y:scroll;
+	background-color: #fff;
+	opacity: 0.9;
 }
 
 /* 목록 높이  */
@@ -20,4 +22,17 @@ body > div.comm_body > div.content_wrap > div a{
 body > div.comm_body > div.content_wrap > div a:hover{
 	text-decoration: none;
 	color: gray;
+}
+
+/* 채팅 리스트 페이지 배경 추가  */
+body > div.comm_body{
+	background-image: url('../images/chat_img.jpg');
+	background-size: 100%;
+	background-repeat: no-repeat;
+	height: 1000px;
+	z-index: -1;
+}
+
+body > div.footer{
+	height: 100px;
 }

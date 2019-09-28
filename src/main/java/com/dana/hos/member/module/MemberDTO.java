@@ -3,7 +3,7 @@ package com.dana.hos.member.module;
 import java.util.Collection;
 import java.util.Date;
 
-import org.springframework.security.core.GrantedAuthority;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.dana.hos.map.module.HosDTO;
 
@@ -22,6 +22,7 @@ public class MemberDTO {
 	private int enabled;
 	private HosDTO hosDTO;
 	private String profile_image;
+	private MultipartFile filename;
 
 	public MemberDTO() {
 
@@ -139,4 +140,13 @@ public class MemberDTO {
 		this.profile_image = profile_image;
 	}
 
+	public MultipartFile getFilename() {
+		return filename;
+	}
+
+	public void setFilename(MultipartFile filename) {
+		this.filename = filename;
+	}
+	
+	
 }

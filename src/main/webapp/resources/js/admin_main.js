@@ -1,7 +1,7 @@
 $(document).ready(function(){
 	// navbar 상단 고정 해제
 	$('body > div.navbar_wrap.fixed-top').removeClass('fixed-top');
-	
+
 	// 스크롤시 메뉴 고정해주는 함수
 	$(window).on('mousewheel',function(e){
 		var wheel = e.originalEvent.wheelDelta;
@@ -17,5 +17,10 @@ $(document).ready(function(){
 		}
 	});
 	
+	$('.join_success').on('click', function() {
+		alert("가입 승인에 성공하였습니다.");
+	});
 	
-})
+});
+
+

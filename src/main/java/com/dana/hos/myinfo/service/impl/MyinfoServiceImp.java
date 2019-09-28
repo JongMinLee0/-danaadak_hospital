@@ -81,4 +81,9 @@ public class MyinfoServiceImp implements MyinfoService{
 		
 		return aList;
 	}
+
+	@Override
+	public void myinfoPwUpdateProcess(MemberDTO dto) {
+		dao.updatePasswordMethod(dto);		
+	}
 }//end MyinfoServiceImp

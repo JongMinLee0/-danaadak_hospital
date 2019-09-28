@@ -1,5 +1,6 @@
 package com.dana.hos.member.module;
 
+import java.util.Collection;
 import java.util.Date;
 
 import org.springframework.web.multipart.MultipartFile;

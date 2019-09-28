@@ -28,4 +28,11 @@ public interface MyinfoService {
 	//내 후기 목록
 	public List<ReviewDTO> myReviewListProcess(String username);
 	
+
+	//내 예약 후기버튼 확인
+	public List<ReviewDTO> myReviewBtnCheck(String username);
+	
+	// 비밀번호 변경
+	public void myinfoPwUpdateProcess(MemberDTO dto);
+
 }//end interface

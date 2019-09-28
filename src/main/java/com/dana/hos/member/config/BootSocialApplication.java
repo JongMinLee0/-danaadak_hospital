@@ -11,9 +11,10 @@ import org.springframework.security.oauth2.client.OAuth2RestTemplate;
 import org.springframework.security.oauth2.client.resource.OAuth2ProtectedResourceDetails;
 import org.springframework.security.oauth2.client.token.grant.code.AuthorizationCodeResourceDetails;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableOAuth2Client;
+import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-@SpringBootApplication
+@Component
 @EnableTransactionManagement
 @EnableOAuth2Client
 public class BootSocialApplication {
@@ -22,16 +23,16 @@ public class BootSocialApplication {
         SpringApplication.run(BootSocialApplication.class, args);
     }
 
-    @Value("${kakao.restApiKey}")
+    @Value("f90d0bc90a5a0e00f6930fef7657156e")
     private String kakaoRestApiKey;
 
-    @Value("${kakao.accessTokenUri}")
+    @Value("https://kauth.kakao.com/oauth/token")
     private String kakaoAccessTokenUri;
 
-    @Value("${kakao.userAuthorizationUri}")
+    @Value("https://kauth.kakao.com/oauth/authorize")
     private String kakaoUserAuthorizationUri;
 
-    @Value("${kakao.redirectUri}")
+    @Value("http://localhost:8090/hos/kakaoLogin")
     private String kakaoRedirectUri;
 
     @Bean

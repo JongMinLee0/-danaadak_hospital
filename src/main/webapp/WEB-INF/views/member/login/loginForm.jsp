@@ -106,8 +106,7 @@ $(document).ready(function(){
 					</div>
 					<c:if test="${type == 'user' }">
 						<div>
-							<a onclick="kakaoLogin()">카카오 로그인</a>
-							<!-- <input id="kakao_login" type="button" value="카카오톡 로그인"> -->
+							<input id="kakao_login" type="button" value="카카오톡 로그인">
 						</div>
 					</c:if>
 					<div class="last">
@@ -126,7 +125,7 @@ $(document).ready(function(){
 		</div>
 	</form:form>
 
-	<%-- <c:if test="${type == 'user' }">
+	<c:if test="${type == 'user' }">
 		<script type='text/javascript'>
 			//<![CDATA[
 			// 사용할 앱의 JavaScript 키를 설정해 주세요.
@@ -159,7 +158,7 @@ $(document).ready(function(){
 			});
 			//]]>
 		</script>
-	</c:if> --%>
+	</c:if>
 </body>
 </html>
 

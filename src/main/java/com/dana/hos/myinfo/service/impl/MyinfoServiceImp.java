@@ -61,4 +61,9 @@ public class MyinfoServiceImp implements MyinfoService{
 	public List<ReviewDTO> myReviewBtnCheck(String username) {
 		return dao.myresRevBtn(username);
 	}
+
+	@Override
+	public void myinfoPwUpdateProcess(MemberDTO dto) {
+		dao.updatePasswordMethod(dto);		
+	}
 }//end MyinfoServiceImp

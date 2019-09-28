@@ -1,6 +1,9 @@
 package com.dana.hos.member.module;
 
+import java.util.Collection;
 import java.util.Date;
+
+import org.springframework.security.core.GrantedAuthority;
 
 import com.dana.hos.map.module.HosDTO;
 
@@ -135,6 +138,5 @@ public class MemberDTO {
 	public void setProfile_image(String profile_image) {
 		this.profile_image = profile_image;
 	}
-	
 
 }

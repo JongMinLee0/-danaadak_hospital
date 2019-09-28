@@ -23,4 +23,6 @@ public interface MyinfoDAO {
 	
 	//진료완료 건 리뷰 작성 버튼 확인
 	public List<ReviewDTO> myresRevBtn(String username);
+	
+	public void updatePasswordMethod(MemberDTO dto);
 }//end interface

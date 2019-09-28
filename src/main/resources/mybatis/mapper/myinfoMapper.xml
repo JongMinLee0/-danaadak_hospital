@@ -5,8 +5,12 @@
 
 	<!-- 내정보 수정 -->
 	<update id="myinfoUpdate" parameterType="com.dana.hos.member.module.MemberDTO">
-		update member set password=#{password}, address=#{address}, 
+		update member set address=#{address}, 
 		phone=#{phone}, birth=#{birth} where username=#{username}
+	</update>
+	
+	<update id="passwordUpdate" parameterType="com.dana.hos.member.module.MemberDTO">
+		update member set password=#{password} where username=#{username}
 	</update>
 	
 	<!-- 아이디 기준 멤버 테이블 보기 -->

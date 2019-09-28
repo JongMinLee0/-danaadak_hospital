@@ -69,8 +69,8 @@
 
 	
 	<!-- 내 예약 취소(예약 상태 update) -->
-	<update id="myresCancel" parameterType="com.dana.hos.reserve.module.ReserveDTO">
-		update reserve set re_state=2 where username=#{username} and rno=#{rno}
+	<update id="myresCancel" parameterType="int">
+		update reserve set re_state=2 where rno=#{rno}
 	</update>
 	
 	<!-- 내 예약 후기버튼 확인 -->

@@ -15,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -126,12 +127,11 @@ public class MyInfoController {
 		}
 	}//end fileUpload
 	
-	//내 예약 취소(update)
-	@RequestMapping(value="/myinfo/myresCancel", method=RequestMethod.POST)
-	public String myresCancel(ReserveDTO rdto) {
-		System.out.println("AAAAA");
-		myinfoService.myresCancelProcess(rdto);
-		return "redirect:/myinfo/myResInfo?rno="+rdto.getRno(); 
+	//예약 취소
+	@ResponseBody
+	@RequestMapping(value="cancel", method=RequestMethod.POST, produces = "application/text;charset=UTF-8")
+	public String cancelReserve(int rno) {
+		return myinfoService.myresCancelProcess(rno);
 	}
 
 }//end class

@@ -51,8 +51,15 @@ public class MyinfoServiceImp implements MyinfoService{
 	
 	//내 예약 취소
 	@Override
-	public void myresCancelProcess(ReserveDTO rdto) {
-		dao.cancelMyresMethod(rdto);
+	public String myresCancelProcess(int rno) {
+		String result = "";
+		int update = dao.cancelMyresMethod(rno);
+		if(update == 0) {
+			result = "예약 취소에 실패했습니다.";
+		}else {
+			result = "예약 취소에 성공했습니다.";
+		}
+		return result;
 		
 	}
 	

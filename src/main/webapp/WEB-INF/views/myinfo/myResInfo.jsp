@@ -18,17 +18,24 @@
 <script type="text/javascript">
 $(document).ready(function() {
   $('body > div.navbar_wrap.fixed-top').removeClass('fixed-top');
-//   function subCancel(){
-//   	var rno = $(this).attr('name');
-//   	var userName = '${sessionScope.memberInfo.username}';
-		 
-//   	alert(rno+' '+userName);
-//  		 $.ajax({
-//   			type : 'POST',
-//   			data : {'rno='+rno, 'username='+userName},
-// 			url : '/myinfo/myresCancel',
-//   			success : function(res){
-//   				location.href='/hos/myinfo/myResinfo';
+  
+  /* 예약 취소 버튼  */
+  $('.myResTable .myResBody td.resReview input.resCancelBtn.btns').on('click', function(){
+	  
+	  var rno = $(this).prev().val();
+	  $.ajax({
+		  type:'POST',
+		  url:'/hos/cancel?rno='+rno,
+			success:function(res){
+					swal(res).then((value) => {
+						location.href='/hos/myinfo/myResInfo';
+					  });
+				},error:function(res){
+					swal(res);
+				}
+			}); 
+	  
+  });
 
 });
 </script>
@@ -95,11 +102,11 @@ $(document).ready(function() {
 			</c:if></td>
 			<td class="resMess resMessDetail">${myres[status.index].message}</td>
 			<td class="resReview">
- 				<input type ="hidden" value="${myres[status.index].rno}" name="rno" />
  				<input type ="hidden" value="${myres[status.index].hosDTO.hos_name}" name="hos_name" />
 
 			  <c:if test="${myres[status.index].re_state == 0}">
-			    <input type ="button" class="resCancelBtn btns" name="${myres[status.index].rno}" value="예약 취소"/>
+			  	<input type ="hidden" value="${myres[status.index].rno}" name="rno" />
+			    <input type ="button" class="resCancelBtn btns" value="예약 취소"/>
 			  </c:if>
 			  <c:if test="${myres[status.index].re_state == 1}">
 <%-- 					<c:choose> --%>
@@ -128,6 +135,9 @@ $(document).ready(function() {
 								onclick="location.href='/hos/comm/reviewWrite?rno=${myres[status.index].rno}&hos_name=${myres[status.index].hosDTO.hos_name}'"/>
 						</c:otherwise>
 					</c:choose>
+			</c:if>
+			<c:if test="${myres[status.index].re_state == 2}">
+				<span>예약취소완료</span>
 			</c:if>
 			</td>
 			

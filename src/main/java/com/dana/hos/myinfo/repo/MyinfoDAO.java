@@ -19,7 +19,7 @@ public interface MyinfoDAO {
 	public List<ReserveDTO> myresList(String username);
 	
 	//내 예약 취소
-	public void cancelMyresMethod(ReserveDTO rdto);
+	public int cancelMyresMethod(int rno);
 	
 	//내 리뷰 목록 출력
 	public List<ReviewDTO> myreviewList(String username);

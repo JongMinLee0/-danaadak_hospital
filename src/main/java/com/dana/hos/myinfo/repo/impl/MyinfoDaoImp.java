@@ -45,9 +45,8 @@ public class MyinfoDaoImp implements MyinfoDAO{
 	
 	//내 예약 취소
 	@Override
-	public void cancelMyresMethod(ReserveDTO rdto) {
-		sqlSession.update("myinfo.myresCancel", rdto);
-		
+	public int cancelMyresMethod(int rno) {
+		return sqlSession.update("myinfo.myresCancel", rno);
 	}
 	//내 후기글 보기
 	@Override

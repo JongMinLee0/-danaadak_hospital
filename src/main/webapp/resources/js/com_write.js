@@ -28,7 +28,14 @@ $(document).ready(function(){
 		
 		// 저장버튼 클릭시 form 전송
 		$('#subBtn').click(function(){
-			subReview();
+			var re = /^[#]/;
+			var hash = $('#hashTag').val();
+			if(re.test(hash)){
+				subReview();
+			}else{
+				swal("해시태그는 #으로 시작해야 합니다");
+				return false;
+			}
 		});
 		
 		function subReview(){
@@ -39,16 +46,17 @@ $(document).ready(function(){
 				url:'/hos/comm/write',
 				data:queryString,
 				success:function(res){
-					alert(res);
-					location.href='/hos/myinfo/myResInfo';
+					swal(res).then((value) => {
+						location.href='/hos/myinfo/myResInfo';
+					});
 				},error:function(e){
-					alert(e.status + ' 오류가 발생했습니다.');
-					location.href='/hos/myinfo/myResInfo';
+					swal(e.status + "오류가 발생했습니다.").then((value) => {
+						location.href='/hos/myinfo/myResInfo';
+					});
 				}
 			});
 		}
 	});
-	
 	$('#star_grade a').click(function(){
         $(this).parent().children("a").removeClass("on");  /* 별점의 on 클래스 전부 제거 */ 
         $(this).addClass("on").prevAll("a").addClass("on"); /* 클릭한 별과, 그 앞 까지 별점에 on 클래스 추가 */

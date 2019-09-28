@@ -16,6 +16,10 @@ $(document).ready(function(){
 	$("#comment").keyup(function(key) {
 		if (key.keyCode == 13) {
 			if (!key.shiftKey){
+				if($('#comment').val()=='\n'){
+					$('#comment').val('');
+					return false;
+				}
 				sendMessage();
 			}else{
 				key.preventDefault();
@@ -73,12 +77,13 @@ function recvMessage(recv) {
 	
 	if(send==chatSender){
 		$('#message_box > ul').append('<li class="list-group-item me"><p>'+send+'</p><span>'
-				+temp2+'</span><div class="alert alert-warning">'+
-				message+'</div></li>');
+				+temp2+'</span><div style="width: 100px; word-wrap:break-word">&nbsp;<xmp style="font-size: 17px; font-weight: bold;width: 100px; height: 100%; overflow: auto; display: contents; white-space:pre-wrap;">'+
+				message+'</xmp></div></li>');
 	}else{
-		$('#message_box > ul').append('<li class="list-group-item opponent"><p>'+
-				send+'</p><div class="alert alert-light">'+
-				message+'</div><span>'+temp2+'</span></li>');
+		$('#message_box > ul').append('<li class="list-group-item opponent"><p>'+send+'</p><div style="width: 100px; word-wrap:break-word">'
+				+'<xmp style="font-size: 17px; font-weight: bold; color: brown;width: 100px; height: 100%; overflow: auto; display: contents;'
+				 +' white-space:pre-wrap;">'+
+				message+'</xmp></div>&nbsp;<span>'+temp2+'</span></li>');
 	}
 	
 	// 스크롤 최하단으로 이동시키기 위함

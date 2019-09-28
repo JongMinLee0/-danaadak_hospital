@@ -11,7 +11,7 @@ $(document).ready(function(){
 	//버튼 누르면 submit
 		$('#update_reserve').on('click',function(){
 			var upt = $('input[name=re_state]:checked').val();
-			alert(upt);
+			
 			$('#re_stateFrm').attr('action','re_stateUpdate').submit();
 		});
 		

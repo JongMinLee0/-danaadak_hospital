@@ -23,7 +23,7 @@ public interface MyinfoService {
 	
 	
 	//내 예약 취소
-	public void myresCancelProcess(ReserveDTO rdto);
+	public String myresCancelProcess(int rno);
 	
 	//내 후기 목록
 	public List<ReviewDTO> myReviewListProcess(String username);

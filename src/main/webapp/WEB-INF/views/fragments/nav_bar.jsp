@@ -44,9 +44,10 @@
 				</c:when>
 				<c:otherwise>
 					<span>${sessionScope.memberInfo.name}</span>님
-					<c:if test="${sessionScope.memberInfo.name eq 'admin'}">
+					<sec:authorize access="hasRole('ROLE_ADMIN')">
 						<button class="btn my-2 my-sm-0" type="submit" onClick="location.href='/hos/admin/adminmain'">관리자 페이지</button>
-					</c:if>
+					</sec:authorize>
+					
 				</c:otherwise>
 			</c:choose>
 		

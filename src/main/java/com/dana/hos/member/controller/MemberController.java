@@ -163,7 +163,9 @@ public class MemberController {
 			dto.setBirth(dto.getBirth().replaceAll(",", ""));
 		}
 		
-		if(dto.getProfile_image()==null) {
+		System.out.println(dto.getProfile_image());
+		
+		if(dto.getProfile_image()==null || dto.getProfile_image().equals("") || dto.getProfile_image().equals("null") ) {
 			dto.setProfile_image("/hos/resources/images/defaultIcon.png");
 		}
 		

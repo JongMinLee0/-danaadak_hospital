@@ -18,7 +18,7 @@
 					</thead>
 					<tbody>
 						<tr class="message_wrap">
-							<td id="${cdto.roomId}">${cdto.message}</td>
+							<td id="${cdto.roomId}"><xmp style="overflow: hidden; font-size:17px; margin:0;">${cdto.message}</xmp></td>
 							<td>${cdto.time}</td>
 						</tr>
 					</tbody>

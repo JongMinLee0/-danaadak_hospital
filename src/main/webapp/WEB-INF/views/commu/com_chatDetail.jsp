@@ -8,7 +8,7 @@
 
 <link rel="stylesheet" href="/hos/resources/css/com_chatDetail.css" />
 <script src="/hos/resources/js/com_chatDetail.js"></script>
-
+<img src="/hos/resources/images/chatdetail_img.jpg" alt="채팅이미지" />
 <div class="chat_wrap">
 	<input type="hidden" id="sender" value="${chatroom.name1}" />
 	<form id="frm" action="/hos/chat/exit" method="post">
@@ -32,17 +32,19 @@
 					<c:when test="${message.sender eq sessionScope.memberInfo.username}">
 						<li class="list-group-item me">
 							<p>${message.sender}</p>
-							<span>${message.time}</span><div class="alert alert-warning">
-								${message.message}
-							</div>
+							<span>${message.time}</span>
+							  <div style="width: 100px; word-wrap:break-word">
+							  <pre style="font-size: 17px; font-weight: bold;width: 100px; height: 100%; overflow: auto; display: contents;
+							  white-space:pre-wrap;"><c:out value="${message.message}" /></pre></div>
+							
 						</li>
 					</c:when>
 					<c:otherwise>
 						<li class="list-group-item opponent">
 							<p>${message.sender}</p>
-							<div class="alert alert-success">
-								${message.message}
-							</div><span>${message.time}</span>
+							<div style="width: 100px; word-wrap:break-word">
+							  <pre style="font-size: 17px; font-weight: bold; color: brown;width: 100px; height: 100%; overflow: auto; display: contents;
+							  white-space:pre-wrap;"><c:out value="${message.message}" /></pre></div><span>${message.time}</span>
 						</li>
 					</c:otherwise>
 				</c:choose>

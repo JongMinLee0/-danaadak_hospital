@@ -32,6 +32,12 @@ function recvMessage(recv) {
 		}
 		$('#'+id).text(text);
 		$('#'+id).next().text(recv.time);
+		$('#'+id).parent().css({border:'0 solid orange'}).animate({
+		      borderWidth: 1
+		});
+		$('#'+id).parent().animate({
+		      borderWidth: 0
+		});
 	}
 }
 

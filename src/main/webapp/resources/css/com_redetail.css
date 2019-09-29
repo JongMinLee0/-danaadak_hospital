@@ -31,3 +31,14 @@ body > div.comm_body > div.content_wrap > div.comment_wrap > table > tbody > tr 
 	width: 90%;
 	margin: auto;
 } */
+body > div.comm_body > div.content_wrap > div.detail_wrap > table > tbody > tr:nth-child(2) > td:nth-child(1) > h4 > img{
+	width: 50px;
+	height: 50px;
+	margin-right: 5px;
+}
+
+body > div.comm_body > div.content_wrap > div.comment_wrap > table > tbody > tr td > img{
+	width: 50px;
+	height: 50px;
+	margin-right: 5px;
+}

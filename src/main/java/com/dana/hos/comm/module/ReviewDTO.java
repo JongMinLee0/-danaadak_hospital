@@ -19,6 +19,7 @@ public class ReviewDTO {
 	private String vi_date; // 작성일 추가 됨
 	private int rno; // 예약 번호
 	private ReserveDTO reserveDTO;
+	private String profile_image; // 프로필 이미지를 담기 위함
 
 }
 

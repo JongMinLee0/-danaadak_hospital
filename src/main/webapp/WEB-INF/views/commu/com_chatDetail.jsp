@@ -16,6 +16,7 @@
 		<input type="hidden" id="reciver" name="name2" value="${chatroom.name2}"/>
 		<input type="hidden" id="roomId" name="roomId" value="${chatroom.roomId}"/>
 	</form>
+		<input type="hidden" id="profile_image" name="profile_image" value="${sessionScope.memberInfo.profile_image}" />
 	<div class="card border-secondary mb-3">
 		<div class="card-header">
 			<a href="/hos/comm/chat"><i class="fa fa-angle-left" aria-hidden="true"></i></a>
@@ -31,7 +32,7 @@
 				<c:choose>
 					<c:when test="${message.sender eq sessionScope.memberInfo.username}">
 						<li class="list-group-item me">
-							<p>${message.sender}</p>
+							<p>${message.sender}<img src="${sessionScope.memberInfo.profile_image}" class="rounded-circle" /></p>
 							<span>${message.time}</span>
 							  <div style="width: 100px; word-wrap:break-word">
 							  <pre style="font-size: 17px; font-weight: bold;width: 100px; height: 100%; overflow: auto; display: contents;
@@ -41,7 +42,7 @@
 					</c:when>
 					<c:otherwise>
 						<li class="list-group-item opponent">
-							<p>${message.sender}</p>
+							<p><img src="${profile_image}" class="rounded-circle" />${message.sender}</p>
 							<div style="width: 100px; word-wrap:break-word">
 							  <pre style="font-size: 17px; font-weight: bold; color: brown;width: 100px; height: 100%; overflow: auto; display: contents;
 							  white-space:pre-wrap;"><c:out value="${message.message}" /></pre></div><span>${message.time}</span>

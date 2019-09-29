@@ -11,4 +11,5 @@ public class CommentDTO {
 	private int vino;
 	private String name;
 	private String com_date;
+	private String profile_image;
 }

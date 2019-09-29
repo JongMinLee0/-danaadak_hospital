@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
@@ -37,15 +38,16 @@ public class ChatRoomRepository {
 	private RedisTemplate<String, Object> redisTemplate;
 
 	// Redis
-	//private static final String CHAT_ROOMS = "CHAT_ROOM";
+	// private static final String CHAT_ROOMS = "CHAT_ROOM";
 	private HashOperations<String, String, ChatRoom> opsHashChatRoom; // 채팅방 정보 (방번호, 이름1, 이름2)
 	private HashOperations<String, String, ChatMessage> opsHashChatRoom2; // 메시지를 담고 있다.
-	//private ListOperations<String, Object> opsListChatRoom; // id에 저장되어 있는 채팅방 정보
-	
-	/*@Resource(name = "redisTemplate") 
-	private ListOperations<String, String> listOperation;
+	// private ListOperations<String, Object> opsListChatRoom; // id에 저장되어 있는 채팅방 정보
 
-	*/
+	/*
+	 * @Resource(name = "redisTemplate") private ListOperations<String, String>
+	 * listOperation;
+	 * 
+	 */
 
 	// 채팅방의 대화 메시지를 발행하기 위한 redis topic 정보. 서버별로 채팅방에 매치되는 topic정보를 Map에 넣어
 	// roomId로 찾을 수 있도록 한다
@@ -55,7 +57,7 @@ public class ChatRoomRepository {
 	public void init() {
 		opsHashChatRoom = redisTemplate.opsForHash();
 		opsHashChatRoom2 = redisTemplate.opsForHash();
-		/*opsListChatRoom = redisTemplate.opsForList();*/
+		/* opsListChatRoom = redisTemplate.opsForList(); */
 		topics = new HashMap<>();
 	}
 
@@ -75,13 +77,15 @@ public class ChatRoomRepository {
 	public ChatRoom createChatRoom(String name1, String name2) {
 		ChatRoom chatRoom = ChatRoom.create(name1, name2);
 		// List로 저장한 것을 Hash로 변경
-		/*opsHashChatRoom.put(CHAT_ROOMS, chatRoom.getRoomId(), chatRoom);
-		opsListChatRoom.leftPush(name1, chatRoom.getRoomId());
-		opsListChatRoom.leftPush(name2, chatRoom.getRoomId());*/
-		
+		/*
+		 * opsHashChatRoom.put(CHAT_ROOMS, chatRoom.getRoomId(), chatRoom);
+		 * opsListChatRoom.leftPush(name1, chatRoom.getRoomId());
+		 * opsListChatRoom.leftPush(name2, chatRoom.getRoomId());
+		 */
+
 		// username, roomId, opponent => Hash로 저장
-		opsHashChatRoom.put(name1,chatRoom.getRoomId(),chatRoom);
-		opsHashChatRoom.put(name2,chatRoom.getRoomId(),chatRoom);
+		opsHashChatRoom.put(name1, chatRoom.getRoomId(), chatRoom);
+		opsHashChatRoom.put(name2, chatRoom.getRoomId(), chatRoom);
 		return chatRoom;
 	}
 
@@ -96,23 +100,23 @@ public class ChatRoomRepository {
 			topics.put(roomId, topic);
 		}
 	}
-	
+
 	// 유저가 속해있는 모든 채팅방 정보
-	public List<ChatRoom> roomList(String username){
+	public List<ChatRoom> roomList(String username) {
 		return opsHashChatRoom.values(username);
 	}
-	
+
 	// 해당 채팅방에 존재하는 모든 메시지를 가져온다.
-	public List<ChatMessage> roomMessage(String roomId){
+	public List<ChatMessage> roomMessage(String roomId) {
 		return opsHashChatRoom2.values(roomId);
 	}
-	
+
 	// 서로 이미 채팅중인지를 확인하는 메소드
 	public boolean existRoom(String name1, String name2) {
 		List<ChatRoom> firstList = roomList(name1);
 		List<ChatRoom> secondList = roomList(name2);
 		List<String> secondRoom = new ArrayList<>();
-		for(ChatRoom str1 : secondList) {
+		for (ChatRoom str1 : secondList) {
 			secondRoom.add(str1.getRoomId());
 		}
 		for (ChatRoom str : firstList) {
@@ -129,13 +133,22 @@ public class ChatRoomRepository {
 		// 필드삭제
 		opsHashChatRoom.delete(name1, roomId);
 		opsHashChatRoom.delete(name2, roomId);
-		
 		// 키삭제
 		redisTemplate.delete(roomId);
 	}
-	
-	
+
 	public ChannelTopic getTopic(String roomId) {
 		return topics.get(roomId);
 	}
+
+	// 존재하는 모든 key 정보를 출력해준다.
+	public Set allKeys() {
+		return redisTemplate.keys("*");
+	}
+
+	// 시간이 지난 메세지를 지워준다.
+	public void deleteMessage(String roomId, String time) {
+		opsHashChatRoom2.delete(roomId, time);
+	}
+
 }

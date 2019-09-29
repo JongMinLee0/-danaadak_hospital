@@ -15,4 +15,10 @@ public interface ChatService {
 	
 	// 채팅방을 나가면 삭제해준다.
 	public void deleteRoom(String roomId, String name1, String name2);
+	
+	// 상대방의 채팅 이미지를 가지고 온다.
+	public String searchProfile(String username);
+	
+	// 3일이 지난 메시지를 삭제해준다.
+	public void deleteMessage();
 }

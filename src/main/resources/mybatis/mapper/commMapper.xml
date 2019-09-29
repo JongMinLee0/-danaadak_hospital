@@ -16,14 +16,16 @@
 		<![CDATA[
 			select b.* from 
 			(select rownum as rm, a.* from(
-			select * from review order by vino desc)a)b
+			select rs.*, me.profile_image from review rs, member me where rs.username=me.username 
+			order by vino desc)a)b
 			where b.rm >= #{startPage} and b.rm <= #{endPage}
 		]]>
 	</select>
 	
 	<!-- 특정사용자 후기 글 목록  -->
 	<select id="myList" resultType="com.dana.hos.comm.module.ReviewDTO" parameterType="String">
-		select * from review where username=#{username}
+		select re.*, me.profile_image from review re, member me 
+		where me.username = re.username and re.username=#{username};
 	</select>
 	
 	<!-- 전체 해시 태그  -->
@@ -33,12 +35,12 @@
 	
 	<!-- 특정번호 후기 글 상세  -->
 	<select id="reviewDetail" resultType="com.dana.hos.comm.module.ReviewDTO" parameterType="int">
-		select * from review where vino=#{vino}
+		select re.*,me.profile_image from review re, member me where vino=#{vino} and re.username=me.username
 	</select>
 	
 	<!-- 후기 댓글작성  -->
 	<insert id="write_com" parameterType="com.dana.hos.comm.module.CommentDTO">
-		insert into review_com values(cno_seq.nextval, #{com_content}, #{vino}, #{name, jdbcType=VARCHAR}, sysdate)
+		insert into review_com values(cno_seq.nextval, #{com_content}, #{vino}, #{name, jdbcType=VARCHAR}, sysdate, #{profile_image})
 	</insert>
 	
 	<!-- 해당 글의 댓글 가지고 오기  -->
@@ -72,7 +74,7 @@
 		<![CDATA[
 			select b.* from
 			(select rownum as rm, a.* from(
-			select * from review where vi_hash like '%' ||  #{vi_hash} || '%' order by vino desc)a)b
+			select re.*, me.profile_image from review re, member me where me.username=re.username and vi_hash like '%' ||  #{vi_hash} || '%' order by vino desc)a)b
 			where b.rm >= #{startPage} and b.rm <= #{endPage}
 		]]>
 	</select>

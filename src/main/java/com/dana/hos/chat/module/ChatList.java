@@ -11,6 +11,7 @@ public class ChatList {
 	private String message; //
 	private String roomId; // 방번호
 	private String time; // 시간
+	private String profile_image;
 	/*
 	 ChatMessage 요소
 	 type // 메시지 타입

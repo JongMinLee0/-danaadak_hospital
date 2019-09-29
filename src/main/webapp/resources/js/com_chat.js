@@ -35,9 +35,11 @@ function recvMessage(recv) {
 		$('#'+id).parent().css({border:'0 solid orange'}).animate({
 		      borderWidth: 1
 		});
+		$('.chatList_wrap .'+id).insertBefore($('body > div.comm_body > div.content_wrap > div > a')[0]);
 		$('#'+id).parent().animate({
 		      borderWidth: 0
 		});
+		
 	}
 }
 

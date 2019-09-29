@@ -10,7 +10,7 @@
 				<td style="text-align: right;">${dList.vi_date}<hr></td>
 			</tr>
 			<tr>
-				<td><h4>${dList.username}</h4></td>
+				<td><h4><img class="rounded-circle" src="${dList.profile_image}" />${dList.username}</h4></td>
 				<c:choose>
 					<c:when test="${sessionScope.memberInfo.username eq dList.username}">
 						<td style="text-align: right;">
@@ -43,6 +43,7 @@
 		<input type="hidden" id="vino" name="vino" value="${dList.vino}" />
 		<input type="hidden" id="name" name="name" value="${sessionScope.memberInfo.name}" />
 		<input type="hidden" id="userId" name="userId" value="${sessionScope.memberInfo.username}" />
+		<input type="hidden" id="profile_image" name="profile_image" value="${sessionScope.memberInfo.profile_image}" />
 		<textarea class="form-control" rows="5" id="comment" name="com_content" placeholder="댓글을 작성해주세요."></textarea>
 		<input type="submit" value="작성" id="subBtn">
 		<input type="button" value="뒤로" id="backBtn">
@@ -51,7 +52,9 @@
 	<table class="comment_table">
 	<c:forEach items="${cList}" var="cdto">
 		<tr>
-			<td style="font-weight: bold"><hr>${cdto.name}</td>
+			<td style="font-weight: bold">
+			<hr>
+			<img class="rounded-circle" src="${cdto.profile_image}" />${cdto.name}</td>
 			<td><hr>${cdto.com_date}</td>
 			<c:choose>
 					<c:when test="${sessionScope.memberInfo.name eq cdto.name}">
@@ -65,7 +68,9 @@
 			</c:choose>
 		</tr>
 		<tr>
-			<td colspan="2">${cdto.com_content}<br /><br /></td>
+			<td colspan="2">
+			<br />
+			${cdto.com_content}<br /><br /></td>
 		</tr>
 	</c:forEach>
 	</table>

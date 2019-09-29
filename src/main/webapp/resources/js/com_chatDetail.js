@@ -63,7 +63,8 @@ var reconnect = 0;
 
 // 메시지 보내기
 function sendMessage(){
-	  ws.send("/pub/chat/message", {}, JSON.stringify({type:'TALK', roomId:chatRoomId, sender:chatSender,reciver:chatReciver ,message:$('#comment').val()}));
+	  ws.send("/pub/chat/message", {}, JSON.stringify({type:'TALK', roomId:chatRoomId, 
+		  sender:chatSender,reciver:chatReciver ,message:$('#comment').val(), profile_image:$('#profile_image').val()}));
       $('#comment').val('');
 }
 
@@ -76,11 +77,11 @@ function recvMessage(recv) {
 	var temp2 = temp[0]+":"+temp[1];
 	
 	if(send==chatSender){
-		$('#message_box > ul').append('<li class="list-group-item me"><p>'+send+'</p><span>'
+		$('#message_box > ul').append('<li class="list-group-item me"><p>'+send+'<img src="'+recv.profile_image+'" class="rounded-circle" /></p><span>'
 				+temp2+'</span><div style="width: 100px; word-wrap:break-word">&nbsp;<xmp style="font-size: 17px; font-weight: bold;width: 100px; height: 100%; overflow: auto; display: contents; white-space:pre-wrap;">'+
 				message+'</xmp></div></li>');
 	}else{
-		$('#message_box > ul').append('<li class="list-group-item opponent"><p>'+send+'</p><div style="width: 100px; word-wrap:break-word">'
+		$('#message_box > ul').append('<li class="list-group-item opponent"><p><img src="'+recv.profile_image+'" class="rounded-circle" />'+send+'</p><div style="width: 100px; word-wrap:break-word">'
 				+'<xmp style="font-size: 17px; font-weight: bold; color: brown;width: 100px; height: 100%; overflow: auto; display: contents;'
 				 +' white-space:pre-wrap;">'+
 				message+'</xmp></div>&nbsp;<span>'+temp2+'</span></li>');

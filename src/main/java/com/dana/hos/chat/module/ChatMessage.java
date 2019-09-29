@@ -21,4 +21,5 @@ public class ChatMessage implements Serializable{
 	private String reciver; // 메시지 받는사람
 	private String message; // 메시지
 	private String time; // 메시지 보낸 시간
+	private String profile_image; // 프로필 이미지
 }

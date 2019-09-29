@@ -64,6 +64,7 @@ public class ChatRoomController {
 	public ModelAndView roomDetail(ModelAndView mav, @ModelAttribute ChatRoom chatroom) {
 		mav.setViewName("chatRoom");
 		// 메시지를 뿌려주는 메소드를 작성해야 한다.
+		mav.addObject("profile_image", chatService.searchProfile(chatroom.getName2()));
 		mav.addObject("messageList", chatService.messageList(chatroom.getRoomId()));
 		mav.addObject("chatroom", chatroom);
 		return mav;

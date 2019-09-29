@@ -24,7 +24,7 @@
 	<c:forEach items="${rList}" var="rdto">  
 			<a class="list_link" href="/hos/comm/reviewDetail?vi_hash=${hash}&vino=${rdto.vino}">
 				<div class="card border-secondary mb-3" >
-					<div class="card-header">${rdto.name}</div>
+					<div class="card-header"><img src="${rdto.profile_image}" class="rounded-circle" />${rdto.name}</div>
 				  	<div class="card-body text-secondary">
 				    	<h5 class="card-title" style="font-weight: bold;">${rdto.vi_subject}</h5>
 				    		<p class="card-text"><c:forEach var="i" begin="1" end="${rdto.vi_star}" step="1">

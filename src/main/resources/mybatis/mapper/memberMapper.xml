@@ -51,5 +51,8 @@
     	update member set password=#{password} where username=#{username} and name=#{name}
     </update>
     
+    <select id="searchProfile" resultType="String">
+    	select profile_image from member where username=#{username}
+    </select>
     
 </mapper>

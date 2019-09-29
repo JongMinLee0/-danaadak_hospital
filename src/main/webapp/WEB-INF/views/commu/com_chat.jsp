@@ -9,11 +9,13 @@
 <div class="chatList_wrap">
 		<input type="hidden" id="userId" value="${sessionScope.memberInfo.username}" />
 		<c:forEach items="${cList}" var="cdto">
-			<a href="/hos/chat/room/enter?roomId=${cdto.roomId}&name1=${sessionScope.memberInfo.username}&name2=${cdto.opponent}">	
+			<a class="${cdto.roomId}"href="/hos/chat/room/enter?roomId=${cdto.roomId}&name1=${sessionScope.memberInfo.username}&name2=${cdto.opponent}">	
 				<table class="table">
 					<thead class="thead-light">
 						<tr colspan="2">
-							<th>${cdto.opponent}<input type="hidden" class="roomNum" value="${cdto.roomId}" /></th>
+							<th>
+							<img class="rounded-circle" src="${cdto.profile_image}" />
+							${cdto.opponent}<input type="hidden" class="roomNum" value="${cdto.roomId}" /></th>
 						</tr>
 					</thead>
 					<tbody>

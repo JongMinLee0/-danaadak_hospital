@@ -39,10 +39,6 @@ public class MyInfoController {
 	
 	private ReserveDTO rdto;
 	
-	@Autowired
-	private BCryptPasswordEncoder bCryptPasswordEncoder;
-
-	private ReserveDTO rdto;
 
 	// 마이페이지 메인
 	@RequestMapping("/myinfo/myinfomain")

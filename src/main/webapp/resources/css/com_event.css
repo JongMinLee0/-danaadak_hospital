@@ -34,7 +34,8 @@ body > div.footer-content{
 }
 .paging{
     position: relative;
-    top: 150px;
+    left: 400px;
+    text-align: center;
 }
 
 /* 이벤트 목록 사진크기 조절  */

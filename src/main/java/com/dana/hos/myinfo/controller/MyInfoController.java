@@ -136,7 +136,7 @@ public class MyInfoController {
 		//기존 첨부파일
 		String filename = myinfoService.fileSelectprocess(dto.getUsername());
 		String root = request.getSession().getServletContext().getRealPath("/");
-		String saveDirectory = root + "temp" + File.separator;
+		String saveDirectory = root;
 		
 		System.out.println(saveDirectory);
 		
@@ -145,8 +145,6 @@ public class MyInfoController {
 		
 		//수정한 첨부파일이 있으면
 		if(!profile.isEmpty()) {
-			//중복파일을 처리하기 위해 난수 발생
-			UUID random = UUID.randomUUID();
 			//기존 첨부파일이 있으면 기존첨부파일을 제거시켜줘라
 			if(filename !=null) {
 				File pro = new File(saveDirectory, filename);
@@ -155,8 +153,8 @@ public class MyInfoController {
 				pro.delete();
 			}
 			String fileName = profile.getOriginalFilename();
-			dto.setProfile_image(random + "_" + fileName);
-			File ff = new File(saveDirectory, random + "_" + fileName);
+			dto.setProfile_image(fileName);
+			File ff = new File(saveDirectory+ fileName);
 			try {
 		            FileCopyUtils.copy(profile.getInputStream(), new FileOutputStream(ff));
 		         } catch (IOException e) {

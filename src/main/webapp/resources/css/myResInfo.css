@@ -7,6 +7,10 @@
 	text-align: center;
 }
 
+th {
+	border-bottom: 
+}
+
 td{
 	height: 50px;
 }
@@ -18,7 +22,10 @@ a{
 .resMessDetail{
 	text-align : left;
 }
+
+/* 마이페이지 네비 바 */
 ul.nav.nav-tabs {
+  background:#fff;	
   letter-spacing:-1px;
   height: 50px;
   line-height:50px;
@@ -28,20 +35,24 @@ ul.nav.nav-tabs li {
     display: inline-block;
     margin-bottom:-2px;
     width: 110px;
-    height: 50px;
+    height: 48px;
     margin: 0 auto;
 }
 ul.nav.nav-tabs li p {
       border:none;
       border-radius:0px;
-      color:#0000ff;
+      color:#000000;
       margin-right:5px;
       min-width:11px;
       display:inline-block;
       text-align: center;
+      font-weight: bold;
+}
+
+ul.nav.nav-tabs li p:hover{
+     color: #E5E5E5;	
 }
 
 ul.nav.nav-tabs li:hover {
       background:#fff;
-      color:#000000;
 }

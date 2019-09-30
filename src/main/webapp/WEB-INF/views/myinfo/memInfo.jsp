@@ -22,11 +22,31 @@
 	$(document).ready(function() {
 		$('body > div.navbar_wrap.fixed-top').removeClass('fixed-top');
 		setDateBox();
-		//취소버튼 돌아가기
-		//         $('#modCancleBtn').on('click', function() {
-		//     		$('#myPageWrap').load('/hos/myinfo/myinfomain');
-		//     	});
+		
+		var file = document.querySelector('#iconSelectBtn');
 
+		file.onchange = function () {
+			console.log(file);
+				
+			var patt = /(.jpg$|.png$|.gif$)/gi;
+			var result = file.match(patt);
+			if(!result){
+				alert('jpg, gif, png만 가능합니다');
+				$('#iconSelectBtn').val('');
+				return false;
+			}
+			
+			var fileList = file.files ;
+
+		    // 읽기
+		    var reader = new FileReader();
+		    reader.readAsDataURL(fileList [0]);
+		    
+		    //로드한 후
+		    reader.onload = function(){
+		    	document.querySelector('#icon').src = reader.result;
+			};
+		}
 		//저장버튼 수정내용 전송
 		$('#modFinishBtn').on('click', function() {
 
@@ -85,7 +105,7 @@
 		$('#sample4_roadAddress').val(addr.split(",")[1]);
 		$('#sample4_detailAddress').val(addr.split(",")[2]);
 
-		//생년월일 셀렉트 박스 선택하지 
+		//생년월일 셀렉트 박스 선택하기
 		var birthday = '${sessionScope.memberInfo.birth}';
 		$('#yy').val(birthday.substring(0, 4));
 		$('#mm').val(birthday.substring(4, 6));
@@ -193,12 +213,28 @@
 	}
 </script>
 <style type="text/css">
+body{
+	background-color :#F8FFFF;
+}
 #myPageWrap {
 	text-align: -webkit-center;
 }
 
+.profile{ 
+	border-bottom: 2px solid #ADDAE6;
+} 
+
+/* .content{ */
+/* 	background-color: #F8FFFF; */
+/* } */
+
+#topTable{
+	border-top: 2px solid #ADDAE6;
+}
+#tableBottom{
+	border-bottom: 2px solid #ADDAE6;
+}
 #myPageBody {
-	border: 1px solid #007bff;
 	margin: 0 auto;
 }
 
@@ -272,6 +308,7 @@
 }
 
 ul.nav.nav-tabs {
+	background:#fff;
 	letter-spacing: -1px;
 	height: 50px;
 	line-height: 50px;
@@ -282,7 +319,7 @@ ul.nav.nav-tabs li {
 	display: inline-block;
 	margin-bottom: -2px;
 	width: 110px;
-	height: 50px;
+	height: 48px;
 	margin: 0 auto;
 }
 
@@ -296,10 +333,12 @@ ul.nav.nav-tabs li p {
 	text-align: center;
 	font-weight: bold;
 }
+ul.nav.nav-tabs li p:hover{
+     color: #E5E5E5;	
+}
 
 ul.nav.nav-tabs li:hover {
 	background: #fff;
-	color: #E5E5E5;
 }
 </style>
 </head>
@@ -320,26 +359,30 @@ ul.nav.nav-tabs li:hover {
 			<li class="active" id="nav_reviewList"><a
 				href="/hos/myinfo/myReview"><p>내 병원 후기</p></a></li>
 		</ul>
-
+	<div id="myPagebackground">
 		<br />
 		<p>
 		<h3>
 			<b>회원 정보</b>
 		</h3>
 		</p>
-		<br /> <br />
+		
+		<br />
 		<form id="frm" name="frm" action="/hos/myinfo/myinfoupdate"
 			method="post" enctype="multipart/form-data">
 			<table id="myPageBody">
-				<tr class="content">
+				<tr class="content" id="topTable">
 					<!-- 아이콘 -->
-					<td class="profile" rowspan="8" width="100px" align="center">프로필</td>
+					<td class="profile" rowspan="8" width="100px" align="center" style="font-weight:bold;">프로필</td>
 
-					<td class="myicon" colspan="4" align="center"><img id="icon"
-						name="icon" src="${sessionScope.memberInfo.profile_image}"> <br />
-						<input type="file" id="iconSelectBtn" name="profile_image" type="file"> 
+					<td class="myicon" colspan="4" align="center">
+					<br/>
+					<img id="icon" name="profile_image" src="/hos/${sessionScope.memberInfo.profile_image}"> <br />
+						<br/>
+						<input type="file" id="iconSelectBtn" name="filename" type="file"> 
 						<input type="hidden" id="user_icon" name="user_icon" /> 
 						<input type="hidden" id="user_icon_before" name="user_icon" /></td>
+				
 
 				</tr>
 
@@ -437,7 +480,7 @@ ul.nav.nav-tabs li:hover {
 					<td style="width: 20px;"></td>
 				</tr>
 
-				<tr class="content">
+				<tr class="content" id="tableBottom">
 					<!-- 전화번호 -->
 					<td class="myPageList" width="100px" align="center">전화번호</td>
 					<td colspan="2"><input type="text" id="phoneText" name="phone"
@@ -464,6 +507,7 @@ ul.nav.nav-tabs li:hover {
 					type="submit" id="modFinishBtn" class="chgbtns" value="저장" />
 			</div>
 		</form>
+		</div>
 	</div>
 	<tiles:insertAttribute name="footer" />
 </body>

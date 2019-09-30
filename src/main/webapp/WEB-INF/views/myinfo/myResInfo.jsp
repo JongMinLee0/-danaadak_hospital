@@ -37,6 +37,11 @@ $(document).ready(function() {
 	  
   });
 
+  $("#backBtn").click(function(){
+
+		window.history.back();
+
+	});
 });
 </script>
 
@@ -147,6 +152,7 @@ $(document).ready(function() {
 	</tbody>
 </table>
 <%-- </form> --%>
+<input type="button" id="backBtn" value="이전">
 </div>
 <tiles:insertAttribute name="footer" />	
 </body>

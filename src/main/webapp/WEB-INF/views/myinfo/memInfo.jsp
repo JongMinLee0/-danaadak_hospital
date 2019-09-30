@@ -33,10 +33,16 @@
 			var now_pw = $('#now_pw').val();
 			var new_pw = $('#password').val();
 			var new_pw_confirm = $('#passwordConfirm').val();
+			var regPassword = /^[A-Za-z0-9`\-=\\\[\];',\./~!@#\$%\^&\*\(\)_\+|\{\}:"<>\?]{8,16}$/;
+			
+			
 			
 			if(now_pw != '' && new_pw != '' && new_pw_confirm != ''){
 				if (new_pw != new_pw_confirm) {
 					alert('비밀번호를 다시 확인해주세요.');
+					return false;
+				} else if (!regPassword.test(new_pw)) {
+					swal("비밀번호는 8~16자 영문 대 소문자, 숫자, 특수문자를 사용하세요.");
 					return false;
 				} else {
 					$.ajax({

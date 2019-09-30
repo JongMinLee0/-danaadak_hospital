@@ -7,8 +7,11 @@
 	text-align: center;
 }
 
+/* 표 타이틀 디자인 */
 th {
-	border-bottom: 
+	border-bottom: 2px solid #000;
+	background-color: rgba(201,223,242, 0.3);
+	height: 50px;
 }
 
 td{
@@ -19,8 +22,32 @@ a{
 	text-decoration: none;
 }
 
+
+/* 전달할 메세지 왼쪽정렬 */
 .resMessDetail{
 	text-align : left;
+}
+
+/* 버튼 디자인 */
+.btns{
+  background : #343a40;
+  color:#fff;
+  border:none;
+  position:relative;
+  width:100px;
+  height:30px;
+  font-size:15px;
+  padding:2px;
+  cursor:pointer;
+  transition:800ms ease all;
+  outline:none;
+  border-radius: 6px;
+  font-weight: bold;
+}
+.btns:hover{
+  background:#fff;
+  color:#000;
+  font-weight: bold;
 }
 
 /* 마이페이지 네비 바 */

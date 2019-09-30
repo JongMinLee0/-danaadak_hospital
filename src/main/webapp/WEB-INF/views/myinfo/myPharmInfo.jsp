@@ -17,13 +17,13 @@
 <script type="text/javascript">
 $(document).ready(function() {
 	$('body > div.navbar_wrap.fixed-top').removeClass('fixed-top');
-// //	var rno = $('.pharmName').attr('id');
-// //	rno.replace(',','<br/>');
+    $('.pharmName').val($('.pharmName').val().replace(',','<br/>'));
+
 	
 // //	$('.pharmName').each(function() {
 // 	var rno = $('.pharmName').attr('id');	
 // 	var text = rno.html();
-// 		alert(text)
+//	alert(text);
 // //		$('.pharmName').children().html(text.replace(',', '<br/>'));
 // //	});
 });
@@ -34,14 +34,46 @@ $(document).ready(function() {
 }
 
 .myPharmTable{
+	width:70%;
 	text-align: center;
 }
+
+/* 표 타이틀 디자인 */
+th {
+	border-bottom: 2px solid #000;
+	background-color: rgba(201,223,242, 0.3);
+	height: 50px;
+}
+
 td{
 	height: 50px;
 }
 
+/* 버튼 디자인 */
+.btns{
+  background : #343a40;
+  color:#fff;
+  border:none;
+  position:relative;
+  width:100px;
+  height:30px;
+  font-size:15px;
+  padding:2px;
+  cursor:pointer;
+  transition:800ms ease all;
+  outline:none;
+  border-radius: 6px;
+  font-weight: bold;
+}
+.btns:hover{
+  background:#fff;
+  color:#000;
+  font-weight: bold;
+}
 
+/* 마이페이지 네비 바 */
 ul.nav.nav-tabs {
+  background:#fff;	
   letter-spacing:-1px;
   height: 50px;
   line-height:50px;
@@ -51,22 +83,24 @@ ul.nav.nav-tabs li {
     display: inline-block;
     margin-bottom:-2px;
     width: 110px;
-    height: 50px;
+    height: 48px;
     margin: 0 auto;
 }
 ul.nav.nav-tabs li p {
       border:none;
       border-radius:0px;
-      color:#0000ff;
+      color:#000000;
       margin-right:5px;
       min-width:11px;
       display:inline-block;
       text-align: center;
+      font-weight: bold;
 }
-
+ul.nav.nav-tabs li p:hover{
+     color: #E5E5E5;	
+}
 ul.nav.nav-tabs li:hover {
       background:#fff;
-      color:#000000;
 }
 </style>
 </head>
@@ -111,7 +145,8 @@ ul.nav.nav-tabs li:hover {
 			<c:if test="${myres[status.index].medicine != null}">
 				<td class="hosName">${myres[status.index].hosDTO.hos_name}</td>
 				<td class="resDate">${myres[status.index].re_date}</td>
-				<td class="pharmName" id="${myPharmList.rno}">${myres[status.index].medicine}</td>
+				<td class="pharmName" id="${myPharmList.rno}">
+				${myres[status.index].medicine}</td>
 				<td class="pharmQuan">${myres[status.index].eat_cnt}</td>
 				<td class="pharmCountn">${myres[status.index].eat_cnt}</td>
 			</c:if>
@@ -119,6 +154,8 @@ ul.nav.nav-tabs li:hover {
 	</c:forEach>		
 	</tbody>
 </table>
+<br/>
+<a href ="/hos/myinfo/myinfomain"><input type="button" id="backBtn" value="이전" class="btns"></a>
 </div>
 <tiles:insertAttribute name="footer" />	
 </body>

@@ -85,9 +85,9 @@
 		from event e , hospital h
 		where e.hos_id = h.hos_id --> 
 			<![CDATA[ select b.* from
-			(select rownum as rm, a.* from(
-			select * from event order by eno desc)a)b
-			where b.rm>=#{startRow} and b.rm<=#{endRow}
+         (select rownum as rm, a.* from(
+         select e.*, h.hos_name from event e, HOSPITAL h where e.hos_id = h.hos_id order by eno desc )a)b
+        where b.rm>=#{startRow} and b.rm<=#{endRow}
 			]]> 
 	</select>
 	

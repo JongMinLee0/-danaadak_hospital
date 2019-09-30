@@ -1,17 +1,54 @@
+/* 관리자 메인 사진 */
+#adminMain{
+ width: 1920px;
+	height:985px;
+	background-image: url('../images/desk.jpg');
+	background-size: cover;
+	background-repeat: no-repeat;
+	margin: 0;
+	margin-left: -21%;
+}
+
+
+/* 관리자 메인 사진안에 글 */
+#adminMain_write{
+    margin-bottom: 1rem;
+    width:50%;
+    margin: auto;
+    heigth:330px;!important;
+}
+#adminMain_write p{
+	font-size: 80px;
+	font-weight: bold;
+	    text-align: center;
+    color: red;
+}
 /* 관리자 페이지 마진 */
-#admin_h{
-	margin-left:350px; margin-top:30px;
+#admin_h {
+	margin-left: 350px;
+	margin-top: 30px;
 }
 
 /* 이벤트 리스트 */
-.admin_wrap{
-	width: 600px; height: 200px";
+.admin_wrap {
+	width: 600px;
+	height: 200px";
 }
 /* 이벤트 타입 리스트 */
-.joinList{
+.joinList {
 	width: 600px;
 }
 /* 이벤트 타입 리스트에서 제목  */
-#red{
+#red {
 	color: red;
+}
+
+/* 리스트로 되돌아가기 버튼 */
+#adminlist {
+	float: right;
+	margin-right: 350px;
+}
+
+#type_btn{
+	background-color: cornflowerblue;
 }

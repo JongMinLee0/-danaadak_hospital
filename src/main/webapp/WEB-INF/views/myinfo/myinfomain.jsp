@@ -13,19 +13,9 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
 
 <script type="text/javascript">
-//마이페이지 메인
-
 //마이페이지 섹션
 $(document).ready(function() {
-/* 	$('#memberInfo').on('click', function() {
-		$('#myInfocontent').load('/hos/myinfo/memInfo');
-	});
- */
-
 		$('body > div.navbar_wrap.fixed-top').removeClass('fixed-top');
-	
-	
-	
 });
 </script>
 
@@ -47,17 +37,19 @@ $(document).ready(function() {
 			<a href="/hos/myinfo/myReview"><p>내 병원 후기</p></a>
 		</li>
 	</ul>
+  	<br/>
+  	<br/>
   
-  
-  <!-- CONTENTS -->
+  <!-- CONTENTS -->  	
+
 	<div id="myInfocontent" class="section_home">
 	<div class="column">
 		<input type="hidden" value="${sessionScope.memberInfo.username}" name="username"/>
 		
 		<!-- 회원정보 수정 -->
-		<div class="sh_group">
+		<div class="sh_group" id="myPageDiv">
 			<span class="myinfoTitle">회원정보 수정</span>
-			<p>이름  &nbsp;&nbsp;  ${sessionScope.memberInfo.name} &nbsp;&nbsp; <a href="/hos/myinfo/memInfo"><input type="button" id="memberInfo" value="정보 수정"/></a></p>
+			<p style="font-weight:bold;">이름  &nbsp;&nbsp;  ${sessionScope.memberInfo.name} &nbsp;&nbsp; <a href="/hos/myinfo/memInfo"><input type="button" id="memberInfo" value="정보 수정"/></a></p>
 		</div>
 
 		<!-- 처방전 내역 -->
@@ -70,7 +62,7 @@ $(document).ready(function() {
 				<th>발급날짜</th>
 			</tr>
 			<c:forEach var="myresList" items="${myres}" varStatus="status" begin="0" end="2">
-			<tr align="center">
+			<tr align="center" class="trClass">
 				<c:if test="${myres[status.index].medicine == null}">
 				<input type="hidden" >
 				</c:if>
@@ -97,8 +89,8 @@ $(document).ready(function() {
 				<th>날짜</th>
 				<th>시간</th>
 			</tr>
-			<c:forEach var="myresList" items="${myres}" varStatus="status" begin="0" end="3">
-				<tr align="center">
+			<c:forEach var="myresList" items="${myres}" varStatus="status" begin="0" end="2">
+				<tr align="center" class="trClass">
 				<c:if test="${myres[status.index].hos_id == null}">
 				<input type="hidden" >
 				</c:if>

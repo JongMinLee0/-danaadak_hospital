@@ -83,17 +83,18 @@ ul.nav.nav-tabs li {
 ul.nav.nav-tabs li p {
       border:none;
       border-radius:0px;
-      color:#0000ff;
+      color:#000000;
       margin-right:5px;
       min-width:11px;
       display:inline-block;
       text-align: center;
+      font-weight: bold;
 }
 
 
 ul.nav.nav-tabs li:hover {
       background:#fff;
-      color:#000000;
+      color: #E5E5E5;
 }
 
 #memberInfo, #myrevbtn{

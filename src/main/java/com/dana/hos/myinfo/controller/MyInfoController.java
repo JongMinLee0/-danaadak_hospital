@@ -103,7 +103,7 @@ public class MyInfoController {
 		myinfoService.myinfoUpdateProcess(dto);
 		HttpSession session = request.getSession();
 		session.setAttribute("memberInfo", memberService.userInfoProcess(dto.getUsername()));
-		return "redirect:/myinfo/myinfomain";
+		return "redirect:/myinfo/memInfo";
 	}
 	
 

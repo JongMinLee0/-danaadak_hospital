@@ -283,16 +283,17 @@ ul.nav.nav-tabs li {
 ul.nav.nav-tabs li p {
 	border: none;
 	border-radius: 0px;
-	color: #0000ff;
+	color: #000000;
 	margin-right: 5px;
 	min-width: 11px;
 	display: inline-block;
 	text-align: center;
+	font-weight: bold;
 }
 
 ul.nav.nav-tabs li:hover {
 	background: #fff;
-	color: #000000;
+	color: #E5E5E5;
 }
 </style>
 </head>
@@ -322,17 +323,17 @@ ul.nav.nav-tabs li:hover {
 		</p>
 		<br /> <br />
 		<form id="frm" name="frm" action="/hos/myinfo/myinfoupdate"
-			method="post">
+			method="post" enctype="multipart/form-data">
 			<table id="myPageBody">
 				<tr class="content">
 					<!-- 아이콘 -->
 					<td class="profile" rowspan="8" width="100px" align="center">프로필</td>
 
 					<td class="myicon" colspan="4" align="center"><img id="icon"
-						name="icon" src="/hos/resources/images/defaultIcon.png"> <br />
-						<button id="iconSelectBtn">아이콘 선택하기</button> <input type="hidden"
-						id="user_icon" name="user_icon" /> <input type="hidden"
-						id="user_icon_before" name="user_icon" /></td>
+						name="icon" src="${sessionScope.memberInfo.profile_image}"> <br />
+						<input type="file" id="iconSelectBtn" name="profile_image" type="file"> 
+						<input type="hidden" id="user_icon" name="user_icon" /> 
+						<input type="hidden" id="user_icon_before" name="user_icon" /></td>
 
 				</tr>
 
@@ -346,7 +347,7 @@ ul.nav.nav-tabs li:hover {
 				<tr class="content">
 					<!-- 이름 -->
 					<td class="myPageList" width="100px" align="center">이름</td>
-					<td id="loginName" colspan="3">${sessionScope.memberInfo.profile_image}</td>
+					<td id="loginName" colspan="3">${sessionScope.memberInfo.name}</td>
 				</tr>
 				<tr class="content">
 					<!-- 성별 -->

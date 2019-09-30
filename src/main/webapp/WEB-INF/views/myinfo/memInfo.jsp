@@ -243,27 +243,29 @@ body{
 }
 
 #modFinishBtn {
-	background: #007bff;
-	color: #fff;
-	border: none;
-	position: relative;
-	width: 100px;
-	height: 30px;
-	font-size: 15px;
-	padding: 2px;
-	cursor: pointer;
-	transition: 800ms ease all;
-	outline: none;
-	border-radius: 6px;
+  background : #343a40;
+  color:#fff;
+  border:none;
+  position:relative;
+  width:100px;
+  height:30px;
+  font-size:15px;
+  padding:2px;
+  cursor:pointer;
+  transition:800ms ease all;
+  outline:none;
+  border-radius: 6px;
+  font-weight: bold;
 }
 
 #modFinishBtn:hover {
-	background: #fff;
-	color: #007bff;
+  background:#fff;
+  color:#000;
+  font-weight: bold;
 }
 
 #modCancleBtn {
-	background: #7DDCFF;
+	background: #ADDAE6;
 	color: #fff;
 	border: none;
 	position: relative;
@@ -275,11 +277,13 @@ body{
 	transition: 800ms ease all;
 	outline: none;
 	border-radius: 6px;
+	font-weight: bold;
 }
 
 #modCancleBtn:hover {
 	background: #fff;
 	color: #007bff;
+	font-weight: bold;
 }
 
 .myPageList {
@@ -503,8 +507,8 @@ ul.nav.nav-tabs li:hover {
 					name="authority" /> <input type="hidden"
 					value="${sessionScope.memberInfo.enabled}" name="enabled" /> <a
 					class="mynavA" href="/hos/myinfo/myinfomain"><input
-					type="button" id="modCancleBtn" class="canbtns" value="취소" /></a> <input
-					type="submit" id="modFinishBtn" class="chgbtns" value="저장" />
+					type="button" id="modCancleBtn" class="btns" value="취소" /></a> 
+					<input type="submit" id="modFinishBtn" class="btns" value="저장" />
 			</div>
 		</form>
 		</div>

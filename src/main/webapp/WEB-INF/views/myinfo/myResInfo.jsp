@@ -37,11 +37,6 @@ $(document).ready(function() {
 	  
   });
 
-  $("#backBtn").click(function(){
-
-		window.history.back();
-
-	});
 });
 </script>
 
@@ -136,7 +131,7 @@ $(document).ready(function() {
 							<span>후기작성완료</span>
 						</c:when>
 						<c:otherwise>
-							<input type ="submit" id="${myres[status.index].rno}" class="resReviewBtn writeBtns" value="후기 작성" 
+							<input type ="submit" id="${myres[status.index].rno}" class="resReviewBtn writeBtns btns" value="후기 작성" 
 								onclick="location.href='/hos/comm/reviewWrite?rno=${myres[status.index].rno}&hos_name=${myres[status.index].hosDTO.hos_name}'"/>
 						</c:otherwise>
 					</c:choose>
@@ -152,7 +147,9 @@ $(document).ready(function() {
 	</tbody>
 </table>
 <%-- </form> --%>
-<input type="button" id="backBtn" value="이전">
+<br/>
+
+<a href ="/hos/myinfo/myinfomain"><input type="button" id="backBtn" value="이전" class="btns"></a>
 </div>
 <tiles:insertAttribute name="footer" />	
 </body>

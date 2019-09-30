@@ -23,11 +23,13 @@ $(document).ready(function() {
 	text-align:-webkit-center;
 }
 
+/* 표 전체 크기 정렬 */
 .myReviewTable{
 	width:70%;
 	text-align: center;
 }
 
+/* 후기글 제목 왼쪽 정렬 */
 .revTitleDetail{
 	text-align : left;
 }
@@ -35,32 +37,11 @@ $(document).ready(function() {
 	color:#007bff;
 }
 
-ul.nav.nav-tabs {
-  letter-spacing:-1px;
-  height: 50px;
-  line-height:50px;
-  width :100%;
-}
-ul.nav.nav-tabs li {
-    display: inline-block;
-    margin-bottom:-2px;
-    width: 110px;
-    height: 50px;
-    margin: 0 auto;
-}
-ul.nav.nav-tabs li p {
-      border:none;
-      border-radius:0px;
-      color:#0000ff;
-      margin-right:5px;
-      min-width:11px;
-      display:inline-block;
-      text-align: center;
-}
-
-ul.nav.nav-tabs li:hover {
-      background:#fff;
-      color:#000000;
+/* 표 타이틀 디자인 */
+th {
+	border-bottom: 2px solid #000;
+	background-color: rgba(201,223,242, 0.3);
+	height: 50px;
 }
 
 .revTitle a {
@@ -71,6 +52,59 @@ td{
 	height: 50px;
 }
 
+/* 버튼 디자인 */
+.btns{
+  background : #343a40;
+  color:#fff;
+  border:none;
+  position:relative;
+  width:100px;
+  height:30px;
+  font-size:15px;
+  padding:2px;
+  cursor:pointer;
+  transition:800ms ease all;
+  outline:none;
+  border-radius: 6px;
+  font-weight: bold;
+}
+.btns:hover{
+  background:#fff;
+  color:#000;
+  font-weight: bold;
+}
+
+/* 마이페이지 네비 바 */
+ul.nav.nav-tabs {
+  background:#fff;	
+  letter-spacing:-1px;
+  height: 50px;
+  line-height:50px;
+  width :100%;
+}
+ul.nav.nav-tabs li {
+    display: inline-block;
+    margin-bottom:-2px;
+    width: 110px;
+    height: 48px;
+    margin: 0 auto;
+}
+ul.nav.nav-tabs li p {
+      border:none;
+      border-radius:0px;
+      color:#000000;
+      margin-right:5px;
+      min-width:11px;
+      display:inline-block;
+      text-align: center;
+      font-weight: bold;
+}
+ul.nav.nav-tabs li p:hover{
+     color: #E5E5E5;	
+}
+ul.nav.nav-tabs li:hover {
+      background:#fff;
+}
 </style>
 </head>
 <body>
@@ -118,6 +152,9 @@ td{
 	</c:forEach> 
 
 </table>	
+
+<br/>
+<a href ="/hos/myinfo/myinfomain"><input type="button" id="backBtn" value="이전" class="btns"></a>
 </div>
 <tiles:insertAttribute name="footer" />	
 </body>

@@ -336,58 +336,6 @@
 			<version>2.9.9</version>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/com.github.bongki/spring-social-kakao -->
-		<dependency>
-			<groupId>com.github.bongki</groupId>
-			<artifactId>spring-social-kakao</artifactId>
-			<version>1.0.0</version>
-			<scope>system</scope>
-			<systemPath>${basedir}/src/main/resources/lib/spring-social-kakao-1.0.0.jar</systemPath>
-		</dependency>
-
-		<!-- https://mvnrepository.com/artifact/org.springframework.security.oauth/spring-security-oauth2 -->
-		<dependency>
-			<groupId>org.springframework.security.oauth</groupId>
-			<artifactId>spring-security-oauth2</artifactId>
-			<version>2.0.9.RELEASE</version>
-		</dependency>
-
-		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot</artifactId>
-			<version>2.0.4.RELEASE</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter</artifactId>
-			<version>2.0.4.RELEASE</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.social</groupId>
-			<artifactId>spring-social-core</artifactId>
-			<version>1.1.4.RELEASE</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.social</groupId>
-			<artifactId>spring-social-web</artifactId>
-			<version>1.1.4.RELEASE</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.social</groupId>
-			<artifactId>spring-social-config</artifactId>
-			<version>1.1.4.RELEASE</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.social</groupId>
-			<artifactId>spring-social-security</artifactId>
-			<version>1.1.4.RELEASE</version>
-		</dependency>
 
 	</dependencies>
 	<build>

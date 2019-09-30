@@ -58,8 +58,6 @@ public class MemberController {
 
 	@RequestMapping("/kakaoLogin")
 	public String test(HttpServletRequest request, MemberDTO dto, Principal principal){
-		System.out.println("되는거니..?");
-		
 		dto = memberService.kakaoLoginProcess(dto.getKakao_id()); // pk로 사용자 정보 뽑아옴 각자 맞는 쿼리 사용
 	
 		Authentication authentication = new UsernamePasswordAuthenticationToken(dto.getUsername(), dto.getPassword(), AuthorityUtils.createAuthorityList(dto.getAuthority()));

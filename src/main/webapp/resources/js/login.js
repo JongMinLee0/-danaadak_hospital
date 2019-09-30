@@ -145,7 +145,8 @@ function kakaoLoginAction(kakao_id){
 		//	login(res.username, res.password);
 		}
 	});
-	location.href = '/hos/home';
+	
+	location.replace('/hos/home');
 }
 
 function login(username, password){

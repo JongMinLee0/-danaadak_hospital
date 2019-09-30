@@ -22,10 +22,11 @@
 					value="${aelist.hos_id}"></td>
 				<td>${aelist.e_hosDTO.hos_name}</td>
 				<td>&emsp;&emsp;&emsp;&emsp;&emsp;</td>
-				<td><input type="hidden" value="${aelist.e_type}" name="e_type">${aelist.e_type}</td>
-				<td><input type="submit" value="타입리스트"></td>
+				<td><input type="hidden" value="${aelist.e_type}" name="e_type"><input type="submit" id="type_btn" value="${aelist.e_type}"></td>
+<%-- 				<td><input type="submit" value="${aelist.e_type}"></td> --%>
 			</tr>
 			</form>
+			
 		</c:forEach>
 	</tbody>
 

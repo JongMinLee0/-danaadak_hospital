@@ -112,11 +112,11 @@ public class MyInfoController {
 	public @ResponseBody int updatePassword(String now_pw, String new_pw, Principal principal, MemberDTO dto) {
 		String password = memberService.userInfoProcess(principal.getName()).getPassword();
 		
-		System.out.println(now_pw);
-		System.out.println(new_pw);
+		//System.out.println(now_pw);
+		//System.out.println(new_pw);
 		
-		System.out.println("DB에 저장된 비밀번호 "+password);
-		System.out.println("새로운 비밀번호" + new_pw);
+		//System.out.println("DB에 저장된 비밀번호 "+password);
+		//System.out.println("새로운 비밀번호" + new_pw);
 		
 		int pwChk;
 		
@@ -138,7 +138,7 @@ public class MyInfoController {
 		String root = request.getSession().getServletContext().getRealPath("/");
 		String saveDirectory = root;
 		
-		System.out.println(saveDirectory);
+		//System.out.println(saveDirectory);
 		
 		//수정할 첨부파일
 		MultipartFile profile = dto.getFilename();

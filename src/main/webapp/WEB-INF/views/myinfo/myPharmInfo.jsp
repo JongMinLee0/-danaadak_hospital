@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 <html>
 <head>
 <meta charset="UTF-8">
@@ -46,7 +48,7 @@ th {
 }
 
 td{
-	height: 50px;
+	height: 80px;
 }
 
 /* 버튼 디자인 */
@@ -128,11 +130,11 @@ ul.nav.nav-tabs li:hover {
 <table class="myPharmTable">
 	<thead>
 	<tr>
-		<th scope="col" class="hosName" style="width:200px;"><span>발급병원</span></th>				
-		<th scope="col" class="resDate" style="width:100px;"><span>발급날짜</span></th>				
-		<th scope="col" class="pharmName" style="width:100px;"><span>약 이름</span></th>
-		<th scope="col" class="pharmQuan" style="width:100px;"><span>1회 복용량</span></th>
-		<th scope="col" class="pharmCount" style="width:100px;"><span>1일 복용횟수</span></th>
+		<th scope="col" class="hosName" style="width:25%;"><span>발급병원</span></th>				
+		<th scope="col" class="resDate" style="width:15%;"><span>발급날짜</span></th>				
+		<th scope="col" class="pharmName" style="width:20%;"><span>약 이름</span></th>
+		<th scope="col" class="pharmQuan" style="width:20%;"><span>1회 복용량</span></th>
+		<th scope="col" class="pharmCount" style="width:20%;"><span>1일 복용횟수</span></th>
 	</tr>
 	</thead>
 	<tbody class="myPharmBody">
@@ -146,9 +148,13 @@ ul.nav.nav-tabs li:hover {
 				<td class="hosName">${myres[status.index].hosDTO.hos_name}</td>
 				<td class="resDate">${myres[status.index].re_date}</td>
 				<td class="pharmName" id="${myPharmList.rno}">
-				${myres[status.index].medicine}</td>
-				<td class="pharmQuan">${myres[status.index].eat_cnt}</td>
-				<td class="pharmCountn">${myres[status.index].eat_cnt}</td>
+				${fn:replace(myPharmList.medicine, ',', '<br/>') }</td>
+				<td class="pharmQuan">
+				<c:set var="sp" value="${fn:split(myPharmList.eat_cnt,'/')[0]}"/>
+				${fn:replace(sp, ',', '<br/>') }</td>
+				<td class="pharmCountn">
+				<c:set var="sp2" value="${fn:split(myPharmList.eat_cnt,'/')[1]}"/>
+				${fn:replace(sp2, '-', '<br/>') }</td>
 			</c:if>
 			</tr>
 	</c:forEach>		

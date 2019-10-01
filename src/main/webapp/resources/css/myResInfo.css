@@ -7,6 +7,10 @@
 	text-align: center;
 }
 
+#logo{
+	margin-top: -50px !important;
+}
+
 /* 표 타이틀 디자인 */
 th {
 	border-bottom: 2px solid #000;

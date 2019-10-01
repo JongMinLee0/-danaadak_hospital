@@ -31,6 +31,10 @@ $(document).ready(function() {
 });
 </script>
 <style type="text/css">
+#logo{
+	margin-top: -50px !important;
+}
+
 .myPharmInfoWrap{
 	text-align:-webkit-center;
 }
@@ -132,9 +136,8 @@ ul.nav.nav-tabs li:hover {
 	<tr>
 		<th scope="col" class="hosName" style="width:25%;"><span>발급병원</span></th>				
 		<th scope="col" class="resDate" style="width:15%;"><span>발급날짜</span></th>				
-		<th scope="col" class="pharmName" style="width:20%;"><span>약 이름</span></th>
-		<th scope="col" class="pharmQuan" style="width:20%;"><span>1회 복용량</span></th>
-		<th scope="col" class="pharmCount" style="width:20%;"><span>1일 복용횟수</span></th>
+		<th scope="col" class="pharmName" style="width:40%;"><span>약 이름</span></th>
+		<th scope="col" class="pharmQuan" style="width:20%;"><span>복용량 및 횟수</span></th>
 	</tr>
 	</thead>
 	<tbody class="myPharmBody">
@@ -148,13 +151,16 @@ ul.nav.nav-tabs li:hover {
 				<td class="hosName">${myres[status.index].hosDTO.hos_name}</td>
 				<td class="resDate">${myres[status.index].re_date}</td>
 				<td class="pharmName" id="${myPharmList.rno}">
-				${fn:replace(myPharmList.medicine, ',', '<br/>') }</td>
+				${myPharmList.medicine}</td>
+<%-- 				${fn:replace(myPharmList.medicine, ',', '<br/>') }</td> --%>
 				<td class="pharmQuan">
-				<c:set var="sp" value="${fn:split(myPharmList.eat_cnt,'/')[0]}"/>
-				${fn:replace(sp, ',', '<br/>') }</td>
-				<td class="pharmCountn">
-				<c:set var="sp2" value="${fn:split(myPharmList.eat_cnt,'/')[1]}"/>
-				${fn:replace(sp2, '-', '<br/>') }</td>
+				${myPharmList.eat_cnt}</td>
+				
+<%-- 				<c:set var="sp" value="${fn:split(myPharmList.eat_cnt,'/')[0]}"/> --%>
+<%-- 				${fn:replace(sp, ',', '<br/>') }</td> --%>
+<!-- 				<td class="pharmCountn"> -->
+<%-- 				<c:set var="sp2" value="${fn:split(myPharmList.eat_cnt,'/')[1]}"/> --%>
+<%-- 				${fn:replace(sp2, '-', '<br/>') }</td> --%>
 			</c:if>
 			</tr>
 	</c:forEach>		

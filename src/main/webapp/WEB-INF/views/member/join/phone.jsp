@@ -14,15 +14,13 @@
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <script defer src="https://code.getmdl.io/1.1.3/material.min.js"></script>
-
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <link rel="stylesheet" href="/hos/resources/css/phone.css">
 </head>
 <body>
 
 	<main class="mdl-layout__content mdl-color--grey-100">
 	<div class="mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-grid">
-		<p>Enter your phone number below.</p>
-
 		<form id="sign-in-form" action="#">
 			<!-- Input to enter the phone number -->
 			<div
@@ -81,31 +79,46 @@
             window.signingIn = false;
             updateSignInButtonUI();
             resetRecaptcha();
-            // SMS sent. Prompt user to type the code from the message, then sign the
-            // user in with confirmationResult.confirm(code).
-            var code = window.prompt('인증번호를 입력해주세요');
-            if (code) {
-              confirmationResult.confirm(code).then(function () {
-            	  opener.document.getElementById("phone_number").value = document.getElementById("phone-number").value.replace("+82 ","");
-            	  opener.document.getElementById("phone_auth_finish").style.display = "inline";
-            	  opener.document.getElementById("phone_auth_button").style.display = "none";
-	              window.close();
-              }).catch(function (error) {
-                // User couldn't sign in (bad verification code?)
-                console.error('Error while checking the verification code', error);
-                window.alert('Error while checking the verification code:\n\n'
-                    + error.code + '\n\n' + error.message)
-              });
-            }
+            
+            swal({
+          	  title: "인증번호를 입력해주세요",
+	          content: {
+	        	  element: "input",
+	        	  attributes: {
+	        		  placeholder: "인증번호 입력",
+	        		  type: "text",
+	        		},
+	        	},
+            }).then((inputValue) => {
+          		if (inputValue) {
+                      confirmationResult.confirm(inputValue).then(function () {
+                    	  opener.document.getElementById("phone_number").value = document.getElementById("phone-number").value.replace("+82 ","");
+                    	  opener.document.getElementById("phone_auth_finish").style.display = "inline";
+                    	  opener.document.getElementById("phone_auth_button").style.display = "none";
+        	              window.close();
+                      }).catch(function (error) {
+                        // User couldn't sign in (bad verification code?)
+                        console.error('인증코드 확인 중 에러가 발생했습니다.', error);
+                        swal('인증코드 확인 중 에러가 발생했습니다.:\n\n'
+                                + error.code + '\n\n' + error.message);
+/*                           window.alert('인증코드 확인 중 에러가 발생했습니다.:\n\n'
+                            + error.code + '\n\n' + error.message) */
+                      });
+                    }
+                  
+          		});
           }).catch(function(error) {
-            // Error; SMS not sent
-            window.signingIn = false;
-            console.error('Error during signInWithPhoneNumber', error);
-            window.alert('Error during signInWithPhoneNumber:\n\n'
-                + error.code + '\n\n' + error.message);
-            updateSignInButtonUI();
-            resetRecaptcha();
-          });
+              // Error; SMS not sent
+              window.signingIn = false;
+              /* console.error('Error during signInWithPhoneNumber', error);
+              window.alert('Error during signInWithPhoneNumber:\n\n'
+                  + error.code + '\n\n' + error.message); */
+                  console.error('인증코드 확인 중 에러가 발생했습니다.', error);
+                  swal('인증코드 확인 중 에러가 발생했습니다.:\n\n'
+                          + error.code + '\n\n' + error.message);
+              updateSignInButtonUI();
+              resetRecaptcha();
+            });
     }
   }
   /**

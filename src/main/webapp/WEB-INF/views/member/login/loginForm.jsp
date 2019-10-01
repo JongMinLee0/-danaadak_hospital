@@ -111,6 +111,7 @@ $(document).ready(function(){
 					</c:if>
 					<div class="last">
 						<div>
+							<a href="" class="findIdPw" onclick="findIdPw();">아이디/비밀번호 찾기</a>
 							<c:if test="${type == 'user' }">
 								<a href="/hos/join/joinForm?type=user" class="join">회원가입</a>
 							</c:if>

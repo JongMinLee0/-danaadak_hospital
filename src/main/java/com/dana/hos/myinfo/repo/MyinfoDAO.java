@@ -12,12 +12,20 @@ public interface MyinfoDAO {
 	public void updateMyinfoMethod(MemberDTO dto);
 	public MemberDTO updateUsername(String username);
 	
+	//내정보 프로필 사진
+	public String getFile(String username);
+	
 	//예약 내역 출력
 	public List<ReserveDTO> myresList(String username);
 	
 	//내 예약 취소
-	public void cancelMyresMethod(ReserveDTO rdto);
+	public int cancelMyresMethod(int rno);
 	
 	//내 리뷰 목록 출력
 	public List<ReviewDTO> myreviewList(String username);
+	
+	//진료완료 건 리뷰 작성 버튼 확인
+	public List<ReviewDTO> myresRevBtn(String username);
+	
+	public void updatePasswordMethod(MemberDTO dto);
 }//end interface

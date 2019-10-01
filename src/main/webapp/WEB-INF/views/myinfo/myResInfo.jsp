@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>나의 예약</title>
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <link rel="stylesheet" href="/hos/resources/css/nav_bar.css" />
 <link rel="stylesheet" href="/hos/resources/css/myResInfo.css" />
@@ -19,24 +19,24 @@
 $(document).ready(function() {
   $('body > div.navbar_wrap.fixed-top').removeClass('fixed-top');
   
-  $('.btns').on('click', function() {
-	  if (confirm("정말 취소하시겠습니까? - 취소 기능 작동 안돼요ㅠㅠ") == true){    //확인
-		 var cancelNo = $(this).attr('id'); 
-	  	 var userName = '${sessionScope.memberInfo.username}';
-		 alert(cancelNo + userName);
-		 
-// 		 $.ajax({
-//  			type : 'POST',
-//  			data : {'rno='+cancelNo, 'username='+userName},
-//  			url : '/myinfo/myresCancel',
-//  			success : function(data) {
-	
-//  			}
-// 		 });		
-  	 } else {   //취소
-      	return false;
-   	 } 
+  /* 예약 취소 버튼  */
+  $('.myResTable .myResBody td.resReview input.resCancelBtn.btns').on('click', function(){
+	  
+	  var rno = $(this).prev().val();
+	  $.ajax({
+		  type:'POST',
+		  url:'/hos/cancel?rno='+rno,
+			success:function(res){
+					swal(res).then((value) => {
+						location.href='/hos/myinfo/myResInfo';
+					  });
+				},error:function(res){
+					swal(res);
+				}
+			}); 
+	  
   });
+
 });
 </script>
 
@@ -51,7 +51,7 @@ $(document).ready(function() {
 		</li><li class="active" id="nav_reserList">
 			<a href="/hos/myinfo/myResInfo"><p>진료 내역</p></a>
 		</li><li class="active" id="nav_pharmList">
-			<p>처방전 내역</p>
+			<a href="/hos/myinfo/myPharmInfo"><p>처방전 내역</p></a>
 		</li><li class="active" id="nav_reviewList">
 			<a href="/hos/myinfo/myReview"><p>내 병원 후기</p></a>
 		</li>
@@ -61,7 +61,7 @@ $(document).ready(function() {
 <p><h3><b>진료 내역</b></h3></p>
 <br/>
 <br/>
-<%-- <form id ="frm" name="frm" action="" method="post"> --%>
+<%-- <form id ="frm" name="frm" action="/myinfo/myresCancel" method="post"> --%>
 <table class="myResTable">
 	<thead>
 	<tr>
@@ -80,7 +80,7 @@ $(document).ready(function() {
 		<c:set var="i" value="0" />
 		<tr class="myResLine" id="${myresList.rno}" value="${myresList.rno}">
 			<c:if test="${myres[status.index].hos_id == null}">
-<!-- 				<input type="hidden"> -->
+		<!-- 	<input type="hidden"> -->
 			</c:if>
 			
 			<c:if test="${myres[status.index].rno != null}">
@@ -88,6 +88,8 @@ $(document).ready(function() {
 				<td class="resCate">${myres[status.index].category}</td>
 				<td class="resDate">${myres[status.index].re_date}</td>
 				<td class="resTime">${myres[status.index].re_time}</td>
+<%-- 				<td><input type="text" value="너의 rno번호:${myres[status.index].rno }"></td> --%>
+<%-- <td><input type="text" value="asd${myRevBtn[status.index].rno }"></td> --%>
 				<td class="resState resStateTd">
 			<c:if test="${myres[status.index].re_state == 0}">
 			예약 중
@@ -99,23 +101,55 @@ $(document).ready(function() {
 			예약 취소
 			</c:if></td>
 			<td class="resMess resMessDetail">${myres[status.index].message}</td>
-			<td class="resReview ">
-				<input type ="hidden" value="${myres[status.index].hosDTO.hos_name}" name="hos_name" />
-				<input type ="hidden" value="${myres[status.index].rno}" name="rno" />
-			<c:if test="${myres[status.index].re_state == 0}">
-			<input type ="button" class="resCancelBtn btns" value="예약 취소" />
+			<td class="resReview">
+ 				<input type ="hidden" value="${myres[status.index].hosDTO.hos_name}" name="hos_name" />
+
+			  <c:if test="${myres[status.index].re_state == 0}">
+			  	<input type ="hidden" value="${myres[status.index].rno}" name="rno" />
+			    <input type ="button" class="resCancelBtn btns" value="예약 취소"/>
+			  </c:if>
+			  <c:if test="${myres[status.index].re_state == 1}">
+<%-- 					<c:choose> --%>
+<%--  					  <c:when test="${empty myRevBtn.rno}"> --%>
+					<!-- myRevBtn : rno가 저장되어 있는 List num이 rno이다. -->
+					<c:set var="doneLoop" value="false" />
+					<c:forEach items="${myRevBtn}" var="num">
+						<c:if test="${not doneLoop}">
+							<c:choose>
+								<c:when test="${myres[status.index].rno == num}">
+									<c:set var="result" value="true" />
+									<c:set var="doneLoop" value="true" />
+								</c:when>
+								<c:otherwise>
+									<c:set var="result" value="false" />
+								</c:otherwise>
+							</c:choose>
+						</c:if>
+					</c:forEach>
+					<c:choose>
+						<c:when test="${result}">
+							<span>후기작성완료</span>
+						</c:when>
+						<c:otherwise>
+							<input type ="submit" id="${myres[status.index].rno}" class="resReviewBtn writeBtns btns" value="후기 작성" 
+								onclick="location.href='/hos/comm/reviewWrite?rno=${myres[status.index].rno}&hos_name=${myres[status.index].hosDTO.hos_name}'"/>
+						</c:otherwise>
+					</c:choose>
 			</c:if>
-			<c:if test="${myres[status.index].re_state == 1}">
-				<input type ="submit" id="${myres[status.index].rno}" class="resReviewBtn writeBtns" value="후기 작성" 
-							onclick="location.href='/hos/comm/reviewWrite?rno=${myres[status.index].rno}&hos_name=${myres[status.index].hosDTO.hos_name}'"/>
+			<c:if test="${myres[status.index].re_state == 2}">
+				<span>예약취소완료</span>
 			</c:if>
 			</td>
-			</c:if>
+			
+			 </c:if>
 		</tr>
 	</c:forEach>
 	</tbody>
 </table>
 <%-- </form> --%>
+<br/>
+
+<a href ="/hos/myinfo/myinfomain"><input type="button" id="backBtn" value="이전" class="btns"></a>
 </div>
 <tiles:insertAttribute name="footer" />	
 </body>

@@ -27,7 +27,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Autowired
 	private LoginFailureHandler loginFailureHandler;
-	
+
 	@Override
 	public void configure(WebSecurity web) throws Exception
 	{
@@ -43,13 +43,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
         .antMatchers("/login/**").permitAll()
+        .antMatchers("/").permitAll()
         .antMatchers("/home").permitAll()
+        .antMatchers("/myinfo/**").access("hasRole('USER')")
+        .antMatchers("/map/**").access("hasRole('USER')")
         .antMatchers("/admin/**").hasRole("ADMIN")
         .antMatchers("/**").permitAll()
         .and().formLogin().loginPage("/login").loginProcessingUrl("/login")
         				  .successHandler(loginSuccessHandler)
         				  .failureHandler(loginFailureHandler)
         .and().logout().logoutSuccessUrl("/home").permitAll()
+        .and().sessionManagement()
+        	.invalidSessionUrl("/login")
+        	.maximumSessions(1)
+        	.and()
         .and().exceptionHandling().accessDeniedPage("/login/accessDenied")
         .and().headers().frameOptions().disable()
         .and().csrf().disable();

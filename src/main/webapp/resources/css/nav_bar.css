@@ -1,6 +1,7 @@
+/* font 다운받아서 resources에 저장 */
 @font-face { 
 font-family: 'GyeonggiBatang';
- src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/GyeonggiBatang.woff') format('woff');
+ src: url('../gyeonggi_font.ttf');
  font-weight: normal; 
  font-style: normal; 
  }

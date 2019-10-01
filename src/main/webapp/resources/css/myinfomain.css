@@ -1,25 +1,37 @@
-html, body {
+html{
 	height: 100%;
-	margin: 0px;
-	padding: 0px;
+
 }
 
-.myinfomainDiv{
+/* 배경색, 전체적인 크기*/
+.myinfomainDiv{ 
+  margin: 0;
+  padding: 0;
   width :100%;
   text-align: center;
+  background-color :#F8FFFF;
+  position: absolute;
+}
+.footer{
+  background-color :#F8FFFF;	
 }
 
+/* 링크 효과 없애기 */
 a{
-	text-decoration: none;
+	text-decoration: none !important;
+}
+a:hover{
+	color : #fff !important;
 }
 
+/* 마이페이지 각 항목 네모 */
 .sh_group {
 	height: 220px;
 	width : 400px;
-    margin: 16px 8px 0;
+    margin: 20px 20px 20px;
     padding: 32px 29px 32px;
     text-align: left;
-    border: 1px solid #dadada;
+    border : 2px solid #A6E0F0;
     -webkit-border-radius: 2px;
     border-radius: 2px;
     background: #fff;
@@ -30,18 +42,43 @@ a{
 	border-bottom-right-radius: 15px;
 }
 
-th {
-	height : 32px;
+/* 그라디언트 효과 */
+#myPageDiv, #resDiv, #pharmDiv, #myrevDiv{
+	background-color: #fff;
+	transition: all 0.7s ease-out;
+    background: linear-gradient(270deg, rgba(159,207,204,0.8), rgba(158,190,219,0.8), rgba(165,216,230,0), rgba(158,219,181,0));
+  	background-position: 1% 50%;
+    background-size: 300% 300%;
 }
 
+#myPageDiv:hover, #resDiv:hover, #pharmDiv:hover, #myrevDiv:hover{
+  color: #1A1A26;
+  border: 2px solid rgba(223,190,106,0);
+  background-position: 99% 50%;
+	
+}
+
+/* 예약, 처방전 미리보기 테이블  */
+th {
+	height : 38px;
+}
+td{
+	height:22px;
+	margin: 2px;	
+}
+
+/* 각 네모 세로로 연결해서 배치 */
 .column{
 	display: inline-grid;
 }
+
+/* 각 네모 타이틀 볼드체 */
 .myinfoTitle {
     font-size: 17px;
-	font-family: Dotum,sans-serif;
 	font-weight : bold;
 }
+
+/* 각 네모 내부 배치 */
 #myrevDiv{
 	display: block;
 }
@@ -66,8 +103,9 @@ th {
 	line-height: 35px;
 }
 
-
+/* 마이페이지 네비 바 */
 ul.nav.nav-tabs {
+  background:#fff;	
   letter-spacing:-1px;
   height: 50px;
   line-height:50px;
@@ -77,27 +115,29 @@ ul.nav.nav-tabs li {
     display: inline-block;
     margin-bottom:-2px;
     width: 110px;
-    height: 50px;
+    height: 48px;
     margin: 0 auto;
 }
 ul.nav.nav-tabs li p {
       border:none;
       border-radius:0px;
-      color:#0000ff;
+      color:#000000;
       margin-right:5px;
       min-width:11px;
       display:inline-block;
       text-align: center;
+      font-weight: bold;
 }
-
-
+ul.nav.nav-tabs li p:hover{
+     color: #E5E5E5;	
+}
 ul.nav.nav-tabs li:hover {
       background:#fff;
-      color:#000000;
 }
 
+/* 내정보수정, 후기 보기 버튼  */
 #memberInfo, #myrevbtn{
-  background:#007bff;
+  background : #343a40;
   color:#fff;
   border:none;
   position:relative;
@@ -109,9 +149,15 @@ ul.nav.nav-tabs li:hover {
   transition:800ms ease all;
   outline:none;
   border-radius: 6px;
+  font-weight: bold;
 }
 #memberInfo:hover, #myrevbtn:hover{
   background:#fff;
-  color:#007bff;
+  color:#000;
+  font-weight: bold;
+}
+
+#logo{
+	margin-top: -50px !important;
 }
 

@@ -125,6 +125,7 @@ input:focus::-webkit-input-placeholder {
 	left: 0;
 	height: 210px;
 	overflow: scroll;
+	overflow-x: hidden;
 }
 
 .list-group-item {

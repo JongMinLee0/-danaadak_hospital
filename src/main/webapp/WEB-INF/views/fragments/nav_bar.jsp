@@ -13,7 +13,6 @@
 	<nav class="navbar navbar-expand-sm">
 		<div class="mr-auto"></div>
 		<ul class="navbar-nav">
-			<li class="nav-item-top"><a class="nav-link" href="#"><i class="fa fa-search" aria-hidden="true"></i></a></li>
 			<li class="nav-item-top"><a class="nav-link" href="/hos/myinfo/myinfomain"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a></li>
 		</ul>
 	</nav>
@@ -45,9 +44,10 @@
 				</c:when>
 				<c:otherwise>
 					<span>${sessionScope.memberInfo.name}</span>님
-					<c:if test="${sessionScope.memberInfo.name == 'admin'}">
+					<sec:authorize access="hasRole('ROLE_ADMIN')">
 						<button class="btn my-2 my-sm-0" type="submit" onClick="location.href='/hos/admin/adminmain'">관리자 페이지</button>
-					</c:if>
+					</sec:authorize>
+					
 				</c:otherwise>
 			</c:choose>
 		

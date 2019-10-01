@@ -4,7 +4,7 @@
 
 <link rel="stylesheet" href="/hos/resources/css/com_review.css" />
 <script src="/hos/resources/js/comm_review.js"></script>
-<button id="reviewBtn" onclick="location.href='/hos/comm/reviewWrite'">후기작성</button>
+<!-- <button id="reviewBtn" onclick="location.href='/hos/comm/reviewWrite'">후기작성</button> -->
 <div id="review_description">
 	<div id="description_write">
 		<br /><br /><br /><br /><br />
@@ -14,6 +14,7 @@
 	</div>
 </div>
 <div id="hashTag">
+		<span><a href="/hos/comm/review" class="badge">#전체</a></span>
 	<c:forEach items="${hList}" var="hdto">
 		<span><a href="/hos/comm/reviewHash?vi_hash=${hdto}" class="badge">#${hdto}</a></span>
 	</c:forEach>
@@ -23,7 +24,7 @@
 	<c:forEach items="${rList}" var="rdto">  
 			<a class="list_link" href="/hos/comm/reviewDetail?vi_hash=${hash}&vino=${rdto.vino}">
 				<div class="card border-secondary mb-3" >
-					<div class="card-header">${rdto.name}</div>
+					<div class="card-header"><img src="${rdto.profile_image}" class="rounded-circle" />${rdto.name}</div>
 				  	<div class="card-body text-secondary">
 				    	<h5 class="card-title" style="font-weight: bold;">${rdto.vi_subject}</h5>
 				    		<p class="card-text"><c:forEach var="i" begin="1" end="${rdto.vi_star}" step="1">
@@ -35,7 +36,6 @@
   					</div>
 				</div>
 			</a>
-			<hr />
 	</c:forEach>
 	<div id="top_btn_wrap">
 		<i class="fa fa-arrow-up" aria-hidden="true" id="top_btn"></i>

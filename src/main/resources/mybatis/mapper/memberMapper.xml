@@ -5,8 +5,8 @@
 
 	<!-- 일반 사용자 회원가입 -->
 	<insert id="userjoin" parameterType="com.dana.hos.member.module.MemberDTO">
-		insert into member (username, password, name, address, phone, birth, gender, kakao_id, type)
-		values (#{username}, #{password}, #{name}, #{address}, #{phone}, #{birth}, #{gender}, #{kakao_id,jdbcType=VARCHAR}, 'user')
+		insert into member (username, password, name, address, phone, birth, gender, kakao_id, type, profile_image)
+		values (#{username}, #{password}, #{name}, #{address}, #{phone}, #{birth}, #{gender}, #{kakao_id,jdbcType=VARCHAR}, 'user', #{profile_image})
 	</insert>
 
 	<!-- 병원 회원가입 -->
@@ -24,7 +24,7 @@
     </select>
     
     <select id="kakaoLogin" resultType="com.dana.hos.member.module.MemberDTO" parameterType="com.dana.hos.member.module.MemberDTO">
-    	select username, password from member where kakao_id = #{kakao_id}
+    	select * from member where kakao_id = #{kakao_id}
     </select>
     
      <select id="findHospital" resultType="com.dana.hos.map.module.HosDTO" parameterType="string">
@@ -33,6 +33,26 @@
     
     <select id="usernameChk" resultType="int" parameterType="string">
     	select count(*) from member where username = #{username}
+    </select>
+    
+    <select id="hosIdChk" resultType="int" parameterType="string">
+    	select count(*) from member where hos_id = #{hos_id}
+    </select>
+    
+    <select id="findId" resultType="com.dana.hos.member.module.MemberDTO" parameterType="com.dana.hos.member.module.MemberDTO">
+    	select username from member where name=#{name} and phone=#{phone} 
+    </select>
+
+    <select id="findPw" resultType="int" parameterType="com.dana.hos.member.module.MemberDTO">
+    	select count(*) from member where username=#{username} and name=#{name} and phone=#{phone} 
+    </select>
+    
+    <update id="changePw" parameterType="string">
+    	update member set password=#{password} where username=#{username} and name=#{name}
+    </update>
+    
+    <select id="searchProfile" resultType="String">
+    	select profile_image from member where username=#{username}
     </select>
     
 </mapper>

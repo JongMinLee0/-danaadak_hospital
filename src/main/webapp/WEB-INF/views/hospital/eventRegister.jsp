@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <jsp:include page="/WEB-INF/views/fragments/nav_bar.jsp" />
-<title>Insert title here</title>
+<title>이벤트 등록</title>
 <link rel="stylesheet" href="resources/css/bootstrap.min.css" />
 <link rel="stylesheet" href="resources/css/home.css" />
 <script type="text/javascript" src="/hos/resources/js/home.js"></script>

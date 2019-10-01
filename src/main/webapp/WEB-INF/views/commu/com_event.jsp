@@ -14,11 +14,11 @@
 <form>
 	<c:forEach items="${eList}" var="dto">
 	<div class="card border-secondary mb-3" id="body_List">
-		<div class="event-header">${dto.hos_name}</div>
+		<div class="card-header">${dto.hos_name}</div>
 		<div class="event-body text-secondary">
 			<p class="event_text">
 			<p class="event_text">${dto.e_subject}</p>
-			<p class="event_text"><a href="${dto.e_url}">사이트로 바로가기</a></p>
+			<p class="event_text"><a href="${dto.e_url}" class="cite">사이트로 바로가기</a></p>
 			<p class="event_text">${dto.e_content}</p>
 		</div>
 	</div>

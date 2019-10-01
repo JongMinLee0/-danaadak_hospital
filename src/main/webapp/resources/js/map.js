@@ -31,7 +31,7 @@ function Pagesearch(totalPage, total, blocksize, blockpage) {
 				displayPlaces(search);
 			},
 			error : function(error) {
-				alert(error);
+				swal("키워드 정보가 없습니다.");
 			}
 		});
 	}
@@ -87,7 +87,7 @@ var infowindow = new daum.maps.InfoWindow({
 function searchPlaces() {
 	keyword = document.getElementById('keyword').value;
 	if (!keyword.replace(/^\s+|\s+$/g, '')) {
-		alert('키워드를 입력해주세요!');
+		swal('키워드를 입력해주세요!');
 		return false;
 	} else {
 		infowindow.close();
@@ -123,7 +123,7 @@ function Searchkeyword(keyword) {
 			
 		},
 		error : function(error) {
-			alert(error);
+			swal("키워드 정보가 없습니다.");
 		}
 	});
 } // end f_Searchkeyword()
@@ -371,6 +371,7 @@ function closeOverlay() {
 
 
 $(document).ready(function(){
+	// 스크롤 내릴때 메인 nav_bar 따라 오는거 삭제 
 	$('body > div.navbar_wrap.fixed-top').removeClass('fixed-top');
 	
 	// keyword로 넘어온 값이 있으면 실행시킨다.

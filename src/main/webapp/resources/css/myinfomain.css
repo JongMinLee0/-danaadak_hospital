@@ -157,3 +157,7 @@ ul.nav.nav-tabs li:hover {
   font-weight: bold;
 }
 
+#logo{
+	margin-top: -50px !important;
+}
+

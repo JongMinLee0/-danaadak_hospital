@@ -61,7 +61,7 @@ $(document).ready(function() {
 				<th>발급병원</th>
 				<th>발급날짜</th>
 			</tr>
-			<c:forEach var="myresList" items="${myres}" varStatus="status" begin="0" end="2">
+			<c:forEach var="myresList" items="${myres}" varStatus="status" begin="0" end="4">
 			<tr align="center" class="trClass">
 				<c:if test="${myres[status.index].medicine == null}">
 				<input type="hidden" >

@@ -22,31 +22,8 @@
 	$(document).ready(function() {
 		$('body > div.navbar_wrap.fixed-top').removeClass('fixed-top');
 		setDateBox();
+
 		
-		var file = document.querySelector('#iconSelectBtn');
-
-		file.onchange = function () {
-			console.log(file);
-				
-			var patt = /(.jpg$|.png$|.gif$)/gi;
-			var result = file.match(patt);
-			if(!result){
-				alert('jpg, gif, png만 가능합니다');
-				$('#iconSelectBtn').val('');
-				return false;
-			}
-			
-			var fileList = file.files ;
-
-		    // 읽기
-		    var reader = new FileReader();
-		    reader.readAsDataURL(fileList [0]);
-		    
-		    //로드한 후
-		    reader.onload = function(){
-		    	document.querySelector('#icon').src = reader.result;
-			};
-		}
 		//저장버튼 수정내용 전송
 		$('#modFinishBtn').on('click', function() {
 
@@ -74,7 +51,7 @@
 							new_pw : new_pw
 						},
 						success : function(res) {
-							alert(res);
+// 							alert(res);
 							if (res == 1) {
 								var chk = confirm("정말 수정하시겠습니까?")
 								if (chk == true) { //확인
@@ -213,9 +190,7 @@
 	}
 </script>
 <style type="text/css">
-body{
-	background-color :#F8FFFF;
-}
+
 #myPageWrap {
 	text-align: -webkit-center;
 }
@@ -298,7 +273,7 @@ body{
 .myicon img {
 	width: 40px;
 	height: 40px;
-	border: 1px solid #7DDCFF;
+	border: 2px solid #e5e5e5;
 	border-radius: 50%;
 }
 

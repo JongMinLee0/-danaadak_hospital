@@ -12,7 +12,7 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 @Configuration
 public class RedisConfig {
-	private final String host = "localhost";
+	private final String host = "hos-redis.gwtum9.0001.apn2.cache.amazonaws.com";
 	private final int port = 6379;
 
 	// JedisConnectionFactory 인스턴스를 통해 Redis와 연결할 수 있다.

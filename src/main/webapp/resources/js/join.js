@@ -1,4 +1,5 @@
 $(document).ready(function() {
+	$("#username").focus();
 	
 	appendYear();
 	
@@ -54,7 +55,7 @@ $(document).ready(function() {
 	var month = $('#mm').val();
 	var day = $('#dd').val();
 	
-	$('#username').on('keyup', function(){
+	$('#username').on('keyup blur', function(){
 		var eventId = $(this).attr('id');
 		var username = $("#username").val();
 		var regUsername = /^[a-z0-9][a-z0-9_\-]{4,19}$/;
@@ -88,7 +89,7 @@ $(document).ready(function() {
 		return false;
 	});
 	
-	$('#password').on('keyup', function(){
+	$('#password').on('keyup blur', function(){
 		var eventId = $(this).attr('id');
 		var password = $('#password').val();
 		var regPassword = /^[A-Za-z0-9`\-=\\\[\];',\./~!@#\$%\^&\*\(\)_\+|\{\}:"<>\?]{8,16}$/;
@@ -107,7 +108,7 @@ $(document).ready(function() {
 		return false;
 	});
 	
-	$('#passwordConfirm').on('keyup', function(){
+	$('#passwordConfirm').on('keyup blur', function(){
 		var eventId = $(this).attr('id');
 		var passwordConfirm = $('#passwordConfirm').val();
 		
@@ -123,7 +124,7 @@ $(document).ready(function() {
 	});
 	
 	
-	$('#hos_name').on('keyup', function(){
+	$('#hos_name').on('keyup blur', function(){
 		if($('#hos_name').val() != ""){
 			$('.list-group').css({
 				'display' : 'block'
@@ -212,6 +213,13 @@ $(document).ready(function() {
 		
 		return true;
 	});
+	
+	
+	
+	
+	if($('#username').val()!=""){
+		$('#username').trigger("blur");
+	};
 	
 });
 

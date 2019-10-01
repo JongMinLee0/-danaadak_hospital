@@ -19,14 +19,21 @@ $(document).ready(function(){
 	
 	//예약시간 뿌려주기 
 	var nowDay = new Date().toISOString().substring(0, 10);
+	
+	var nowHour = new Date().getHours();
+	var nowMin = new Date().getMinutes();
+	
 	$("#re_date").val(nowDay);
 	
 	var re_time_array = ['09:00','09:30','10:00', '10:30', '11:00', '11:30', '12:00', '12:30', '14:00','14:30','15:00',
 						'15:30', '16:00','16:30','17:00','17:30'];
 	$.each(re_time_array,function(index, value){
-		  $('#re_time').append(
-		  		"<option value="+value+">"+value+"</option>"
-		  );
+		if(value.split(":")[0] > nowHour){
+			$('#re_time').append(
+			  		"<option value="+value+">"+value+"</option>"
+			  );
+		}
+		  
 	 });
 	
 	$('#re_date').on('click',function(){

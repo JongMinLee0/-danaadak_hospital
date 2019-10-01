@@ -23,6 +23,10 @@ $(document).ready(function() {
 	text-align:-webkit-center;
 }
 
+#logo{
+	margin-top: -50px !important;
+}
+
 /* 표 전체 크기 정렬 */
 .myReviewTable{
 	width:70%;
@@ -34,8 +38,13 @@ $(document).ready(function() {
 	text-align : left;
 }
 .revTitleLink{
-	color:#007bff;
+	color:#000;
 }
+.revTitleLink:hover {
+	color :#3D6AF2;
+	font-weight: bold;
+}
+
 
 /* 표 타이틀 디자인 */
 th {

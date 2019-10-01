@@ -36,7 +36,7 @@
 			
 			if(now_pw != '' && new_pw != '' && new_pw_confirm != ''){
 				if (new_pw != new_pw_confirm) {
-					alert('비밀번호를 다시 확인해주세요.');
+					swal('비밀번호를 다시 확인해주세요.');
 					return false;
 				} else if (!regPassword.test(new_pw)) {
 					swal("비밀번호는 8~16자 영문 대 소문자, 숫자, 특수문자를 사용하세요.");
@@ -53,14 +53,22 @@
 						success : function(res) {
 // 							alert(res);
 							if (res == 1) {
-								var chk = confirm("정말 수정하시겠습니까?")
-								if (chk == true) { //확인
-									$('#frm').submit();
-								} else {
-									return false;
-								}
+								swal({
+								     title: "정말 수정하시겠습니까?",
+								     text: "YES를 클릭하시면 수정한 내용이 저장됩니다",
+								     icon: "warning",
+								     buttons: ["NO","YES"],
+								}).then((YES) => {
+								    if (YES) {
+								      /* "YES"클릭시 로직 */
+								      $('#frm').submit();
+								    } else {
+									  return false;
+									}
+								});
+
 							} else {
-								alert('현재 비밀번호를 잘못 입력하셨습니다.');
+								swal('현재 비밀번호를 잘못 입력하셨습니다.');
 								return false;
 							}
 						}
@@ -68,12 +76,26 @@
 
 				}
 				
+ 				return false;
+			} else if(now_pw != '' || new_pw != '' || new_pw_confirm != ''){
+				swal('현재 비밀번호와 수정할 비밀번호, 수정할 비밀번호 확인을 모두 입력해주세요.');
 				return false;
-			}else if(now_pw != '' || new_pw != '' || new_pw_confirm != ''){
-				alert('현재 비밀번호와 수정할 비밀번호, 수정할 비밀번호 확인을 모두 입력해주세요.');
+			} else{
+				swal({
+				     title: "정말 수정하시겠습니까?",
+				     text: "YES를 클릭하시면 수정한 내용이 저장됩니다",
+				     icon: "warning",
+				     buttons: ["NO","YES"],
+				}).then((YES) => {
+				    if (YES) {
+				      /* "YES"클릭시 로직 */
+				      $('#frm').submit();
+				    } else {
+					  return false;
+					}
+				});
 				return false;
 			}
-
 		});
 
 		//주소 칸 나눠서 보여주기
@@ -158,39 +180,16 @@
 						// 우편번호와 주소 정보를 해당 필드에 넣는다.
 						document.getElementById('sample4_postcode').value = data.zonecode;
 						document.getElementById("sample4_roadAddress").value = roadAddr;
-
-						// 참고항목 문자열이 있을 경우 해당 필드에 넣는다.
-						if (roadAddr !== '') {
-							document.getElementById("sample4_extraAddress").value = extraRoadAddr;
-						} else {
-							document.getElementById("sample4_extraAddress").value = '';
-						}
-
-						var guideTextBox = document.getElementById("guide");
-						// 사용자가 '선택 안함'을 클릭한 경우, 예상 주소라는 표시를 해준다.
-						if (data.autoRoadAddress) {
-							var expRoadAddr = data.autoRoadAddress
-									+ extraRoadAddr;
-							guideTextBox.innerHTML = '(예상 도로명 주소 : '
-									+ expRoadAddr + ')';
-							guideTextBox.style.display = 'block';
-
-						} else if (data.autoJibunAddress) {
-							var expJibunAddr = data.autoJibunAddress;
-							guideTextBox.innerHTML = '(예상 지번 주소 : '
-									+ expJibunAddr + ')';
-							guideTextBox.style.display = 'block';
-						} else {
-							guideTextBox.innerHTML = '';
-							guideTextBox.style.display = 'none';
-						}
 					}
 
 				}).open();
 	}
+	
 </script>
 <style type="text/css">
-
+#logo{
+	margin-top: -50px !important;
+}
 #myPageWrap {
 	text-align: -webkit-center;
 }
@@ -356,7 +355,7 @@ ul.nav.nav-tabs li:hover {
 
 					<td class="myicon" colspan="4" align="center">
 					<br/>
-					<img id="icon" name="profile_image" src="/hos/${sessionScope.memberInfo.profile_image}"> <br />
+					<img id="icon" name="profile_image" src="${sessionScope.memberInfo.profile_image}"> <br />
 						<br/>
 						<input type="file" id="iconSelectBtn" name="filename" type="file"> 
 						<input type="hidden" id="user_icon" name="user_icon" /> 
@@ -482,7 +481,7 @@ ul.nav.nav-tabs li:hover {
 					name="authority" /> <input type="hidden"
 					value="${sessionScope.memberInfo.enabled}" name="enabled" /> <a
 					class="mynavA" href="/hos/myinfo/myinfomain"><input
-					type="button" id="modCancleBtn" class="btns" value="취소" /></a> 
+					type="button" id="modCancleBtn" class="btns" value="뒤로" /></a> 
 					<input type="submit" id="modFinishBtn" class="btns" value="저장" />
 			</div>
 		</form>

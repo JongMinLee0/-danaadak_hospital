@@ -26,7 +26,7 @@ function Pagesearch(totalPage, total, blocksize, blockpage) {
 				displayPlaces(search);
 			},
 			error : function(error) {
-				alert(error);
+				alert("키워드의 정보가 없습니다.");
 			}
 		});
 	}
@@ -86,8 +86,9 @@ function searchPlaces() {
 		alert('키워드를 입력해주세요!');
 		return false;
 	} else {
+		alert("키워드의 정보가 없습니다.");
 		infowindow.close();
-		Searchkeyword(keyword);
+//		Searchkeyword(keyword);
 	}
 
 }
@@ -119,7 +120,7 @@ function Searchkeyword(keyword) {
 			
 		},
 		error : function(error) {
-			alert(error);
+			alert("키워드의 정보가 없습니다.");
 		}
 	});
 } // end f_Searchkeyword()

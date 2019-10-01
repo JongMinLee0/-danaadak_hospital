@@ -82,7 +82,7 @@
 			</tr>
 			<c:forEach var="edto" items="${edto }">
 				<tr>
-					<td>${edto.eno }</td>
+					<td id="eno">${edto.eno }</td>
 					<td>${edto.e_type }</td>
 					<td>${edto.e_subject }</td>
 				<%-- 	<td>${edto.e_content }</td> --%>
@@ -92,6 +92,6 @@
 			
 		</table>
 	</div>
+	<jsp:include page="/WEB-INF/views/fragments/footer.jsp" />
 </body>
 </html>
-	<jsp:include page="/WEB-INF/views/fragments/footer.jsp" />

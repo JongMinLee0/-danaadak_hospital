@@ -146,7 +146,12 @@ ul.nav.nav-tabs li:hover {
 		<input type="hidden" name="username" value="${sessionScope.memberInfo.username}" />
 		</th>
 	</tr>
-
+	<c:set value="${myReview.size()}" var="size" />
+	<c:if test="${size==0 }">
+		<script>
+			swal("후기 내역이 없습니다.");
+		</script>
+	</c:if> 
 	<c:forEach var="myreviewList" items="${myReview}" varStatus="status">
 	  <tr>
 		<td class="hosName" name="hos_name">${myreviewList.hos_name}</td>

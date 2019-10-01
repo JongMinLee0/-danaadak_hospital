@@ -141,12 +141,16 @@ ul.nav.nav-tabs li:hover {
 	</tr>
 	</thead>
 	<tbody class="myPharmBody">
+		<c:set value="${myres.size()}" var="size" />
+	<c:if test="${size==0 }">
+		<script>
+		
+			swal("처방전 내역이 없습니다.");
+		</script>
+	</c:if> 
 	<c:forEach var="myPharmList" items="${myres}" varStatus="status">
 		<tr class="myPharmLine" value="${myPharmList.rno}">
-			<c:if test="${myres[status.index].medicine == null}">
-<!-- 				<input type="hidden"> -->
-			</c:if>
-			
+
 			<c:if test="${myres[status.index].medicine != null}">
 				<td class="hosName">${myres[status.index].hosDTO.hos_name}</td>
 				<td class="resDate">${myres[status.index].re_date}</td>

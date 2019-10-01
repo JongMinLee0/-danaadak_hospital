@@ -1,93 +1,103 @@
-
 /* 글쓰기 폼  */
-#write_wrap{
+#write_wrap {
 	width: 80%;
 	height: 600px;
 	margin: 100px auto;
 }
-#write_table{
+
+#write_table {
 	width: 80%;
 	height: 100px;
 	margin: auto;
 }
-#event_tab > tbody > tr > th{
+
+#event_tab>tbody>tr>th {
 	text-align: center;
 }
 
-
 #e_type {
-    word-wrap: break-word;
-    border: 1px solid black;
+	word-wrap: break-word;
+	border: 1px solid black;
 }
 /* input type */
-#title{
+#title {
 	width: 100%;
 }
-#hashTag{
+
+#hashTag {
 	width: 100%;
 }
 
 /* button  */
-.write_button{
+.write_button {
 	width: 50px;
 	height: 30px;
 }
-#event_tab > tbody > tr> td > input[type=text]{
+
+#event_tab>tbody>tr>td>input[type=text] {
 	background: none;
-    border: 0px;
-    border-bottom: 1px solid black;
+	border: 0px;
+	border-bottom: 1px solid black;
 }
-#write_table > tbody > tr:nth-child(5) > td{
+
+#write_table>tbody>tr:nth-child(5)>td {
 	text-align: center;
 }
 
 /* 스마트 에디터 */
 
 /* 별점 주기 */
-#star_grade a{
+#star_grade a {
 	text-decoration: none;
-    color: gray;
-    font-size: 20px;
+	color: gray;
+	font-size: 20px;
 }
-#star_grade{
+
+#star_grade {
 	margin: 0 !important;
 }
-#star_grade a.on{
-    color: orange;
+
+#star_grade a.on {
+	color: orange;
 }
 /* ----------------------------------------------------------------*/
-#event_registerFrm{
-	margin-left : 300px;
-	margin-top : 150px;	
+#event_registerFrm {
+	margin-left: 300px;
+	margin-top: 150px;
 }
-#event_tab{
+
+#event_tab {
 	width: 1300px;
 }
-#event_tab td{
-	margin : 0px;
+
+#event_tab td {
+	margin: 0px;
 }
 
+
+
+}
 /* 버튼 css  */
-
-.event_register{
+.event_register {
 	text-transform: uppercase;
-    background: #f4f160;
-    color: black;
-    padding: .7em 0em;
-    border: none;
-    font-size: 1em;
-    outline: none;
-    width: 80%;
-    letter-spacing: 1px;
-    font-weight: 600;
-    margin-top: 0.5em;
-    cursor: pointer;
-    display: inline-block;
-    border-radius: 4px;	
-    width: 100px	
+	background: #f4f160;
+	color: black;
+	padding: .7em 0em;
+	border: none;
+	font-size: 1em;
+	outline: none;
+	width: 80%;
+	letter-spacing: 1px;
+	font-weight: 600;
+	margin-top: 0.5em;
+	cursor: pointer;
+	display: inline-block;
+	border-radius: 4px;
+	width: 100px
 }
-.event_register:hover{
-  background-color: white; 
-  color: black; 
-  border: 2px solid #f4f160;
+
+.event_register:hover {
+	background-color: white;
+	color: black;
+	border: 2px solid #f4f160;
 }

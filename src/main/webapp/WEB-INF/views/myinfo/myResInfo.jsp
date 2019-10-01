@@ -76,12 +76,18 @@ $(document).ready(function() {
 	</tr>
 	</thead>
 	<tbody class="myResBody">
+	
+	<c:set value="${myres.size()}" var="size" />
+	<c:if test="${size==0 }">
+		<script>
+		
+			swal("진료 내역이 없습니다.");
+		</script>
+	</c:if> 
+	
 	<c:forEach var="myresList" items="${myres}" varStatus="status" begin="0">
 		<c:set var="i" value="0" />
 		<tr class="myResLine" id="${myresList.rno}" value="${myresList.rno}">
-			<c:if test="${myres[status.index].hos_id == null}">
-		<!-- 	<input type="hidden"> -->
-			</c:if>
 			
 			<c:if test="${myres[status.index].rno != null}">
 				<td class="hosName">${myres[status.index].hosDTO.hos_name}</td>

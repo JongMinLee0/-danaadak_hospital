@@ -14,7 +14,7 @@
 <link href="https://fonts.googleapis.com/css?family=Jua&display=swap" rel="stylesheet">
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script type="text/javascript" src="/hos/resources/js/admin_main.js"></script>
-<title>Insert title here</title>
+<title>관리자</title>
 </head>
 <body>
 <!-- navbar 홈페이지 상단 메뉴바  -->

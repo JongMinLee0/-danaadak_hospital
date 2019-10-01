@@ -4,9 +4,9 @@
 
 <link rel="stylesheet" href="/hos/resources/css/admin_event.css" />
 
+<div id="hos_join">
 <h1 id="admin_h">병원 회원 가입 요청 리스트</h1>
-<div>
-	<ul id="admin_h">
+	<ul id="admin_ul">
 		<c:forEach items="${hsList}" var="dto" varStatus="status">
 			<li class="joinList">
 				<form name="admin_frm" id="${dto.hos_id}" action="/hos/admin/hos_join"

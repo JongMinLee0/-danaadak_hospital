@@ -3,8 +3,14 @@ body {
 	margin-left: 100px;
 }
 
+#eventListTable {
+	margin: 0 auto;
+    text-align: center;
+}
+
 #bookList_Wrap {
 	margin-left: 50px;
+	float: left;
 }
 
 #title {
@@ -29,6 +35,7 @@ body {
 	height: 70px;
 	font-weight: bold;
 	color: white;
+	margin-bottom: 10px;
 }
 /* #event_regi:hover{
 	font-size:30px;
@@ -43,13 +50,18 @@ body {
 }
 
 #eventTop {
-	background-color: #00284d;
+	background-color: #00c4ff94;
 	color: white;
 	font-size: 20px;
 	display: block;
 	margin-top: 10px;
 	width: 300px;
 	text-align: center;
+	margin: 0 auto;
+}
+
+#eno {
+	text-align: left;
 }
 
 ::-webkit-scrollbar {
@@ -73,6 +85,7 @@ body {
 	height: 16px;
 	background: #f1ef79;
 }
+
 
 #eventListTable>tbody>tr>th, td {
 	text-align: center;

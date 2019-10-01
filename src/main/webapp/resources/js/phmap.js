@@ -8,7 +8,7 @@ var total;
 function Pagesearch(totalPage, total, blocksize, blockpage) {
 	displayPagination(totalPage, total, blocksize, blockpage);
 	if (keyword != '') {
-		// alert(keyword);
+		// swal(keyword);
 		$.ajax({
 
 			type : 'POST',
@@ -26,7 +26,7 @@ function Pagesearch(totalPage, total, blocksize, blockpage) {
 				displayPlaces(search);
 			},
 			error : function(error) {
-				alert("키워드 정보가 없습니다.");
+				swal("키워드 정보가 없습니다.");
 			}
 		});
 	}
@@ -83,7 +83,7 @@ var infowindow = new daum.maps.InfoWindow({
 function searchPlaces() {
 	keyword = document.getElementById('keyword').value;
 	if (!keyword.replace(/^\s+|\s+$/g, '')) {
-		alert('키워드를 입력해주세요!');
+		swal('키워드를 입력해주세요!');
 		return false;
 	} else {
 		infowindow.close();
@@ -94,7 +94,7 @@ function searchPlaces() {
 
 
 function Searchkeyword(keyword) {
-	//alert(keyword);
+	//swal(keyword);
 	// 한페이지당 표시될 화면 계산
 	num = 1;
 	total = 15;
@@ -119,14 +119,14 @@ function Searchkeyword(keyword) {
 			
 		},
 		error : function(error) {
-			alert("키워드 정보가 없습니다.");
+			swal("키워드 정보가 없습니다.");
 		}
 	});
 } // end f_Searchkeyword()
 
 // 검색 결과 목록과 마커를 표출하는 함수입니다
 function displayPlaces(search) {
-	// alert(search.length);
+	// swal(search.length);
 	var listEl = document.getElementById('placesList'), menuEl = document
 			.getElementById('menu_wrap'), fragment = document
 			.createDocumentFragment(), bounds = new daum.maps.LatLngBounds(), listStr = '';

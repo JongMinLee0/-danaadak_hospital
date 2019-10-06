@@ -32,8 +32,9 @@ public class DatabaseConfig {
 		// Mybatis에서 오류 발생시 로그가 찍히게 하기 위한 설정
 		hikariConfig.setDriverClassName("net.sf.log4jdbc.sql.jdbcapi.DriverSpy");
 		hikariConfig.setJdbcUrl("jdbc:log4jdbc:oracle:thin:@oracle11g.cvbptbyjtnd2.ap-northeast-2.rds.amazonaws.com:1521:ORCL");
+		//oracle11g.cvbptbyjtnd2.ap-northeast-2.rds.amazonaws.com  ORCL
 		hikariConfig.setUsername("my_hos");
-		hikariConfig.setPassword("tnthd2351!");
+		hikariConfig.setPassword("tnthd2351!"); // tnthd2351!
 		hikariConfig.setMinimumIdle(10);
 		hikariConfig.setMaximumPoolSize(30);
 		hikariConfig.setConnectionTimeout(300000);

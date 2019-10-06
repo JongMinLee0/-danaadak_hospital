@@ -38,11 +38,17 @@ $(document).ready(function(){
 				url:'/hos/comm/modifyWrite',
 				data:queryString,
 				success:function(res){
-					alert(res);
-					location.href='/hos/comm/reviewDetail?vino='+vino;
+					swal(res, {
+					      icon: "success",
+				  }).then((value) => {
+					  location.href='/hos/comm/reviewDetail?vino='+vino;
+				  });
 				},error:function(e){
-					alert(e.status + ' 오류가 발생했습니다.');
-					location.href='/hos/comm/reviewDetail?vino='+vino;
+					swal("e.status + ' 오류가 발생했습니다.", {
+					      icon: "warning",
+				  }).then((value) => {
+					  location.href='/hos/comm/reviewDetail?vino='+vino;
+				  });
 				}
 			});
 		}

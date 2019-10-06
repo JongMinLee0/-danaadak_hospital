@@ -1,7 +1,8 @@
 $(document).ready(function(){
 	
-	
-	var result = true;
+	// 예약 결과(예약가능시간 확인을 클릭했을 시 true로 바뀌고 
+	// 클릭 안했을 시 false를 유지한다.
+	var result = false;
 	//예약 모달 숨기기
 	$('#insertModal').addClass('insertHide');
 	
@@ -102,6 +103,11 @@ $(document).ready(function(){
 			swal('선택하신 시간은 예약가능한 시간이 아닙니다.');
 			return false;
 		}else{
+			
+			if($('#cate').val() == ''){
+				swal('진료항목을 입력해 주세요!!');
+				return false;
+			}
 			swal($('#hos_name').val()+'\n'
 					+$('#username').val()+'님'+'\n'
 					+$('#category').val()+'\n'

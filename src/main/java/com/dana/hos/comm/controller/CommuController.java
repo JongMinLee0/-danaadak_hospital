@@ -1,12 +1,21 @@
 package com.dana.hos.comm.controller;
 
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.security.Principal;
 import java.util.List;
 
+import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.amazonaws.util.IOUtils;
 import com.dana.hos.chat.module.ChatList;
 import com.dana.hos.chat.repo.ChatRoomRepository;
 import com.dana.hos.chat.service.ChatService;
@@ -22,6 +32,7 @@ import com.dana.hos.comm.module.PageDTO;
 import com.dana.hos.comm.module.ReviewDTO;
 import com.dana.hos.comm.service.CommService;
 import com.dana.hos.comm.service.SmartPhotoService;
+import com.dana.hos.comm.service.impl.S3Util;
 import com.dana.hos.hopital.module.EventDTO;
 
 import lombok.RequiredArgsConstructor;
@@ -32,18 +43,57 @@ import lombok.RequiredArgsConstructor;
 public class CommuController {
 	@Autowired
 	private final ChatRoomRepository chatRoomRepository;
-	
+
 	@Autowired
 	private final ChatService chatService;
 	private int currpage;
 	private PageDTO pdto;
-	
 
 	@Autowired
 	SmartPhotoService smartPhotoService;
 
 	@Autowired
 	CommService commService;
+
+	// S3
+	S3Util s3 = new S3Util();
+	String bucketName = "danaatdak-bucket";
+
+	// S3에서 이미지 가져오기
+	@SuppressWarnings("resource")
+	@ResponseBody
+	@RequestMapping("/displayFile")
+	public void displayFile(String fileName) throws Exception {
+		InputStream in = null;
+		ResponseEntity<byte[]> entity = null;
+		HttpURLConnection uCon = null;
+		BufferedImage img = null;
+		String inputDirectory = null;
+
+		inputDirectory = "dak/images";
+
+		try {
+			HttpHeaders headers = new HttpHeaders();
+			URL url;
+			try {
+				System.out.println("bucketName : " + bucketName);
+				System.out.println("direc + fileName = " + inputDirectory+fileName);
+				url = new URL(s3.getFileURL(bucketName, inputDirectory + fileName));
+				uCon = (HttpURLConnection) url.openConnection();
+				in = uCon.getInputStream(); // 이미지를 불러옴
+				System.out.println("in : " + in);
+			} catch (Exception e) {
+				url = new URL(s3.getFileURL(bucketName, "default.jpg"));
+				uCon = (HttpURLConnection) url.openConnection();
+				in = uCon.getInputStream();
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			in.close();
+		}
+	}
 
 	// 커뮤니티 메인 페이지
 	@RequestMapping("main")
@@ -55,7 +105,7 @@ public class CommuController {
 	@RequestMapping("event")
 	public ModelAndView comEvent(ModelAndView mav, EventDTO edto, PageDTO pd) {
 		int total = commService.eventCount();
-		
+
 		if (total >= 1) {
 			if (pd.getCurrPage() == 0) {
 				currpage = 1;
@@ -86,7 +136,7 @@ public class CommuController {
 	public List<ReviewDTO> scrollReview(String page) {
 		int page2 = Integer.parseInt(page);
 		PageDTO pdto = new PageDTO(page2);
-		
+
 		/* mav.addAttribute("pList", commService.scrollList(pdto)); */
 		return commService.scrollList(pdto);
 	}
@@ -97,11 +147,11 @@ public class CommuController {
 		// principal.getName() : 현재 세션에 저장되어 있는(현재 접속해 있는) 아이디를 반환해준다.
 		String id = principal.getName();
 		mav.setViewName("chat");
-		
+
 		List<ChatList> cList = chatService.chatList(id);
 		mav.addObject("cList", cList);
-		//List<Object> roomList = chatRoomRepository.roomList(id);
-		//List<Object> MessageList = chatRoomRepository.roomMessage(roomId);
+		// List<Object> roomList = chatRoomRepository.roomList(id);
+		// List<Object> MessageList = chatRoomRepository.roomMessage(roomId);
 		return mav;
 	}
 
@@ -191,7 +241,7 @@ public class CommuController {
 		mav.addObject("hash", vi_hash);
 		return mav;
 	}
-	
+
 	// 스크롤시 후기 리스트 가져오기
 	@ResponseBody
 	@RequestMapping(value = "scrollHash", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
@@ -202,6 +252,5 @@ public class CommuController {
 		/* mav.addAttribute("pList", commService.scrollList(pdto)); */
 		return commService.scrollHash(pdto);
 	}
-	
-	
-}//end class 
+
+}// end class

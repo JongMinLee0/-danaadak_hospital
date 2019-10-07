@@ -1,4 +1,3 @@
-
 /* 홈페이지 전체 사진  
    배경화면 색상 : 255 255 51
    
@@ -6,6 +5,12 @@
 */
 body {
 	background-color: #e6e6ff;
+}
+
+#message {
+	width: 300px;
+	height: 150px;
+	overflow-y: scroll;
 }
 
 .home_image_wrap {
@@ -111,8 +116,9 @@ ol.even {
 #red {
 	background-color: #00284d;
 }
-.hex a{
-	color:white;
+
+.hex a {
+	color: white;
 	display: block;
 	text-decoration: none;
 }
@@ -124,6 +130,7 @@ ol.even {
 #orange {
 	background-color: #00284d;
 }
+
 #orange:hover {
 	background-color: #ff8000;
 }
@@ -204,11 +211,13 @@ ol.odd {
 	font-size: x-large;
 	width: max-content;
 }
-.hex-content:hover{
+
+.hex-content:hover {
 	font-size: xx-large;
 	font-weight: bold;
-	color:black;
+	color: black;
 }
+
 .hex:before, .hex:after {
 	position: absolute;
 	width: inherit;
@@ -232,14 +241,13 @@ ol.odd {
 	cursor: pointer;
 }
 /* top 화살표*/
-#top_btn_wrap{
+#top_btn_wrap {
 	position: fixed;
-	z-index:5;
+	z-index: 5;
 	bottom: 50px;
 	right: 50px;
 }
 
-#top_btn{
-	color: rgb(54,36,36);
+#top_btn {
+	color: rgb(54, 36, 36);
 }
-

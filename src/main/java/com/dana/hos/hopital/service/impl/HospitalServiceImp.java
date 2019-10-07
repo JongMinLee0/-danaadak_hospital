@@ -34,8 +34,8 @@ public class HospitalServiceImp implements HospitalService {
 	}
 
 	@Override
-	public List<ReserveDTO> contentProcess(MemberDTO dto) {
-		return hospitalDAO.contentMethod(dto);
+	public List<ReserveDTO> contentProcess(int rno) {
+		return hospitalDAO.contentMethod(rno);
 	}
 	@Override
 	public void updateProcess(ReserveDTO dto) {

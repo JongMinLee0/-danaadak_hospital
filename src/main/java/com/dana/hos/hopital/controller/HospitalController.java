@@ -40,9 +40,9 @@ public class HospitalController {
 	}
 	//병원 환자 뷰페이지
 	@RequestMapping(value="/view" , method= RequestMethod.GET)
-	public ModelAndView viewMethod(ModelAndView mav, MemberDTO dto) {
-		List<ReserveDTO> aList = hospitalService.contentProcess(dto);
-		/*mav.addObject("param1",aList.get(0));*/
+	public ModelAndView viewMethod(ModelAndView mav, MemberDTO dto, int rno) {
+	//	List<ReserveDTO> aList = hospitalService.contentProcess(dto);
+		mav.addObject("aList", hospitalService.contentProcess(rno).get(0));
 		mav.addObject("name",hospitalService.nameselctProcess(dto.getHos_id()));
 		mav.setViewName("hospital/view");
 		return mav;

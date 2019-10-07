@@ -79,7 +79,7 @@ $(document).ready(function() {
 				async : false,
 				success : function(res){
 					if(res != typeParam){
-						swal('타입 선택 미스');
+						swal('타입을 잘못 선택하셨거나 존재하지 않는 아이디입니다.');
 						rtn = false;
 						return false;
 					}else{

@@ -30,7 +30,7 @@
 						</tr>
 						<tr>
 							<td></td>
-							<td style="text-align: right;"><input type="submit"
+							<td style="text-align: right;"><input name="hosjoin" type="submit"
 								value="승인" class="${dto.hos_id}"/></td>
 						</tr>
 					</table>

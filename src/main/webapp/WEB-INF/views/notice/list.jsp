@@ -64,9 +64,9 @@
 					</tr>
 				</thead>
 
-				<c:forEach var="dto" items="${aList}">
+				<c:forEach var="dto" items="${aList}" varStatus="status" >
 					<tr>
-						<td>${dto.num}</td>
+						<td>${(pg.totalCount - status.index) - ( (pg.currentPage - 1)  * pg.blockCount ) }</td>
 						<td><c:url var="path" value="noticeview">
 								<c:param name="currentPage" value="${pg.currentPage }" />
 								<c:param name="num" value="${dto.num }" />

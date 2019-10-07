@@ -154,7 +154,7 @@ $(document).ready(function() {
 	});
 	
 	$('#hos_id').on('change', function(){
-		alert($(this).val());
+//		alert($(this).val());
 		
 		$.ajax({
             type:'POST',

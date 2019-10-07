@@ -38,7 +38,7 @@
 			<p class="des_comment">병원 가기 전에 다나았닥으로 접수해보세요.</p>
 			<p class="des_comment">대기실에서 기다리는 시간이 줄어듭니다.</p>
 			<p class="des_comment">커뮤니티를 통한 활동도 확인해보세요.</p>
-			<button class="btn btn-dark" onclick="location.href='/hos/map'">병원접수하기</button>
+			<button class="btn btn-dark">병원접수하기</button>
 
 		</div>
 	</div>
@@ -46,39 +46,39 @@
 	<div class="wrap">
 		<p class="wow fadeInLeft" id="wraptext">진료과목 바로가기</p>
 		<ol class="wow fadeInUpBig odd">
-			<a href="/hos/map?keyword=정형외과">
+			<a href="#">
 				<li class='hex' id="red">
 					<div class="hex-content">정형외과</div>
 			</li>
 			</a>
-			<a href="/hos/map?keyword=내과">
+			<a href="#">
 				<li class='hex' id="orange">
 					<div class="hex-content">내과</div>
 			</li>
 			</a>
-			<a href="/hos/map?keyword=치과">
+			<a href="#">
 				<li class='hex' id="yellow">
 					<div class="hex-content">치과</div>
 			</li>
 			</a>
-			<a href="/hos/map?keyword=안과">
+			<a href="#">
 				<li class='hex' id="green">
 					<div class="hex-content">안과</div>
 			</li>
 			</a>
 		</ol>
 		<ol class="wow fadeInUpBig even">
-			<a href="/hos/map?keyword=산부인과">
+			<a href="#">
 				<li class='hex' id="pink">
 					<div class="hex-content">산부인과</div>
 			</li>
 			</a>
-			<a href="/hos/map?keyword=소아청소년과">
+			<a href="#">
 				<li class='hex' id="purple">
 					<div class="hex-content">소아청소년과</div>
 			</li>
 			</a>
-			<a href="/hos/map?keyword=성형외과">
+			<a href="#">
 				<li class='hex' id="blue">
 					<div class="hex-content">성형외과</div>
 			</li>

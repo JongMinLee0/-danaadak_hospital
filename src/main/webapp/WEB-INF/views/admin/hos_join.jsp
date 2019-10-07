@@ -9,8 +9,7 @@
 	<ul id="admin_ul">
 		<c:forEach items="${hsList}" var="dto" varStatus="status">
 			<li class="joinList">
-				<form name="admin_frm" id="${dto.hos_id}" action="/hos/admin/hos_join"
-					method="post">
+				<form name="admin_frm" id="${dto.hos_id}" action="/hos/admin/hos_join" method="post">
 					<table>
 						<tr>
 							<td colspan="2"><h4 class="joinList">병원 이름 : ${dto.hosDTO.hos_name}</h4></td>
@@ -32,7 +31,7 @@
 						<tr>
 							<td></td>
 							<td style="text-align: right;"><input type="submit"
-								value="승인" class="join_success"/></td>
+								value="승인" class="${dto.hos_id}"/></td>
 						</tr>
 					</table>
 				</form>

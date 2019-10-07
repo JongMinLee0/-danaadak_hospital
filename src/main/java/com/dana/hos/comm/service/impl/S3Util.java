@@ -18,8 +18,8 @@ import com.amazonaws.services.s3.model.ObjectMetadata;
 // 아마존 서버와 connect하여 상호작용하기 위한 공통적인 메서드를 생성한다.
 public class S3Util {
 	
-	private String accessKey = "AKIAWSIPG7KSKSOORD5L"; // 액세스 키
-	private String secretKey = "hJh5YwgMVvy97KXtSFcNRqfXIcZASRlYV9QYNh3y"; // 보안 액세스 키
+	private String accessKey = "AKIAWSIPG7KSHOTN7FRN"; // 액세스 키
+	private String secretKey = "S0ugN5wv2mBHr+i7AN7rTrg6Aa6b4l5V0xDIfn2S"; // 보안 액세스 키
 	
 	private AmazonS3 conn;
 	

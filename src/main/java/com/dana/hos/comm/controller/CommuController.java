@@ -63,36 +63,34 @@ public class CommuController {
 	@SuppressWarnings("resource")
 	@ResponseBody
 	@RequestMapping("/displayFile")
-	public void displayFile(String fileName) throws Exception {
+	public ResponseEntity<byte[]> displayFile(String fileName) throws Exception {
 		InputStream in = null;
 		ResponseEntity<byte[]> entity = null;
 		HttpURLConnection uCon = null;
-		BufferedImage img = null;
-		String inputDirectory = null;
-
-		inputDirectory = "dak/images";
+		
+		String inputDirectory = "dak/images";
 
 		try {
 			HttpHeaders headers = new HttpHeaders();
 			URL url;
 			try {
-				System.out.println("bucketName : " + bucketName);
-				System.out.println("direc + fileName = " + inputDirectory+fileName);
-				url = new URL(s3.getFileURL(bucketName, inputDirectory + fileName));
+				url = new URL(s3.getFileURL(bucketName, inputDirectory+fileName));
 				uCon = (HttpURLConnection) url.openConnection();
 				in = uCon.getInputStream(); // 이미지를 불러옴
-				System.out.println("in : " + in);
 			} catch (Exception e) {
 				url = new URL(s3.getFileURL(bucketName, "default.jpg"));
 				uCon = (HttpURLConnection) url.openConnection();
 				in = uCon.getInputStream();
 			}
-			
+
+			entity = new ResponseEntity<byte[]>(IOUtils.toByteArray(in), headers, HttpStatus.CREATED);
 		} catch (Exception e) {
 			e.printStackTrace();
+			entity = new ResponseEntity<byte[]>(HttpStatus.BAD_REQUEST);
 		} finally {
 			in.close();
 		}
+		return entity;
 	}
 
 	// 커뮤니티 메인 페이지

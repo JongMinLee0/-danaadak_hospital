@@ -60,8 +60,8 @@
 					
 					<c:if test="${type eq 'hospital'}">
 						<label for="hos_name">병원이름</label>
-						<input type="text" id="hos_id" name="hos_id">
-						<input type="text" id="hos_address" name="address">
+						<input type="hidden" id="hos_id" name="hos_id">
+						<input type="hidden" id="hos_address" name="address">
 						<input type="text" id="hos_name" name="hos_name" class="val" placeholder="병원명" required="">
 						<p class="errorMsg"><span class="error_next_box" id="hos_nameMsg" role="alert"></span></p>
 						<div class="list-group" style="display: none; ">

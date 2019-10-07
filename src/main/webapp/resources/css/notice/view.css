@@ -156,7 +156,18 @@ body>div.navbar>div {
 	margin-right: 280px;
 	margin-bottom: 45px;
 }
-
+#update{
+		float: right;
+	margin-top: 40px;
+	margin-right: 10px;
+	margin-bottom: 45px;
+}
+#delete{
+	float: right;
+	margin-top: 40px;
+	margin-right: 10px;
+	margin-bottom: 45px;
+}
 /* footer */
 #wrap>div.footer {
 	position: absolute;

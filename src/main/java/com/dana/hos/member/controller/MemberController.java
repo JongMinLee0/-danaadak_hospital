@@ -136,7 +136,8 @@ public class MemberController {
 
 		
 		if(dto.getProfile_image()==null || dto.getProfile_image().equals("") || dto.getProfile_image().equals("null") ) {
-			dto.setProfile_image("/hos/resources/images/defaultIcon.png");
+			
+			dto.setProfile_image("/hos/comm/displayFile?fileName=/2019/10/07/726d3d18-83e8-490e-a03f-53042a121ca0_defaultIcon.png");
 		}
 
 		memberService.joinProcess(dto);

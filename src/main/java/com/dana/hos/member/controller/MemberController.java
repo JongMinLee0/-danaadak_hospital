@@ -52,8 +52,13 @@ public class MemberController {
 
 	@RequestMapping(value = "/login/typeChk", method = RequestMethod.POST)
 	public @ResponseBody String typeChk(String username) {
-		MemberDTO dto = memberService.userInfoProcess(username);
-		return dto.getType();
+		try {
+			MemberDTO dto = memberService.userInfoProcess(username);
+			return dto.getType();
+		}catch (Exception e) {
+			return "fail";
+		}
+		
 	}
 
 	@RequestMapping("/kakaoLogin")
@@ -85,12 +90,6 @@ public class MemberController {
 		return "member/login/findIdPw";
 	}
 
-	@RequestMapping(value = "/member/findIdPwForm", method = RequestMethod.POST)
-	public String findIdPw(String result, ModelAndView mav) {
-		mav.addObject("result", result);
-		System.out.println(result);
-		return "member/login/findIdPw";
-	}
 
 	@RequestMapping(value = "/member/findIdPw", method = RequestMethod.POST, produces = "application/text; charset=utf8")
 	public @ResponseBody String findIdPw(String type, MemberDTO dto, ModelAndView mav) {
@@ -165,7 +164,7 @@ public class MemberController {
 	}
 
 	@RequestMapping(value = "/join/findHos", method = RequestMethod.POST)
-	public @ResponseBody List<HosDTO> replyListPage(String keyword) {
+	public @ResponseBody List<HosDTO> hosListPage(String keyword) {
 		return memberService.findHospitalProcess(keyword);
 	}
 

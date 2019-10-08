@@ -46,7 +46,7 @@ public class FinalController {
 	public @ResponseBody ModelAndView HospitalMap(int pageNo, int pageSize, String keyword, ModelAndView mav) {
 		int countAll=hosService.hosf_countAllProcess(keyword);
 		int totalPage=countAll/pageSize;
-		if((countAll%pageSize)>0) {
+		if((countAll%pageSize)>0) 
 			totalPage++;
 		
 		List<HosDTO> aList = hosService.hosf_listProcess(pageNo, pageSize, keyword);
@@ -54,7 +54,7 @@ public class FinalController {
 		mav.addObject("pageNo",pageNo);
 		mav.addObject("totalPage",totalPage);
 		mav.setViewName("jsonView");
-		}
+		
 		return mav;
 	}
 	

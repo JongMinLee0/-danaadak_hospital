@@ -75,7 +75,7 @@ $(document).ready(function(){
 							dayNames : [ '일', '월', '화', '수', '목', '금', '토' ],
 							dayNamesShort : [ '일', '월', '화', '수', '목', '금', '토' ],
 							dayNamesMin : [ '일', '월', '화', '수', '목', '금', '토' ],
-							dateFormat : 'yy.mm.dd',
+							dateFormat : 'yy-mm-dd',
 							showMonthAfterYear : true,
 							yearSuffix : '년',
 							minDate:'0',

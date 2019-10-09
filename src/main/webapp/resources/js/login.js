@@ -128,28 +128,12 @@ function kakaoLogin(kakao_id, email, userNickName, profileImage) {
 							+ nickname + '&kakao_id=' + kakao_id + '&profile_image=' + profileImage ;
 				});
 			} else {
-				kakaoLoginAction(kakao_id);
+				location.href = "/hos/kakaoLogin?kakao_id="+kakao_id;
 			}
 		}
 	});
 	return;
 
-}
-
-// 카카오로 회원가입한 사람일 때
-function kakaoLoginAction(kakao_id){
-	$.ajax({
-		type : 'POST',
-		dataType : 'json',
-		url : '/hos/kakaoLogin',
-		data : 'kakao_id=' + kakao_id,
-		success : function(res) {
-			return false;
-		//	login(res.username, res.password);
-		}
-	});
-	
-	location.replace('/hos/home');
 }
 
 function login(username, password){

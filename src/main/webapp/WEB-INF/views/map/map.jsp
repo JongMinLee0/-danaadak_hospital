@@ -26,12 +26,12 @@
 
 <script
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f75d9f5f6c8fa127a77134992a06e786&libraries=services"></script>
-</head>
 
 <script type="text/javascript" src="/hos/resources/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="/hos/resources/css/bootstrap.min.css" />
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
 <link rel="stylesheet" href="/hos/resources/css/comm_main.css" />
+</head>
 
 <body>
 <!-- navbar 홈페이지 상단 메뉴바  -->
@@ -76,7 +76,7 @@
 		<div id="menu_wrap" class="bg_white" >
 			<div class="option">
 				<form onsubmit="searchPlaces(); return false">
-					<span>지역명:</span> <input type="text" placeholder="병원찾누?"
+					<span>지역명:</span> <input type="text" placeholder="병원 검색"
 						id="keyword" size="15" />
 					<button type="submit">검색하기</button>
 				</form>

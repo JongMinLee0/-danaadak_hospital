@@ -17,8 +17,15 @@ $(document).ready(function(){
 		}
 	});
 	
-	$('.join_success').on('click', function() {
-		alert("가입 승인에 성공하였습니다.");
+	$('input[name=hosjoin]').on('click', function() {
+		var id = $(this).attr('class');
+		swal("가입 승인에 성공하였습니다.").then(
+				function(){
+					$('#'+id).submit();
+				}
+		);
+		
+		return false;
 	});
 	
 });

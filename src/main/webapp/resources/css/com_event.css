@@ -20,8 +20,10 @@
 /* 후기 글 목록 */
 body > div.comm_body > div.content_wrap > form > div{
 	float: left;
-	margin: 50px;
-	width: 300px;
+    margin: 50px;
+    width: 300px;
+    max-height: 300px;
+    overflow-y: scroll;
 }
 /* 이벤트 리스트  */
 #body_List > div.event-body.text-secondary > p{

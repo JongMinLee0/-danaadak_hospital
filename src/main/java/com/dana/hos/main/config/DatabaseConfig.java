@@ -10,9 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
-import com.zaxxer.hikari.HikariConfig;
-import com.zaxxer.hikari.HikariDataSource;
 
 /*
  * DataBase mybatis 설정 파일
@@ -27,20 +26,16 @@ public class DatabaseConfig {
 
 	@Bean(name="dataSource")
 	public DataSource dataSource() {
-		HikariConfig hikariConfig = new HikariConfig();
+		
 		//DriverManagerDataSource source = new DriverManagerDataSource();
 		// Mybatis에서 오류 발생시 로그가 찍히게 하기 위한 설정
-		hikariConfig.setDriverClassName("net.sf.log4jdbc.sql.jdbcapi.DriverSpy");
-		hikariConfig.setJdbcUrl("jdbc:log4jdbc:oracle:thin:@oracle11g.cvbptbyjtnd2.ap-northeast-2.rds.amazonaws.com:1521:ORCL");
 		//oracle11g.cvbptbyjtnd2.ap-northeast-2.rds.amazonaws.com  ORCL
-		hikariConfig.setUsername("my_hos");
-		hikariConfig.setPassword("tnthd2351!"); // tnthd2351!
-		hikariConfig.setMinimumIdle(10);
-		hikariConfig.setMaximumPoolSize(30);
-		hikariConfig.setConnectionTimeout(300000);
 		
-		
-		HikariDataSource dataSource = new HikariDataSource(hikariConfig);
+		DriverManagerDataSource dataSource = new DriverManagerDataSource();
+		dataSource.setDriverClassName("net.sf.log4jdbc.sql.jdbcapi.DriverSpy");
+		dataSource.setUrl("jdbc:log4jdbc:oracle:thin:@oracle11g.cvbptbyjtnd2.ap-northeast-2.rds.amazonaws.com:1521:ORCL");
+		dataSource.setUsername("my_hos");
+		dataSource.setPassword("tnthd2351!");
 
 		return dataSource;
 	}

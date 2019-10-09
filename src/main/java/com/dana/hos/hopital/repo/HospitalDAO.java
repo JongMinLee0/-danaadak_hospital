@@ -10,7 +10,7 @@ import com.dana.hos.reserve.module.ReserveDTO;
 public interface HospitalDAO {
 
 	public List<ReserveDTO> bookListMethod(MemberDTO dto);
-	public List<ReserveDTO> contentMethod(MemberDTO dto);
+	public List<ReserveDTO> contentMethod(int rno);
 	public void updateMethod(ReserveDTO dto);
 	public void eventInsertMethod(EventDTO dto);
 	public List<EventDTO> eventListMethod(EventDTO dto);

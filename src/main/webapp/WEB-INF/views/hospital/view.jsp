@@ -41,6 +41,10 @@
 				<td><input type="text" value="${param.username}" name="username" id ="username" readonly="readonly"></td>
 			</tr>
 			<tr>
+				<th>메&nbsp;세&nbsp;지</th>
+				<td><div id="message">${aList.message }</div></td>
+			</tr>
+			<tr>
 				<th>진료 상태</th>
 				<td>
 					<input type="radio" name=re_state value="0" id="before"/> 진료대기 

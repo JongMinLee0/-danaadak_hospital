@@ -30,8 +30,8 @@ public class HospitalDaoImp implements HospitalDAO{
 		
 	}
 	@Override
-	public List<ReserveDTO> contentMethod(MemberDTO dto) {
-		return sqlSession.selectList("hos.view",dto);
+	public List<ReserveDTO> contentMethod(int rno) {
+		return sqlSession.selectList("hos.view",rno);
 	}
 
 

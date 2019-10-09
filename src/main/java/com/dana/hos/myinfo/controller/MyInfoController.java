@@ -3,6 +3,7 @@ package com.dana.hos.myinfo.controller;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.security.Principal;
 import java.util.UUID;
 
@@ -10,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.FileCopyUtils;
@@ -20,6 +23,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.amazonaws.util.IOUtils;
+import com.dana.hos.comm.service.impl.UploadFileUtils;
 import com.dana.hos.member.module.MemberDTO;
 import com.dana.hos.member.service.MemberService;
 import com.dana.hos.myinfo.service.MyinfoService;
@@ -128,42 +133,36 @@ public class MyInfoController {
 	}
 
 	public void fileUpload(MemberDTO dto, HttpServletRequest request) {
-		// 기존 첨부파일
-		String filename = myinfoService.fileSelectprocess(dto.getUsername());
-		String root = request.getSession().getServletContext().getRealPath("/");
-		String saveDirectory = root + "resources" + File.separator + "images" + File.separator + "profile_image"
-				+ File.separator;
-		System.out.println("root : " + root);
-		System.out.println("filename : " + filename);
-		// System.out.println(saveDirectory);
+		InputStream is;
+		try {
+			MultipartFile profile = dto.getFilename();
+			is = profile.getInputStream();
+			byte[] bytes = IOUtils.toByteArray(is);
+			///////////////////////
+			// 파일명을 받는다 - 일반 원본 파일명
+			String filename = request.getHeader("file-name");
+			System.out.println("file-name : " + filename);
+			// 업로드 경로
+			String uploadPath = "dak/images";
 
-		// 수정할 첨부파일
-		MultipartFile profile = dto.getFilename();
+			// S3에 업로드
+			ResponseEntity<String> img_path = new ResponseEntity<>(
+					UploadFileUtils.uploadFile(uploadPath, filename, bytes), HttpStatus.CREATED);
 
-		// 수정한 첨부파일이 있으면
-		if (!profile.isEmpty()) {
-			String tempPath = root + "resources" + File.separator + "images" + File.separator ;
-			// 기존 첨부파일이 있으면 기존첨부파일을 제거시켜줘라
-			if (filename != null) {
-				File pro = new File(tempPath, filename);
-				if (!pro.exists())
-					pro.mkdir();
-				pro.delete();
-			}
-			String fileName = profile.getOriginalFilename();
-			String fullFilePath = "/hos/resources/images/profile_image/" + fileName;
-			dto.setProfile_image(fullFilePath);
-			File ff = new File(saveDirectory);
-			File ff2 = new File(saveDirectory + fileName);
-			if (!ff.exists())
-				ff.mkdir();
-			try {
-				FileCopyUtils.copy(profile.getInputStream(), new FileOutputStream(ff2));
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			// 이미지 경로
+			String image_path = img_path.getBody();
+			System.out.println("image_path : " + image_path);
+			String fullPath = "/hos/comm/displayFile?fileName=" + image_path;
+			System.out.println("fullPath : " + fullPath);
+			dto.setProfile_image(fullPath);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+
 	}// end fileUpload
 
 	// 예약 취소

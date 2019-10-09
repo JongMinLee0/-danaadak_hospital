@@ -104,10 +104,11 @@
 					type="hidden" name="currentPage" id="currentPage"
 					value="${currentPage }" />
 				<button type="button" class="btn btn-dark" id="list" value="리스트">목록</button>
-				<!-- <input type="button"  value="리스트닷" /> -->
-
-				<!-- <input type="button" id="update" value="수정" /> <input type="button"
-					id="delete" value="삭제" /> -->
+			<c:choose>
+				<c:when test="${sessionScope.memberInfo.username=='admin' }">
+				<button type="button" class="btn btn-dark" id="delete" value="삭제" >삭제</button>
+				</c:when>
+			</c:choose>
 			</form>
 		</div>
 		

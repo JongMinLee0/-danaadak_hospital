@@ -28,29 +28,25 @@
 				<li class="joinList">
 					<table>
 						<tr>
-							<td id="red" colspan="2"><h4 class="joinList">${aetypelist.e_subject}</h4></td>
+							<td id="red" colspan="2"><h4 class="joinList">${aetypelist.e_subject}</h4><br/></td>
 						</tr>
 						<tr>
-							<td></td>
 							<td style="text-align: right;">병원 이름 :
 								${aetypelist.e_hosDTO.hos_name}</td>
 						</tr>
 						<tr>
-							<td></td>
 							<td style="text-align: right;">병원 코드 : ${aetypelist.hos_id}</td>
 						</tr>
 						<tr>
-							<td></td>
 							<td style="text-align: right;">병원 연락처 :
 								${aetypelist.e_hosDTO.hos_phone}</td>
 						</tr>
 						<tr>
-							<td></td>
 							<td style="text-align: right;">이벤트 방식 : ${aetypelist.e_type}</td>
+							
 						</tr>
 						<tr>
-							<td>${aetypelist.e_content}</td>
-
+							<td><br/>${aetypelist.e_content}</td>
 						</tr>
 					</table>
 					<hr />

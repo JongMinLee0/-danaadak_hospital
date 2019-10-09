@@ -60,7 +60,6 @@ public class CommuController {
 	String bucketName = "danaatdak-bucket";
 
 	// S3에서 이미지 가져오기
-	@SuppressWarnings("resource")
 	@ResponseBody
 	@RequestMapping("/displayFile")
 	public ResponseEntity<byte[]> displayFile(String fileName) throws Exception {
@@ -78,9 +77,7 @@ public class CommuController {
 				uCon = (HttpURLConnection) url.openConnection();
 				in = uCon.getInputStream(); // 이미지를 불러옴
 			} catch (Exception e) {
-				url = new URL(s3.getFileURL(bucketName, "default.jpg"));
-				uCon = (HttpURLConnection) url.openConnection();
-				in = uCon.getInputStream();
+				e.printStackTrace();
 			}
 
 			entity = new ResponseEntity<byte[]>(IOUtils.toByteArray(in), headers, HttpStatus.CREATED);

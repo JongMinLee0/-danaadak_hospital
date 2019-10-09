@@ -2,6 +2,8 @@ package com.dana.hos.comm.service.impl;
 
 import java.io.InputStream;
 import java.io.PrintWriter;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -37,19 +39,19 @@ public class SmartPhotoServiceImpl implements SmartPhotoService {
 			///////////////////////
 			// 파일명을 받는다 - 일반 원본 파일명
 			String filename = request.getHeader("file-name");
-			System.out.println("file-name : " + filename);
+
 			// 업로드 경로
 			String uploadPath = "dak/images";
+			String decoding = URLDecoder.decode(filename, "UTF-8");
+			String encoding = URLEncoder.encode(decoding, "UTF-8");
 
 			// S3에 업로드
 			ResponseEntity<String> img_path = new ResponseEntity<>(
-					UploadFileUtils.uploadFile(uploadPath, filename, bytes), HttpStatus.CREATED);
+					UploadFileUtils.uploadFile(uploadPath, encoding, bytes), HttpStatus.CREATED);
 
 			// 이미지 경로
 			String image_path = img_path.getBody();
-			System.out.println("image_path : " + image_path);
 			String fullPath = "/hos/comm/displayFile?fileName=" + image_path;
-			System.out.println("fullPath : " + fullPath);
 
 			// 파일 정보
 			String sFileInfo = "";
@@ -60,7 +62,7 @@ public class SmartPhotoServiceImpl implements SmartPhotoService {
 			sFileInfo += "&sFileURL=" + fullPath;
 			// System.out.println("sFileInfo : " + sFileInfo);
 			PrintWriter out = response.getWriter();
-			System.out.println("sFileInfo : " + sFileInfo);
+
 			out.print(sFileInfo);
 			out.flush();
 			out.close();

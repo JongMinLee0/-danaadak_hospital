@@ -79,7 +79,7 @@ $(document).ready(function() {
 				async : false,
 				success : function(res){
 					if(res != typeParam){
-						swal('타입 선택 미스');
+						swal('타입 선택 미스이거나 존재하지 않는 아이디 입니다.');
 						rtn = false;
 						return false;
 					}else{
@@ -142,6 +142,7 @@ function kakaoLoginAction(kakao_id){
 		url : '/hos/kakaoLogin',
 		data : 'kakao_id=' + kakao_id,
 		success : function(res) {
+			return false;
 		//	login(res.username, res.password);
 		}
 	});

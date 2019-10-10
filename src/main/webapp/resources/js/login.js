@@ -163,4 +163,5 @@ function findIdPw(){
     var name = "아이디/비밀번호 찾기";
     var option = "width = 440, height = 510, top = 100, left = 200, location = no"
     window.open(url, name, option);
+
 }

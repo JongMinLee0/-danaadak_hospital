@@ -10,7 +10,25 @@ var totalPage;
 var num;
 var total;
 
+$(document).ready(function(){
+	// 스크롤 내릴때 메인 nav_bar 따라 오는거 삭제 
+	$('body > div.navbar_wrap.fixed-top').removeClass('fixed-top');
+	
+	// keyword로 넘어온 값이 있으면 실행시킨다.
+	history.replaceState({}, null, location.pathname);
+	var key = $('#pathKeyword').val();
+	if(key != ''){
+		$('#keyword').val(key);
+		infowindow.close();
+		Searchkeyword(key);
+	}
+	
+
+});
+
 function Pagesearch(totalPage, total, blocksize, blockpage) {
+	keyword = $('#keyword').val();
+	
 	displayPagination(totalPage, total, blocksize, blockpage);
 	if (keyword != '') {
 		// alert(keyword);
@@ -29,12 +47,16 @@ function Pagesearch(totalPage, total, blocksize, blockpage) {
 				pageNo = result.pageNo;
 				totalPage = result.totalPage;
 				displayPlaces(search);
+				
+				$('#test'+pageNo).css({'font-weight' : 'bold'});
 			},
 			error : function(error) {
 				swal("키워드 정보가 없습니다.");
 			}
 		});
 	}
+	
+	
 }
 // 마커를 담을 배열입니다
 var markers = [];
@@ -121,11 +143,14 @@ function Searchkeyword(keyword) {
 			displayPlaces(search);
 			keyword = document.getElementById('keyword').value;
 			
+			$('#test'+pageNo).css({'font-weight' : 'bold'});
+			
 		},
 		error : function(error) {
 			swal("키워드 정보가 없습니다.");
 		}
 	});
+	
 } // end f_Searchkeyword()
 
 // 검색 결과 목록과 마커를 표출하는 함수입니다
@@ -297,12 +322,13 @@ function displayPagination(totalPage, total, blocksize, pageNo) {
 		// + blockpage + "</b></span> ");
 		// else
 		paginationEl.insertAdjacentHTML("beforeEnd",
-				" <span style='cursor:pointer;'" + "onClick='Pagesearch("
+				" <span class='test' id='test"+blockpage+"' style='cursor:pointer;'" + "onClick='Pagesearch("
 						+ totalPage + "," + total + "," + blocksize + ","
-						+ blockpage + ")'>" + blockpage + "</span> ");
+						+ blockpage + ")'><a>" + blockpage + "</a></span> ");
 	}
 
 }
+
 
 // 검색결과 목록 또는 마커를 클릭했을 때 호출되는 함수입니다
 // 인포윈도우에 장소명을 표시합니다
@@ -368,18 +394,3 @@ function closeOverlay() {
 	infowindow.close();   
 }
 
-
-
-$(document).ready(function(){
-	// 스크롤 내릴때 메인 nav_bar 따라 오는거 삭제 
-	$('body > div.navbar_wrap.fixed-top').removeClass('fixed-top');
-	
-	// keyword로 넘어온 값이 있으면 실행시킨다.
-	history.replaceState({}, null, location.pathname);
-	var key = $('#pathKeyword').val();
-	if(key != ''){
-		$('#keyword').val(key);
-		infowindow.close();
-		Searchkeyword(key);
-	}
-});

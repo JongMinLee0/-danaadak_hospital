@@ -19,7 +19,8 @@ $(document).ready(function(){
 			},
 			fOnAppLoad : function(){
 				// 기존 저장된 내용의 text애용을 에디터 상에 뿌려주고자 할 때 사용
-				oEditors.getById["smart"].exec("PASTE_HTML", [$('#content').val()]);
+				var modi_content = $('#modi_content').html();
+				oEditors.getById["smart"].exec("PASTE_HTML", [modi_content]);
 			},
 			fCreator: "createSEditor2"
 		});

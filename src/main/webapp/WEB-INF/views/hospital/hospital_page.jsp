@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <jsp:include page="/WEB-INF/views/fragments/nav_bar.jsp" />
@@ -52,7 +53,17 @@
 					<c:param name="re_time" value="${dto.re_time}"/>
 				</c:url><a href="${path}">${dto.username }</a>
 				</td>
-				<td>${dto.message }</td>
+				<td>
+				<c:choose>
+           			<c:when test="${fn:length(dto.message) > 25}">
+            			<c:out value="${fn:substring(dto.message,0,24)}"/>....
+	           		</c:when>
+	           		<c:otherwise>
+	            		<c:out value="${dto.message}"/>
+	           		</c:otherwise> 
+          		</c:choose>
+				</td>
+<%-- 				<td>${dto.message }</td> --%>
 				<td>${dto.re_date }</td>
 				<td>${dto.re_time }</td>
 				<td>

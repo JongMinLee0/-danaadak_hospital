@@ -126,7 +126,7 @@ function kakaoLogin(kakao_id, email, userNickName, profileImage) {
 							+ nickname + '&kakao_id=' + kakao_id + '&profile_image=' + profileImage ;
 				});
 			} else {
-				location.href = "/hos/kakaoLogin";
+				location.href = "/hos/kakaoLogin?kakao_id="+kakao_id;
 			}
 		}
 	});

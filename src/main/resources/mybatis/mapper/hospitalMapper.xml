@@ -21,7 +21,7 @@
 	<select id="view" parameterType="com.dana.hos.member.module.MemberDTO" resultType="com.dana.hos.reserve.module.ReserveDTO">
 		select rno, username, category, message, re_state, hos_id
 		from reserve
-		where hos_id=#{hos_id} 
+		where rno=#{rno}
 	</select>
 
 	<update id="upt" parameterType="com.dana.hos.reserve.module.ReserveDTO">

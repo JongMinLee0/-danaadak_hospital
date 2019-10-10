@@ -65,7 +65,7 @@
 		<div id="menu_wrap" class="bg_white">
 			<div class="option">
 				<form onsubmit="searchPlaces(); return false">
-					<span>지역명:</span> <input type="text" placeholder="약국찾지?"
+					<span>지역명:</span> <input type="text" placeholder="약국 검색"
 						id="keyword" size="15" />
 					<button type="submit">검색하기</button>
 				</form>

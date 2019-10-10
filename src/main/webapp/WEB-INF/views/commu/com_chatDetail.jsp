@@ -22,7 +22,7 @@
 			<a href="/hos/comm/chat"><i class="fa fa-angle-left" aria-hidden="true"></i></a>
 				<span>${chatroom.name2}</span>
 			<a href="">
-				<span style="margin-left: 600px; maring-top: 10px; font-size: 20px;"><i class="fa fa-sign-out" aria-hidden="true"></i>나가기</span>
+				<span style="float:right; maring-top: 10px; font-size: 20px;"><i class="fa fa-sign-out" aria-hidden="true"></i>나가기</span>
 			</a>
 		</div>
 	</div>

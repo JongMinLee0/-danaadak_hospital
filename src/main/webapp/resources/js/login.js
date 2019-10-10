@@ -79,9 +79,7 @@ $(document).ready(function() {
 				async : false,
 				success : function(res){
 					if(res != typeParam){
-
-						swal('타입을 잘못 선택하셨거나 존재하지 않는 아이디입니다.');
-
+						swal('타입 선택 미스');
 						rtn = false;
 						return false;
 					}else{
@@ -128,7 +126,7 @@ function kakaoLogin(kakao_id, email, userNickName, profileImage) {
 							+ nickname + '&kakao_id=' + kakao_id + '&profile_image=' + profileImage ;
 				});
 			} else {
-				kakaoLoginAction(kakao_id);
+				location.href = "/hos/kakaoLogin";
 			}
 		}
 	});
@@ -136,21 +134,6 @@ function kakaoLogin(kakao_id, email, userNickName, profileImage) {
 
 }
 
-// 카카오로 회원가입한 사람일 때
-function kakaoLoginAction(kakao_id){
-	$.ajax({
-		type : 'POST',
-		dataType : 'json',
-		url : '/hos/kakaoLogin',
-		data : 'kakao_id=' + kakao_id,
-		success : function(res) {
-			return false;
-		//	login(res.username, res.password);
-		}
-	});
-	
-	location.replace('/hos/home');
-}
 
 function login(username, password){
 	$('#username').val(username);
@@ -180,4 +163,5 @@ function findIdPw(){
     var name = "아이디/비밀번호 찾기";
     var option = "width = 440, height = 510, top = 100, left = 200, location = no"
     window.open(url, name, option);
+
 }

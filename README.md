@@ -10,12 +10,12 @@
 <br />
 
 # Project Structure
-<img src="/report/structure.jpg" style="width: 500px; height: 350px" />
+<img src="/report/structure.png" style="width: 500px; height: 350px" />
 
 <br />
 
 # Development Environment
-<img src="/report/enviroment.png" style="width: 500px; height: 350px" />
+<img src="/report/environment.png" style="width: 500px; height: 350px" />
 
 <br />
 

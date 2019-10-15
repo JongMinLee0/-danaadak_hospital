@@ -5,7 +5,7 @@
 # 다나앗닥
 - 병원 예약과 정보 공유를 위한 웹서비스.
 - 자세한 사항은 [report] 폴더에서 확인 가능합니다.
-<img src="/report/home.jpg" style="width: 500px; height: 350px" />
+<img src="/report/main.png" style="width: 500px; height: 350px" />
 
 <br />
 

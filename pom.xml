@@ -122,7 +122,7 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.7</version>
+			<version>4.13.1</version>
 			<scope>test</scope>
 		</dependency>
 		<!-- 스프링에서 JDBC 를 사용하기 위한 라이브러리 입니다. -->
